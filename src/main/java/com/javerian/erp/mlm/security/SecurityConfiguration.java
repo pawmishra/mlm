@@ -36,7 +36,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
-		http.authorizeRequests().antMatchers("/", "/list")
+		http.authorizeRequests().antMatchers("/", "/mlmHome")
 				.access("hasRole('USER') or hasRole('ADMIN') or hasRole('COMPANY-ADMIN')")
 				.antMatchers("/newuser/**", "/delete-user-*").access("hasRole('ADMIN')").antMatchers("/edit-user-*")
 				.access("hasRole('ADMIN') or hasRole('COMPANY-ADMIN')").and().formLogin().loginPage("/login")
