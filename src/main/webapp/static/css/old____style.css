@@ -1,0 +1,209 @@
+body{background: #f8f8f8; font-family: 'Lato', sans-serif;     margin-top: 70px;}
+a:focus{text-decoration: none; color: inherit;}
+/*Start header styling */
+.navbar-brand>img{-moz-user-select:none; -webkit-user-select:none; user-select:none;}
+header { padding-left: 0px; padding-right: 0px; background: #fff; position: fixed; top: 0px; left: 0px; right: 0px; z-index:9}
+header .navbar  {background: transparent; border-radius: 0px; border:0px; border-bottom: 1px solid #eaeaea; margin:0px; }
+header .navbar .navbar-header {width: 100%}
+header .navbar .navbar-right {margin-right: 0px;}
+header .container-fluid{ padding-left: 0px; padding-right: 0px;}
+header .navbar-form{ padding: 11px 10px; margin: 0px;}
+
+.toggleSideMenu{font-size: 25px; cursor: pointer; background: #ffae00; display: inline-block;padding:10px 30px;     line-height: 35px; margin: 0px; float: left; color: #fff; margin-right: 20px;}
+.toggleSideMenu:hover,.toggleSideMenu:focus{color: #fff}
+.myAccountTop > a {font-size: 16px; text-transform: uppercase; color: #333 !important; padding-top: 11px !important;    padding-bottom: 11px !important;}
+.myAccountTop > a .fa-user{background: #eeeeee; padding:6px 0px; color: #666; width: 30px; height: 30px; text-align: center; border-radius: 50%; float: left; margin-right: 10px; }
+.myAccountTop.open > a .fa-user{background: #fff; }
+.myAccountTop > a div{ margin-left: 40px; line-height: 16px;} 
+.myAccountTop > a span{font-size: 13px; display: block; text-transform: capitalize; font-weight: 600; opacity: 0.5 }
+.myAccountTop  .dropdown-menu{border: 0px;}
+.searchHdr {position: relative; border-right:1px solid #efefef;}
+.searchHdr .form-group{position: relative;     margin-top: 2px;}
+.searchHdr i{position: absolute; right: 13px;     top: 8px; color: #ffae00}
+.searchHdr input{border-radius: 30px;      font-size: 13px;   height: 30px;    width: 145px !important; box-shadow: none; border-color: #cccccc}
+
+form[role="search"] ::-webkit-input-placeholder {
+  color: #ccc;
+}
+form[role="search"] ::-moz-placeholder { 
+  color: #ccc;
+}
+form[role="search"] :-ms-input-placeholder {
+  color: #ccc;
+}
+form[role="search"] :-moz-placeholder {
+  color: #ccc;
+}
+/*End header styling */
+
+
+/*Start aside styling */
+aside{background: #01cde8; width: 250px; -moz-transition:0.2s;  -webkit-transition:0.2s;   transition:0.2s; position: fixed;  top: 55px; bottom: 0px; left: 0px; z-index: 9 }
+aside ul{list-style: none;  background: #01cde8;   padding:20px 0px 0px 0px; }
+aside ul > a{overflow: hidden;}
+aside ul ul{position: absolute; visibility: hidden; opacity: 0; -moz-transition:0.2s;  -webkit-transition:0.2s;   transition:0.2s; padding: 0px; left: 100%; top: 0%;  width: 200px; border:1px solid #018799;}
+aside ul ul:before{content: ''; border-width: 8px; border-style: solid; border-color: transparent; border-right: 12px solid #01cde8; top: 11px; position: absolute; left: -20px;} aside ul ul a{padding: 8px 10px}
+aside > ul > li > ul:before{top: 16px; }
+aside li{display: block; position: relative;     font-weight: 600;}
+aside li a{display: block; padding: 8px 10px; color: #222222; -moz-transition:0.2s;  -webkit-transition:0.2s;   transition:0.2s; font-size: 15px;}
+aside > ul > li > a{padding: 12px 10px; }
+
+aside li:hover > a{ text-decoration: none;background-color: #018799; color: #fff}
+aside li:hover  > ul{visibility: visible; opacity: 1}
+aside li a i{width: 27px; height: 27px; margin-right: 18px; margin-left: 15px; display: inline-block; background-size: 27px; background-repeat: no-repeat; background-position: center; vertical-align: middle;}
+aside li a span{ vertical-align: middle; top: 14px; position: absolute; -moz-transition:0.2s;  -webkit-transition:0.2s;   transition:0.2s; text-indent:0px;   display: inline-block;}
+aside li a:hover{ text-decoration: none;}
+#toggleAsideMenu:checked ~ aside .menuLabel{  text-indent:-200px; visibility: hidden; opacity: 0; z-index: -1}
+#toggleAsideMenu:checked ~ aside {width: 81px;}
+.asHomeIcon{background-image: url(../img/home.svg)}
+.asMymenuIcon{background-image: url(../img/mymenu.svg)}
+.asFrontOfficeIcon{background-image: url(../img/font-office.svg)}
+.asWMSIcon{background-image: url(../img/wms.svg)}
+.asManufacturingIcon{background-image: url(../img/manufacturing.svg)}
+.asAttendanceIcon{background-image: url(../img/attendance.svg)}
+.asFinanceIcon{background-image: url(../img/finance.svg)}
+.asDashboardIcon{background-image: url(../img/dashboard.svg)}
+.asCompSetupIcon{background-image: url(../img/company-setup.svg)}
+#toggleAsideMenu{display: none;}
+.hasSubmenu > a:before{content: '\f054'; font-family: 'FontAwesome'; font-size: 9px; position: absolute; right: 15px; top: 20px; }
+.hasSubmenu .hasSubmenu > a:before{top: 14px; }
+@media (min-width: 999px){
+
+#toggleAsideMenu:checked ~ aside > ul > li.hasSubmenu > a:before {display: none;}
+}
+
+/*End aside styling */
+
+/*main */
+main{margin-left: 250px; padding: 0px 20px 20px 20px }
+
+.breadcrumNew {display: table; width: 100%; list-style: none; padding: 0px; margin: 0px; margin-bottom: 20px;}
+.breadcrumNew li:first-child{border-left: 1px solid #dddddd; }
+.breadcrumNew li:first-child a{color: #ffae00; font-size: 20px;     line-height: 0px;}
+
+.breadcrumNew li{border-top: 1px solid #dddddd;   float: left; border-bottom: 1px solid #dddddd; background: #fff; color: #666666; font-size: 14px; position: relative;}
+.breadcrumNew li a{color: #666666; text-decoration: none; padding: 7px 10px  7px 25px; display: inline-block;}
+.breadcrumNew li:first-child a{padding-left: 20px; }
+.breadcrumNew li:before, .breadcrumNew li:after {content: ''; right: -36px;    z-index: 1;  position: absolute; border-width: 17px; border-color: transparent; border-style: solid; border-left: 18px  solid #ccc; }
+.breadcrumNew li:after {border-left-color:#fff; right: -35px; }
+.breadcrumNew li.current { line-height: 34px;padding-left: 30px;    color: #222; background: #ffae00}
+.breadcrumNew li.current:after { border-left-color: #ffae00;}
+.breadcrumNew li.current:first-child {padding-left: 15px; padding-right: 5px; color: #fff}
+
+
+
+
+#toggleAsideMenu:checked ~ main{margin-left: 80px;}
+.statisticsWrp{display: table; width: 100%}
+.statisticsWrp ul {list-style: none; padding: 0px; margin: 0px;}
+.statisticsWrp li {width: 23.5%; float: left; margin-right: 2%;}
+.statisticsWrp li:last-child {margin-right: 0px;}
+.statisticsWrp li a{display: inline-block; background: #fff; box-shadow: 0px 1px 5px rgba(0,0,0,0.2); text-decoration: none; color: #333; width: 100%; padding: 20px; margin-right: 20px}
+.statisticsWrp li h2{margin:0px 0px 0px  80px ;font-weight: 600; padding: 14px 0px 0px 0px; font-size: 22px; display: block; }
+.statisticsWrp li h2 span{display: block; margin-top: 4px; color: #8b8b8b; font-size: 14px; font-weight: 400;}
+.statisticsWrp li a i{border-radius: 50%;line-height: 68px; width: 68px; height: 68px; text-align: center; display: inline-block; float: left; background: #ffae00; font-size: 24px; color: #fff}
+
+.chartStatistics{ margin-top: 20px; display: table; width: 100%}
+.chartStatistics .panel, .addNewSalesOrder .panel{ background: #fff; color: #2f333e; padding: 0px; box-shadow: 0px 1px 5px rgba(0,0,0,0.2); border:0px; border-radius: 0px;}
+.chartStatistics .panel-heading, .addNewSalesOrder .panel-heading{border-color: #eeeeee; font-weight: 600; background: #fff; font-size: 16px; text-transform: uppercase;     padding: 15px; }
+.chartStatistics .col-sm-6{width: 49%; margin-right: 2%;}
+.chartStatistics .col-sm-6:nth-child(even){margin-right: 0px;}
+.optionsChart {float: right;margin-top: -4px; }
+.optionsChart .dropdown-menu  { border-radius: 0px; border: 0px; text-transform: capitalize;}
+.optionsChart .dropdown-toggle:active, .panelOptions .dropdown-toggle:active { box-shadow: none;}
+.optionsChart .dropdown-toggle i{color: #ccc;     font-size: 18px; }
+.optionsChart.open .dropdown-toggle i{color: #222;    }
+.chartStatistics hr{margin: 0px; }
+
+.topBar{display: table; width: 100%;}
+.topBar .breadcrumNew{float: left; width: initial;}
+.tpActionBtn {float: right;}
+.tpActionBtn a{border-radius: 50%; width: 30px; height: 30px;  padding: 8px 0px; text-align: center; background: #eaeaeb; color: #999; text-decoration: none; margin-left: 8px; -moz-transition:0.2s;  -webkit-transition:0.2s;   transition:0.2s;}
+.tpActionBtn a:hover, .tpActionBtn a.active{background: #ffae00; color: #fff}
+
+
+/*sales order*/
+.addNewSalesOrder .panel{box-shadow: none; border:1px solid #eaeaea; margin-bottom: 10px;}
+.addNewSalesOrder .panel-heading{padding: 10px 15px; cursor: pointer; position: relative; border-color:#eaeaea; border-bottom-width:0px;}
+.addNewSalesOrder .panel-heading:before{content: '\f078 ';-moz-transition:0.2s;  -webkit-transition:0.2s;   transition:0.2s; font-family: 'FontAwesome'; position: absolute; right: 20px; font-size: 9px; top: 50%; margin-top: -5px;}
+.addNewSalesOrder .panel-body{display: none; padding: 20px;}
+.addNewSalesOrder .panel.active .panel-heading{border-bottom-width:1px;}
+.addNewSalesOrder .panel.active .panel-heading:before{  -ms-transform: rotate(-180deg);-webkit-transform: rotate(-180deg);transform: rotate(-180deg)}
+.addNewSalesOrder .panel.active .panel-body{display: block;}
+
+.childPanel{border:10px solid #eaeaea; margin-bottom: 20px;}
+.childPanel-heading {border-bottom: 1px  solid #eaeaea; padding: 10px; display: inline-block; width: 100%; font-size: 14px; font-weight: 600;}
+.panelOptions {float: right;  }
+.panelOptions .dropdown-toggle{padding: 0px 10px;} 
+.panelOptions i{ color:#999 }
+.childPanel-body{padding: 15px; display: table; width: 100%}
+.childPanel-body .control-label{text-align: left; font-size: 13px; color: #666666; font-weight: 500}
+.childPanel-body .form-control, .childPanel-body .select2-selection {background: #f8f8f8; box-shadow: none;     border: 1px solid #eeeeee;}
+.childPanel-body .btn-default{ background: #f8f8f8;border-color:#eeeeee;}
+.childPanel-body .input-group .fa{ color:#999;     font-size: 14px;}
+.childPanel-body textarea{min-height: 142px;}
+.input-group .select2-selection__arrow{display: none;}
+.orderInfo .form-group:not(.addMoreWrp) .input-group {margin-right: 40px;}
+.orderInfo input[name="Status"], .billToWrp .form-group .form-control{width: 90%; width:calc(100% - 40px); width:-moz-calc(100% - 40px);}
+.orderInfo .addMore, .billToWrp .customerWrp .addMore{margin-left: 5px !important;}
+.toggleSideMenu .fa-times{display: none;}
+
+.actionBtnHead{margin-right: 20px; color: #333; display: none;}
+.actionBtnHead:first-child{margin-right: 40px; }
+.panel.active  .actionBtnHead{display: block;}
+
+/*main */
+@media (max-width: 999px){
+	.statisticsWrp li{width: 48%; margin-bottom: 10px;}
+	aside li a{    font-size: 14px;}
+	aside ul{padding-top: 0px;}
+	.toggleSideMenu{position: fixed;  -moz-transition:0.2s;  -webkit-transition:0.2s;   transition:0.2s;  left: 300px;}
+	.toggleSideMenu .fa-bars{display: none;}
+	.toggleSideMenu .fa-times{display: block;}
+	#toggleAsideMenu:checked ~ header .toggleSideMenu{left: 0px; position: relative;}
+	#toggleAsideMenu:checked ~ header .toggleSideMenu .fa-bars{display: block;}
+	#toggleAsideMenu:checked ~ header 	.toggleSideMenu .fa-times{display: none;}
+
+	#toggleAsideMenu ~ aside {text-indent:0px; z-index: 2; }
+	#toggleAsideMenu ~ aside .menuLabel{text-indent:0px !important; z-index: 2 !important; opacity: 1 !important; visibility: visible !important;}
+	.hasSubmenu > a:before, aside ul ul:before{display: none;}
+
+	aside {overflow: auto; width: 300px !important; top: 0px;opacity: 1;  left: 0% !important; z-index: 222 !important}
+	#toggleAsideMenu:checked ~ aside{   left: -100% !important; opacity: 1;}
+	aside ul ul{position: relative;     left: 16px; opacity: 1; visibility: visible; left: 0px;  border:0px; margin: 0px;     width: 100%;}
+	aside > ul > li {border-bottom: 1px solid rgba(255, 255, 255, 0.42);}
+	aside > ul > li > ul{ left: 0px; }
+	aside > ul > li > ul > li{margin-left: 75px;    border-left: 1px dotted #fff;}
+	aside ul ul > li{margin-left: 15px; position: relative;}
+	aside ul ul li:after{content: ''; border-bottom: 1px dotted #fff; position: absolute; left: 0px; top: 17px; width: 8px;}
+	aside ul ul ul li:after{width: 20px; left: -14px;}
+	main {margin-left: 0px !important;}
+	aside li a span{position: relative; top: inherit;}
+.toggleSideMenu{     padding: 10px 20px;}
+}
+@media (max-width: 768px){
+	body{    margin-top: 130px;}
+	.navbar-nav .open .dropdown-menu{position: absolute; background: #fff; -webkit-box-shadow: 0 6px 12px rgba(0,0,0,.175); box-shadow: 0 6px 12px rgba(0,0,0,.175);}
+	.toggleSideMenu{margin-right: 0px;     padding: 10px 20px;}
+	header .navbar .navbar-header{margin: 0px;}
+	header .navbar .navbar-right{margin: 0px;     float: none;     clear: both;    border-top: 1px solid #eaeaea;}
+	header .navbar .navbar-right:before{display: none;}
+	header .nav>li{display: inline-block;     float: left;}
+	header form{border: 0px !important; }
+	.tpActionBtn{    float: none; display: inline-block; width: 100%; margin-bottom: 20px;} 
+	.chartStatistics .col-sm-6{width: 100%; margin-right: 0px;}
+}
+
+@media (max-width: 480px){
+	.statisticsWrp li{width: 100%}
+	aside {width: 100% !important; }
+}
+
+/*theme colors*/
+.toggleSideMenu, .breadcrumNew li.current, aside, aside ul, .tpActionBtn a:hover, .tpActionBtn a.active{background:#ab184d; color: #fff }
+.breadcrumNew li.current:after{border-left-color:#ab184d;}
+aside li:hover > a{background: #ab184d;}
+aside li a{color: #fff}
+.breadcrumNew li:first-child a, .searchHdr i{color: #ab184d}
+aside ul ul{border-color: #fff}
+aside ul ul:before{border-right-color: #fff}

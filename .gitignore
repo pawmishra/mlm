@@ -1,0 +1,17 @@
+*.log
+*.iml
+*/bin
+*/target
+*/.classpath
+*/.project
+*/.settings
+.idea/
+/target
+*/bin
+.classpath
+.project
+.settings
+*.pmd
+*/*.pmd
+*.pmd
+.metadata/
