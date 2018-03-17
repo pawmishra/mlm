@@ -64,7 +64,7 @@
               <li class="dropdown user user-menu">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                   <img src="dist/img/user2-160x160.jpg" class="user-image" alt="User Image"/>
-                  <span class="hidden-xs">Nishant Ranjan</span>
+                  <span class="hidden-xs">${loggedinuser}</span>
                 </a>
                 <ul class="dropdown-menu">
                   <!-- User image -->
@@ -101,7 +101,7 @@
               <img src="dist/img/user2-160x160.jpg" class="img-circle" alt="User Image" />
             </div>
             <div class="pull-left info">
-              <p>Nishant Ranjan</p>
+              <p>${loggedinuser}</p>
 			  <p> ID12345 </p>
 
   
@@ -214,7 +214,7 @@
             </li>
 			<li class="treeview">
               <a href="#">
-                <i class="fa fa-hand-o-up"></i> <span>Logout</span>
+                <i class="fa fa-hand-o-up"></i> <span><a href="<c:url value="/logout" />">Logout</a></span>
               </a>
             </li>
             

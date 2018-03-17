@@ -37,8 +37,7 @@
  <body class="skin-blue">
     <div class="wrapper">
       
-      <%@include file="header.jsp" %>
-      
+      <%@include file="header.jsp"%>      
 
       <!-- Right side column. Contains the navbar and content of the page -->
       <div class="content-wrapper">
