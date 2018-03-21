@@ -211,7 +211,70 @@ public class AppController {
 	 */
 	@RequestMapping(value = { "/register" }, method = RequestMethod.GET)
 	public String registerNewUser(ModelMap model) {
+		model.addAttribute("loggedinuser", authenticationTrustResolver.getPrincipal());
 		return "register";
 	}
+
+	@RequestMapping(value = { "/account_history" }, method = RequestMethod.GET)
+	public String accountHistory(ModelMap model) {
+		model.addAttribute("loggedinuser", authenticationTrustResolver.getPrincipal());
+		return "account_history";
+	}
+
+	@RequestMapping(value = { "/bank_details" }, method = RequestMethod.GET)
+	public String bankDetails(ModelMap model) {
+		model.addAttribute("loggedinuser", authenticationTrustResolver.getPrincipal());
+		return "bank_details";
+	}
+
+	// bank_details.jsp
+	// block_payout_achivers.jsp
+	// block_reward_achivers.jsp
+	// deleted_joining_kits.jsp
+	// direct_ids.jsp
+	// edit_pass.jsp
+	// edit_profile.jsp
+	// epin.jsp
+	// epin_generator.jsp
+	// epin_generator_2.jsp
+	// epin_received_history.jsp
+	// epin_sale.jsp
+	// epin_status.jsp
+	// epin_transaction.jsp
+	// epin_transfer.jsp
+	// epin_transfer_history.jsp
+	// e_pin_listdelete.jsp
+	// fund_transfer_report.jsp
+	// header.jsp
+	// index.jsp
+	// joining_product.jsp
+	// kyc_update.jsp
+	// level_income.jsp
+	// level_income1.jsp
+	// login.jsp
+	// member_pannel.jsp
+	// member_password.jsp
+	// member_view.jsp
+	// mlmHome.jsp
+	// my_direct.jsp
+	// my_level.jsp
+	// my_team.jsp
+	// new_joining.jsp
+	// payout_report.jsp
+	// payout_summary.jsp
+	// process_payout.jsp
+	// register.jsp
+	// registrationsuccess.jsp
+	// reports.jsp
+	// top_up_id.jsp
+	// transaction_password.jsp
+	// treeview.jsp
+	// upgrade.jsp
+	// view_distributer.jsp
+	// view_downline.jsp
+	// view_receipt_report.jsp
+	// welcome_report.jsp
+	// withdraw_balance.jsp
+	// withdraw_report.jsp
 
 }

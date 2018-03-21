@@ -1,3 +1,6 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+	pageEncoding="ISO-8859-1"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
  <head>
@@ -39,7 +42,7 @@
     <div class="wrapper">
       
       
-      <?php include("header.php"); ?>
+        <%@include file="header.jsp" %>
 
       <!-- Right side column. Contains the navbar and content of the page -->
       <div class="content-wrapper">
