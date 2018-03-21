@@ -10,10 +10,10 @@
  * Core: Genral Layout Style
  * -------------------------
  */
-.icon
-{
-	padding-top: 15px;
-}
+ .heading
+ {
+  margin-left: 40%;
+ }
 html,
 body {
   min-height: 100%;
