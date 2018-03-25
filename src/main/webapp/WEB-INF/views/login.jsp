@@ -47,12 +47,12 @@ function hideURLbar(){ window.scrollTo(0,1); }
 			<form action="${loginUrl}" method="post">
 				<c:if test="${param.error != null}">
 					<div class="alert alert-danger">
-						<p>Invalid username and password.</p>
+						<p  style="color: white;">Invalid username or password.</p>
 					</div>
 				</c:if>
 				<c:if test="${param.logout != null}">
 					<div class="alert alert-success">
-						<p>You have been logged out successfully.</p>
+						<p style="color: white;">You have been logged out successfully.</p>
 					</div>
 				</c:if>
 				<input placeholder="User Name" name="username" class="name"

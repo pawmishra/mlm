@@ -38,11 +38,15 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 	protected void configure(HttpSecurity http) throws Exception {
 		http.authorizeRequests().antMatchers("/", "/mlmHome")
 				.access("hasRole('USER') or hasRole('ADMIN') or hasRole('COMPANY-ADMIN')")
-				.antMatchers("/newuser/**", "/delete-user-*").access("hasRole('ADMIN')").antMatchers("/edit-user-*")
-				.access("hasRole('ADMIN') or hasRole('COMPANY-ADMIN')").and().formLogin().loginPage("/login")
-				.loginProcessingUrl("/login").usernameParameter("username").passwordParameter("password").and()
-				.rememberMe().rememberMeParameter("remember-me").tokenRepository(tokenRepository)
-				.tokenValiditySeconds(86400).and().csrf().and().exceptionHandling().accessDeniedPage("/Access_Denied");
+				//
+				.antMatchers("/joining_product", "/epin_generator").access("hasRole('ADMIN')")
+				//
+				.antMatchers("/edit-user-*").access("hasRole('ADMIN') or hasRole('COMPANY-ADMIN')")
+				//
+				.and().formLogin().loginPage("/login").loginProcessingUrl("/login").usernameParameter("username")
+				.passwordParameter("password").and().rememberMe().rememberMeParameter("remember-me")
+				.tokenRepository(tokenRepository).tokenValiditySeconds(86400).and().csrf().and().exceptionHandling()
+				.accessDeniedPage("/Access_Denied");
 	}
 
 	@Bean

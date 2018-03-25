@@ -6,8 +6,6 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <meta charset="UTF-8">
-<head>
-<meta charset="UTF-8">
 <title>Admin</title>
 <meta
 	content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no'
@@ -67,19 +65,20 @@
   <body class="skin-blue">
     <div class="wrapper">
       
-   <%@include file="header.jsp"%> 
+      
+       <%@include file="header.jsp"%> 
 
       <!-- Right side column. Contains the navbar and content of the page -->
       <div class="content-wrapper">
         <!-- Content Header (Page header) -->
         <section class="content-header">
           <h1>
-            New  Joining Report
+            Change Password
           </h1>
           <ol class="breadcrumb">
             <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-            <li><a href="#">EPIN</a></li>
-            <li class="active">New Joining</li>
+            <li><a href="#">Dashboard</a></li>
+            <li class="active">Change Password</li>
           </ol>
         </section>
 
@@ -92,111 +91,50 @@
               <div class="box box-primary">
                 <div class="box-header">
                   
-                </div><!-- /.box-header -->
+                
                 <!-- form start -->
       <div class='panel-body col-xs-12'>
         <form class='form-horizontal' role='form'>
-          
-            
           <div class='form-group'>
-            <label class='control-label col-md-2 ' for='id_checkin'>Month</label>
-            <div class='col-md-8'>
-              <div class='col-md-3'>
-                <div class='form-group internal input-group'>
-                  <input class='form-control datepicker' type="date" id='id_checkin'>
-                  <span class='input-group-addon'>
-                    <i class='glyphicon glyphicon-calendar'></i>
-                  </span>
-                </div>
-              </div>
-              <label class='control-label col-md-2' for='id_checkout'>Year</label>
-              <div class='col-md-3'>
-                <div class='form-group internal input-group'>
-                  <input class='form-control datepicker' type="date" id='id_checkout'>
-                  <span class='input-group-addon'>
-                    <i class='glyphicon glyphicon-calendar'></i>
-                  </span>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class='form-group'>            
-            <div class='col-md-offset-4 col-md-3'>
-              <button class='btn-lg btn-danger' style='float:right' type='submit'>Search</button>
-            </div>
-          </div>
-          <div class='form-group'>
-            <label class='control-label col-md-2 ' for='id_checkin'>From</label>
-            <div class='col-md-8'>
-              <div class='col-md-3'>
-                <div class='form-group internal input-group'>
-                  <input class='form-control datepicker' type="date" id='id_checkin'>
-                  <span class='input-group-addon'>
-                    <i class='glyphicon glyphicon-calendar'></i>
-                  </span>
-                </div>
-              </div>
-              <label class='control-label col-md-2' for='id_checkout'>To</label>
-              <div class='col-md-3'>
-                <div class='form-group internal input-group'>
-                  <input class='form-control datepicker' type="date" id='id_checkout'>
-                  <span class='input-group-addon'>
-                    <i class='glyphicon glyphicon-calendar'></i>
-                  </span>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class='form-group'>            
-            <div class='col-md-offset-4 col-md-3'>
-              <button class='btn-lg btn-danger' style='float:right' type='submit'>Search</button>
-            </div>
-          </div>
-           <h3>
-            Transferred  From UserID
-          </h3>
-          <div class='form-group'>
-            <label class='control-label col-md-3 ' for='id_email'>Search By Keyword </label>
+            <label class='control-label col-md-3 ' for='id_email'>Username</label>
             <div class='col-md-6'>
               <div class='form-group'>
                 <div class='col-md-11'>
-                  <input class='form-control' id='id_email' placeholder='Search By Keyword' type='text'>
+                  <input class='form-control' id='id_email' placeholder='Username' type='text'>
+                </div>
+              </div>
+              </div>
+          </div>
+                   
+             <div class='form-group'>
+            <label class='control-label col-md-3' for='id_email'>New Password</label>
+            <div class='col-md-6'>
+              <div class='form-group'>
+                <div class='col-md-11'>
+                  <input class='form-control' id='id_email' placeholder='New Password' type='text'>
                 </div>
               </div>
             </div>
           </div>
-            <div class='form-group'>            
-            <div class='col-md-offset-4 col-md-3'>
-              <button class='btn-lg btn-danger' style='float:right' type='submit'>Search</button>
-            </div>
-          </div>
           <div class='form-group'>
-            <label class='control-label col-md-3 ' for='id_accomodation'>Pin Issue By</label>
-            <div class='col-md-4'>
-              <select class='form-control' id='id_accomodation'>
-                <option>Admin</option>
-                <option>Franchies</option>
-                <option>Member</option>                
-              </select>
-            </div>
-          </div> 
-           <div class='form-group'>            
-            <div class='col-md-offset-4 col-md-3'>
-              <button class='btn-lg btn-danger' style='float:right' type='submit'>Search</button>
-            </div>
-          </div>          
-            <div class='form-group'>            
-            <div class='col-md-offset-4 col-md-3'>
-              <button class='btn-lg btn-danger' style='float:right' type='submit'>View All Joining</button>
+            <label class='control-label col-md-3 ' for='id_email'>Confirm New Password</label>
+            <div class='col-md-6'>
+              <div class='form-group'>
+                <div class='col-md-11'>
+                  <input class='form-control' id='id_email' placeholder='Confirm New Password' type='text'>
+                </div>
+              </div>
             </div>
           </div>
+          
           <div class='form-group'>            
             <div class='col-md-offset-4 col-md-3'>
-              <button class='btn-lg btn-danger' style='float:right' type='submit'>Print Address</button>
+              <button class='btn-lg btn-danger' style='float:right' type='submit'>Change</button>
             </div>
           </div>
         </form>
       </div>
+      </div><!-- /.box-header -->
   </div><!-- /.box -->
 <br>
 <br>
@@ -211,7 +149,9 @@
       </div><!-- /.content-wrapper -->
     
     </div><!-- ./wrapper -->
- <!-- jQuery 2.1.3 -->
+
+ 
+    <!-- jQuery 2.1.3 -->
     <script src="/mlm-erp/static/plugins/jQuery/jQuery-2.1.3.min.js"></script>
     <!-- jQuery UI 1.11.2 -->
     <script src="http://code.jquery.com/ui/1.11.2/jquery-ui.min.js" type="text/javascript"></script>

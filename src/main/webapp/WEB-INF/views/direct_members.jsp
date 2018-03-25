@@ -6,8 +6,6 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <meta charset="UTF-8">
-<head>
-<meta charset="UTF-8">
 <title>Admin</title>
 <meta
 	content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no'
@@ -19,6 +17,12 @@
 <!-- FontAwesome 4.3.0 -->
 <link
 	href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css"
+	rel="stylesheet" type="text/css" />
+	<link
+	href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css"
+	rel="stylesheet" type="text/css" />
+	<link
+	href="https://cdn.datatables.net/1.10.16/css/dataTables.bootstrap.min.css"
 	rel="stylesheet" type="text/css" />
 <!-- Ionicons 2.0.0 -->
 <link
@@ -65,153 +69,151 @@
 	 
   </head>
   <body class="skin-blue">
+  <script type="text/javascript">
+
+  $(document).ready(function() {
+      $('#example').DataTable();
+  } );
+  </script>
     <div class="wrapper">
       
-   <%@include file="header.jsp"%> 
+      
+      <%@include file="header.jsp"%> 
 
       <!-- Right side column. Contains the navbar and content of the page -->
       <div class="content-wrapper">
         <!-- Content Header (Page header) -->
         <section class="content-header">
           <h1>
-            New  Joining Report
+            Direct Members
           </h1>
           <ol class="breadcrumb">
             <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-            <li><a href="#">EPIN</a></li>
-            <li class="active">New Joining</li>
+            <li><a href="#">Dashboard</a></li>
+            <li class="active">Direct Members</li>
           </ol>
         </section>
 
         <!-- Main content -->
         <section class="content">
           <div class="row">
-            <!-- left column -->
-            <div class="col-md-11">
-              <!-- general form elements -->
-              <div class="box box-primary">
+            <div class="col-xs-12">
+              
+
+              <div class="box">
                 <div class="box-header">
-                  
+                 <h3 class="box-title">Direct Members</h3>
                 </div><!-- /.box-header -->
-                <!-- form start -->
-      <div class='panel-body col-xs-12'>
-        <form class='form-horizontal' role='form'>
-          
-            
-          <div class='form-group'>
-            <label class='control-label col-md-2 ' for='id_checkin'>Month</label>
-            <div class='col-md-8'>
-              <div class='col-md-3'>
-                <div class='form-group internal input-group'>
-                  <input class='form-control datepicker' type="date" id='id_checkin'>
-                  <span class='input-group-addon'>
-                    <i class='glyphicon glyphicon-calendar'></i>
-                  </span>
-                </div>
-              </div>
-              <label class='control-label col-md-2' for='id_checkout'>Year</label>
-              <div class='col-md-3'>
-                <div class='form-group internal input-group'>
-                  <input class='form-control datepicker' type="date" id='id_checkout'>
-                  <span class='input-group-addon'>
-                    <i class='glyphicon glyphicon-calendar'></i>
-                  </span>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class='form-group'>            
-            <div class='col-md-offset-4 col-md-3'>
-              <button class='btn-lg btn-danger' style='float:right' type='submit'>Search</button>
-            </div>
-          </div>
-          <div class='form-group'>
-            <label class='control-label col-md-2 ' for='id_checkin'>From</label>
-            <div class='col-md-8'>
-              <div class='col-md-3'>
-                <div class='form-group internal input-group'>
-                  <input class='form-control datepicker' type="date" id='id_checkin'>
-                  <span class='input-group-addon'>
-                    <i class='glyphicon glyphicon-calendar'></i>
-                  </span>
-                </div>
-              </div>
-              <label class='control-label col-md-2' for='id_checkout'>To</label>
-              <div class='col-md-3'>
-                <div class='form-group internal input-group'>
-                  <input class='form-control datepicker' type="date" id='id_checkout'>
-                  <span class='input-group-addon'>
-                    <i class='glyphicon glyphicon-calendar'></i>
-                  </span>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class='form-group'>            
-            <div class='col-md-offset-4 col-md-3'>
-              <button class='btn-lg btn-danger' style='float:right' type='submit'>Search</button>
-            </div>
-          </div>
-           <h3>
-            Transferred  From UserID
-          </h3>
-          <div class='form-group'>
-            <label class='control-label col-md-3 ' for='id_email'>Search By Keyword </label>
-            <div class='col-md-6'>
-              <div class='form-group'>
-                <div class='col-md-11'>
-                  <input class='form-control' id='id_email' placeholder='Search By Keyword' type='text'>
-                </div>
-              </div>
-            </div>
-          </div>
-            <div class='form-group'>            
-            <div class='col-md-offset-4 col-md-3'>
-              <button class='btn-lg btn-danger' style='float:right' type='submit'>Search</button>
-            </div>
-          </div>
-          <div class='form-group'>
-            <label class='control-label col-md-3 ' for='id_accomodation'>Pin Issue By</label>
-            <div class='col-md-4'>
-              <select class='form-control' id='id_accomodation'>
-                <option>Admin</option>
-                <option>Franchies</option>
-                <option>Member</option>                
-              </select>
-            </div>
-          </div> 
-           <div class='form-group'>            
-            <div class='col-md-offset-4 col-md-3'>
-              <button class='btn-lg btn-danger' style='float:right' type='submit'>Search</button>
-            </div>
-          </div>          
-            <div class='form-group'>            
-            <div class='col-md-offset-4 col-md-3'>
-              <button class='btn-lg btn-danger' style='float:right' type='submit'>View All Joining</button>
-            </div>
-          </div>
-          <div class='form-group'>            
-            <div class='col-md-offset-4 col-md-3'>
-              <button class='btn-lg btn-danger' style='float:right' type='submit'>Print Address</button>
-            </div>
-          </div>
-        </form>
-      </div>
-  </div><!-- /.box -->
-<br>
-<br>
-<br>
-            
-
-
-            </div><!--/.col (left) -->
-            
-          </div>   <!-- /.row -->
+                <div class="box-body ">
+                 <table id="example" class="table table-striped table-bordered" style="width:100%">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Position</th>
+                <th>Office</th>
+                <th>Age</th>
+                <th>Start date</th>
+                <th>Salary</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Tiger Nixon</td>
+                <td>System Architect</td>
+                <td>Edinburgh</td>
+                <td>61</td>
+                <td>2011/04/25</td>
+                <td>$320,800</td>
+            </tr>
+            <tr>
+                <td>Garrett Winters</td>
+                <td>Accountant</td>
+                <td>Tokyo</td>
+                <td>63</td>
+                <td>2011/07/25</td>
+                <td>$170,750</td>
+            </tr>
+            <tr>
+                <td>Ashton Cox</td>
+                <td>Junior Technical Author</td>
+                <td>San Francisco</td>
+                <td>66</td>
+                <td>2009/01/12</td>
+                <td>$86,000</td>
+            </tr>
+            <tr>
+                <td>Cedric Kelly</td>
+                <td>Senior Javascript Developer</td>
+                <td>Edinburgh</td>
+                <td>22</td>
+                <td>2012/03/29</td>
+                <td>$433,060</td>
+            </tr>
+            <tr>
+                <td>Airi Satou</td>
+                <td>Accountant</td>
+                <td>Tokyo</td>
+                <td>33</td>
+                <td>2008/11/28</td>
+                <td>$162,700</td>
+            </tr>
+            <tr>
+                <td>Brielle Williamson</td>
+                <td>Integration Specialist</td>
+                <td>New York</td>
+                <td>61</td>
+                <td>2012/12/02</td>
+                <td>$372,000</td>
+            </tr>
+            <tr>
+                <td>Herrod Chandler</td>
+                <td>Sales Assistant</td>
+                <td>San Francisco</td>
+                <td>59</td>
+                <td>2012/08/06</td>
+                <td>$137,500</td>
+            </tr>
+            <tr>
+                <td>Rhona Davidson</td>
+                <td>Integration Specialist</td>
+                <td>Tokyo</td>
+                <td>55</td>
+                <td>2010/10/14</td>
+                <td>$327,900</td>
+            </tr>
+            <tr>
+                <td>Colleen Hurst</td>
+                <td>Javascript Developer</td>
+                <td>San Francisco</td>
+                <td>39</td>
+                <td>2009/09/15</td>
+                <td>$205,500</td>
+            </tr>
+     
+        </tbody>
+        <tfoot>
+            <tr>
+                <th>Name</th>
+                <th>Position</th>
+                <th>Office</th>
+                <th>Age</th>
+                <th>Start date</th>
+                <th>Salary</th>
+            </tr>
+        </tfoot>
+    </table>
+                </div><!-- /.box-body -->
+              </div><!-- /.box -->
+              
+             
+            </div><!-- /.col -->
+          </div><!-- /.row -->
         </section><!-- /.content -->
       </div><!-- /.content-wrapper -->
     
     </div><!-- ./wrapper -->
- <!-- jQuery 2.1.3 -->
+
+  <!-- jQuery 2.1.3 -->
     <script src="/mlm-erp/static/plugins/jQuery/jQuery-2.1.3.min.js"></script>
     <!-- jQuery UI 1.11.2 -->
     <script src="http://code.jquery.com/ui/1.11.2/jquery-ui.min.js" type="text/javascript"></script>
@@ -223,6 +225,7 @@
     <script src="/mlm-erp/static/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>    
     <!-- Morris.js charts -->
     <script src="http://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
+    
     <!-- Sparkline -->
     <script src="/mlm-erp/static/plugins/sparkline/jquery.sparkline.min.js" type="text/javascript"></script>
     <!-- jvectormap -->

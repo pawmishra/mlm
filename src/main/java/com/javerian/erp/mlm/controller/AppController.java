@@ -209,23 +209,66 @@ public class AppController {
 	/**
 	 * This method will provide the medium to add a new user.
 	 */
+
+	@RequestMapping(value = { "/edit_profile" }, method = RequestMethod.GET)
+	public String editprofile(ModelMap model) {
+		model.addAttribute("loggedinuser", authenticationTrustResolver.getPrincipal());
+		return "edit_profile";
+	}
+
+	@RequestMapping(value = { "/change_password" }, method = RequestMethod.GET)
+	public String changepassword(ModelMap model) {
+		model.addAttribute("loggedinuser", authenticationTrustResolver.getPrincipal());
+		return "change_password";
+	}
+
+	@RequestMapping(value = { "/payout" }, method = RequestMethod.GET)
+	public String payout(ModelMap model) {
+		model.addAttribute("loggedinuser", authenticationTrustResolver.getPrincipal());
+		return "payout";
+	}
+
+	@RequestMapping(value = { "/downline_members" }, method = RequestMethod.GET)
+	public String downlinemembers(ModelMap model) {
+		model.addAttribute("loggedinuser", authenticationTrustResolver.getPrincipal());
+		return "downline_members";
+	}
+
+	@RequestMapping(value = { "/direct_members" }, method = RequestMethod.GET)
+	public String directmembers(ModelMap model) {
+		model.addAttribute("loggedinuser", authenticationTrustResolver.getPrincipal());
+		return "direct_members";
+	}
+
+	@RequestMapping(value = { "/review_project" }, method = RequestMethod.GET)
+	public String reviewproject(ModelMap model) {
+		model.addAttribute("loggedinuser", authenticationTrustResolver.getPrincipal());
+		return "review_project";
+	}
+
+	@RequestMapping(value = { "/upload_project" }, method = RequestMethod.GET)
+	public String uploadproject(ModelMap model) {
+		model.addAttribute("loggedinuser", authenticationTrustResolver.getPrincipal());
+		return "upload_project";
+	}
+
 	@RequestMapping(value = { "/register" }, method = RequestMethod.GET)
 	public String registerNewUser(ModelMap model) {
 		model.addAttribute("loggedinuser", authenticationTrustResolver.getPrincipal());
 		return "register";
 	}
 
-	@RequestMapping(value = { "/account_history" }, method = RequestMethod.GET)
-	public String accountHistory(ModelMap model) {
-		model.addAttribute("loggedinuser", authenticationTrustResolver.getPrincipal());
-		return "account_history";
-	}
-
-	@RequestMapping(value = { "/bank_details" }, method = RequestMethod.GET)
-	public String bankDetails(ModelMap model) {
-		model.addAttribute("loggedinuser", authenticationTrustResolver.getPrincipal());
-		return "bank_details";
-	}
+	/*
+	 * @RequestMapping(value = { "/account_history" }, method = RequestMethod.GET)
+	 * public String accountHistory(ModelMap model) {
+	 * model.addAttribute("loggedinuser",
+	 * authenticationTrustResolver.getPrincipal()); return "account_history"; }
+	 * 
+	 * @RequestMapping(value = { "/bank_details" }, method = RequestMethod.GET)
+	 * public String bankDetails(ModelMap model) {
+	 * model.addAttribute("loggedinuser",
+	 * authenticationTrustResolver.getPrincipal()); return "bank_details"; }
+	 */
 
 	// bank_details.jsp
 	// block_payout_achivers.jsp

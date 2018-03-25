@@ -57,6 +57,7 @@
         <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
     <![endif]-->
     <!-- Morris chart -->
+
 <link href="<c:url value='/static/plugins/morris/morris.css' />"
 	rel="stylesheet" type="text/css" />
 	 
