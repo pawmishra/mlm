@@ -102,17 +102,17 @@
         <h3>Edit Profile  of Member</h3>
         
         <form class="form-horizontal" role="form">
+        <div class="row">
           <div class="form-group">
             <label class="col-lg-3 control-label">Search by Member ID:</label>
-            <div class="col-lg-8">
+            <div class="col-lg-3">
               <input class="form-control" type="text" >
             </div>
-          </div>
-          <div class="form-group">
-            <label class="col-md-3 control-label"></label>
-            <div class="col-md-2">
+             <div class="col-md-2">
               <input type="button" class="btn btn-primary" value="Show Details">
             </div>
+          </div>
+         
           </div>
         </form>
           <form class="form-horizontal" role="form">
@@ -158,13 +158,13 @@
           </div>
           <div class="form-group">
             <label class="col-lg-3 control-label">Last name:</label>
-            <div class="col-lg-8">
+            <div class="col-lg-3">
               <input class="form-control" type="text" value="Bishop">
             </div>
           </div>
           <div class="form-group">
             <label class="col-lg-3 control-label">Company:</label>
-            <div class="col-lg-8">
+            <div class="col-lg-3">
               <input class="form-control" type="text" value="">
             </div>
           </div>

@@ -252,6 +252,12 @@ public class AppController {
 		return "upload_project";
 	}
 
+	@RequestMapping(value = { "/create_ticket" }, method = RequestMethod.GET)
+	public String createticket(ModelMap model) {
+		model.addAttribute("loggedinuser", authenticationTrustResolver.getPrincipal());
+		return "create_ticket";
+	}
+
 	@RequestMapping(value = { "/register" }, method = RequestMethod.GET)
 	public String registerNewUser(ModelMap model) {
 		model.addAttribute("loggedinuser", authenticationTrustResolver.getPrincipal());

@@ -151,8 +151,12 @@
 				<span>Send Query</span> <i class="fa fa-angle-left pull-right"></i>
 		</a>
 			<ul class="treeview-menu">
-				<li><a href="pages/examples/invoice.html"><i
-						class="fa fa-circle-o"></i> Send Message</a></li>
+				<li><a href="create_ticket"><i
+						class="fa fa-circle-o"></i>Create Ticket</a></li>
+			    <li><a href="pages/examples/invoice.html"><i
+						class="fa fa-circle-o"></i>View Open Tickets</a></li>
+			    <li><a href="pages/examples/invoice.html"><i
+						class="fa fa-circle-o"></i>View Closed Tickets</a></li>
 
 			</ul></li>
 		<li class="treeview"><a href="/mlm-erp/logout"> <i class="fa fa-hand-o-up"></i>

@@ -78,12 +78,12 @@
         <!-- Content Header (Page header) -->
         <section class="content-header">
           <h1>
-            Upload Project
+            Create Ticket
           </h1>
           <ol class="breadcrumb">
             <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
             <li><a href="#">Dashboard</a></li>
-            <li class="active">Upload Project</li>
+            <li class="active"> Create Ticket</li>
           </ol>
         </section>
 
@@ -96,7 +96,7 @@
               <div class="box box-primary">
                 <div class="box-header">
                  <div class="container">
-    <h1>Upload Project</h1>
+    <h1>Create Ticket</h1>
   	<hr>
 	<div class="row">
       <!-- left column -->
@@ -111,64 +111,44 @@
 			      <label for="ticketid">Ticket Id</label>
 			      <input type="text" class="form-control" id="ticketid" placeholder="Ticket Id" readonly="readonly">
 			    </div>
-				<div class="form-group col-md-6">
-				      <label for="organisation">Organization Name</label>
-				       <div class="ui-select">
-				                <select id="organisation" class="form-control">
-				                  <option value="Organization1">Organization1</option>
-				                  
-				                </select>
-				              </div>
-				</div>
+			    <div class="form-group col-md-6">
+			      <label for="ticketid">Status:</label>
+			      <input type="text" class="form-control" id="status" placeholder="Status" readonly="readonly">
+			    </div>
+				
           </div>
           <div class="form-row">
-			    <div class="form-group col-md-6">
-			      <label for="ticketid">Paper Title:</label>
-			     <!--  <textarea class="form-control" aria-label="With textarea" ></textarea> -->
-			      <input type="text" class="form-control" id="ticketid" placeholder="Paper Title">
-			    </div>
-				<div class="form-group col-md-6">
-			      <label for="noofpages">Number of Pages:</label>
-			     
-			      <input type="text" class="form-control" id="noofpages" placeholder="Number of Pages">
-			    </div>
-          </div>
-          <br>
-            <div class="form-row">
-			    <div class="form-group col-md-6">
-				      <label for="subjectcategory">Subject Category:</label>
+			   <div class="form-group col-md-6">
+				      <label for="problemtype">Problem Type:</label>
 				       <div class="ui-select">
-				                <select id="subjectcategory" class="form-control">
-				                  <option value="Organization1">Subject Category1</option>
+				                <select id="problemtype" class="form-control">
+				                  <option value="Organization1">Problem Type1</option>
 				                  
 				                </select>
 				              </div>
 				</div>
-				<div class="form-group col-md-6">
-				      <label for="subsubjectcategory">Sub Subject Category:</label>
-				       <div class="ui-select">
-				                <select id="subsubjectcategory" class="form-control">
-				                  <option value="Organization1">Sub Subject Category1</option>
-				                  
-				                </select>
-				              </div>
-				</div>
+			    
           </div>
           <div class="form-row">
-			    <div class="form-group col-md-6">
-				      <label for="paperupload">Paper Upload:</label>
-				   
-					  <div class="demo-section k-content">
-        <h4>Upload PDF</h4>
-        <input name="files" id="paperupload" type="file" />
-        <div class="demo-hint">You can only upload <strong>PDF</strong> files.</div>
-       <div class="col-md-8"></div>
-       <button type="button" class="btn btn-primary">Upload</button>
+			    <div class="form-group col-md-12">
+			      <label for="ticketid">Problem Description:</label>
+			     <textarea class="form-control" aria-label="With textarea" rows="5"></textarea>
+			      
+			    </div>
+			
+          </div>
+          <div class="form-row">
+			  
+			<button type="button" class="btn btn-primary" style=" margin: 3% 0% 10% 4%;">Submit</button>	
+          </div>
+         
+       
+        </form>
     </div>
 				</div>
 				
           </div>
-        </form>
+       
       </div>
   </div>
 </div>
