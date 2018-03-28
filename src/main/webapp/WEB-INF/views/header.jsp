@@ -94,6 +94,8 @@
 			<ul class="treeview-menu">
 				<li><a href="edit_profile"><i class="fa fa-circle-o"></i>
 						Edit Profile</a></li>
+				<li><a href="edit_profile"><i class="fa fa-circle-o"></i>
+						Bank Details</a></li>
 				<li><a href="change_password"><i class="fa fa-circle-o"></i>
 						Change Password</a></li>
 				
@@ -114,10 +116,8 @@
 				<span>TEAM</span> <i class="fa fa-angle-left pull-right"></i>
 		</a>
 			<ul class="treeview-menu">
-				<li><a href="downline_members"><i class="fa fa-circle-o"></i>
-						Downline Members</a></li>
-				<li><a href="direct_members"><i class="fa fa-circle-o"></i>
-						Direct Members</a></li>
+				<li><a href="view_members"><i class="fa fa-circle-o"></i>
+						View Members</a></li>
 				<li><a href="upgrade.jsp"><i class="fa fa-circle-o"></i>
 						Tree View</a></li>
 				
@@ -131,7 +131,12 @@
 						Upload Project</a></li>
 				<li><a href="review_project"><i class="fa fa-circle-o"></i>
 						Review Project</a></li>
-				
+				<li><a href="add_organization"><i class="fa fa-circle-o"></i>
+						Add Organization</a></li>
+			    <li><a href="add_category"><i class="fa fa-circle-o"></i>
+						Add Category</a></li>
+				<li><a href="add_pageamount"><i class="fa fa-circle-o"></i>
+						Add Per Page Amount</a></li>
 			</ul></li>
 
 		<li class="treeview"><a href="#"> <i class="fa fa-rupee"></i>
@@ -153,10 +158,10 @@
 			<ul class="treeview-menu">
 				<li><a href="create_ticket"><i
 						class="fa fa-circle-o"></i>Create Ticket</a></li>
-			    <li><a href="pages/examples/invoice.html"><i
-						class="fa fa-circle-o"></i>View Open Tickets</a></li>
-			    <li><a href="pages/examples/invoice.html"><i
-						class="fa fa-circle-o"></i>View Closed Tickets</a></li>
+			    <li><a href="view_tickets"><i
+						class="fa fa-circle-o"></i>View Tickets</a></li>
+			    <li><a href="add_problemtype"><i
+						class="fa fa-circle-o"></i>Add Problem Type</a></li>
 
 			</ul></li>
 		<li class="treeview"><a href="/mlm-erp/logout"> <i class="fa fa-hand-o-up"></i>

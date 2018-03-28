@@ -166,11 +166,11 @@
 		<div class="content-wrapper">
 			<!-- Content Header (Page header) -->
 			<section class="content-header">
-				<h1>Payout</h1>
+				<h1>View Ticket</h1>
 				<ol class="breadcrumb">
 					<li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
 					<li><a href="#">Dashboard</a></li>
-					<li class="active">Payout</li>
+					<li class="active">View Ticket</li>
 				</ol>
 			</section>
 
@@ -196,11 +196,12 @@
 												
 												<div class="form-row">
 													<div class="form-group col-md-11">
-														<label for="problemtype">Select Payout Type:</label>
+														<label for="ticketstatus">Select Ticket Status:</label>
 														<div class="ui-select">
-															<select id="problemtype" class="form-control">
-																<option value="Organization1">Level Income</option>
-																<option value="Organization1">Direct Income</option>
+															<select id="ticketstatus" class="form-control">
+															    <option value="">Choose</option>
+																<option value="">Open</option>
+																<option value="">Closed</option>
 															</select> 
 														</div>
 													</div>

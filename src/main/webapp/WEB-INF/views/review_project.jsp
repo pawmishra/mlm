@@ -69,6 +69,31 @@
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
+<script type="text/javascript">
+
+function ieClicked() {
+    if (document.all) {
+        return false;
+    }
+}
+function firefoxClicked(e) {
+    if(document.layers||(document.getElementById&&!document.all)) {
+        if (e.which==2||e.which==3) {
+            return false;
+        }
+    }
+}
+if (document.layers){
+    document.captureEvents(Event.MOUSEDOWN);
+    document.onmousedown=firefoxClicked;
+}else{
+    document.onmouseup=firefoxClicked;
+    document.oncontextmenu=ieClicked;
+}
+document.oncontextmenu=new Function("return false")
+
+</script>
+
 </head>
 <body class="skin-blue">
 	<div class="wrapper">
@@ -107,14 +132,13 @@
 							<div class="box-header">
 
 								<div class="embed-responsive embed-responsive-16by9" style="height: 450px">
-									<object class="embed-responsive-item"
-										data="static/images/sample.pdf#toolbar=0&navpanes=0&scrollbar=0"
-										type="application/pdf" internalinstanceid="9" title="" style="height: 450px">
-
-										 
-									</object>
+									<object class="embed-responsive-item" id="id_obj_pdf" oncontextmenu="return abc()"
+										data="static/images/sample.pdf#toolbar=0&amp;navpanes=0&amp;scrollbar=0&amp;page=1&amp;view=FitH"
+										type="application/pdf" internalinstanceid="9" title="" style="height: 450px;"
+										>
+									</object>							
 								</div>
-								<div class="container">
+								<div class="container"> 
 									<h1>Questions</h1>
 									<p>1. The blockquote element is used to present content
 										from another source:</p>
@@ -188,20 +212,24 @@
 
 	</div>
 	<!-- ./wrapper -->
-
+     <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
 	<script type="text/javascript">
-	$('.embed-responsive-item').on("contextmenu",function(e){
-        alert('right click disabled');
-        return false;
-    });
-   
 	
+	/* $('.embed-responsive-item').bind('contextmenu', function(e) {
+	    return false;
+	}); */
+	//function disable() {
 	
-	 $(document).ready(function() {
-	       $('.embed-responsive-item').bind('cut copy paste', function (e) {
-	        e.preventDefault();
-	    });
-	    });
+/*  	document.onmousedown = disableRightclick;
+	var message = "Right click not allowed !!";
+	function disableRightclick(evt){
+	    if(evt.button == 2){
+	        alert(message);
+	        return false;    
+	    }
+	} */	 
+	
+	//}
 	</script>
 	<!-- jQuery 2.1.3 -->
 	<script src="/mlm-erp/static/plugins/jQuery/jQuery-2.1.3.min.js"></script>

@@ -86,54 +86,51 @@
         <section class="content">
           <div class="row">
             <!-- left column -->
-            <div class="col-md-11">
+            <div class="col-md-12">
               <!-- general form elements -->
               <div class="box box-primary">
                 <div class="box-header">
-                  
-                
-                <!-- form start -->
-      <div class='panel-body col-xs-12'>
-        <form class='form-horizontal' role='form'>
-          <div class='form-group'>
-            <label class='control-label col-md-3 ' for='id_email'>Username</label>
-            <div class='col-md-6'>
-              <div class='form-group'>
-                <div class='col-md-11'>
-                  <input class='form-control' id='id_email' placeholder='Username' type='text'>
-                </div>
-              </div>
-              </div>
-          </div>
-                   
-             <div class='form-group'>
-            <label class='control-label col-md-3' for='id_email'>New Password</label>
-            <div class='col-md-6'>
-              <div class='form-group'>
-                <div class='col-md-11'>
-                  <input class='form-control' id='id_email' placeholder='New Password' type='text'>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class='form-group'>
-            <label class='control-label col-md-3 ' for='id_email'>Confirm New Password</label>
-            <div class='col-md-6'>
-              <div class='form-group'>
-                <div class='col-md-11'>
-                  <input class='form-control' id='id_email' placeholder='Confirm New Password' type='text'>
-                </div>
-              </div>
-            </div>
-          </div>
-          
-          <div class='form-group'>            
-            <div class='col-md-offset-4 col-md-3'>
-              <button class='btn-lg btn-danger' style='float:right' type='submit'>Change</button>
-            </div>
-          </div>
-        </form>
-      </div>
+               <div class="container">
+									<h1></h1>
+									<hr>
+									<div class="row">
+										<!-- left column -->
+
+										<!-- edit form column -->
+										<div class="col-md-9 personal-info">
+
+
+											<form>
+												<div class="form-row">
+													<div class="form-group col-md-4">
+														<label for="username">Username:</label> <input type="text"
+															class="form-control" id="username"
+															placeholder="Username">
+													</div>
+													<div class="form-group col-md-4">
+														<label for="ticketid">New Password:</label> <input type="password"
+															class="form-control" id="status" placeholder="Status"
+															>
+													</div>
+													<div class="form-group col-md-4">
+														<label for="ticketid">Confirm New Password:</label> <input type="password"
+															class="form-control" id="status" placeholder="Status"
+															>
+													</div>
+												</div>
+												
+												<div class="form-row">
+
+													<button type="button" class="btn btn-primary"
+														style="margin: 3% 0% 10% 4%;">Submit</button>
+												</div>
+
+
+											</form>
+										</div>
+									</div>
+
+								</div>
       </div><!-- /.box-header -->
   </div><!-- /.box -->
 <br>

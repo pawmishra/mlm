@@ -228,16 +228,10 @@ public class AppController {
 		return "payout";
 	}
 
-	@RequestMapping(value = { "/downline_members" }, method = RequestMethod.GET)
-	public String downlinemembers(ModelMap model) {
+	@RequestMapping(value = { "/view_members" }, method = RequestMethod.GET)
+	public String viewmembers(ModelMap model) {
 		model.addAttribute("loggedinuser", authenticationTrustResolver.getPrincipal());
-		return "downline_members";
-	}
-
-	@RequestMapping(value = { "/direct_members" }, method = RequestMethod.GET)
-	public String directmembers(ModelMap model) {
-		model.addAttribute("loggedinuser", authenticationTrustResolver.getPrincipal());
-		return "direct_members";
+		return "view_members";
 	}
 
 	@RequestMapping(value = { "/review_project" }, method = RequestMethod.GET)
@@ -256,6 +250,42 @@ public class AppController {
 	public String createticket(ModelMap model) {
 		model.addAttribute("loggedinuser", authenticationTrustResolver.getPrincipal());
 		return "create_ticket";
+	}
+
+	@RequestMapping(value = { "/view_tickets" }, method = RequestMethod.GET)
+	public String viewtickets(ModelMap model) {
+		model.addAttribute("loggedinuser", authenticationTrustResolver.getPrincipal());
+		return "view_tickets";
+	}
+
+	@RequestMapping(value = { "/Member_chain" }, method = RequestMethod.GET)
+	public String Memberchain(ModelMap model) {
+		model.addAttribute("loggedinuser", authenticationTrustResolver.getPrincipal());
+		return "Member_chain";
+	}
+
+	@RequestMapping(value = { "/add_organization" }, method = RequestMethod.GET)
+	public String addorganization(ModelMap model) {
+		model.addAttribute("loggedinuser", authenticationTrustResolver.getPrincipal());
+		return "add_organization";
+	}
+
+	@RequestMapping(value = { "/add_category" }, method = RequestMethod.GET)
+	public String addcategory(ModelMap model) {
+		model.addAttribute("loggedinuser", authenticationTrustResolver.getPrincipal());
+		return "add_category";
+	}
+
+	@RequestMapping(value = { "/add_pageamount" }, method = RequestMethod.GET)
+	public String addpageamount(ModelMap model) {
+		model.addAttribute("loggedinuser", authenticationTrustResolver.getPrincipal());
+		return "add_pageamount";
+	}
+
+	@RequestMapping(value = { "/add_problemtype" }, method = RequestMethod.GET)
+	public String addproblemtype(ModelMap model) {
+		model.addAttribute("loggedinuser", authenticationTrustResolver.getPrincipal());
+		return "add_problemtype";
 	}
 
 	@RequestMapping(value = { "/register" }, method = RequestMethod.GET)
