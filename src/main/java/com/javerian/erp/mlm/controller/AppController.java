@@ -294,6 +294,12 @@ public class AppController {
 		return "register";
 	}
 
+	@RequestMapping(value = { "/treeview" }, method = RequestMethod.GET)
+	public String treeview(ModelMap model) {
+		model.addAttribute("loggedinuser", authenticationTrustResolver.getPrincipal());
+		return "treeview";
+	}
+
 	/*
 	 * @RequestMapping(value = { "/account_history" }, method = RequestMethod.GET)
 	 * public String accountHistory(ModelMap model) {

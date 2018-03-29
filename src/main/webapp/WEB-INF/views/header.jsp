@@ -1,4 +1,4 @@
-	<header class="main-header"> <!-- Logo --> <a href="index.jsp"
+	<header class="main-header"> <!-- Logo --> <a href="index"
 		class="logo"><b>MLM</b> ADMIN</a> <!-- Header Navbar: style can be found in header.less -->
 	<nav class="navbar navbar-static-top" role="navigation"> <!-- Sidebar toggle button-->
 	<a href="#" class="sidebar-toggle" data-toggle="offcanvas"
@@ -118,7 +118,7 @@
 			<ul class="treeview-menu">
 				<li><a href="view_members"><i class="fa fa-circle-o"></i>
 						View Members</a></li>
-				<li><a href="upgrade.jsp"><i class="fa fa-circle-o"></i>
+				<li><a href="treeview"><i class="fa fa-circle-o"></i>
 						Tree View</a></li>
 				
 			</ul></li>

@@ -43,7 +43,7 @@
     <div class="wrapper">
       
       
-      <?php include("header.php"); ?>
+      <%@include file="header.jsp"%>
 
       <!-- Right side column. Contains the navbar and content of the page -->
       <div class="content-wrapper">
