@@ -32,7 +32,7 @@
 <link href="<c:url value='/static/dist/css/skins/_all-skins.min.css' />"
 	rel="stylesheet" type="text/css" />
 <link
-	<c:url value='/static/dist/css/skins/style.css' />" rel="stylesheet"
+	href="<c:url value='/static/dist/css/skins/style.css' />" rel="stylesheet"
 	type="text/css" />
 <!-- iCheck -->
 <link href="<c:url value='/static/plugins/iCheck/flat/blue.css' />"
