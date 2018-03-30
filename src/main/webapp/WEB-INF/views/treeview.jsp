@@ -73,23 +73,26 @@
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <title>Basic example</title>
 <link rel="stylesheet" href="/mlm-erp/static/css/treant.css">
-<link rel="stylesheet" href="/mlm-erp/static/css/basic-example.css">
+<link rel="stylesheet" href="/mlm-erp/static/css/custom-colored.css">
 
 </head>
 <body class="skin-blue">
 
 
 
-		<%@include file="header.jsp"%>
+	<%@include file="header.jsp"%>
 
-		<div class="chart" id="basic-example"></div>
-		<script src="/mlm-erp/static/js/raphael.js"></script>
-		<script src="/mlm-erp/static/js/treant.js"></script>
 
-		<script src="/mlm-erp/static/js/basic-example.js"></script>
-		<script>
-			new Treant(chart_config);
-		</script>
+
+	<div class="chart" id="custom-colored">--@--</div>
+	<script src="/mlm-erp/static/js/raphael.js"></script>
+	<script src="/mlm-erp/static/js/treant.js"></script>
+
+	<script src="/mlm-erp/static/js/custom-colored.js"></script>
+	<script>
+		new Treant(chart_config);
+	</script>
+
 
 	<!-- jQuery 2.1.3 -->
 	<script src="/mlm-erp/static/plugins/jQuery/jQuery-2.1.3.min.js"></script>

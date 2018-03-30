@@ -1,5 +1,7 @@
 var config = {
-        container: "#basic-example",
+        container: "#custom-colored",
+
+        nodeAlign: "BOTTOM",
         
         connectors: {
             type: 'step'
@@ -19,16 +21,17 @@ var config = {
 
     cto = {
         parent: ceo,
+        HTMLclass: 'light-gray',
         text:{
             name: "Joe Linux",
             title: "Chief Technology Officer",
         },
-        stackChildren: true,
         image: "../headshots/1.jpg"
     },
     cbo = {
         parent: ceo,
-        stackChildren: true,
+        childrenDropLevel: 2,
+        HTMLclass: 'blue',
         text:{
             name: "Linda May",
             title: "Chief Business Officer",
@@ -37,6 +40,7 @@ var config = {
     },
     cdo = {
         parent: ceo,
+        HTMLclass: 'gray',
         text:{
             name: "John Green",
             title: "Chief accounting officer",
@@ -46,6 +50,7 @@ var config = {
     },
     cio = {
         parent: cto,
+        HTMLclass: 'light-gray',
         text:{
             name: "Ron Blomquist",
             title: "Chief Information Security Officer"
@@ -54,15 +59,17 @@ var config = {
     },
     ciso = {
         parent: cto,
+        HTMLclass: 'light-gray',
         text:{
             name: "Michael Rubin",
             title: "Chief Innovation Officer",
-            contact: {val: "we@aregreat.com", href: "mailto:we@aregreat.com"}
+            contact: "we@aregreat.com"
         },
         image: "../headshots/9.jpg"
     },
     cio2 = {
         parent: cdo,
+        HTMLclass: 'gray',
         text:{
             name: "Erica Reel",
             title: "Chief Customer Officer"
@@ -74,6 +81,7 @@ var config = {
     },
     ciso2 = {
         parent: cbo,
+        HTMLclass: 'blue',
         text:{
             name: "Alice Lopez",
             title: "Chief Communications Officer"
@@ -82,6 +90,7 @@ var config = {
     },
     ciso3 = {
         parent: cbo,
+        HTMLclass: 'blue',
         text:{
             name: "Mary Johnson",
             title: "Chief Brand Officer"
@@ -90,29 +99,20 @@ var config = {
     },
     ciso4 = {
         parent: cbo,
+        HTMLclass: 'blue',
         text:{
             name: "Kirk Douglas",
             title: "Chief Business Development Officer"
         },
         image: "../headshots/11.jpg"
-    }
+    },
 
     chart_config = [
         config,
-        ceo,
-        cto,
-        cbo,
-        cdo,
-        cio,
-        ciso,
-        cio2,
-        ciso2,
-        ciso3,
-        ciso4
+        ceo,cto,cbo,
+        cdo,cio,ciso,
+        cio2,ciso2,ciso3,ciso4
     ];
-
-
-
 
     // Antoher approach, same result
     // JSON approach
@@ -120,8 +120,10 @@ var config = {
 /*
     var chart_config = {
         chart: {
-            container: "#basic-example",
-            
+            container: "#custom-colored",
+
+            nodeAlign: "BOTTOM",
+
             connectors: {
                 type: 'step'
             },
@@ -137,19 +139,20 @@ var config = {
             },
             image: "../headshots/2.jpg",
             children: [
-                {
+                {   
                     text:{
                         name: "Joe Linux",
                         title: "Chief Technology Officer",
                     },
-                    stackChildren: true,
                     image: "../headshots/1.jpg",
+                    HTMLclass: 'light-gray',
                     children: [
                         {
                             text:{
                                 name: "Ron Blomquist",
                                 title: "Chief Information Security Officer"
                             },
+                            HTMLclass: 'light-gray',
                             image: "../headshots/8.jpg"
                         },
                         {
@@ -158,16 +161,18 @@ var config = {
                                 title: "Chief Innovation Officer",
                                 contact: "we@aregreat.com"
                             },
+                            HTMLclass: 'light-gray',
                             image: "../headshots/9.jpg"
                         }
                     ]
                 },
                 {
-                    stackChildren: true,
+                    childrenDropLevel: 2,
                     text:{
                         name: "Linda May",
                         title: "Chief Business Officer",
                     },
+                    HTMLclass: 'blue',
                     image: "../headshots/5.jpg",
                     children: [
                         {
@@ -176,6 +181,7 @@ var config = {
                                 name: "Alice Lopez",
                                 title: "Chief Communications Officer"
                             },
+                            HTMLclass: 'blue',
                             image: "../headshots/7.jpg"
                         },
                         {
@@ -183,6 +189,7 @@ var config = {
                                 name: "Mary Johnson",
                                 title: "Chief Brand Officer"
                             },
+                            HTMLclass: 'blue',
                             image: "../headshots/4.jpg"
                         },
                         {
@@ -190,6 +197,7 @@ var config = {
                                 name: "Kirk Douglas",
                                 title: "Chief Business Development Officer"
                             },
+                            HTMLclass: 'blue',
                             image: "../headshots/11.jpg"
                         }
                     ]
@@ -200,6 +208,7 @@ var config = {
                         title: "Chief accounting officer",
                         contact: "Tel: 01 213 123 134",
                     },
+                    HTMLclass: 'gray',
                     image: "../headshots/6.jpg",
                     children: [
                         {
@@ -210,6 +219,7 @@ var config = {
                             link: {
                                 href: "http://www.google.com"
                             },
+                            HTMLclass: 'gray',
                             image: "../headshots/10.jpg"
                         }
                     ]
