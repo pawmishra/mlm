@@ -294,6 +294,24 @@ public class AppController {
 		return "register";
 	}
 
+	@RequestMapping(value = { "/bank_details" }, method = RequestMethod.GET)
+	public String bankdetails(ModelMap model) {
+		model.addAttribute("loggedinuser", authenticationTrustResolver.getPrincipal());
+		return "bank_details";
+	}
+
+	@RequestMapping(value = { "/add_questions" }, method = RequestMethod.GET)
+	public String addquestions(ModelMap model) {
+		model.addAttribute("loggedinuser", authenticationTrustResolver.getPrincipal());
+		return "add_questions";
+	}
+
+	@RequestMapping(value = { "/latest_news" }, method = RequestMethod.GET)
+	public String latestnews(ModelMap model) {
+		model.addAttribute("loggedinuser", authenticationTrustResolver.getPrincipal());
+		return "latest_news";
+	}
+
 	@RequestMapping(value = { "/treeview" }, method = RequestMethod.GET)
 	public String treeview(ModelMap model) {
 		model.addAttribute("loggedinuser", authenticationTrustResolver.getPrincipal());

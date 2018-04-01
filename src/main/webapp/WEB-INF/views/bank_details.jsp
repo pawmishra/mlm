@@ -73,12 +73,12 @@
         <!-- Content Header (Page header) -->
         <section class="content-header">
           <h1>
-            edit profile
+            Bank Details
           </h1>
           <ol class="breadcrumb">
             <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-            <li><a href="#">GENERAL</a></li>
-            <li class="active">edit profile</li>
+            <li><a href="#">Dashboard</a></li>
+            <li class="active">Bank Details</li>
           </ol>
         </section>
 
@@ -90,8 +90,8 @@
               <!-- general form elements -->
               <div class="box box-primary">
                 <div class="box-header">
-                  <div class="container">
-    <h1>Edit Profile</h1>
+                 <div class="container">
+    <h3>Bank Details</h3>
   	<hr>
 	<div class="row">
       <!-- left column -->
@@ -99,151 +99,134 @@
       <!-- edit form column -->
       <div class="col-md-9 personal-info">
         
-        <h3>Edit Profile  of Member</h3>
-        
-        <form class="form-horizontal" role="form">
-        <div class="row">
-          <div class="form-group">
-            <label class="col-lg-3 control-label">Search by Member ID:</label>
-            <div class="col-lg-4">
-              <input class="form-control" type="text" >
-            </div>
-             <div class="col-md-2">
-              <input type="button" class="btn btn-primary" value="Show Details">
-            </div>
-          </div>
-         
-          </div>
-        </form>
-          <form class="form-horizontal" role="form">
-          <div class="form-group">
-            <label class="col-lg-3 control-label">Search by Member Name:</label>
-            <div class="col-lg-4">
-              <input class="form-control" type="text" >
-            </div>
-             <div class="col-md-2">
-              <input type="button" class="btn btn-primary" value="Show Details">
-            </div>
-          </div>
-         
-        </form>
-      </div>
-     
-      <div class="col-md-9">
-        <div class="text-center">
-          <img src="//placehold.it/100" class="avatar img-circle" alt="avatar">
-          <h6>Upload a different photo...</h6>
-          
-          <input type="file" class="form-control">
-        </div>
-      </div>
       
-      <!-- edit form column -->
-      <div class="col-md-9 personal-info">
-        <div class="alert alert-info alert-dismissable">
-          <a class="panel-close close" data-dismiss="alert">×</a> 
-          <i class="fa fa-coffee"></i>
-          This is an <strong>.alert</strong>. Use this to show important messages to the user.
-        </div>
-        <h3>Personal info</h3>
-        
-         <form>
-         <div class="form-row">
-			    <div class="form-group col-md-6">
-			      <label for="sponsorid">Sponsor Id:</label>
-			     
-			      <input type="text" class="form-control" id="sponsorid" readonly="readonly" name="sponsor_id" placeholder="Sponsor Id">
-			    </div>
-			    <div class="form-group col-md-6">
-			      <label for="userid">User Id:</label>
-			     
-			      <input type="text" class="form-control" id="userid" name="user_id" placeholder="User Id">
-			    </div>
-				
-          </div>
+        <form>
           <div class="form-row">
 			    <div class="form-group col-md-6">
-			      <label for="name">Name:</label>
+			      <label for="accountholdername">Account Holder Name:</label>
 			     
-			      <input type="text" class="form-control" id="name" name="name" placeholder="Name">
+			      <input type="text" class="form-control" id="accountholdername" name="account_holder_name" placeholder="Account Holder Name">
 			    </div>
-			     <div class="form-group col-md-6">
-			      <label for="address">Address:</label>
-			     <textarea class="form-control" aria-label="With textarea" id="address" name="address"></textarea>
+			    <div class="form-group col-md-6">
+			      <label for="mobileno">Mobile Number:</label>
+			     
+			      <input type="text" class="form-control" id="mobileno" name="mobile_no" placeholder="Mobile Number">
 			    </div>
+				
           </div>
            <div class="form-row">
                 <div class="form-group col-md-6">
-					<label for="state">State:</label>
-						<div class="ui-select">
-							<select id="state" name="state" class="form-control">
-								<option value="Organization1">State</option>
-
-							</select> 
-						</div>
-					</div>
-			    <div class="form-group col-md-6">
-			      <label for="city">City:</label>
+			      <label for="accountno">Account No:</label>
 			     
-			      <input type="text" class="form-control" id="city" name="city" placeholder="City">
+			      <input type="text" class="form-control" id="accountno" name="account_no" placeholder="Account No">
+			    </div>
+			    <div class="form-group col-md-6">
+			      <label for="bankname">Bank Name:</label>
+			     
+			      <input type="text" class="form-control" id="bankname" name="bank_name" placeholder="Bank Name">
 			    </div>
 				
           </div>
           <div class="form-row">
                 <div class="form-group col-md-6">
-			      <label for="pincode">Pincode:</label>
+			      <label for="bankbranch">Bank Branch:</label>
 			     
-			      <input type="text" class="form-control" id="pincode" name="pincode" placeholder="Pincode">
+			      <input type="text" class="form-control" id="bankbranch" name="bank_branch" placeholder="Bank Branch">
 			    </div>
 			    <div class="form-group col-md-6">
-			      <label for="mobilenumber">Mobile Number:</label>
-			      
-			      <input type="text" class="form-control" id="mobilenumber" name="mobile_number" placeholder="Mobile Number">
-			     
+			      <label for="bankaddress">Bank Address:</label>
+			     <textarea class="form-control" aria-label="With textarea" id="bankaddress" name="bank_address"></textarea>
 			    </div>
           </div>
           
-         
+            <div class="form-row">
+			    <div class="form-group col-md-6">
+				      <label for="panno">Pan Number:</label>
+				      <input type="text" class="form-control" id="panno" name="pan_no" placeholder="Pan Number">
+				      
+				       <label for="pancardupload">Upload Pan Card:</label>
+				   
+					  <div class="demo-section k-content">
+			     
+			        <input name="pancard" id="pancardupload" type="file" accept=".png, .jpg," />
+			        <div class="demo-hint">You can only upload <strong>JPG</strong> files.</div>
+      				</div>
+				</div>
+				 
+          </div>
+           <div class="form-row">
+			    <div class="form-group col-md-6">
+				      <label for="aadharno">Aadhar Number:</label>
+				      <input type="text" class="form-control" id="aadharno" name="aadhar_no" placeholder="Aadhar Number">
+	
+				      <label for="aadharnoupload">Upload Aadhar Card:</label>
+				   
+					  <div class="demo-section k-content">
+			      
+			        <input name="aadharcard" id="aadharnoupload" type="file" accept=".png, .jpg," />
+			        <div class="demo-hint">You can only upload <strong>JPG</strong> files.</div>
+      				</div>
+				</div>
+          </div>
        
+          <h3>Nominee  Details</h3>
+          <hr>
+          
           <div class="form-row">
 			    <div class="form-group col-md-6">
-			      <label for="dob">Date Of Birth:</label>
+			      <label for="nomineename">Nominee Name:</label>
 			     
-			      <input type="date" class="form-control" id="dob" name="dob" >
+			      <input type="text" class="form-control" id="nomineename" name="nominee_name" placeholder="Nominee Name">
 			    </div>
 			    <div class="form-group col-md-6">
-			      <label for="gender">Gender:</label>
-			      <label class="radio">
-					 <input type="radio" name="gender">Male
-						</label>
-					<label class="radio">
-					<input type="radio" name="gender">Femail
-					</label>
+			      <label for="relation">Relation:</label>
+			     
+			      <input type="text" class="form-control" id="relation" name="relation" placeholder="Number of Pages">
 			    </div>
 				
           </div>
           <div class="form-row">
 			    <div class="form-group col-md-6">
-			      <label for="email">Email:</label>
+			      <label for="address">Address:</label>
 			     
-			      <input type="text" class="form-control" id="email" name="email" placeholder="Email">
+			      <input type="text" class="form-control" id="address" name="address" placeholder="Address">
 			    </div>
 			    <div class="form-group col-md-6">
-			      <label for="joiningdate">Joining Date:</label>
+			      <label for="dob">Date of birth:</label>
 			     
-			      <input type="text" class="form-control" id="joiningdate" name="joining_date" readonly="readonly" placeholder="Joining Date">
+			      <input type="Date" class="form-control" id="dob" name="dob" >
 			    </div>
 				
           </div>
           <div class="form-row">
 			    <div class="form-group col-md-6">
-			      <label for="package">Package:</label>
+				      <label for="nomineepan">Pan Number:</label>
+				      <input type="text" class="form-control" id="nomineepan" name="nominee_pan" placeholder="Pan Number">
+				      
+				       <label for="nomineepanupload">Upload Pan Card:</label>
+				   
+					  <div class="demo-section k-content">
 			     
-			      <input type="text" class="form-control" id="package" name="package" placeholder="Package">
-			    </div>
-			    
+			        <input name="nominee_pan_upload" id="nomineepanupload" type="file" />
+			        <div class="demo-hint">You can only upload <strong>JPG</strong> files.</div>
+      				</div>
+				</div>
+				 
           </div>
-         
+           <div class="form-row">
+			    <div class="form-group col-md-6">
+				      <label for="nomineeaahare">Aadhar Number:</label>
+				      <input type="text" class="form-control" id="nomineeaahare" placeholder="Aadhar Number">
+	
+				      <label for="nomineeaahareupload">Upload Aadhar Card:</label>
+				   
+					  <div class="demo-section k-content">
+			      
+			        <input name="nominee_aahare_upload" id="nomineeaahareupload" type="file" />
+			        <div class="demo-hint">You can only upload <strong>JPG</strong> files.</div>
+      				</div>
+				</div>
+          </div>
           <div class="form-group">
            
             <div class="buttons col-md-8"><br><br>
@@ -259,10 +242,7 @@
 <hr>
                 <!-- /.box-header -->
                 <!-- form start -->
-      
-        </form>
-      </div>
-      
+   
       </div>
   </div><!-- /.box -->
 <br>

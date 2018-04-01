@@ -10,6 +10,10 @@
  * Core: Genral Layout Style
  * -------------------------
  */
+ .buttons
+ {
+ margin-top: 10px;
+ }
  .heading
  {
   margin-left: 40%;

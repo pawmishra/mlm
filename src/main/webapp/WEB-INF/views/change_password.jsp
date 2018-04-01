@@ -104,27 +104,28 @@
 												<div class="form-row">
 													<div class="form-group col-md-4">
 														<label for="username">Username:</label> <input type="text"
-															class="form-control" id="username"
+															class="form-control" id="username" name="username"
 															placeholder="Username">
 													</div>
 													<div class="form-group col-md-4">
 														<label for="ticketid">New Password:</label> <input type="password"
-															class="form-control" id="status" placeholder="Status"
+															class="form-control" id="new_password" placeholder="Status" name="new_password"
 															>
 													</div>
 													<div class="form-group col-md-4">
 														<label for="ticketid">Confirm New Password:</label> <input type="password"
-															class="form-control" id="status" placeholder="Status"
+															class="form-control" id="confirm_password" placeholder="Status" name="confirm_password"
 															>
 													</div>
 												</div>
-												
-												<div class="form-row">
-
-													<button type="button" class="btn btn-primary"
-														style="margin: 3% 0% 10% 4%;">Submit</button>
+												<div class="form-group">
+											 <div class="buttons col-md-8"><br><br>
+												<input type="submit" class="btn btn-primary" value="Change" onclick="return Validate()">
+												<span></span>
+												<input type="reset" class="btn btn-default" value="Cancel">
+												 <br><br></div>
 												</div>
-
+								          </div>
 
 											</form>
 										</div>
@@ -147,7 +148,17 @@
     
     </div><!-- ./wrapper -->
 
- 
+    <script type="text/javascript">
+    function Validate() {
+        var password = document.getElementById("new_password").value;
+        var confirmPassword = document.getElementById("confirm_password").value;
+        if (password != confirmPassword) {
+            alert("Passwords do not match.");
+            return false;
+        }
+        return true;
+    }
+</script>
     <!-- jQuery 2.1.3 -->
     <script src="/mlm-erp/static/plugins/jQuery/jQuery-2.1.3.min.js"></script>
     <!-- jQuery UI 1.11.2 -->

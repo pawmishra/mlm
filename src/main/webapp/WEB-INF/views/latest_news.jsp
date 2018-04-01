@@ -166,11 +166,11 @@
 		<div class="content-wrapper">
 			<!-- Content Header (Page header) -->
 			<section class="content-header">
-				<h1>Payout</h1>
+				<h1>Latest News</h1>
 				<ol class="breadcrumb">
 					<li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
 					<li><a href="#">Dashboard</a></li>
-					<li class="active">Payout</li>
+					<li class="active">Latest News</li>
 				</ol>
 			</section>
 
@@ -191,25 +191,25 @@
 										<!-- edit form column -->
 										<div class="col-md-9 personal-info">
 
-
-											<form>
+								       <form>
+								         
+								          <div class="form-row">
+											    <div class="form-group col-md-6">
+											      <label for="problemtype">Latest News:</label>
+											     <textarea class="form-control" aria-label="With textarea" name="latest_news"></textarea>
+											    
+											    </div>
 												
-												<div class="form-row">
-													<div class="form-group col-md-11">
-														<label for="payouttype">Select Payout Type:</label>
-														<div class="ui-select">
-															<select id="payouttype" class="form-control" name="payout_type">
-																<option value="Organization1">Level Income</option>
-																<option value="Organization1">Direct Income</option>
-															</select><br><br> 
-														</div>
-													</div>
-													
-
+								          </div>
+								           <div class="form-group">
+											 <div class="buttons col-md-8"><br>
+									              <input type="submit" class="btn btn-primary" value="Add">
+									              <span></span>
+									              <input type="reset" class="btn btn-default" value="Cancel">
+									            <br><br></div>
 												</div>
-												
-												
-											</form>
+								          </div>
+								        </form>
 										</div>
 									</div>
 
@@ -231,27 +231,12 @@
 											<th class="sorting_desc" tabindex="0"
 												aria-controls="tbl_data" rowspan="1" colspan="1"
 												aria-label="Name: activate to sort column ascending"
-												style="width: 32px;" aria-sort="descending">Name</th>
+												style="width: 32px;" aria-sort="descending">S.no</th>
 											<th class="sorting_desc" tabindex="0"
 												aria-controls="tbl_data" rowspan="1" colspan="1"
 												aria-label="Position: activate to sort column ascending"
-												style="width: 32px;" aria-sort="descending">Position</th>
-											<th class="sorting_desc" tabindex="0"
-												aria-controls="tbl_data" rowspan="1" colspan="1"
-												aria-label="Office: activate to sort column ascending"
-												style="width: 32px;" aria-sort="descending">Office</th>
-											<th class="sorting_desc" tabindex="0"
-												aria-controls="tbl_data" rowspan="1" colspan="1"
-												aria-label="Age: activate to sort column ascending"
-												style="width: 32px;" aria-sort="descending">Age</th>
-											<th class="sorting_desc" tabindex="0"
-												aria-controls="tbl_data" rowspan="1" colspan="1"
-												aria-label="Start date: activate to sort column ascending"
-												style="width: 32px;" aria-sort="descending">Start date</th>
-											<th class="sorting_desc" tabindex="0"
-												aria-controls="tbl_data" rowspan="1" colspan="1"
-												aria-label="Salary: activate to sort column ascending"
-												style="width: 32px;" aria-sort="descending">Salary</th>
+												style="width: 32px;" aria-sort="descending">Latest News</th>
+										    
 										</tr>
 									</thead>
 
@@ -262,74 +247,47 @@
 										<tr>
 											<td>Tiger Nixon</td>
 											<td>System Architect</td>
-											<td>Edinburgh</td>
-											<td>61</td>
-											<td>2011/04/25</td>
-											<td>$320,800</td>
+											
 										</tr>
 										<tr>
 											<td>Garrett Winters</td>
 											<td>Accountant</td>
-											<td>Tokyo</td>
-											<td>63</td>
-											<td>2011/07/25</td>
-											<td>$170,750</td>
+											
 										</tr>
 										<tr>
 											<td>Ashton Cox</td>
 											<td>Junior Technical Author</td>
-											<td>San Francisco</td>
-											<td>66</td>
-											<td>2009/01/12</td>
-											<td>$86,000</td>
+											
 										</tr>
 										<tr>
 											<td>Cedric Kelly</td>
 											<td>Senior Javascript Developer</td>
-											<td>Edinburgh</td>
-											<td>22</td>
-											<td>2012/03/29</td>
-											<td>$433,060</td>
+											
 										</tr>
 										<tr>
 											<td>Airi Satou</td>
 											<td>Accountant</td>
-											<td>Tokyo</td>
-											<td>33</td>
-											<td>2008/11/28</td>
-											<td>$162,700</td>
+											
 										</tr>
 										<tr>
 											<td>Brielle Williamson</td>
 											<td>Integration Specialist</td>
-											<td>New York</td>
-											<td>61</td>
-											<td>2012/12/02</td>
-											<td>$372,000</td>
+										    
 										</tr>
 										<tr>
 											<td>Herrod Chandler</td>
 											<td>Sales Assistant</td>
-											<td>San Francisco</td>
-											<td>59</td>
-											<td>2012/08/06</td>
-											<td>$137,500</td>
+											
 										</tr>
 										<tr>
 											<td>Rhona Davidson</td>
 											<td>Integration Specialist</td>
-											<td>Tokyo</td>
-											<td>55</td>
-											<td>2010/10/14</td>
-											<td>$327,900</td>
+											
 										</tr>
 										<tr>
 											<td>Colleen Hurst</td>
 											<td>Javascript Developer</td>
-											<td>San Francisco</td>
-											<td>39</td>
-											<td>2009/09/15</td>
-											<td>$205,500</td>
+											
 										</tr>
 
 									</tbody>

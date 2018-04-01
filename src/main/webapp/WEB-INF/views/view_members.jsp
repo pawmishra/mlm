@@ -196,13 +196,13 @@
 												
 												<div class="form-row">
 													<div class="form-group col-md-11">
-														<label for="ticketstatus">Select Members Type:</label>
+														<label for="membertype">Select Members Type:</label>
 														<div class="ui-select">
-															<select id="ticketstatus" class="form-control">
+															<select id="membertype" name=""member_type"" class="form-control">
 															    <option value="">Choose</option>
 																<option value="">Direct Members</option>
 																<option value="">Downline Members </option>
-															</select> 
+															</select><br><br> 
 														</div>
 													</div>
 													

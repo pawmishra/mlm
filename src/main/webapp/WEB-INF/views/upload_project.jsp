@@ -114,7 +114,7 @@
 				<div class="form-group col-md-6">
 				      <label for="organisation">Organization Name</label>
 				       <div class="ui-select">
-				                <select id="organisation" class="form-control">
+				                <select id="organisation" class="form-control" name="organisation">
 				                  <option value="Organization1">Organization1</option>
 				                  
 				                </select>
@@ -123,14 +123,14 @@
           </div>
           <div class="form-row">
 			    <div class="form-group col-md-6">
-			      <label for="ticketid">Paper Title:</label>
+			      <label for="papertitle">Paper Title:</label>
 			     <!--  <textarea class="form-control" aria-label="With textarea" ></textarea> -->
-			      <input type="text" class="form-control" id="ticketid" placeholder="Paper Title">
+			      <input type="text" class="form-control" id="papertitle" name="paper_title" placeholder="Paper Title">
 			    </div>
 				<div class="form-group col-md-6">
 			      <label for="noofpages">Number of Pages:</label>
 			     
-			      <input type="text" class="form-control" id="noofpages" placeholder="Number of Pages">
+			      <input type="text" class="form-control" id="noofpages" name="no_of_pages" placeholder="Number of Pages">
 			    </div>
           </div>
           <br>
@@ -138,7 +138,7 @@
 			    <div class="form-group col-md-6">
 				      <label for="subjectcategory">Subject Category:</label>
 				       <div class="ui-select">
-				                <select id="subjectcategory" class="form-control">
+				                <select id="subjectcategory" class="form-control" name="subject_category">
 				                  <option value="Organization1">Subject Category1</option>
 				                  
 				                </select>
@@ -147,24 +147,28 @@
 				<div class="form-group col-md-6">
 				      <label for="subsubjectcategory">Sub Subject Category:</label>
 				       <div class="ui-select">
-				                <select id="subsubjectcategory" class="form-control">
+				                <select id="subsubjectcategory" class="form-control" name="sub_subject_category">
 				                  <option value="Organization1">Sub Subject Category1</option>
 				                  
 				                </select>
 				              </div>
 				</div>
-          </div>
-          <div class="form-row">
-			    <div class="form-group col-md-6">
-				      <label for="paperupload">Paper Upload:</label>
-				   
-					  <div class="demo-section k-content">
-        <h4>Upload PDF</h4>
-        <input name="files" id="paperupload" type="file" />
-        <div class="demo-hint">You can only upload <strong>PDF</strong> files.</div>
-       <div class="col-md-8"></div>
-       <button type="button" class="btn btn-primary">Upload</button>
-    </div>
+		          </div>
+		          <div class="form-row">
+					    <div class="form-group col-md-6">
+						      <label for="paperupload">Paper Upload:</label>
+						   
+							  <div class="demo-section k-content">
+		        <h4>Upload PDF</h4>
+		        <input name="paper" id="paperupload" type="file" />
+		        <div class="demo-hint">You can only upload <strong>PDF</strong> files.</div></div>
+      			 <div class="form-group"><br><br>
+					<div class="buttons col-md-8">
+						<input type="submit" class="btn btn-primary" value="Upload">
+						<span></span>
+						<input type="reset" class="btn btn-default" value="Cancel">
+						</div>
+					</div>
 				</div>
 				
           </div>

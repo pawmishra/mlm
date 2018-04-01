@@ -94,7 +94,7 @@
 			<ul class="treeview-menu">
 				<li><a href="edit_profile"><i class="fa fa-circle-o"></i>
 						Edit Profile</a></li>
-				<li><a href="edit_profile"><i class="fa fa-circle-o"></i>
+				<li><a href="bank_details"><i class="fa fa-circle-o"></i>
 						Bank Details</a></li>
 				<li><a href="change_password"><i class="fa fa-circle-o"></i>
 						Change Password</a></li>
@@ -137,14 +137,16 @@
 						Add Category</a></li>
 				<li><a href="add_pageamount"><i class="fa fa-circle-o"></i>
 						Add Per Page Amount</a></li>
+			     <li><a href="add_questions"><i class="fa fa-circle-o"></i>
+						Add Questions</a></li>
 			</ul></li>
 
 		<li class="treeview"><a href="#"> <i class="fa fa-rupee"></i>
 				<span>EVENTS</span> <i class="fa fa-angle-left pull-right"></i>
 		</a>
 			<ul class="treeview-menu">
-				<li><a href="withdraw_balance.jsp"><i
-						class="fa fa-circle-o"></i> Happy Birthday List</a></li>
+				<li><a href="latest_news"><i
+						class="fa fa-circle-o"></i>Latest News</a></li>
 				<li><a href="withdraw_balance.jsp"><i
 						class="fa fa-circle-o"></i> Rewards Achievers</a></li>
 				<li><a href="withdraw_balance.jsp"><i

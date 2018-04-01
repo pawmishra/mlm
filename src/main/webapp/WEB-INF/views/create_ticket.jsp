@@ -127,9 +127,7 @@
 															<select id="problemtype" class="form-control">
 																<option value="Organization1">Problem Type1</option>
 
-															</select> <label for="other">Other:</label> <input type="text"
-																class="form-control" id="other" placeholder="Status"
-																readonly="readonly">
+															</select> 
 														</div>
 													</div>
 													<div class="form-group col-md-6">
@@ -140,14 +138,13 @@
 													</div>
 
 												</div>
-												
-												<div class="form-row">
-
-													<button type="button" class="btn btn-primary"
-														style="margin: 3% 0% 10% 4%;">Submit</button>
-												</div>
-
-
+												  <div class="form-group">
+									           <div class="buttons col-md-8"><br>
+									              <input type="submit" class="btn btn-primary" value="Create">
+									              <span></span>
+									              <input type="reset" class="btn btn-default" value="Cancel">
+									            <br><br></div>
+									          </div>
 											</form>
 										</div>
 									</div>

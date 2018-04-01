@@ -205,14 +205,13 @@
 			      <input type="text" class="form-control" id="subcategory" placeholder="Sub Category">
 			    </div>
           </div>
-          
-          <div class="form-row col-md-12">
-			    <div class="form-group col-md-6">
-       <div class="col-md-2"></div>
-       <button type="button" class="btn btn-primary">Add</button>
-    </div>
-				</div>
-				
+           <div class="form-group">
+           <div class="buttons col-md-8"><br>
+			<input type="submit" class="btn btn-primary" value="Add">
+			 <span></span>
+			<input type="reset" class="btn btn-default" value="Cancel">
+			<br><br></div>
+          </div>
           </div>
         </form>
 										</div>

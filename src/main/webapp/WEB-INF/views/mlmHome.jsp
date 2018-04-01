@@ -210,82 +210,41 @@
                   </div>
                 </div><!-- /.box-header -->
                 <div class="box-body">
+                  <marquee behavior="scroll" direction="up" onmouseover="this.stop();" onmouseout="this.start();">
                   <ul class="todo-list">
                    <li>
-                      <input type="checkbox" value="" name=""/>
-                      <span class="text">Let theme shine like a star</span>
+                      <a href="latest_news"><span class="text">Let theme shine like a starLet theme shine like a starLet theme shine like a star</span></a>
                     </li>
                     <li>
-                      <input type="checkbox" value="" name=""/>
+                     
                       <span class="text">Let theme shine like a star</span>
                     </li>
-					<li>
-                      <input type="checkbox" value="" name=""/>
+					 <li>
+                     
                       <span class="text">Let theme shine like a star</span>
                     </li>
-					<li>
-                      <input type="checkbox" value="" name=""/>
+                     <li>
+                     
                       <span class="text">Let theme shine like a star</span>
                     </li>
-					<li>
-                      <input type="checkbox" value="" name=""/>
+                     <li>
+                     
                       <span class="text">Let theme shine like a star</span>
                     </li>
-					<li>
-                      <input type="checkbox" value="" name=""/>
+                     <li>
+                     
                       <span class="text">Let theme shine like a star</span>
                     </li>
 			
                   </ul>
+              </marquee>
               
               </div><!-- /.box -->
 
              
             </section><!-- /.Left col -->
              <!-- Left col -->
-            <section class="col-lg-4 connectedSortable">
-             <!-- TO DO List -->
-              <div class="box box-primary">
-                <div class="box-header">
-                  <i class="ion ion-clipboard"></i>
-                  <h3 class="box-title">Franchise List</h3>
-                  <div class="box-tools pull-right">
-                    
-                  </div>
-                </div><!-- /.box-header -->
-                <div class="box-body">
-                  <ul class="todo-list">
-                   <li>
-                      <input type="checkbox" value="" name=""/>
-                      <span class="text">Let theme shine like a star</span>
-                    </li>
-                    <li>
-                      <input type="checkbox" value="" name=""/>
-                      <span class="text">Let theme shine like a star</span>
-                    </li>
-					<li>
-                      <input type="checkbox" value="" name=""/>
-                      <span class="text">Let theme shine like a star</span>
-                    </li>
-					<li>
-                      <input type="checkbox" value="" name=""/>
-                      <span class="text">Let theme shine like a star</span>
-                    </li>
-					<li>
-                      <input type="checkbox" value="" name=""/>
-                      <span class="text">Let theme shine like a star</span>
-                    </li>
-					<li>
-                      <input type="checkbox" value="" name=""/>
-                      <span class="text">Let theme shine like a star</span>
-                    </li>
-			
-                  </ul>
-              
-              </div><!-- /.box -->
-
-             
-            </section><!-- /.Left col -->
+           
 			<!-- Left col -->
             <section class="col-lg-4 connectedSortable">
              <!-- TO DO List -->

@@ -145,23 +145,23 @@ document.oncontextmenu=new Function("return false")
 									<div class="form-inline col-md-12">
 									<div class="col-md-5">
 									    <label class="radio-inline">
-									      <input type="radio" name="optradio">Option 1
+									      <input type="radio" name="optradio" onclick="move1()">Option 1
 									    </label>
 									    <label class="radio-inline">
-									      <input type="radio" name="optradio">Option 2
+									      <input type="radio" name="optradio" onclick="move2()">Option 2
 									    </label>
 									    <label class="radio-inline">
-									      <input type="radio" name="optradio">Option 3
+									      <input type="radio" name="optradio" onclick="move3()">Option 3
 									    </label>
 										<label class="radio-inline">
-									      <input type="radio" name="optradio">Option 4
+									      <input type="radio" name="optradio" onclick="move4()">Option 4
 									    </label>
 									    </div>
 									    <div  class="col-md-6">
 									    <div class="progress" style="width: 70%;">
-									<div class="progress-bar" role="progressbar" aria-valuenow="70"
-										aria-valuemin="0" aria-valuemax="100" style="width: 70%">
-										70%</div>
+									<div class="progress-bar" id="myBar" role="progressbar" aria-valuenow="0"
+										aria-valuemin="0" aria-valuemax="100" style="width:0%">
+										</div>
 										</div></div>
 									</div>
 								
@@ -171,25 +171,25 @@ document.oncontextmenu=new Function("return false")
 									<div class="form-inline col-md-12">
 									<div class="col-md-5">
 									    <label class="radio-inline">
-									      <input type="radio" name="optradio">Option 1
+									      <input type="radio" name="optradio" onclick="move1()">Option 1
 									    </label>
 									    <label class="radio-inline">
-									      <input type="radio" name="optradio">Option 2
+									      <input type="radio" name="optradio" onclick="move2()">Option 2
 									    </label>
 									    <label class="radio-inline">
-									      <input type="radio" name="optradio">Option 3
+									      <input type="radio" name="optradio" onclick="move3()">Option 3
 									    </label>
 										<label class="radio-inline">
-									      <input type="radio" name="optradio">Option 4
+									      <input type="radio" name="optradio" onclick="move4()">Option 4
 									    </label>
 									    </div>
 									    <div  class="col-md-6">
 									    <div class="progress" style="width: 70%;">
-									<div class="progress-bar" role="progressbar" aria-valuenow="70"
-										aria-valuemin="0" aria-valuemax="100" style="width: 70%">
-										70%</div>
+									<div class="progress-bar" id="myBar" role="progressbar" aria-valuenow="0"
+										aria-valuemin="0" aria-valuemax="100" style="width:0%">
+										</div>
 										</div></div>
-								</div>
+									</div>
 							
 							<!-- /.box-header -->
 							<!-- form start -->
@@ -213,24 +213,69 @@ document.oncontextmenu=new Function("return false")
 	</div>
 	<!-- ./wrapper -->
      <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
-	<script type="text/javascript">
+	<script>
+	var x = parseInt($(".valIn").val());
+	$(".progressbar").progressbar({
+	     value: x
+	});
 	
-	/* $('.embed-responsive-item').bind('contextmenu', function(e) {
-	    return false;
-	}); */
-	//function disable() {
-	
-/*  	document.onmousedown = disableRightclick;
-	var message = "Right click not allowed !!";
-	function disableRightclick(evt){
-	    if(evt.button == 2){
-	        alert(message);
-	        return false;    
-	    }
-	} */	 
-	
-	//}
-	</script>
+	function move1() {
+		  var elem = document.getElementById("myBar");   
+		  var width = 0;
+		  var id = setInterval(frame, 10);
+		  function frame() {
+		    if (width >= 25) {
+		      clearInterval(id);
+		    } else {
+		      width++; 
+		      elem.style.width = width + '%'; 
+		      document.getElementById("myBar").innerHTML = "25%";
+		    }
+		  }
+		}
+	function move2() {
+		  var elem = document.getElementById("myBar");   
+		  var width = 0;
+		  var id = setInterval(frame, 10);
+		  function frame() {
+		    if (width >= 50) {
+		      clearInterval(id);
+		    } else {
+		      width++; 
+		      elem.style.width = width + '%'; 
+		      document.getElementById("myBar").innerHTML = "50%";
+		    }
+		  }
+		}
+	function move3() {
+		  var elem = document.getElementById("myBar");   
+		  var width = 0;
+		  var id = setInterval(frame, 10);
+		  function frame() {
+		    if (width >= 75) {
+		      clearInterval(id);
+		    } else {
+		      width++; 
+		      elem.style.width = width + '%'; 
+		      document.getElementById("myBar").innerHTML = "75%";
+		    }
+		  }
+		}
+	function move4() {
+		  var elem = document.getElementById("myBar");   
+		  var width = 0;
+		  var id = setInterval(frame, 10);
+		  function frame() {
+		    if (width >= 100) {
+		      clearInterval(id);
+		    } else {
+		      width++; 
+		      elem.style.width = width + '%'; 
+		      document.getElementById("myBar").innerHTML = "100%";
+		    }
+		  }
+		}
+</script>
 	<!-- jQuery 2.1.3 -->
 	<script src="/mlm-erp/static/plugins/jQuery/jQuery-2.1.3.min.js"></script>
 	<!-- jQuery UI 1.11.2 -->
