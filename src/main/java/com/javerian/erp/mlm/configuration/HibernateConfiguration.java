@@ -29,7 +29,8 @@ public class HibernateConfiguration {
 	public LocalSessionFactoryBean sessionFactory() {
 		LocalSessionFactoryBean sessionFactory = new LocalSessionFactoryBean();
 		sessionFactory.setDataSource(dataSource());
-		sessionFactory.setPackagesToScan(new String[] { "com.javerian.erp.mlm.model.auth" });
+		sessionFactory.setPackagesToScan(
+				new String[] { "com.javerian.erp.mlm.model.auth", "com.javerian.erp.mlm.model.workflow" });
 		sessionFactory.setHibernateProperties(hibernateProperties());
 		return sessionFactory;
 	}
