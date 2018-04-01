@@ -21,11 +21,15 @@ import com.javerian.erp.mlm.model.auth.User;
 import com.javerian.erp.mlm.model.auth.UserProfile;
 import com.javerian.erp.mlm.service.auth.UserProfileService;
 import com.javerian.erp.mlm.service.auth.UserService;
+import com.javerian.erp.mlm.service.workflow.MemberService;
 
 @Controller
 @RequestMapping("/")
 @SessionAttributes("roles")
 public class AppController {
+
+	@Autowired
+	MemberService memberService;
 
 	@Autowired
 	UserService userService;
@@ -47,6 +51,10 @@ public class AppController {
 	 */
 	@RequestMapping(value = { "/", "/mlmHome" }, method = RequestMethod.GET)
 	public String landingPage(ModelMap model) {
+		//
+		// MemberDetails findById = memberService.findById(1L);
+		// findById.getAddress().setPincode(201301L);
+		// memberService.save(findById);
 
 		List<User> users = userService.findAllUsers();
 		model.addAttribute("users", users);

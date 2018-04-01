@@ -69,4 +69,13 @@ public class MemberDetails {
 	public void setUser_id(Long user_id) {
 		this.user_id = user_id;
 	}
+
+	public Address getAddress() {
+		return address;
+	}
+
+	public void setAddress(Address address) {
+		this.address = address;
+	}
+
 }

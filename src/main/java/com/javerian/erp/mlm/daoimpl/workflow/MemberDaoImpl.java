@@ -2,42 +2,41 @@ package com.javerian.erp.mlm.daoimpl.workflow;
 
 import java.util.List;
 
-import javax.transaction.Transactional;
-
 import org.hibernate.Criteria;
 import org.hibernate.criterion.Order;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.javerian.erp.mlm.dao.auth.AbstractDao;
 import com.javerian.erp.mlm.dao.workflow.MemberDao;
-import com.javerian.erp.mlm.model.workflow.MemberChain;
+import com.javerian.erp.mlm.model.workflow.MemberDetails;
 
 @Repository
 @Transactional
-public class MemberDaoImpl extends AbstractDao<Long, MemberChain> implements MemberDao {
+public class MemberDaoImpl extends AbstractDao<Long, MemberDetails> implements MemberDao {
 
 	@Override
-	public MemberChain findById(Long id) {
-		MemberChain memberChain = getByKey(id);
+	public MemberDetails findById(Long id) {
 
-		return memberChain;
+		MemberDetails memberDetails = getByKey(id);
+
+		return memberDetails;
 	}
 
 	@Override
-	public boolean save(MemberChain memberChain) {
-
-		persist(memberChain);
+	public boolean save(MemberDetails memberDetails) {
+		getSession().update(memberDetails);
+		// persist(memberDetails);
 		return true;
 	}
 
 	@Override
-	public List<MemberChain> findAllMembers() {
-
+	public List<MemberDetails> findAllMembers() {
 		Criteria criteria = createEntityCriteria().addOrder(Order.asc("node_id"));
 		criteria.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);// To avoid duplicates.
-		List<MemberChain> listMemberChain = (List<MemberChain>) criteria.list();
+		List<MemberDetails> listMemberDetails = (List<MemberDetails>) criteria.list();
 
-		return listMemberChain;
+		return listMemberDetails;
 	}
 
 }

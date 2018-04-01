@@ -6,14 +6,14 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.javerian.erp.mlm.service.workflow.MemberService;
+import com.javerian.erp.mlm.service.workflow.MemberChainService;
 
 @Controller
 @RequestMapping("/")
 public class MemberController {
 
 	@Autowired
-	MemberService memberService;
+	MemberChainService memberService;
 
 	@RequestMapping(value = { "/saveMemberChain" }, method = RequestMethod.GET)
 	public String reviewproject(ModelMap model) {

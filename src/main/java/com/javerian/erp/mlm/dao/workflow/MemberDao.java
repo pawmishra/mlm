@@ -2,13 +2,13 @@ package com.javerian.erp.mlm.dao.workflow;
 
 import java.util.List;
 
-import com.javerian.erp.mlm.model.workflow.MemberChain;
+import com.javerian.erp.mlm.model.workflow.MemberDetails;
 
 public interface MemberDao {
 
-	MemberChain findById(Long id);
+	MemberDetails findById(Long id);
 
-	boolean save(MemberChain memberChain);
+	boolean save(MemberDetails memberDetails);
 
-	List<MemberChain> findAllMembers();
+	List<MemberDetails> findAllMembers();
 }
