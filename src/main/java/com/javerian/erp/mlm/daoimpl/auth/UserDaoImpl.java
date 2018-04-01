@@ -15,11 +15,11 @@ import com.javerian.erp.mlm.dao.auth.UserDao;
 import com.javerian.erp.mlm.model.auth.User;
 
 @Repository("userDao")
-public class UserDaoImpl extends AbstractDao<Integer, User> implements UserDao {
+public class UserDaoImpl extends AbstractDao<Long, User> implements UserDao {
 
 	static final Logger logger = LoggerFactory.getLogger(UserDaoImpl.class);
 
-	public User findById(int id) {
+	public User findById(Long id) {
 		User user = getByKey(id);
 		if (user != null) {
 			Hibernate.initialize(user.getUserProfiles());
@@ -59,7 +59,7 @@ public class UserDaoImpl extends AbstractDao<Integer, User> implements UserDao {
 
 	public void deleteBySSO(String username) {
 		Criteria crit = createEntityCriteria();
-		crit.add(Restrictions.eq("username", username)); 
+		crit.add(Restrictions.eq("username", username));
 		User user = (User) crit.uniqueResult();
 		delete(user);
 	}

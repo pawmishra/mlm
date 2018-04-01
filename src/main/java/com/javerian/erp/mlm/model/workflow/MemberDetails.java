@@ -2,9 +2,12 @@ package com.javerian.erp.mlm.model.workflow;
 
 import java.util.Date;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
+import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 
 @Entity
@@ -12,64 +15,58 @@ import javax.persistence.Table;
 public class MemberDetails {
 
 	@Id
-	@Column(name = "member_id")
-	private Long memberId;
-	@Column(name = "address")
-	private String address;
+	@Column(name = "user_id")
+	private Long user_id;
 	@Column(name = "dob")
 	private Date dob;
 	@Column(name = "gender")
 	private String gender;
 	@Column(name = "joining_date")
-	private Date joiningDate;
+	private Date joining_date;
 	@Column(name = "modified_date")
-	private Date modifiedDate;
+	private Date modified_date;
 
-	public final Long getMemberId() {
-		return memberId;
-	}
+	@OneToOne(cascade = CascadeType.ALL)
+	@PrimaryKeyJoinColumn
+	private Address address;
 
-	public final void setMemberId(Long memberId) {
-		this.memberId = memberId;
-	}
-
-	public final String getAddress() {
-		return address;
-	}
-
-	public final void setAddress(String address) {
-		this.address = address;
-	}
-
-	public final Date getDob() {
+	public Date getDob() {
 		return dob;
 	}
 
-	public final void setDob(Date dob) {
+	public void setDob(Date dob) {
 		this.dob = dob;
 	}
 
-	public final String getGender() {
+	public String getGender() {
 		return gender;
 	}
 
-	public final void setGender(String gender) {
+	public void setGender(String gender) {
 		this.gender = gender;
 	}
 
-	public final Date getJoiningDate() {
-		return joiningDate;
+	public Date getJoining_date() {
+		return joining_date;
 	}
 
-	public final void setJoiningDate(Date joiningDate) {
-		this.joiningDate = joiningDate;
+	public void setJoining_date(Date joining_date) {
+		this.joining_date = joining_date;
 	}
 
-	public final Date getModifiedDate() {
-		return modifiedDate;
+	public Date getModified_date() {
+		return modified_date;
 	}
 
-	public final void setModifiedDate(Date modifiedDate) {
-		this.modifiedDate = modifiedDate;
+	public void setModified_date(Date modified_date) {
+		this.modified_date = modified_date;
+	}
+
+	public Long getUser_id() {
+		return user_id;
+	}
+
+	public void setUser_id(Long user_id) {
+		this.user_id = user_id;
 	}
 }

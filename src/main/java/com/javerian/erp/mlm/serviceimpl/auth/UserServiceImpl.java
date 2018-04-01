@@ -11,18 +11,17 @@ import com.javerian.erp.mlm.dao.auth.UserDao;
 import com.javerian.erp.mlm.model.auth.User;
 import com.javerian.erp.mlm.service.auth.UserService;
 
-
 @Service("userService")
 @Transactional
-public class UserServiceImpl implements UserService{
+public class UserServiceImpl implements UserService {
 
 	@Autowired
 	private UserDao dao;
 
 	@Autowired
-    private PasswordEncoder passwordEncoder;
-	
-	public User findById(int id) {
+	private PasswordEncoder passwordEncoder;
+
+	public User findById(Long id) {
 		return dao.findById(id);
 	}
 
@@ -37,15 +36,15 @@ public class UserServiceImpl implements UserService{
 	}
 
 	/*
-	 * Since the method is running with Transaction, No need to call hibernate update explicitly.
-	 * Just fetch the entity from db and update it with proper values within transaction.
-	 * It will be updated in db once transaction ends. 
+	 * Since the method is running with Transaction, No need to call hibernate
+	 * update explicitly. Just fetch the entity from db and update it with proper
+	 * values within transaction. It will be updated in db once transaction ends.
 	 */
 	public void updateUser(User user) {
 		User entity = dao.findById(user.getId());
-		if(entity!=null){
+		if (entity != null) {
 			entity.setUsername(user.getUsername());
-			if(!user.getPassword().equals(entity.getPassword())){
+			if (!user.getPassword().equals(entity.getPassword())) {
 				entity.setPassword(passwordEncoder.encode(user.getPassword()));
 			}
 			entity.setFirstName(user.getFirstName());
@@ -55,7 +54,6 @@ public class UserServiceImpl implements UserService{
 		}
 	}
 
-	
 	public void deleteUserBySSO(String sso) {
 		dao.deleteBySSO(sso);
 	}
@@ -64,9 +62,9 @@ public class UserServiceImpl implements UserService{
 		return dao.findAllUsers();
 	}
 
-	public boolean isUserSSOUnique(Integer id, String sso) {
+	public boolean isUserSSOUnique(Long id, String sso) {
 		User user = findBySSO(sso);
-		return ( user == null || ((id != null) && (user.getId() == id)));
+		return (user == null || ((id != null) && (user.getId() == id)));
 	}
-	
+
 }

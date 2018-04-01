@@ -11,43 +11,43 @@ public class MemberChain {
 
 	@Id
 	@Column(name = "node_id")
-	private Long nodeId;
-	@Column(name = "parent_id")
-	private Long parentId;
-	@Column(name = "child_id")
-	private Long childId;
+	private Long node_id;
+	@Column(name = "user_id")
+	private Long user_id;
+	@Column(name = "sponsor_id")
+	private Long sponsor_id;
 	@Column(name = "level")
 	private Integer level;
 
-	public final Long getNodeId() {
-		return nodeId;
+	public Long getNode_id() {
+		return node_id;
 	}
 
-	public final void setNodeId(Long nodeId) {
-		this.nodeId = nodeId;
+	public void setNode_id(Long node_id) {
+		this.node_id = node_id;
 	}
 
-	public final Long getParentId() {
-		return parentId;
+	public Long getUser_id() {
+		return user_id;
 	}
 
-	public final void setParentId(Long parentId) {
-		this.parentId = parentId;
+	public void setUser_id(Long user_id) {
+		this.user_id = user_id;
 	}
 
-	public final Long getChildId() {
-		return childId;
+	public Long getSponsor_id() {
+		return sponsor_id;
 	}
 
-	public final void setChildId(Long childId) {
-		this.childId = childId;
+	public void setSponsor_id(Long sponsor_id) {
+		this.sponsor_id = sponsor_id;
 	}
 
-	public final Integer getLevel() {
+	public Integer getLevel() {
 		return level;
 	}
 
-	public final void setLevel(Integer level) {
+	public void setLevel(Integer level) {
 		this.level = level;
 	}
 

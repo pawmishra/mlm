@@ -6,7 +6,7 @@ import com.javerian.erp.mlm.model.auth.User;
 
 public interface UserDao {
 
-	User findById(int id);
+	User findById(Long id);
 
 	User findBySSO(String username);
 
