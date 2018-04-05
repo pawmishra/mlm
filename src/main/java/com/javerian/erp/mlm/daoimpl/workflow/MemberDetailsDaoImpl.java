@@ -8,12 +8,12 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.javerian.erp.mlm.dao.auth.AbstractDao;
-import com.javerian.erp.mlm.dao.workflow.MemberDao;
+import com.javerian.erp.mlm.dao.workflow.MemberDetailsDao;
 import com.javerian.erp.mlm.model.workflow.MemberDetails;
 
 @Repository
 @Transactional
-public class MemberDaoImpl extends AbstractDao<Long, MemberDetails> implements MemberDao {
+public class MemberDetailsDaoImpl extends AbstractDao<Long, MemberDetails> implements MemberDetailsDao {
 
 	@Override
 	public MemberDetails findById(Long id) {
@@ -25,8 +25,7 @@ public class MemberDaoImpl extends AbstractDao<Long, MemberDetails> implements M
 
 	@Override
 	public boolean save(MemberDetails memberDetails) {
-		getSession().update(memberDetails);
-		// persist(memberDetails);
+		persist(memberDetails);
 		return true;
 	}
 

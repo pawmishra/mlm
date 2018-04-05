@@ -5,15 +5,15 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.javerian.erp.mlm.dao.workflow.MemberDao;
+import com.javerian.erp.mlm.dao.workflow.MemberDetailsDao;
 import com.javerian.erp.mlm.model.workflow.MemberDetails;
-import com.javerian.erp.mlm.service.workflow.MemberService;
+import com.javerian.erp.mlm.service.workflow.MemberDetailsService;
 
 @Service
-public class MemberServiceImpl implements MemberService {
+public class MemberDetailsServiceImpl implements MemberDetailsService {
 
 	@Autowired
-	MemberDao memberDao;
+	MemberDetailsDao memberDao;
 
 	@Override
 	public MemberDetails findById(Long id) {

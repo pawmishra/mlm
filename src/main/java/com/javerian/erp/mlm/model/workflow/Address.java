@@ -1,19 +1,25 @@
 package com.javerian.erp.mlm.model.workflow;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
+import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
+
+import org.hibernate.annotations.GenericGenerator;
+import org.hibernate.annotations.Parameter;
 
 @Entity
 @Table(name = "address")
 public class Address {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column
+	@GeneratedValue(generator = "gen")
+	@GenericGenerator(name = "gen", strategy = "foreign", parameters = @Parameter(name = "property", value = "memberDetails"))
 	private Long user_id;
 	@Column(name = "house_number")
 	private String houseNo;
@@ -35,6 +41,10 @@ public class Address {
 	private String altContactNo;
 	@Column(name = "email")
 	private String email;
+
+	@OneToOne(cascade = CascadeType.ALL)
+	@PrimaryKeyJoinColumn
+	private MemberDetails memberDetails;
 
 	public String getHouseNo() {
 		return houseNo;
@@ -114,6 +124,22 @@ public class Address {
 
 	public void setEmail(String email) {
 		this.email = email;
+	}
+
+	public Long getUser_id() {
+		return user_id;
+	}
+
+	public void setUser_id(Long user_id) {
+		this.user_id = user_id;
+	}
+
+	public MemberDetails getMemberDetails() {
+		return memberDetails;
+	}
+
+	public void setMemberDetails(MemberDetails memberDetails) {
+		this.memberDetails = memberDetails;
 	}
 
 }

@@ -21,7 +21,7 @@ import com.javerian.erp.mlm.model.auth.User;
 import com.javerian.erp.mlm.model.auth.UserProfile;
 import com.javerian.erp.mlm.service.auth.UserProfileService;
 import com.javerian.erp.mlm.service.auth.UserService;
-import com.javerian.erp.mlm.service.workflow.MemberService;
+import com.javerian.erp.mlm.service.workflow.MemberDetailsService;
 
 @Controller
 @RequestMapping("/")
@@ -29,7 +29,7 @@ import com.javerian.erp.mlm.service.workflow.MemberService;
 public class AppController {
 
 	@Autowired
-	MemberService memberService;
+	MemberDetailsService memberDetailsService;
 
 	@Autowired
 	UserService userService;
@@ -51,10 +51,30 @@ public class AppController {
 	 */
 	@RequestMapping(value = { "/", "/mlmHome" }, method = RequestMethod.GET)
 	public String landingPage(ModelMap model) {
+
+		// UserProfile userProfile = new UserProfile();
+		// userProfile.setId(1);
+		// Set<UserProfile> set = new HashSet<>();
+		// set.add(userProfile);
 		//
-		// MemberDetails findById = memberService.findById(1L);
-		// findById.getAddress().setPincode(201301L);
-		// memberService.save(findById);
+		// User user = new User();
+		// user.setFirstName("ABC");
+		// user.setUsername("abc");
+		// user.setPassword("aaa");
+		// user.setUserProfiles(set);
+		//
+		// MemberDetails memberDetails = new MemberDetails();
+		// memberDetails.setGender("MALE");
+		// Address address = new Address();
+		// address.setPincode(201301L);
+		//
+		// memberDetails.setAddress(address);
+		// address.setMemberDetails(memberDetails);
+		//
+		// user.setMemberDetails(memberDetails);
+		// memberDetails.setUser(user);
+		//
+		// userService.saveUser(user);
 
 		List<User> users = userService.findAllUsers();
 		model.addAttribute("users", users);

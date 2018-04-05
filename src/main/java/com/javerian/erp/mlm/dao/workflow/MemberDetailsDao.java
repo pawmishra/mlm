@@ -1,10 +1,10 @@
-package com.javerian.erp.mlm.service.workflow;
+package com.javerian.erp.mlm.dao.workflow;
 
 import java.util.List;
 
 import com.javerian.erp.mlm.model.workflow.MemberDetails;
 
-public interface MemberService {
+public interface MemberDetailsDao {
 
 	MemberDetails findById(Long id);
 
