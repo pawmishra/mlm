@@ -11,4 +11,6 @@ public interface CategoryDao {
 	boolean save(Category category);
 
 	List<Category> findAllCategory();
+
+	Category findByName(String catName);
 }

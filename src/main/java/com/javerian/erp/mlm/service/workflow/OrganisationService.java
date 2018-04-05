@@ -11,4 +11,6 @@ public interface OrganisationService {
 	boolean save(Organisation organisation);
 
 	List<Organisation> findAllOrganisation();
+
+	public Organisation findByName(String orgName);
 }

@@ -292,18 +292,6 @@ public class AppController {
 		return "Member_chain";
 	}
 
-	@RequestMapping(value = { "/add_organization" }, method = RequestMethod.GET)
-	public String addorganization(ModelMap model) {
-		model.addAttribute("loggedinuser", authenticationTrustResolver.getPrincipal());
-		return "add_organization";
-	}
-
-	@RequestMapping(value = { "/add_category" }, method = RequestMethod.GET)
-	public String addcategory(ModelMap model) {
-		model.addAttribute("loggedinuser", authenticationTrustResolver.getPrincipal());
-		return "add_category";
-	}
-
 	@RequestMapping(value = { "/add_pageamount" }, method = RequestMethod.GET)
 	public String addpageamount(ModelMap model) {
 		model.addAttribute("loggedinuser", authenticationTrustResolver.getPrincipal());

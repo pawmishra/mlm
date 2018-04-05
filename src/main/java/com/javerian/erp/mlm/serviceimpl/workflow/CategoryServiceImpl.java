@@ -23,13 +23,22 @@ public class CategoryServiceImpl implements CategoryService {
 	@Override
 	public boolean save(Category category) {
 
-		return categoryDao.save(category);
+		Category cat = findByName(category.getCategoryName());
+		if (cat == null) {
+			return categoryDao.save(category);
+		}
+		return false;
 	}
 
 	@Override
 	public List<Category> findAllCategory() {
 
 		return categoryDao.findAllCategory();
+	}
+
+	@Override
+	public Category findByName(String catName) {
+		return categoryDao.findByName(catName);
 	}
 
 }

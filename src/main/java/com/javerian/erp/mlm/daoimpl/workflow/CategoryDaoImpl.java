@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.hibernate.Criteria;
 import org.hibernate.criterion.Order;
+import org.hibernate.query.Query;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -29,11 +30,20 @@ public class CategoryDaoImpl extends AbstractDao<Long, Category> implements Cate
 
 	@Override
 	public List<Category> findAllCategory() {
-		Criteria criteria = createEntityCriteria().addOrder(Order.asc("user_id"));
+		Criteria criteria = createEntityCriteria().addOrder(Order.asc("category_id"));
 		criteria.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);// To avoid duplicates.
 		List<Category> listCategory = (List<Category>) criteria.list();
 
 		return listCategory;
+	}
+
+	@Override
+	public Category findByName(String catName) {
+
+		Query query = getSession().createQuery("from Category where categoryName=:name");
+		query.setParameter("name", catName);
+		Category category = (Category) query.uniqueResult();
+		return category;
 	}
 
 }

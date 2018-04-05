@@ -24,13 +24,22 @@ public class OrganisationServiceImpl implements OrganisationService {
 	@Override
 	public boolean save(Organisation organisation) {
 
-		return organisationDao.save(organisation);
+		Organisation org = findByName(organisation.getOrganisation_name());
+		if (org == null) {
+			return organisationDao.save(organisation);
+		}
+		return false;
 	}
 
 	@Override
 	public List<Organisation> findAllOrganisation() {
 
 		return organisationDao.findAllOrganisation();
+	}
+
+	@Override
+	public Organisation findByName(String orgName) {
+		return organisationDao.findByName(orgName);
 	}
 
 }
