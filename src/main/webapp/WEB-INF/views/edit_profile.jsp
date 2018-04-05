@@ -25,6 +25,7 @@
 <!-- Theme style -->
 <link href="<c:url value='/static/dist/css/AdminLTE.min.css' />"
 	rel="stylesheet" type="text/css" />
+	
 <!-- AdminLTE Skins. Choose a skin from the css/skins 
          folder instead of downloading all of them to reduce the load. -->
 <link
@@ -35,7 +36,8 @@
 <link
 	href="<c:url value='/static/plugins/iCheck/flat/blue.css' />"
 	rel="stylesheet" type="text/css" />
-
+<link href="<c:url value='/static/dist/css/style.css' />"
+	rel="stylesheet" type="text/css" />
 <!-- jvectormap -->
 <link
 	href="<c:url value='/static/plugins/jvectormap/jquery-jvectormap-1.2.2.css' />"
@@ -91,7 +93,7 @@
               <div class="box box-primary">
                 <div class="box-header">
                   <div class="container">
-    <h1>Edit Profile</h1>
+       <h3>Edit Profile  of Member</h3>
   	<hr>
 	<div class="row">
       <!-- left column -->
@@ -99,7 +101,7 @@
       <!-- edit form column -->
       <div class="col-md-9 personal-info">
         
-        <h3>Edit Profile  of Member</h3>
+     
         
         <form class="form-horizontal" role="form">
         <div class="row">
@@ -145,8 +147,8 @@
           <i class="fa fa-coffee"></i>
           This is an <strong>.alert</strong>. Use this to show important messages to the user.
         </div>
-        <h3>Personal info</h3>
-        
+        <h3>Personal information</h3>
+        <hr>
          <form>
          <div class="form-row">
 			    <div class="form-group col-md-6">
@@ -157,95 +159,148 @@
 			    <div class="form-group col-md-6">
 			      <label for="userid">User Id:</label>
 			     
-			      <input type="text" class="form-control" id="userid" name="user_id" placeholder="User Id">
+			      <input type="text" class="form-control" id="userid" readonly="readonly" name="user_id" placeholder="User Id">
 			    </div>
 				
           </div>
           <div class="form-row">
 			    <div class="form-group col-md-6">
-			      <label for="name">Name:</label>
+			      <label for="name">Name<span class="required">*</span>:</label>
 			     
-			      <input type="text" class="form-control" id="name" name="name" placeholder="Name">
+			      <input type="text" class="form-control" id="name" name="name" placeholder="Name" required="required">
 			    </div>
 			     <div class="form-group col-md-6">
-			      <label for="address">Address:</label>
-			     <textarea class="form-control" aria-label="With textarea" id="address" name="address"></textarea>
+			      <label for="dob">Date Of Birth<span class="required">*</span>:</label>
+			     
+			      <input type="date" class="form-control" id="dob" name="dob" required="required">
 			    </div>
           </div>
-           <div class="form-row">
-                <div class="form-group col-md-6">
-					<label for="state">State:</label>
-						<div class="ui-select">
-							<select id="state" name="state" class="form-control">
-								<option value="Organization1">State</option>
-
-							</select> 
-						</div>
-					</div>
-			    <div class="form-group col-md-6">
-			      <label for="city">City:</label>
-			     
-			      <input type="text" class="form-control" id="city" name="city" placeholder="City">
-			    </div>
-				
-          </div>
-          <div class="form-row">
-                <div class="form-group col-md-6">
-			      <label for="pincode">Pincode:</label>
-			     
-			      <input type="text" class="form-control" id="pincode" name="pincode" placeholder="Pincode">
-			    </div>
-			    <div class="form-group col-md-6">
-			      <label for="mobilenumber">Mobile Number:</label>
-			      
-			      <input type="text" class="form-control" id="mobilenumber" name="mobile_number" placeholder="Mobile Number">
-			     
-			    </div>
-          </div>
-          
          
-       
-          <div class="form-row">
+            <div class="form-row">
+               
 			    <div class="form-group col-md-6">
-			      <label for="dob">Date Of Birth:</label>
+			      <label for="mobilenumber">Mobile Number<span class="required">*</span>:</label>
+			      
+			      <input type="text" class="form-control" id="mobilenumber" name="mobile_number" placeholder="Mobile Number" required="required">
 			     
-			      <input type="date" class="form-control" id="dob" name="dob" >
 			    </div>
 			    <div class="form-group col-md-6">
-			      <label for="gender">Gender:</label>
-			      <label class="radio">
+			      <label for="mobilenumber">Alternate Mobile Number:</label>
+			      
+			      <input type="text" class="form-control" id="mobilenumber" name="alternate_mobile_number" placeholder="Mobile Number">
+			     
+			    </div>
+          </div>
+          <div class="form-row">
+                <div class="form-group col-md-6">
+			      <label for="gender">Gender<span class="required">*</span>:</label><br>
+			      
+			      <label class="radio-inline">
 					 <input type="radio" name="gender">Male
 						</label>
-					<label class="radio">
-					<input type="radio" name="gender">Femail
+					<label class="radio-inline">
+					<input type="radio" name="gender">Female
 					</label>
 			    </div>
-				
+				  <div class="form-group col-md-6">
+			      <label for="email">Email<span class="required">*</span>:</label>
+			     
+			      <input type="text" class="form-control" id="email" name="email" placeholder="Email" required="required">
+			    </div>
           </div>
           <div class="form-row">
-			    <div class="form-group col-md-6">
-			      <label for="email">Email:</label>
-			     
-			      <input type="text" class="form-control" id="email" name="email" placeholder="Email">
-			    </div>
+			  
 			    <div class="form-group col-md-6">
 			      <label for="joiningdate">Joining Date:</label>
 			     
 			      <input type="text" class="form-control" id="joiningdate" name="joining_date" readonly="readonly" placeholder="Joining Date">
 			    </div>
-				
-          </div>
-          <div class="form-row">
-			    <div class="form-group col-md-6">
-			      <label for="package">Package:</label>
+				  <div class="form-group col-md-6">
+				      <label for="panno">Pan Number<span class="required">*</span>:</label>
+				      <input type="text" class="form-control" id="panno" name="pan_no" placeholder="Pan Number" required="required">
+				      
+				       <label for="pancardupload">Upload Pan Card:</label>
+				   
+					  <div class="demo-section k-content">
 			     
-			      <input type="text" class="form-control" id="package" name="package" placeholder="Package">
-			    </div>
-			    
+			        <input name="pancard" id="pancardupload" type="file"   required="required"/>
+			        <div class="demo-hint">You can only upload <strong>JPG</strong> files.</div>
+      				</div>
+				</div>
           </div>
-         
+         <br>
+            <div class="form-row">
+			  
+				 <div class="form-group col-md-6">
+				      <label for="aadharno">Aadhar Number<span class="required">*</span>:</label>
+				      <input type="text" class="form-control" id="aadharno" name="aadhar_no" placeholder="Aadhar Number" required="required">
+	                  <div class="form-row">
+				      <label for="aadharnoupload">Upload front:</label>
+					  <div class="demo-section k-content">
+			           <input name="aadharcard" id="aadharnoupload" type="file" accept=".png, .jpg," required="required" />
+			          <div class="demo-hint">You can only upload <strong>JPG</strong> files.</div>
+      				  </div>
+      				  <label for="aadharnoupload">Upload back:</label>
+					  <div class="demo-section k-content">
+			           <input name="aadharcard" id="aadharnoupload" type="file" accept=".png, .jpg," required="required" />
+			          <div class="demo-hint">You can only upload <strong>JPG</strong> files.</div>
+      				  </div>
+      				  </div>
+				</div> 
+          </div>
+          <div class="col-md-12 personal-info">
+           <h3>Address information</h3>
+           <hr>
+           <div class="form-row">
+			   
+			     <div class="form-group col-md-6">
+			      <label for="housenumber">House Number<span class="required">*</span>:</label>
+			       <input type="text" class="form-control" id="housenumber" name="house_number" placeholder="House Number" required="required">
+			    </div>
+			    <div class="form-group col-md-6">
+			      <label for="streetname">Street Name<span class="required">*</span>:</label>
+			     
+			      <input type="text" class="form-control" id="streetname" name="street_name" placeholder="Street Name" required="required">
+			    </div>
+          </div> 
           <div class="form-group">
-           
+             <div class="form-row">
+			    <div class="form-group col-md-6">
+			      <label for="locality">Locality<span class="required">*</span>:</label>
+			       <input type="text" class="form-control" id="locality" name="locality" placeholder="Name" required="required">
+			    </div>
+			     <div class="form-group col-md-6">
+			      <label for="city">City<span class="required">*</span>:</label>
+			     
+			      <input type="text" class="form-control" id="city" name="city" placeholder="City" required="required">
+			    </div>
+          </div>
+           <div class="form-row">
+                
+                <div class="form-group col-md-6">
+					<label for="state">State<span class="required">*</span>:</label>
+						<div class="ui-select">
+							<select id="state" name="state" class="form-control" required="required">
+								<option value="Organization1">State</option>
+
+							</select> 
+						</div>
+					</div>
+					 <div class="form-group col-md-6">
+			      <label for="country">Country<span class="required">*</span>:</label>
+			     <input type="text" class="form-control" id="country" name="country" placeholder="Pincode" required="required">
+			    </div>
+          </div>
+            <div class="form-row">
+               
+			     <div class="form-group col-md-6">
+			      <label for="pincode">Pincode<span class="required">*</span>:</label>
+			     
+			      <input type="text" class="form-control" id="pincode" name="pincode" placeholder="Pincode" required="required">
+			    </div>
+			   
+          </div>
+          </div>
             <div class="buttons col-md-8"><br><br>
               <input type="submit" class="btn btn-primary" value="Submit">
               <span></span>

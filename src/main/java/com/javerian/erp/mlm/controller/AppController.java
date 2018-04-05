@@ -340,6 +340,18 @@ public class AppController {
 		return "latest_news";
 	}
 
+	@RequestMapping(value = { "/withdraw_balance" }, method = RequestMethod.GET)
+	public String withdrawbalance(ModelMap model) {
+		model.addAttribute("loggedinuser", authenticationTrustResolver.getPrincipal());
+		return "withdraw_balance";
+	}
+
+	@RequestMapping(value = { "/withdraw_history" }, method = RequestMethod.GET)
+	public String withdrawhistory(ModelMap model) {
+		model.addAttribute("loggedinuser", authenticationTrustResolver.getPrincipal());
+		return "withdraw_history";
+	}
+
 	@RequestMapping(value = { "/treeview" }, method = RequestMethod.GET)
 	public String treeview(ModelMap model) {
 		model.addAttribute("loggedinuser", authenticationTrustResolver.getPrincipal());

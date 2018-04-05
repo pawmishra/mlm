@@ -25,6 +25,8 @@
 <!-- Theme style -->
 <link href="<c:url value='/static/dist/css/AdminLTE.min.css' />"
 	rel="stylesheet" type="text/css" />
+<link href="<c:url value='/static/dist/css/style.css' />"
+	rel="stylesheet" type="text/css" />
 <!-- AdminLTE Skins. Choose a skin from the css/skins 
          folder instead of downloading all of them to reduce the load. -->
 <link
@@ -103,72 +105,68 @@
         <form>
           <div class="form-row">
 			    <div class="form-group col-md-6">
-			      <label for="accountholdername">Account Holder Name:</label>
+			      <label for="accountholdername">Account Holder Name<span class="required">*</span>:</label>
 			     
-			      <input type="text" class="form-control" id="accountholdername" name="account_holder_name" placeholder="Account Holder Name">
+			      <input type="text" class="form-control" id="accountholdername" name="account_holder_name" placeholder="Account Holder Name" required="required">
 			    </div>
 			    <div class="form-group col-md-6">
-			      <label for="mobileno">Mobile Number:</label>
+			      <label for="mobileno">Mobile Number<span class="required">*</span>:</label>
 			     
-			      <input type="text" class="form-control" id="mobileno" name="mobile_no" placeholder="Mobile Number">
+			      <input type="text" class="form-control" id="mobileno" name="mobile_no" placeholder="Mobile Number" required="required">
 			    </div>
 				
           </div>
            <div class="form-row">
                 <div class="form-group col-md-6">
-			      <label for="accountno">Account No:</label>
+			      <label for="accountno">Account No<span class="required">*</span>:</label>
 			     
-			      <input type="text" class="form-control" id="accountno" name="account_no" placeholder="Account No">
+			      <input type="text" class="form-control" id="accountno" name="account_no" placeholder="Account No" required="required">
 			    </div>
 			    <div class="form-group col-md-6">
-			      <label for="bankname">Bank Name:</label>
+			      <label for="bankname">IFSC<span class="required">*</span>:</label>
 			     
-			      <input type="text" class="form-control" id="bankname" name="bank_name" placeholder="Bank Name">
+			      <input type="text" class="form-control" id="ifsc" name="bank_name" placeholder="IFSC" required="required">
 			    </div>
 				
           </div>
           <div class="form-row">
                 <div class="form-group col-md-6">
-			      <label for="bankbranch">Bank Branch:</label>
+			      <label for="accountno">Bank Name<span class="required">*</span>:</label>
 			     
-			      <input type="text" class="form-control" id="bankbranch" name="bank_branch" placeholder="Bank Branch">
+			      <input type="text" class="form-control" id="accountno" name="bank_name" placeholder="Bank Name" required="required">
 			    </div>
-			    <div class="form-group col-md-6">
-			      <label for="bankaddress">Bank Address:</label>
-			     <textarea class="form-control" aria-label="With textarea" id="bankaddress" name="bank_address"></textarea>
+			   <div class="form-group col-md-6">
+			      <label for="bankbranch">Bank Branch<span class="required">*</span>:</label>
+			     
+			      <input type="text" class="form-control" id="bankbranch" name="bank_branch" placeholder="Bank Branch" required="required">
 			    </div>
           </div>
-          
-            <div class="form-row">
+          <div class="form-row">
+                
 			    <div class="form-group col-md-6">
-				      <label for="panno">Pan Number:</label>
-				      <input type="text" class="form-control" id="panno" name="pan_no" placeholder="Pan Number">
-				      
-				       <label for="pancardupload">Upload Pan Card:</label>
+			      <label for="bankaddress">Bank Address<span class="required">*</span>:</label>
+			     <textarea class="form-control" aria-label="With textarea" id="bankaddress" name="bank_address" required="required"></textarea>
+			    </div>
+			     <div class="form-row">
+			    <div class="form-group col-md-6">
+				      <label for="nomineepan">Canceled Cheque<span class="required">*</span>:</label>
+				    <br>
 				   
 					  <div class="demo-section k-content">
 			     
-			        <input name="pancard" id="pancardupload" type="file" accept=".png, .jpg," />
+			        <input name="nominee_pan_upload" id="nomineepanupload" type="file" required="required"/>
 			        <div class="demo-hint">You can only upload <strong>JPG</strong> files.</div>
       				</div>
 				</div>
 				 
           </div>
-           <div class="form-row">
-			    <div class="form-group col-md-6">
-				      <label for="aadharno">Aadhar Number:</label>
-				      <input type="text" class="form-control" id="aadharno" name="aadhar_no" placeholder="Aadhar Number">
-	
-				      <label for="aadharnoupload">Upload Aadhar Card:</label>
-				   
-					  <div class="demo-section k-content">
-			      
-			        <input name="aadharcard" id="aadharnoupload" type="file" accept=".png, .jpg," />
-			        <div class="demo-hint">You can only upload <strong>JPG</strong> files.</div>
-      				</div>
-				</div>
           </div>
-       
+          
+       <div class="row">
+      <!-- left column -->
+    
+      <!-- edit form column -->
+      <div class="col-md-12 personal-info">
           <h3>Nominee  Details</h3>
           <hr>
           
@@ -226,7 +224,7 @@
 			        <div class="demo-hint">You can only upload <strong>JPG</strong> files.</div>
       				</div>
 				</div>
-          </div>
+          </div></div></div>
           <div class="form-group">
            
             <div class="buttons col-md-8"><br><br>
@@ -258,7 +256,35 @@
       </div><!-- /.content-wrapper -->
     
     </div><!-- ./wrapper -->
+   <script type="text/javascript">
+    var _URL = window.URL || window.webkitURL;
 
+    $("#pancardupload").change(function(e) {
+    var file, img;
+
+
+    if ((file = this.files[0])) {
+        img = new Image();
+        
+        img.onload = function() {
+            var width_image = this.width;
+            var height_image = this.height;
+            if(width_image > 100 || height_image > 100)
+            {
+              alert("Please upload a valid image of height and width 100 pixels");
+
+            }      	
+
+            
+
+        };
+        img.onerror = function() {
+            alert( "not a valid file: " + file.type);
+        };
+        img.src = _URL.createObjectURL(file);
+    }
+    });
+    </script>
   <!-- jQuery 2.1.3 -->
     <script src="/mlm-erp/static/plugins/jQuery/jQuery-2.1.3.min.js"></script>
     <!-- jQuery UI 1.11.2 -->

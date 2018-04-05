@@ -24,6 +24,9 @@
 <!-- Theme style -->
 <link href="<c:url value='/static/dist/css/AdminLTE.min.css' />"
 	rel="stylesheet" type="text/css" />
+<link href="<c:url value='/static/dist/css/style.css' />"
+	rel="stylesheet" type="text/css" />
+
 <!-- AdminLTE Skins. Choose a skin from the css/skins 
          folder instead of downloading all of them to reduce the load. -->
 <link href="<c:url value='/static/dist/css/skins/_all-skins.min.css' />"
@@ -71,27 +74,27 @@
 
 <script type="text/javascript">
 
-function ieClicked() {
-    if (document.all) {
-        return false;
-    }
-}
-function firefoxClicked(e) {
-    if(document.layers||(document.getElementById&&!document.all)) {
-        if (e.which==2||e.which==3) {
-            return false;
-        }
-    }
-}
-if (document.layers){
-    document.captureEvents(Event.MOUSEDOWN);
-    document.onmousedown=firefoxClicked;
-}else{
-    document.onmouseup=firefoxClicked;
-    document.oncontextmenu=ieClicked;
-}
-document.oncontextmenu=new Function("return false")
-
+ 
+	function ieClicked() {
+		if (document.all) {
+			return false;
+		}
+	}
+	function firefoxClicked(e) {
+		if (document.layers || (document.getElementById && !document.all)) {
+			if (e.which == 2 || e.which == 3) {
+				return false;
+			}
+		}
+	}
+	if (document.layers) {
+		document.captureEvents(Event.MOUSEDOWN);
+		document.onmousedown = firefoxClicked;
+	} else {
+		document.onmouseup = firefoxClicked;
+		document.oncontextmenu = ieClicked;
+	}
+	document.oncontextmenu = new Function("return false")
 </script>
 
 </head>
@@ -131,80 +134,306 @@ document.oncontextmenu=new Function("return false")
 
 							<div class="box-header">
 
-								<div class="embed-responsive embed-responsive-16by9" style="height: 450px">
-									<object class="embed-responsive-item" id="id_obj_pdf" oncontextmenu="return abc()"
+								<div class="embed-responsive embed-responsive-16by9"
+									style="height: 400px">
+									<object class="embed-responsive-item" id="id_obj_pdf"
+										oncontextmenu="return abc()"
 										data="static/images/sample.pdf#toolbar=0&amp;navpanes=0&amp;scrollbar=0&amp;page=1&amp;view=FitH"
-										type="application/pdf" internalinstanceid="9" title="" style="height: 450px;"
-										>
-									</object>							
+										type="application/pdf" internalinstanceid="9" title=""
+										style="height: 450px;"> </object>
 								</div>
-								<div class="container"> 
+								<div class="container">
 									<h1>Questions</h1>
 									<p>1. The blockquote element is used to present content
 										from another source:</p>
 									<div class="form-inline col-md-12">
-									<div class="col-md-5">
-									    <label class="radio-inline">
-									      <input type="radio" name="optradio" onclick="move1()">Option 1
-									    </label>
-									    <label class="radio-inline">
-									      <input type="radio" name="optradio" onclick="move2()">Option 2
-									    </label>
-									    <label class="radio-inline">
-									      <input type="radio" name="optradio" onclick="move3()">Option 3
-									    </label>
-										<label class="radio-inline">
-									      <input type="radio" name="optradio" onclick="move4()">Option 4
-									    </label>
-									    </div>
-									    <div  class="col-md-6">
-									    <div class="progress" style="width: 70%;">
-									<div class="progress-bar" id="myBar" role="progressbar" aria-valuenow="0"
-										aria-valuemin="0" aria-valuemax="100" style="width:0%">
+										<div class="col-md-6">
+											<label class="radio-inline"> <input type="radio"
+												id="a1" name="optradio" >Option
+												1
+											</label> <label class="radio-inline"> <input type="radio"
+												id="a2" name="optradio" >Option
+												2
+											</label> <label class="radio-inline"> <input type="radio"
+												id="a3" name="optradio" >Option
+												3
+											</label> <label class="radio-inline"> <input type="radio"
+												id="a4" name="optradio" >Option
+												4
+											</label>
 										</div>
-										</div></div>
+										<div class="col-md-6">
+										
+											<div class="range-slider">
+												<input class="range-slider__range" type="range" value="0" id="slider_range_id"
+													min="0" max="100" onchange="slide1()"> <span
+													class="range-slider__value" id="option1">0</span><span>%</span>
+											</div>
+										</div>
 									</div>
-								
+									
+									
 									
 									<p>2. The blockquote element is used to present content
 										from another source:</p>
 									<div class="form-inline col-md-12">
-									<div class="col-md-5">
-									    <label class="radio-inline">
-									      <input type="radio" name="optradio" onclick="move1()">Option 1
-									    </label>
-									    <label class="radio-inline">
-									      <input type="radio" name="optradio" onclick="move2()">Option 2
-									    </label>
-									    <label class="radio-inline">
-									      <input type="radio" name="optradio" onclick="move3()">Option 3
-									    </label>
-										<label class="radio-inline">
-									      <input type="radio" name="optradio" onclick="move4()">Option 4
-									    </label>
-									    </div>
-									    <div  class="col-md-6">
-									    <div class="progress" style="width: 70%;">
-									<div class="progress-bar" id="myBar" role="progressbar" aria-valuenow="0"
-										aria-valuemin="0" aria-valuemax="100" style="width:0%">
+										<div class="col-md-6">
+											<label class="radio-inline"> <input type="radio"
+												id="b1" name="optradio" >Option
+												1
+											</label> <label class="radio-inline"> <input type="radio"
+												id="b2" name="optradio" >Option
+												2
+											</label> <label class="radio-inline"> <input type="radio"
+												id="b3" name="optradio" >Option
+												3
+											</label> <label class="radio-inline"> <input type="radio"
+												id="b4" name="optradio" >Option
+												4
+											</label>
 										</div>
-										</div></div>
+										<div class="col-md-6">
+										
+											<div class="range-slider">
+												<input class="range-slider__range" type="range" value="0" id="slider_range_id"
+													min="0" max="100" onchange="slide2()"> <span
+													class="range-slider__value" id="option2">0</span><span>%</span>
+											</div>
+										</div>
 									</div>
-							
-							<!-- /.box-header -->
-							<!-- form start -->
+									 
+									<p>3. The blockquote element is used to present content
+										from another source:</p>
+									<div class="form-inline col-md-12">
+										<div class="col-md-6">
+											<label class="radio-inline"> <input type="radio"
+												id="c1" name="optradio" >Option
+												1
+											</label> <label class="radio-inline"> <input type="radio"
+												id="c2" name="optradio" >Option
+												2
+											</label> <label class="radio-inline"> <input type="radio"
+												id="c3" name="optradio" >Option
+												3
+											</label> <label class="radio-inline"> <input type="radio"
+												id="c4" name="optradio" >Option
+												4
+											</label>
+										</div>
+										<div class="col-md-6">
+										
+											<div class="range-slider">
+												<input class="range-slider__range" type="range" value="0" id="slider_range_id"
+													min="0" max="100" onchange="slide3()"> <span
+													class="range-slider__value" id="option3">0</span><span>%</span>
+											</div>
+										</div>
+									</div> 
+									 
+									<p>4. The blockquote element is used to present content
+										from another source:</p>
+									<div class="form-inline col-md-12">
+										<div class="col-md-6">
+											<label class="radio-inline"> <input type="radio"
+												id="d1" name="optradio" >Option
+												1
+											</label> <label class="radio-inline"> <input type="radio"
+												id="d2" name="optradio" >Option
+												2
+											</label> <label class="radio-inline"> <input type="radio"
+												id="d3" name="optradio" >Option
+												3
+											</label> <label class="radio-inline"> <input type="radio"
+												id="d4" name="optradio" >Option
+												4
+											</label>
+										</div>
+										<div class="col-md-6">
+										
+											<div class="range-slider">
+												<input class="range-slider__range" type="range" value="0" id="slider_range_id"
+													min="0" max="100" onchange="slide4()"> <span
+													class="range-slider__value" id="option4">0</span><span>%</span>
+											</div>
+										</div>
+									</div>
+									
+									<p>5. The blockquote element is used to present content
+										from another source:</p>
+									<div class="form-inline col-md-12">
+										<div class="col-md-6">
+											<label class="radio-inline"> <input type="radio"
+												id="e1" name="optradio" >Option
+												1
+											</label> <label class="radio-inline"> <input type="radio"
+												id="e2" name="optradio" >Option
+												2
+											</label> <label class="radio-inline"> <input type="radio"
+												id="e3" name="optradio" >Option
+												3
+											</label> <label class="radio-inline"> <input type="radio"
+												id="e4" name="optradio" >Option
+												4
+											</label>
+										</div>
+										<div class="col-md-6">
+										
+											<div class="range-slider">
+												<input class="range-slider__range" type="range" value="0" id="slider_range_id"
+													min="0" max="100" onchange="slide5()"> <span
+													class="range-slider__value" id="option5">0</span><span>%</span>
+											</div>
+										</div>
+									</div>
+									
+									<p>6. The blockquote element is used to present content
+										from another source:</p>
+									<div class="form-inline col-md-12">
+										<div class="col-md-6">
+											<label class="radio-inline"> <input type="radio"
+												id="f1" name="optradio" >Option
+												1
+											</label> <label class="radio-inline"> <input type="radio"
+												id="f2" name="optradio" >Option
+												2
+											</label> <label class="radio-inline"> <input type="radio"
+												id="f3" name="optradio" >Option
+												3
+											</label> <label class="radio-inline"> <input type="radio"
+												id="f4" name="optradio" >Option
+												4
+											</label>
+										</div>
+										<div class="col-md-6">
+										
+											<div class="range-slider">
+												<input class="range-slider__range" type="range" value="0" id="slider_range_id"
+													min="0" max="100" onchange="slide6()"> <span
+													class="range-slider__value" id="option6">0</span><span>%</span>
+											</div>
+										</div>
+									</div>
+									
+									<p>7. The blockquote element is used to present content
+										from another source:</p>
+									<div class="form-inline col-md-12">
+										<div class="col-md-6">
+											<label class="radio-inline"> <input type="radio"
+												id="g1" name="optradio" >Option
+												1
+											</label> <label class="radio-inline"> <input type="radio"
+												id="g2" name="optradio" >Option
+												2
+											</label> <label class="radio-inline"> <input type="radio"
+												id="g3" name="optradio" >Option
+												3
+											</label> <label class="radio-inline"> <input type="radio"
+												id="g4" name="optradio" >Option
+												4
+											</label>
+										</div>
+										<div class="col-md-6">
+										
+											<div class="range-slider">
+												<input class="range-slider__range" type="range" value="0" id="slider_range_id"
+													min="0" max="100" onchange="slide7()"> <span
+													class="range-slider__value" id="option7">0</span><span>%</span>
+											</div>
+										</div>
+									</div>
+									
+									<p>8. The blockquote element is used to present content
+										from another source:</p>
+									<div class="form-inline col-md-12">
+										<div class="col-md-6">
+											<label class="radio-inline"> <input type="radio"
+												id="a1" name="optradio" >Option
+												1
+											</label> <label class="radio-inline"> <input type="radio"
+												id="a2" name="optradio" >Option
+												2
+											</label> <label class="radio-inline"> <input type="radio"
+												id="a3" name="optradio" >Option
+												3
+											</label> <label class="radio-inline"> <input type="radio"
+												id="a4" name="optradio" >Option
+												4
+											</label>
+										</div>
+										<div class="col-md-6">
+										
+											<div class="range-slider">
+												<input class="range-slider__range" type="range" value="0" id="slider_range_id"
+													min="0" max="100" onchange="slide1()"> <span
+													class="range-slider__value" id="option1">0</span><span>%</span>
+											</div>
+										</div>
+									</div>
+									
+									<p>9. The blockquote element is used to present content
+										from another source:</p>
+									<div class="form-inline col-md-12">
+										<div class="col-md-6">
+											<label class="radio-inline"> <input type="radio"
+												id="a1" name="optradio" >Option
+												1
+											</label> <label class="radio-inline"> <input type="radio"
+												id="a2" name="optradio" >Option
+												2
+											</label> <label class="radio-inline"> <input type="radio"
+												id="a3" name="optradio" >Option
+												3
+											</label> <label class="radio-inline"> <input type="radio"
+												id="a4" name="optradio" >Option
+												4
+											</label>
+										</div>
+										<div class="col-md-6">
+										
+											<div class="range-slider">
+												<input class="range-slider__range" type="range" value="0" id="slider_range_id"
+													min="0" max="100" onchange="slide1()"> <span
+													class="range-slider__value" id="option1">0</span><span>%</span>
+											</div>
+										</div>
+									</div>
+									
+									<p>10. The blockquote element is used to present content
+										from another source:</p>
+									<div class="form-inline col-md-12">
+										<div class="col-md-6">
+											<label class="radio-inline"> <input type="radio"
+												id="a1" name="optradio" >Option
+												1
+											</label> <label class="radio-inline"> <input type="radio"
+												id="a2" name="optradio" >Option
+												2
+											</label> <label class="radio-inline"> <input type="radio"
+												id="a3" name="optradio" >Option
+												3
+											</label> <label class="radio-inline"> <input type="radio"
+												id="a4" name="optradio" >Option
+												4
+											</label>
+										</div>
+										<div class="col-md-6">
+										
+											<div class="range-slider">
+												<input class="range-slider__range" type="range" value="0" id="slider_range_id"
+													min="0" max="100" onchange="slide1()"> <span
+													class="range-slider__value" id="option1">0</span><span>%</span>
+											</div>
+										</div>
+									</div>
 
+								
+									
+									
+								</div>
+
+							</div>
 						</div>
-						<!-- /.box -->
-						<br> <br> <br>
-
-
-
-					</div>
-					<!--/.col (left) -->
-
-				</div>
-				<!-- /.row -->
+						<!-- /.row -->
 			</section>
 			<!-- /.content -->
 		</div>
@@ -212,70 +441,39 @@ document.oncontextmenu=new Function("return false")
 
 	</div>
 	<!-- ./wrapper -->
-     <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+	<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
 	<script>
-	var x = parseInt($(".valIn").val());
-	$(".progressbar").progressbar({
-	     value: x
-	});
-	
-	function move1() {
-		  var elem = document.getElementById("myBar");   
-		  var width = 0;
-		  var id = setInterval(frame, 10);
-		  function frame() {
-		    if (width >= 25) {
-		      clearInterval(id);
-		    } else {
-		      width++; 
-		      elem.style.width = width + '%'; 
-		      document.getElementById("myBar").innerHTML = "25%";
-		    }
-		  }
-		}
-	function move2() {
-		  var elem = document.getElementById("myBar");   
-		  var width = 0;
-		  var id = setInterval(frame, 10);
-		  function frame() {
-		    if (width >= 50) {
-		      clearInterval(id);
-		    } else {
-		      width++; 
-		      elem.style.width = width + '%'; 
-		      document.getElementById("myBar").innerHTML = "50%";
-		    }
-		  }
-		}
-	function move3() {
-		  var elem = document.getElementById("myBar");   
-		  var width = 0;
-		  var id = setInterval(frame, 10);
-		  function frame() {
-		    if (width >= 75) {
-		      clearInterval(id);
-		    } else {
-		      width++; 
-		      elem.style.width = width + '%'; 
-		      document.getElementById("myBar").innerHTML = "75%";
-		    }
-		  }
-		}
-	function move4() {
-		  var elem = document.getElementById("myBar");   
-		  var width = 0;
-		  var id = setInterval(frame, 10);
-		  function frame() {
-		    if (width >= 100) {
-		      clearInterval(id);
-		    } else {
-		      width++; 
-		      elem.style.width = width + '%'; 
-		      document.getElementById("myBar").innerHTML = "100%";
-		    }
-		  }
-		}
-</script>
+		var rangeSlider = function() {
+			var slider = $('.range-slider'), range = $('.range-slider__range'), value = $('.range-slider__value');
+
+			slider.each(function() {
+
+				/* value.each(function() {
+					var value = $(this).prev().attr('value');
+					$(this).html(value);
+				});  */
+
+				range.on('input', function() {
+					$(this).next(value).html(this.value);
+
+					/* var v = $('#range-slider__value span').text();
+					if (v <= 25) {
+						$("#option1").attr('checked', 'checked');
+					} else if (v >= 25 && v <= 50) {
+						$("#option2").attr('checked', 'checked');
+					} else if (v >= 50 && v <= 75) {
+						$("#option3").attr('checked', 'checked');
+					} else {
+						$("#option4").attr('checked', 'checked');
+					} */
+				});
+			});
+		};
+
+		rangeSlider();
+
+		
+	</script>
 	<!-- jQuery 2.1.3 -->
 	<script src="/mlm-erp/static/plugins/jQuery/jQuery-2.1.3.min.js"></script>
 	<!-- jQuery UI 1.11.2 -->
@@ -293,6 +491,8 @@ document.oncontextmenu=new Function("return false")
 		src="http://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
 	<!-- Sparkline -->
 	<script src="/mlm-erp/static/plugins/sparkline/jquery.sparkline.min.js"
+		type="text/javascript"></script>
+		<script src="/mlm-erp/static/js/question.js"
 		type="text/javascript"></script>
 	<!-- jvectormap -->
 	<script
