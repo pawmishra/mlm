@@ -98,6 +98,8 @@
 						Bank Details</a></li>
 				<li><a href="change_password"><i class="fa fa-circle-o"></i>
 						Change Password</a></li>
+				<li><a href="add_newuser"><i class="fa fa-circle-o"></i>
+						Add Member</a></li>
 				
 			</ul></li>
 		<li class="treeview"><a href="#"> <i
