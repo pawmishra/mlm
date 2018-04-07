@@ -156,43 +156,60 @@
 			     
 			      <input type="text" class="form-control" id="sponsorid" readonly="readonly" name="sponsor_id" placeholder="Sponsor Id">
 			    </div>
-			    <div class="form-group col-md-6">
+			     <div class="form-group col-md-6">
+			      <label for="sponsorid">Sponsor Name:</label>
+			     
+			      <input type="text" class="form-control" id="sponsorid" readonly="readonly" name="sponsor_name" placeholder="Sponsor Id">
+			    </div>
+			    
+				
+          </div>
+          <div class="form-row">
+                <div class="form-group col-md-6">
 			      <label for="userid">User Id:</label>
 			     
 			      <input type="text" class="form-control" id="userid" readonly="readonly" name="user_id" placeholder="User Id">
 			    </div>
-				
+			    <div class="form-group col-md-6">
+			      <label for="name">First Name<span class="required">*</span>:</label>
+			     
+			      <input type="text" class="form-control" id="name" name="first_name" placeholder="Name" required="required">
+			    </div>
+			    
+			     
+          </div>
+         
+            <div class="form-row">
+                <div class="form-group col-md-6">
+			      <label for="name">Last Name<span class="required">*</span>:</label>
+			     
+			      <input type="text" class="form-control" id="name" name="last_name" placeholder="Name" required="required">
+			    </div>
+             			    <div class="form-group col-md-6">
+			      <label for="mobilenumber">Mobile Number<span class="required">*</span>:</label>
+			      
+			      <input type="text" class="form-control" id="mobilenumber" name="mobile_number" placeholder="Mobile Number" required="required">
+			     
+			    </div>
+			   
           </div>
           <div class="form-row">
-			    <div class="form-group col-md-6">
-			      <label for="name">Name<span class="required">*</span>:</label>
+           <div class="form-group col-md-6">
+			      <label for="mobilenumber">Alternate Mobile Number:</label>
+			      
+			      <input type="text" class="form-control" id="mobilenumber" name="alternate_mobile_number" placeholder="Mobile Number">
 			     
-			      <input type="text" class="form-control" id="name" name="name" placeholder="Name" required="required">
 			    </div>
 			     <div class="form-group col-md-6">
 			      <label for="dob">Date Of Birth<span class="required">*</span>:</label>
 			     
 			      <input type="date" class="form-control" id="dob" name="dob" required="required">
 			    </div>
-          </div>
-         
-            <div class="form-row">
-               
-			    <div class="form-group col-md-6">
-			      <label for="mobilenumber">Mobile Number<span class="required">*</span>:</label>
-			      
-			      <input type="text" class="form-control" id="mobilenumber" name="mobile_number" placeholder="Mobile Number" required="required">
-			     
-			    </div>
-			    <div class="form-group col-md-6">
-			      <label for="mobilenumber">Alternate Mobile Number:</label>
-			      
-			      <input type="text" class="form-control" id="mobilenumber" name="alternate_mobile_number" placeholder="Mobile Number">
-			     
-			    </div>
+                
+				  
           </div>
           <div class="form-row">
-                <div class="form-group col-md-6">
+                    <div class="form-group col-md-6">
 			      <label for="gender">Gender<span class="required">*</span>:</label><br>
 			      
 			      <label class="radio-inline">
@@ -202,20 +219,23 @@
 					<input type="radio" name="gender">Female
 					</label>
 			    </div>
-				  <div class="form-group col-md-6">
+                 
+			     <div class="form-group col-md-6">
 			      <label for="email">Email<span class="required">*</span>:</label>
 			     
 			      <input type="text" class="form-control" id="email" name="email" placeholder="Email" required="required">
 			    </div>
+			   
+				 
           </div>
-          <div class="form-row">
-			  
-			    <div class="form-group col-md-6">
+         <br>
+            <div class="form-row">
+                   <div class="form-group col-md-6">
 			      <label for="joiningdate">Joining Date:</label>
 			     
 			      <input type="text" class="form-control" id="joiningdate" name="joining_date" readonly="readonly" placeholder="Joining Date">
 			    </div>
-				  <div class="form-group col-md-6">
+			      <div class="form-group col-md-6">
 				      <label for="panno">Pan Number<span class="required">*</span>:</label>
 				      <input type="text" class="form-control" id="panno" name="pan_no" placeholder="Pan Number" required="required">
 				      
@@ -227,10 +247,10 @@
 			        <div class="demo-hint">You can only upload <strong>JPG</strong> files.</div>
       				</div>
 				</div>
+				 
           </div>
-         <br>
-            <div class="form-row">
-			  
+          <div class="form-row">
+                
 				 <div class="form-group col-md-6">
 				      <label for="aadharno">Aadhar Number<span class="required">*</span>:</label>
 				      <input type="text" class="form-control" id="aadharno" name="aadhar_no" placeholder="Aadhar Number" required="required">
@@ -258,17 +278,14 @@
 			       <input type="text" class="form-control" id="housenumber" name="house_number" placeholder="House Number" required="required">
 			    </div>
 			    <div class="form-group col-md-6">
-			      <label for="streetname">Street Name<span class="required">*</span>:</label>
+			      <label for="streetname">Street/Locality Name<span class="required">*</span>:</label>
 			     
-			      <input type="text" class="form-control" id="streetname" name="street_name" placeholder="Street Name" required="required">
+			      <input type="text" class="form-control" id="streetname" name="street_locality" placeholder="Street Name" required="required">
 			    </div>
           </div> 
           <div class="form-group">
              <div class="form-row">
-			    <div class="form-group col-md-6">
-			      <label for="locality">Locality<span class="required">*</span>:</label>
-			       <input type="text" class="form-control" id="locality" name="locality" placeholder="Name" required="required">
-			    </div>
+			
 			     <div class="form-group col-md-6">
 			      <label for="city">City<span class="required">*</span>:</label>
 			     

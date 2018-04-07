@@ -11,6 +11,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.util.FileCopyUtils;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.WebDataBinder;
+import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -22,11 +24,16 @@ import com.javerian.erp.mlm.model.workflow.ProjectWorkDetails;
 import com.javerian.erp.mlm.service.workflow.CategoryService;
 import com.javerian.erp.mlm.service.workflow.OrganisationService;
 import com.javerian.erp.mlm.service.workflow.ProjectWorkDetailsService;
+import com.javerian.erp.mlm.util.FileValidator;
 
 @Controller
 public class ProjectController {
 
 	private static String UPLOAD_LOCATION = "D://Upload//";
+
+	@Autowired
+	FileValidator fileValidator;
+
 	@Autowired
 	OrganisationService OrganisationService;
 
@@ -39,9 +46,14 @@ public class ProjectController {
 	@Autowired
 	UserAuthentication authenticationTrustResolver;
 
+	@InitBinder("projectWorkDetails")
+	protected void initBinderFileBucket(WebDataBinder binder) {
+		binder.setValidator(fileValidator);
+	}
+
 	@RequestMapping(value = { "/upload_project" }, method = RequestMethod.GET)
 	public String uploadproject(ModelMap model) {
-
+		model.addAttribute("loggedinuser", authenticationTrustResolver.getPrincipal());
 		return "upload_project";
 	}
 
@@ -60,33 +72,33 @@ public class ProjectController {
 		model.addAttribute("listOfCat", listOfCat);
 	}
 
-	@RequestMapping(value = "/save_Project_work", method = RequestMethod.POST)
-	public String addOrganisation(@Valid ProjectWorkDetails prgWorkDetails, BindingResult result, ModelMap model) {
-
-		MultipartFile multipartFile = prgWorkDetails.getFile();
+	@RequestMapping(value = "/save_project_work", method = RequestMethod.POST)
+	public String addOrganisation(@Valid ProjectWorkDetails projectWorkDetails, BindingResult result, ModelMap model) {
+		model.addAttribute("loggedinuser", authenticationTrustResolver.getPrincipal());
+		MultipartFile multipartFile = projectWorkDetails.getFile();
 
 		try {
-			FileCopyUtils.copy(prgWorkDetails.getFile().getBytes(),
-					new File(UPLOAD_LOCATION + prgWorkDetails.getFile().getOriginalFilename()));
+			FileCopyUtils.copy(projectWorkDetails.getFile().getBytes(),
+					new File(UPLOAD_LOCATION + projectWorkDetails.getFile().getOriginalFilename()));
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
 
 		System.out.println(multipartFile.getOriginalFilename());
 
-		System.out.println(prgWorkDetails);
-		projectWorkDetailsService.save(prgWorkDetails);
+		System.out.println(projectWorkDetails);
+		projectWorkDetailsService.save(projectWorkDetails);
 
 		addModelAttr(model);
 
 		return "upload_project";
 	}
 
-	@RequestMapping(value = "/save_Project_work", method = RequestMethod.GET)
-	public String addOrganisation(ModelMap model) {
-
-		addModelAttr(model);
-
-		return "upload_project";
-	}
+	// @RequestMapping(value = "/save_project_work", method = RequestMethod.GET)
+	// public String addOrganisation(ModelMap model) {
+	//
+	// addModelAttr(model);
+	//
+	// return "upload_project";
+	// }
 }

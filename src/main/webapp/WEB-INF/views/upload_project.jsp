@@ -6,8 +6,11 @@
 
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<meta charset="UTF-8">
+<!-- meta http-equiv="Content-Type" content="text/html; charset=UTF-8" -->
+<%-- <meta name="_csrf" content="${_csrf.token}" />
+<!-- default header name is X-CSRF-TOKEN -->
+<meta name="_csrf_header" content="${_csrf.headerName}" /> --%>
+
 <title>Admin</title>
 <meta
 	content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no'
@@ -31,7 +34,7 @@
 <link href="<c:url value='/static/dist/css/skins/_all-skins.min.css' />"
 	rel="stylesheet" type="text/css" />
 <link
-	<c:url value='/static/dist/css/skins/style.css' />" rel="stylesheet"
+	href="<c:url value='/static/dist/css/skins/style.css' />" rel="stylesheet"
 	type="text/css" />
 <!-- iCheck -->
 <link href="<c:url value='/static/plugins/iCheck/flat/blue.css' />"
@@ -71,6 +74,17 @@
 <script src="js/jquery.min.js"></script>
 <script src="js/kendo.all.min.js"></script>
 
+<!-- <script type="text/javascript">
+	$(document).ready(function() {
+
+		var token = $("meta[name='_csrf']").attr("content");
+		var header = $("meta[name='_csrf_header']").attr("content");
+
+		$(document).ajaxSend(function(e, xhr, options) {
+			xhr.setRequestHeader(header, token);
+		});
+	});
+</script> -->
 </head>
 <body class="skin-blue">
 	<div class="wrapper">
@@ -108,9 +122,10 @@
 									<div class="col-md-9 personal-info">
 
 
-										<form:form class="form-horizontal" enctype="multipart/form-data" action="save_Project_work"
+										<form:form class="form-horizontal"
+											enctype="multipart/form-data" action="save_project_work"
 											method="POST" modelAttribute="projectWorkDetails">
-
+											<%-- <form method="POST" action="uploadOneFile**?${_csrf.parameterName}=${_csrf.token}**" enctype="multipart/form-data"> --%>
 											<div class="form-row">
 												<div class="form-group col-md-6">
 													<label for="ticketid">Ticket Id</label> <input type="text"
@@ -154,7 +169,7 @@
 													<div class="ui-select">
 														<form:select id="subjectcategory" class="form-control"
 															name="subject_category" path="subject_category_id">
-																<c:forEach items="${listOfCat}" var="item">
+															<c:forEach items="${listOfCat}" var="item">
 																<option value="${item.category_id}">${item.categoryName}</option>
 															</c:forEach>
 														</form:select>
@@ -179,7 +194,8 @@
 
 													<div class="demo-section k-content">
 														<h4>Upload PDF</h4>
-														<input name="paper" id="paperupload" type="file" />
+														<form:input name="paper" id="paperupload" type="file"
+															path="file" />
 														<div class="demo-hint">
 															You can only upload <strong>PDF</strong> files.
 														</div>

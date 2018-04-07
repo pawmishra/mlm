@@ -334,12 +334,6 @@ public class AppController {
 		return "withdraw_history";
 	}
 
-	@RequestMapping(value = { "/add_newuser" }, method = RequestMethod.GET)
-	public String addnewuser(ModelMap model) {
-		model.addAttribute("loggedinuser", authenticationTrustResolver.getPrincipal());
-		return "add_newuser";
-	}
-
 	@RequestMapping(value = { "/treeview" }, method = RequestMethod.GET)
 	public String treeview(ModelMap model) {
 		model.addAttribute("loggedinuser", authenticationTrustResolver.getPrincipal());
