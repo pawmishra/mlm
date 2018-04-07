@@ -30,7 +30,7 @@ public class HelpDeskProblemCategoryDaoImpl extends AbstractDao<Long, HelpDeskPr
 
 	@Override
 	public List<HelpDeskProblemCategory> findAllHelpDeskProblemCategory() {
-		Criteria criteria = createEntityCriteria().addOrder(Order.asc("user_id"));
+		Criteria criteria = createEntityCriteria().addOrder(Order.asc("hd_category_id"));
 		criteria.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);// To avoid duplicates.
 		List<HelpDeskProblemCategory> listHelpDeskProblemCategory = (List<HelpDeskProblemCategory>) criteria.list();
 

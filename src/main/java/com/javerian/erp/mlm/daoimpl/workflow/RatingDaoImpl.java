@@ -29,7 +29,7 @@ public class RatingDaoImpl extends AbstractDao<Long, Rating> implements RatingDa
 
 	@Override
 	public List<Rating> findAllRating() {
-		Criteria criteria = createEntityCriteria().addOrder(Order.asc("user_id"));
+		Criteria criteria = createEntityCriteria().addOrder(Order.asc("rating_id"));
 		criteria.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);// To avoid duplicates.
 		List<Rating> listRating = (List<Rating>) criteria.list();
 

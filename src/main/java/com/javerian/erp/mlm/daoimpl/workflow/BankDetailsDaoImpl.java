@@ -29,7 +29,7 @@ public class BankDetailsDaoImpl extends AbstractDao<Long, BankDetails> implement
 
 	@Override
 	public List<BankDetails> findAllBankDetails() {
-		Criteria criteria = createEntityCriteria().addOrder(Order.asc("user_id"));
+		Criteria criteria = createEntityCriteria().addOrder(Order.asc("bank_id"));
 		criteria.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);// To avoid duplicates.
 		List<BankDetails> listBankDetails = (List<BankDetails>) criteria.list();
 

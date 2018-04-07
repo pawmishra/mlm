@@ -30,7 +30,7 @@ public class TransactionIncomeFromProjectSurveyDaoImpl extends AbstractDao<Long,
 
 	@Override
 	public List<TransactionIncomeFromProjectSurvey> findAllTransactionIncomeFromProjectSurvey() {
-		Criteria criteria = createEntityCriteria().addOrder(Order.asc("user_id"));
+		Criteria criteria = createEntityCriteria().addOrder(Order.asc("id"));
 		criteria.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);// To avoid duplicates.
 		List<TransactionIncomeFromProjectSurvey> listTransactionIncomeFromProjectSurvey = (List<TransactionIncomeFromProjectSurvey>) criteria
 				.list();

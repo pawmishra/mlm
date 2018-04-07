@@ -29,7 +29,7 @@ public class ProjectWorkDetailsDaoImpl extends AbstractDao<Long, ProjectWorkDeta
 
 	@Override
 	public List<ProjectWorkDetails> findAllProjectWorkDetails() {
-		Criteria criteria = createEntityCriteria().addOrder(Order.asc("user_id"));
+		Criteria criteria = createEntityCriteria().addOrder(Order.asc("prj_work_details_id"));
 		criteria.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);// To avoid duplicates.
 		List<ProjectWorkDetails> listProjectWorkDetails = (List<ProjectWorkDetails>) criteria.list();
 

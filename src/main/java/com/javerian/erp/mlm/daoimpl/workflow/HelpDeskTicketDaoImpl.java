@@ -29,7 +29,7 @@ public class HelpDeskTicketDaoImpl extends AbstractDao<Long, HelpDeskTicket> imp
 
 	@Override
 	public List<HelpDeskTicket> findAllHelpDeskTicket() {
-		Criteria criteria = createEntityCriteria().addOrder(Order.asc("user_id"));
+		Criteria criteria = createEntityCriteria().addOrder(Order.asc("id"));
 		criteria.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);// To avoid duplicates.
 		List<HelpDeskTicket> listHelpDeskTicket = (List<HelpDeskTicket>) criteria.list();
 

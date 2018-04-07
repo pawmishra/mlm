@@ -29,7 +29,7 @@ public class ReviewerRemarkDaoImpl extends AbstractDao<Long, ReviewerRemark> imp
 
 	@Override
 	public List<ReviewerRemark> findAllReviewerRemark() {
-		Criteria criteria = createEntityCriteria().addOrder(Order.asc("user_id"));
+		Criteria criteria = createEntityCriteria().addOrder(Order.asc("id"));
 		criteria.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);// To avoid duplicates.
 		List<ReviewerRemark> listReviewerRemark = (List<ReviewerRemark>) criteria.list();
 

@@ -29,7 +29,7 @@ public class PageIncomeTarrifDaoImpl extends AbstractDao<Long, PageIncomeTarrif>
 
 	@Override
 	public List<PageIncomeTarrif> findAllPageIncomeTarrif() {
-		Criteria criteria = createEntityCriteria().addOrder(Order.asc("user_id"));
+		Criteria criteria = createEntityCriteria().addOrder(Order.asc("page_income_id"));
 		criteria.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);// To avoid duplicates.
 		List<PageIncomeTarrif> listPageIncomeTarrif = (List<PageIncomeTarrif>) criteria.list();
 

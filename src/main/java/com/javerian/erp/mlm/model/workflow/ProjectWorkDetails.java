@@ -6,6 +6,9 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Transient;
+
+import org.springframework.web.multipart.MultipartFile;
 
 @Entity
 @Table(name = "project_work_detail")
@@ -30,6 +33,17 @@ public class ProjectWorkDetails {
 	private String document_upload_path;
 	@Column
 	private String document_id;
+
+	@Transient
+	MultipartFile file;
+
+	public MultipartFile getFile() {
+		return file;
+	}
+
+	public void setFile(MultipartFile file) {
+		this.file = file;
+	}
 
 	public Long getPrj_work_details_id() {
 		return prj_work_details_id;

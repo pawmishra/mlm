@@ -29,7 +29,7 @@ public class QuestionDaoImpl extends AbstractDao<Long, Question> implements Ques
 
 	@Override
 	public List<Question> findAllQuestion() {
-		Criteria criteria = createEntityCriteria().addOrder(Order.asc("user_id"));
+		Criteria criteria = createEntityCriteria().addOrder(Order.asc("question_id"));
 		criteria.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);// To avoid duplicates.
 		List<Question> listQuestion = (List<Question>) criteria.list();
 
