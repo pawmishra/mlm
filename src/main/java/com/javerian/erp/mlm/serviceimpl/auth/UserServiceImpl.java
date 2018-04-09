@@ -31,8 +31,17 @@ public class UserServiceImpl implements UserService {
 	}
 
 	public void saveUser(User user) {
+
+		int i = 1;
+		User obj = findBySSO(user.getUsername());
+		while (obj != null) {
+			user.setUsername(user.getUsername() + i);
+			obj = findBySSO(user.getUsername());
+		}
+
 		user.setPassword(passwordEncoder.encode(user.getPassword()));
 		dao.save(user);
+
 	}
 
 	/*

@@ -114,16 +114,16 @@
 														class="required">*</span>:
 													</label> 
 													<form:input type="text" class="form-control" id="sponsorid"
-														readonly="readonly" name="sponsor_id"
-														placeholder="Sponsor Id" path=""/>
+														readonly="true" name="sponsor_id"
+														placeholder="Sponsor Id" path="sponser_id"/>
 												</div>
 												<div class="form-group col-md-6">
 													<label for="sponsor_name">Sponsor Name<span
 														class="required">*</span>:
 													</label> 
 													<form:input type="text" class="form-control" id="userid"
-														readonly="readonly" name="sponsor_name"
-														placeholder="Sponsor Name" path=""/>
+														readonly="true" name="sponsor_name"
+														placeholder="Sponsor Name" path="sponser_name"/>
 												</div>
 
 											</div>
@@ -202,7 +202,7 @@
 												<div class="form-group col-md-6">
 													<label for="address">Street/Locality Name:</label> 
 													<form:input
-														type="text" class="form-control" id="address"
+														type="text" class="form-control" id="address" required="required"
 														name="street_locality" placeholder="Address" 
 														path="MemberDetails.Address.streetName"/>
 
@@ -290,7 +290,7 @@
 												</div>
 
 											</div>
-											<div class="form-row">
+											<%-- <div class="form-row">
 												<div class="form-group col-md-6">
 													<label for="epin">E-pin<span class="required">*</span>:
 													</label> <input type="text" class="form-control" id="epin"
@@ -314,7 +314,7 @@
 														name="password" required="required" placeholder="Country"
 														path="password"/>
 												</div>
-											</div>
+											</div> --%>
 
 											<div class="buttons col-md-8">
 												<br> <br> <input type="submit"
