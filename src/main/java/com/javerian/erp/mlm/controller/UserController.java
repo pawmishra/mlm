@@ -74,4 +74,15 @@ public class UserController {
 		addModelAttr(model);
 		return "add_newuser";
 	}
+
+	/**
+	 * This method will provide the medium to add a new user.
+	 */
+
+	@RequestMapping(value = { "/edit_profile" }, method = RequestMethod.GET)
+	public String editprofile(ModelMap model) {
+		model.addAttribute("loggedinuser", authenticationTrustResolver.getPrincipal());
+		return "edit_profile";
+	}
+
 }

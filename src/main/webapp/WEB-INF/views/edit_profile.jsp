@@ -178,7 +178,7 @@
 													<label for="userid">User Id:</label> 
 													<form:input type="text"
 														class="form-control" id="userid" readonly="readonly"
-														name="user_id" placeholder="User Id" path=""/>
+														name="user_id" placeholder="User Id" path="id"/>
 												</div>
 												<div class="form-group col-md-6">
 													<label for="name">First Name<span class="required">*</span>:
