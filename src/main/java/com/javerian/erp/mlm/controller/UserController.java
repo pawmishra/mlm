@@ -85,4 +85,13 @@ public class UserController {
 		return "edit_profile";
 	}
 
+	@RequestMapping(value = "/update_user", method = RequestMethod.POST)
+	public String updateUser(@ModelAttribute User user, BindingResult result, ModelMap model) {
+
+		userService.updateUser(user);
+		addModelAttr(model);
+
+		return "add_newuser";
+	}
+
 }
