@@ -52,6 +52,12 @@ public class User implements Serializable {
 	@Column(name = "sponser_name")
 	private String sponser_name;
 
+	@Column
+	private String position_left_or_right;
+
+	@Column
+	private Long level_from_root;
+
 	@NotEmpty
 	@ManyToMany(fetch = FetchType.LAZY)
 	@JoinTable(name = "app_user_user_profile", joinColumns = { @JoinColumn(name = "user_id") }, inverseJoinColumns = {
@@ -123,6 +129,22 @@ public class User implements Serializable {
 
 	public void setSponser_name(String sponser_name) {
 		this.sponser_name = sponser_name;
+	}
+
+	public String getPosition_left_or_right() {
+		return position_left_or_right;
+	}
+
+	public void setPosition_left_or_right(String position_left_or_right) {
+		this.position_left_or_right = position_left_or_right;
+	}
+
+	public Long getLevel_from_root() {
+		return level_from_root;
+	}
+
+	public void setLevel_from_root(Long level_from_root) {
+		this.level_from_root = level_from_root;
 	}
 
 	public Set<UserProfile> getUserProfiles() {

@@ -104,43 +104,42 @@
 									<div class="col-md-9 personal-info">
 
 										<hr>
-										<form:form class="form-horizontal"
-											action="save_user"
-											method="POST" modelAttribute="user">
-											
+										<form:form class="" action="save_user" method="POST"
+											modelAttribute="user">
+
 											<div class="form-row">
 												<div class="form-group col-md-6">
 													<label for="sponsorid">Sponsor Id<span
 														class="required">*</span>:
-													</label> 
+													</label>
 													<form:input type="text" class="form-control" id="sponsorid"
-														readonly="true" name="sponsor_id"
-														placeholder="Sponsor Id" path="sponser_id"/>
+														readonly="true" name="sponsor_id" placeholder="Sponsor Id"
+														path="sponser_id" />
 												</div>
 												<div class="form-group col-md-6">
 													<label for="sponsor_name">Sponsor Name<span
 														class="required">*</span>:
-													</label> 
+													</label>
 													<form:input type="text" class="form-control" id="userid"
 														readonly="true" name="sponsor_name"
-														placeholder="Sponsor Name" path="sponser_name"/>
+														placeholder="Sponsor Name" path="sponser_name" />
 												</div>
 
 											</div>
 											<div class="form-row">
 												<div class="form-group col-md-6">
 													<label for="name">Fisrt Name<span class="required">*</span>:
-													</label> 
+													</label>
 													<form:input type="text" class="form-control" id="name"
 														name="first_name" placeholder="Name" required="required"
-														path="firstName"/>
+														path="firstName" />
 												</div>
 												<div class="form-group col-md-6">
 													<label for="name">Last Name<span class="required">*</span>:
-													</label> 
+													</label>
 													<form:input type="text" class="form-control" id="name"
 														name="last_name" placeholder="Name" required="required"
-														path="lastName"/>
+														path="lastName" />
 												</div>
 
 											</div>
@@ -148,63 +147,67 @@
 												<div class="form-group col-md-6">
 													<label for="dob">Date Of Birth<span
 														class="required">*</span>:
-													</label> 
+													</label>
 													<form:input type="date" class="form-control" id="dob"
-														name="dob" required="required"
-														path="MemberDetails.dob"/>
+														name="dob" required="required" path="MemberDetails.dob" />
 												</div>
 												<div class="form-group col-md-6">
 													<label for="email">Email<span class="required">*</span>:
-													</label> 
+													</label>
 													<form:input type="text" class="form-control" id="email"
 														name="email" placeholder="Email" required="required"
-														path="email"/>
+														path="email" />
 												</div>
-
 											</div>
-
+											<div class="form-row">
+												<div class="form-group col-md-6">
+													<label for="position">Position Left Or Right<span
+														class="required">*</span>:
+													</label>
+													<form:select id="id_position_left_or_right" class="form-control" name="state"
+															required="true" path="position_left_or_right">
+															<option value="">Select</option>
+															<option value="Left">Left</option>
+															<option value="Right">Right</option>
+													</form:select>
+												</div>
+											</div>
+											<div class="row"></div>
 											<div class="form-row">
 												<div class="form-group col-md-6">
 													<label for="gender">Gender<span class="required">*</span>:
-													</label><br> <label class="radio-inline"> 
-													<form:radiobutton path="MemberDetails.gender" value="M"/>Male 
-													<!-- <input
-														type="radio" name="gender">Male -->
-													</label> <label class="radio-inline"> 
-													<form:radiobutton path="MemberDetails.gender" value="F"/>Female
-													<%-- <form:input type="radio"
-														name="gender" path="MemberDetails.gender"/>Female --%>
+													</label><br> <label class="radio-inline"> <form:radiobutton
+															path="MemberDetails.gender" value="M" />Male
+													</label> <label class="radio-inline"> <form:radiobutton
+															path="MemberDetails.gender" value="F" />Female
 													</label>
-													
-													 
 												</div>
 
 												<div class="form-group col-md-6">
 													<label for="mobilenumber">Mobile Number<span
 														class="required">*</span>:
-													</label> 
-													<form:input type="text" class="form-control" id="mobilenumber"
-														name="mobile_number" placeholder="Mobile Number"
-														required="required" path="MemberDetails.Address.mobile"/>
+													</label>
+													<form:input type="text" class="form-control"
+														id="mobilenumber" name="mobile_number"
+														placeholder="Mobile Number" required="required"
+														path="MemberDetails.Address.mobile" />
 
 												</div>
-
 											</div>
 											<div class="form-row">
 												<div class="form-group col-md-6">
-													<label for="address">House Number:</label> 
-													<form:input
-														type="text" class="form-control" id="address"
+													<label for="address">House Number:</label>
+													<form:input type="text" class="form-control" id="address"
 														name="house_number" placeholder="Address"
-														path="MemberDetails.Address.houseNo"/>
+														path="MemberDetails.Address.houseNo" />
 
 												</div>
 												<div class="form-group col-md-6">
-													<label for="address">Street/Locality Name:</label> 
-													<form:input
-														type="text" class="form-control" id="address" required="required"
-														name="street_locality" placeholder="Address" 
-														path="MemberDetails.Address.streetName"/>
+													<label for="address">Street/Locality Name:</label>
+													<form:input type="text" class="form-control" id="address"
+														required="required" name="street_locality"
+														placeholder="Address"
+														path="MemberDetails.Address.streetName" />
 
 
 
@@ -212,10 +215,10 @@
 												<div class="form-row"></div>
 												<div class="form-group col-md-6">
 													<label for="email">City<span class="required">*</span>:
-													</label> 
+													</label>
 													<form:input type="text" class="form-control" id="email"
 														name="city" placeholder="City" required="required"
-														path="MemberDetails.Address.city"/>
+														path="MemberDetails.Address.city" />
 												</div>
 												<div class="form-group col-md-6">
 													<label for="state">State<span class="required">*</span>:
@@ -276,17 +279,17 @@
 											<div class="form-row">
 												<div class="form-group col-md-6">
 													<label for="country">Country<span class="required">*</span>:
-													</label> 
+													</label>
 													<form:input type="text" class="form-control" id="country"
 														name="country" required="required" placeholder="Country"
-														path="MemberDetails.Address.country"/>
+														path="MemberDetails.Address.country" />
 												</div>
 												<div class="form-group col-md-6">
 													<label for="pincode">Pincode<span class="required">*</span>:
-													</label> 
+													</label>
 													<form:input type="text" class="form-control" id="pincode"
 														name="pincode" required="required" placeholder="Country"
-														path="MemberDetails.Address.pincode"/>
+														path="MemberDetails.Address.pincode" />
 												</div>
 
 											</div>

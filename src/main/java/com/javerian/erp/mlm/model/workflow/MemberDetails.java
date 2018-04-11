@@ -33,6 +33,16 @@ public class MemberDetails {
 	private Date joining_date;
 	@Column(name = "modified_date")
 	private Date modified_date;
+	@Column
+	private String pan_number;
+	@Column
+	private String path_to_pan_card_image;
+	@Column
+	private String aadhar_number;
+	@Column
+	private String path_to_aadhar_front_image;
+	@Column
+	private String path_to_aadhar_back_image;
 
 	@OneToOne(mappedBy = "memberDetails", cascade = CascadeType.ALL)
 	private Address address;
@@ -81,6 +91,46 @@ public class MemberDetails {
 		this.user_id = user_id;
 	}
 
+	public String getPan_number() {
+		return pan_number;
+	}
+
+	public void setPan_number(String pan_number) {
+		this.pan_number = pan_number;
+	}
+
+	public String getPath_to_pan_card_image() {
+		return path_to_pan_card_image;
+	}
+
+	public void setPath_to_pan_card_image(String path_to_pan_card_image) {
+		this.path_to_pan_card_image = path_to_pan_card_image;
+	}
+
+	public String getAadhar_number() {
+		return aadhar_number;
+	}
+
+	public void setAadhar_number(String aadhar_number) {
+		this.aadhar_number = aadhar_number;
+	}
+
+	public String getPath_to_aadhar_front_image() {
+		return path_to_aadhar_front_image;
+	}
+
+	public void setPath_to_aadhar_front_image(String path_to_aadhar_front_image) {
+		this.path_to_aadhar_front_image = path_to_aadhar_front_image;
+	}
+
+	public String getPath_to_aadhar_back_image() {
+		return path_to_aadhar_back_image;
+	}
+
+	public void setPath_to_aadhar_back_image(String path_to_aadhar_back_image) {
+		this.path_to_aadhar_back_image = path_to_aadhar_back_image;
+	}
+
 	public Address getAddress() {
 		return address;
 	}
@@ -96,5 +146,4 @@ public class MemberDetails {
 	public void setUser(User user) {
 		this.user = user;
 	}
-
 }

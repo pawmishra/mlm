@@ -6,6 +6,7 @@ import org.hibernate.Criteria;
 import org.hibernate.Hibernate;
 import org.hibernate.criterion.Order;
 import org.hibernate.criterion.Restrictions;
+import org.hibernate.query.Query;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Repository;
@@ -62,5 +63,20 @@ public class UserDaoImpl extends AbstractDao<Long, User> implements UserDao {
 		crit.add(Restrictions.eq("username", username));
 		User user = (User) crit.uniqueResult();
 		delete(user);
+	}
+
+	@Override
+	public void updateUser(User user) {
+		getSession().saveOrUpdate(user);
+	}
+
+	@SuppressWarnings({ "rawtypes", "unchecked" })
+	@Override
+	public List<User> getChildOfSponserById(Long id) {
+
+		Query query = getSession().createQuery("from User where sponser_id = :user_id ");
+		query.setParameter("user_id", id);
+		List<User> list = query.list();
+		return list;
 	}
 }

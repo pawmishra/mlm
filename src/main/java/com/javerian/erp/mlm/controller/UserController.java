@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import com.javerian.erp.mlm.model.auth.User;
 import com.javerian.erp.mlm.model.auth.UserProfile;
 import com.javerian.erp.mlm.service.auth.UserService;
+import com.javerian.erp.mlm.vo.ChangePasswordVO;
 
 @Controller
 public class UserController {
@@ -91,7 +92,27 @@ public class UserController {
 		userService.updateUser(user);
 		addModelAttr(model);
 
-		return "add_newuser";
+		return "edit_profile";
+	}
+
+	@RequestMapping(value = { "/change_password" }, method = RequestMethod.GET)
+	public String changepassword(ModelMap model) {
+		model.addAttribute("loggedinuser", authenticationTrustResolver.getPrincipal());
+
+		String userName = authenticationTrustResolver.getPrincipal();
+		model.addAttribute("loggedinuser", userName);
+
+		model.addAttribute(new ChangePasswordVO());
+		return "change_password";
+	}
+
+	@RequestMapping(value = "/changePassword", method = RequestMethod.POST)
+	public String changePassword(@ModelAttribute ChangePasswordVO changePass, BindingResult result, ModelMap model) {
+
+		userService.changePassword(changePass);
+		model.addAttribute(new ChangePasswordVO());
+
+		return "Password Changed Successfully!";
 	}
 
 }

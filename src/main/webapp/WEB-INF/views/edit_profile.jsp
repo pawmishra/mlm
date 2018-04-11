@@ -249,12 +249,12 @@
 													</label> 
 													<form:input type="text" class="form-control" id="panno"
 														name="pan_no" placeholder="Pan Number" required="required"
-														path=""/>
+														path="MemberDetails.pan_number"/>
 
 													<label for="pancardupload">Upload Pan Card:</label>
 													<div class="demo-section k-content">
 														<form:input name="pancard" id="pancardupload" type="file"
-															required="required" path=""/>
+															required="required" path="MemberDetails.path_to_pan_card_image"/>
 														<div class="demo-hint">
 															You can only upload <strong>JPG</strong> files.
 														</div>
@@ -270,12 +270,12 @@
 													</label> 
 													<form:input type="text" class="form-control" id="aadharno"
 														name="aadhar_no" placeholder="Aadhar Number"
-														required="required" path=""/>
+														required="required" path="MemberDetails.aadhar_number"/>
 													<div class="form-row">
 														<label for="aadharnoupload">Upload front:</label>
 														<div class="demo-section k-content">
 															<form:input name="aadharcard" id="aadharnoupload" type="file"
-																accept=".png, .jpg," required="required" path=""/>
+																accept=".png, .jpg," required="required" path="MemberDetails.path_to_aadhar_front_image"/>
 															<div class="demo-hint">
 																You can only upload <strong>JPG</strong> files.
 															</div>
@@ -283,7 +283,7 @@
 														<label for="aadharnoupload">Upload back:</label>
 														<div class="demo-section k-content">
 															<form:input name="aadharcard" id="aadharnoupload" type="file"
-																accept=".png, .jpg," required="required" path=""/>
+																accept=".png, .jpg," required="required" path="MemberDetails.path_to_aadhar_back_image"/>
 															<div class="demo-hint">
 																You can only upload <strong>JPG</strong> files.
 															</div>
@@ -369,19 +369,10 @@
 								</div>
 							</div>
 							<hr>
-							<!-- /.box-header -->
-							<!-- form start -->
-
-							</form>
 						</div>
-
 					</div>
 				</div>
-				<!-- /.box -->
 				<br> <br> <br>
-
-
-
 			</div>
 			<!--/.col (left) -->
 		</div>

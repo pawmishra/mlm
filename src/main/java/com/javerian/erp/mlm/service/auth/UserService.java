@@ -3,6 +3,7 @@ package com.javerian.erp.mlm.service.auth;
 import java.util.List;
 
 import com.javerian.erp.mlm.model.auth.User;
+import com.javerian.erp.mlm.vo.ChangePasswordVO;
 
 public interface UserService {
 
@@ -20,4 +21,7 @@ public interface UserService {
 
 	boolean isUserSSOUnique(Long id, String sso);
 
+	void changePassword(ChangePasswordVO changePass);
+
+	public List<User> getChildOfSponserById(Long id);
 }

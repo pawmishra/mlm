@@ -234,12 +234,6 @@ public class AppController {
 		return "redirect:/login?logout";
 	}
 
-	@RequestMapping(value = { "/change_password" }, method = RequestMethod.GET)
-	public String changepassword(ModelMap model) {
-		model.addAttribute("loggedinuser", authenticationTrustResolver.getPrincipal());
-		return "change_password";
-	}
-
 	@RequestMapping(value = { "/payout" }, method = RequestMethod.GET)
 	public String payout(ModelMap model) {
 		model.addAttribute("loggedinuser", authenticationTrustResolver.getPrincipal());

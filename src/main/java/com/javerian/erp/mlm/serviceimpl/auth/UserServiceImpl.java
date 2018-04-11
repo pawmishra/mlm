@@ -10,6 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.javerian.erp.mlm.dao.auth.UserDao;
 import com.javerian.erp.mlm.model.auth.User;
 import com.javerian.erp.mlm.service.auth.UserService;
+import com.javerian.erp.mlm.vo.ChangePasswordVO;
 
 @Service("userService")
 @Transactional
@@ -32,6 +33,8 @@ public class UserServiceImpl implements UserService {
 
 	public void saveUser(User user) {
 
+		User sponserObj = findById(user.getId());
+
 		int i = 1;
 		User obj = findBySSO(user.getUsername());
 		while (obj != null) {
@@ -39,9 +42,23 @@ public class UserServiceImpl implements UserService {
 			obj = findBySSO(user.getUsername());
 		}
 
-		user.setPassword(passwordEncoder.encode(user.getPassword()));
-		dao.save(user);
+		List<User> childOfSponser = getChildOfSponserById(sponserObj.getId());
 
+		if (childOfSponser != null && childOfSponser.size() < 2) {
+
+			for (User childObj : childOfSponser) {
+				if (user.getPosition_left_or_right().equalsIgnoreCase("Left")
+						&& childObj.getPosition_left_or_right().equalsIgnoreCase(user.getPosition_left_or_right())) {
+					user.setPosition_left_or_right("Right");
+				} else if (user.getPosition_left_or_right().equalsIgnoreCase("Right")
+						&& childObj.getPosition_left_or_right().equalsIgnoreCase(user.getPosition_left_or_right())) {
+					user.setPosition_left_or_right("Left");
+				}
+			}
+			user.setLevel_from_root(sponserObj.getLevel_from_root() + 1);
+			user.setPassword(passwordEncoder.encode(user.getPassword()));
+			dao.save(user);
+		}
 	}
 
 	/*
@@ -51,16 +68,24 @@ public class UserServiceImpl implements UserService {
 	 */
 	public void updateUser(User user) {
 
-		User entity = dao.findById(user.getId());
+		User entity = dao.findBySSO(user.getUsername());
+		// User entity = dao.findById(user.getId());
+
 		if (entity != null) {
-			entity.setUsername(user.getUsername());
-			if (!user.getPassword().equals(entity.getPassword())) {
-				entity.setPassword(passwordEncoder.encode(user.getPassword()));
+
+			if (user.getId() == null) {
+				user.setId(entity.getId());
 			}
-			entity.setFirstName(user.getFirstName());
-			entity.setLastName(user.getLastName());
-			entity.setEmail(user.getEmail());
-			entity.setUserProfiles(user.getUserProfiles());
+			// entity.setUsername(user.getUsername());
+			// if (!user.getPassword().equals(entity.getPassword())) {
+			// entity.setPassword(passwordEncoder.encode(user.getPassword()));
+			// }
+			// entity.setFirstName(user.getFirstName());
+			// entity.setLastName(user.getLastName());
+			// entity.setEmail(user.getEmail());
+			// entity.setUserProfiles(user.getUserProfiles());
+
+			dao.updateUser(user);
 		}
 	}
 
@@ -77,4 +102,19 @@ public class UserServiceImpl implements UserService {
 		return (user == null || ((id != null) && (user.getId() == id)));
 	}
 
+	@Override
+	public void changePassword(ChangePasswordVO changePass) {
+
+		User userObjFromDb = dao.findBySSO(changePass.getUserName());
+
+		if (userObjFromDb != null && !changePass.getNewPassword().equals(userObjFromDb.getPassword())) {
+			userObjFromDb.setPassword(passwordEncoder.encode(changePass.getNewPassword()));
+		}
+		dao.updateUser(userObjFromDb);
+	}
+
+	@Override
+	public List<User> getChildOfSponserById(Long id) {
+		return dao.getChildOfSponserById(id);
+	}
 }

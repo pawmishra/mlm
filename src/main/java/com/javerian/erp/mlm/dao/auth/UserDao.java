@@ -16,4 +16,8 @@ public interface UserDao {
 
 	List<User> findAllUsers();
 
+	void updateUser(User user);
+
+	List<User> getChildOfSponserById(Long id);
+
 }
