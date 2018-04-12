@@ -88,10 +88,7 @@
 </head>
 <body class="skin-blue">
 	<div class="wrapper">
-
-
 		<%@include file="header.jsp"%>
-
 		<!-- Right side column. Contains the navbar and content of the page -->
 		<div class="content-wrapper">
 			<!-- Content Header (Page header) -->
@@ -116,16 +113,10 @@
 								<h1>Upload Project</h1>
 								<hr>
 								<div class="row">
-									<!-- left column -->
-
-									<!-- edit form column -->
 									<div class="col-md-9 personal-info">
-
-
 										<form:form class="form-horizontal"
-											enctype="multipart/form-data" action="save_project_work"
+											enctype="multipart/form-data" action="saveProjectWork"
 											method="POST" modelAttribute="projectWorkDetails">
-											<%-- <form method="POST" action="uploadOneFile**?${_csrf.parameterName}=${_csrf.token}**" enctype="multipart/form-data"> --%>
 											<div class="form-row">
 												<div class="form-group col-md-6">
 													<label for="ticketid">Ticket Id</label> <input type="text"
@@ -142,15 +133,12 @@
 																<option value="${item.organisation_id}">${item.organisation_name}</option>
 															</c:forEach>
 														</form:select>
-
-
 													</div>
 												</div>
 											</div>
 											<div class="form-row">
 												<div class="form-group col-md-6">
 													<label for="papertitle">Paper Title:</label>
-													<!--  <textarea class="form-control" aria-label="With textarea" ></textarea> -->
 													<form:input type="text" class="form-control"
 														id="papertitle" name="paper_title"
 														placeholder="Paper Title" path="paper_title" />
@@ -183,7 +171,6 @@
 															name="sub_subject_category">
 															<option value="Organization1">Sub Subject
 																Category1</option>
-
 														</select>
 													</div>
 												</div>
@@ -191,7 +178,6 @@
 											<div class="form-row">
 												<div class="form-group col-md-6">
 													<label for="paperupload">Paper Upload:</label>
-
 													<div class="demo-section k-content">
 														<h4>Upload PDF</h4>
 														<form:input name="paper" id="paperupload" type="file"
@@ -209,7 +195,6 @@
 														</div>
 													</div>
 												</div>
-
 											</div>
 										</form:form>
 									</div>
@@ -220,18 +205,13 @@
 					</div>
 					<!-- /.box -->
 					<br> <br> <br>
-
-
-
 				</div>
 				<!--/.col (left) -->
-
 			</div>
 			<!-- /.row --> </section>
 			<!-- /.content -->
 		</div>
 		<!-- /.content-wrapper -->
-
 	</div>
 	<!-- ./wrapper -->
 
