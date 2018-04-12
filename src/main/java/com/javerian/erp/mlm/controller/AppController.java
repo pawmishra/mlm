@@ -288,12 +288,6 @@ public class AppController {
 		return "register";
 	}
 
-	@RequestMapping(value = { "/bank_details" }, method = RequestMethod.GET)
-	public String bankdetails(ModelMap model) {
-		model.addAttribute("loggedinuser", authenticationTrustResolver.getPrincipal());
-		return "bank_details";
-	}
-
 	@RequestMapping(value = { "/add_questions" }, method = RequestMethod.GET)
 	public String addquestions(ModelMap model) {
 		model.addAttribute("loggedinuser", authenticationTrustResolver.getPrincipal());
