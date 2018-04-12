@@ -113,4 +113,9 @@ public class AppConfig extends WebMvcConfigurerAdapter {
 
 		return resolver;
 	}
+
+	@Bean
+	public CommonsMultipartResolver filterMultipartResolver() {
+		return new CommonsMultipartResolver();
+	}
 }
