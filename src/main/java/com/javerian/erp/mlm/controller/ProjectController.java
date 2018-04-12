@@ -2,6 +2,7 @@ package com.javerian.erp.mlm.controller;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.validation.Valid;
@@ -18,9 +19,11 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.javerian.erp.mlm.model.auth.User;
 import com.javerian.erp.mlm.model.workflow.Category;
 import com.javerian.erp.mlm.model.workflow.Organisation;
 import com.javerian.erp.mlm.model.workflow.ProjectWorkDetails;
+import com.javerian.erp.mlm.service.auth.UserService;
 import com.javerian.erp.mlm.service.workflow.CategoryService;
 import com.javerian.erp.mlm.service.workflow.OrganisationService;
 import com.javerian.erp.mlm.service.workflow.ProjectWorkDetailsService;
@@ -46,6 +49,9 @@ public class ProjectController {
 	@Autowired
 	UserAuthentication authenticationTrustResolver;
 
+	@Autowired
+	UserService userService;
+
 	@InitBinder("projectWorkDetails")
 	protected void initBinderFileBucket(WebDataBinder binder) {
 		binder.setValidator(fileValidator);
@@ -62,21 +68,29 @@ public class ProjectController {
 
 		model.addAttribute("loggedinuser", authenticationTrustResolver.getPrincipal());
 		model.addAttribute(new ProjectWorkDetails());
-
 		List<Organisation> listOfOrg = OrganisationService.findAllOrganisation();
-
 		model.addAttribute("listOfOrg", listOfOrg);
-
-		List<Category> listOfCat = categoryService.findAllCategory();
-
+		List<Category> listOfAllCat = categoryService.findAllCategory();
+		List<Category> listOfCat = new ArrayList<>();
+		List<Category> listOfSubCat = new ArrayList<>();
+		for (Category cat : listOfAllCat) {
+			if (cat.getCategoryType().equalsIgnoreCase("category")) {
+				listOfCat.add(cat);
+			} else {
+				listOfSubCat.add(cat);
+			}
+		}
 		model.addAttribute("listOfCat", listOfCat);
+		model.addAttribute("listOfSubCat", listOfSubCat);
 	}
 
 	@RequestMapping(value = "/saveProjectWork", method = RequestMethod.POST)
 	public String saveProjectWorkDetails(@Valid ProjectWorkDetails projectWorkDetails, BindingResult result,
 			ModelMap model) {
 
-		model.addAttribute("loggedinuser", authenticationTrustResolver.getPrincipal());
+		String userName = authenticationTrustResolver.getPrincipal();
+		User user = userService.findBySSO(userName);
+		projectWorkDetails.setUser_id(user.getId());
 		try {
 			String ticketId = Util.generateTicketId();
 			String documentId = ticketId + "_"
@@ -87,6 +101,7 @@ public class ProjectController {
 
 			projectWorkDetails.setDocument_upload_path(fileNameWithPathAfterUpload);
 			projectWorkDetails.setDocument_id(documentId);
+			projectWorkDetails.setUpload_datetime_stamp(Util.getCurrentTime());
 			projectWorkDetailsService.save(projectWorkDetails);
 			addModelAttr(model);
 

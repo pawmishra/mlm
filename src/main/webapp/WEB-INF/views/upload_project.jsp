@@ -126,9 +126,9 @@
 												<div class="form-group col-md-6">
 													<label for="organisation">Organization Name</label>
 													<div class="ui-select">
-														<form:select id="organisation" class="form-control"
+														<form:select required="required" id="organisation" class="form-control" 
 															name="organisation" path="organisation_id">
-
+															<form:option value="NONE" label="--- Select ---" />
 															<c:forEach items="${listOfOrg}" var="item">
 																<option value="${item.organisation_id}">${item.organisation_name}</option>
 															</c:forEach>
@@ -140,13 +140,13 @@
 												<div class="form-group col-md-6">
 													<label for="papertitle">Paper Title:</label>
 													<form:input type="text" class="form-control"
-														id="papertitle" name="paper_title"
+														id="papertitle" name="paper_title" required="required"
 														placeholder="Paper Title" path="paper_title" />
 												</div>
 												<div class="form-group col-md-6">
 													<label for="noofpages">Number of Pages:</label>
 													<form:input type="text" class="form-control" id="noofpages"
-														name="no_of_pages" placeholder="Number of Pages"
+														name="no_of_pages" required="required" placeholder="Number of Pages"
 														path="number_of_pages" />
 												</div>
 											</div>
@@ -156,7 +156,8 @@
 													<label for="subjectcategory">Subject Category:</label>
 													<div class="ui-select">
 														<form:select id="subjectcategory" class="form-control"
-															name="subject_category" path="subject_category_id">
+															name="subject_category" required="required" path="subject_category_id">
+															<form:option value="NONE" label="--- Select ---" />
 															<c:forEach items="${listOfCat}" var="item">
 																<option value="${item.category_id}">${item.categoryName}</option>
 															</c:forEach>
@@ -167,11 +168,13 @@
 													<label for="subsubjectcategory">Sub Subject
 														Category:</label>
 													<div class="ui-select">
-														<select id="subsubjectcategory" class="form-control"
-															name="sub_subject_category">
-															<option value="Organization1">Sub Subject
-																Category1</option>
-														</select>
+														<form:select id="subsubjectcategory" class="form-control"
+															name="sub_subject_category" required="required" path="sub_subject_category_id">
+															<form:option value="NONE" label="--- Select ---" />
+															<c:forEach items="${listOfSubCat}" var="item">
+																<option value="${item.category_id}">${item.categoryName}</option>
+															</c:forEach>
+														</form:select>
 													</div>
 												</div>
 											</div>
@@ -180,7 +183,7 @@
 													<label for="paperupload">Paper Upload:</label>
 													<div class="demo-section k-content">
 														<h4>Upload PDF</h4>
-														<form:input name="paper" id="paperupload" type="file"
+														<form:input name="paper" id="paperupload" type="file" required="required"
 															path="file" />
 														<div class="demo-hint">
 															You can only upload <strong>PDF</strong> files.

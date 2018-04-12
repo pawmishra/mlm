@@ -10,9 +10,11 @@ import javax.persistence.Id;
 import javax.persistence.OneToOne;
 import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.Parameter;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.javerian.erp.mlm.model.auth.User;
 
@@ -37,12 +39,20 @@ public class MemberDetails {
 	private String pan_number;
 	@Column
 	private String path_to_pan_card_image;
+
+	@Transient
+	MultipartFile filePanCard;
+
 	@Column
 	private String aadhar_number;
 	@Column
 	private String path_to_aadhar_front_image;
+	@Transient
+	MultipartFile fileAadharCardFront;
 	@Column
 	private String path_to_aadhar_back_image;
+	@Transient
+	MultipartFile fileAadharCardBack;
 
 	@OneToOne(mappedBy = "memberDetails", cascade = CascadeType.ALL)
 	private Address address;
@@ -146,4 +156,29 @@ public class MemberDetails {
 	public void setUser(User user) {
 		this.user = user;
 	}
+
+	public MultipartFile getFilePanCard() {
+		return filePanCard;
+	}
+
+	public void setFilePanCard(MultipartFile filePanCard) {
+		this.filePanCard = filePanCard;
+	}
+
+	public MultipartFile getFileAadharCardFront() {
+		return fileAadharCardFront;
+	}
+
+	public void setFileAadharCardFront(MultipartFile fileAadharCardFront) {
+		this.fileAadharCardFront = fileAadharCardFront;
+	}
+
+	public MultipartFile getFileAadharCardBack() {
+		return fileAadharCardBack;
+	}
+
+	public void setFileAadharCardBack(MultipartFile fileAadharCardBack) {
+		this.fileAadharCardBack = fileAadharCardBack;
+	}
+
 }

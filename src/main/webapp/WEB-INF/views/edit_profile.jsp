@@ -156,134 +156,134 @@
 										</div>
 										<h3>Personal information</h3>
 										<hr>
-										<form:form class="" action="update_user"
-											method="POST" modelAttribute="user">
-											
+										<form:form class="" enctype="multipart/form-data"
+											action="update_user" method="POST" modelAttribute="user">
+
 											<div class="form-row">
 												<div class="form-group col-md-6">
-													<label for="sponsorid">Sponsor Id:</label> 
+													<label for="sponsorid">Sponsor Id:</label>
 													<form:input type="text" class="form-control" id="sponsorid"
-														readonly="true" name="sponsor_id"
-														placeholder="Sponsor Id" path="sponser_id"/>
+														readonly="true" name="sponsor_id" placeholder="Sponsor Id"
+														path="sponser_id" />
 												</div>
 												<div class="form-group col-md-6">
-													<label for="sponsorid">Sponsor Name:</label> 
+													<label for="sponsorid">Sponsor Name:</label>
 													<form:input type="text" class="form-control" id="sponsorid"
 														readonly="true" name="sponsor_name"
-														placeholder="Sponsor Id" path="sponser_name"/>
+														placeholder="Sponsor Id" path="sponser_name" />
 												</div>
 											</div>
 											<div class="form-row">
 												<div class="form-group col-md-6">
-													<label for="userid">User Id:</label> 
-													<form:input type="text"
-														class="form-control" id="userid" readonly="true"
-														name="user_id" placeholder="User Id" path="id"/>
+													<label for="userid">User Id:</label>
+													<form:input type="text" class="form-control" id="userid"
+														readonly="true" name="user_id" placeholder="User Id"
+														path="id" />
 												</div>
 												<div class="form-group col-md-6">
 													<label for="name">First Name<span class="required">*</span>:
-													</label> 
+													</label>
 													<form:input type="text" class="form-control" id="name"
 														name="first_name" placeholder="Name" required="required"
-														path="firstName"/>
+														path="firstName" />
 												</div>
 											</div>
 
 											<div class="form-row">
 												<div class="form-group col-md-6">
 													<label for="name">Last Name<span class="required">*</span>:
-													</label> 
+													</label>
 													<form:input type="text" class="form-control" id="name"
 														name="last_name" placeholder="Name" required="required"
-														path="lastName"/>
+														path="lastName" />
 												</div>
 												<div class="form-group col-md-6">
 													<label for="mobilenumber">Mobile Number<span
 														class="required">*</span>:
-													</label> 
-													<form:input type="text" class="form-control" id="mobilenumber"
-														name="mobile_number" placeholder="Mobile Number"
-														required="required" path="MemberDetails.Address.mobile"/>
+													</label>
+													<form:input type="text" class="form-control"
+														id="mobilenumber" name="mobile_number"
+														placeholder="Mobile Number" required="required"
+														path="MemberDetails.Address.mobile" />
 												</div>
 
 											</div>
 											<div class="form-row">
 												<div class="form-group col-md-6">
 													<label for="mobilenumber">Alternate Mobile Number:</label>
-													<form:input type="text" class="form-control" id="mobilenumber"
-														name="alternate_mobile_number" placeholder="Mobile Number"
-														path="MemberDetails.Address.altContactNo"/>
+													<form:input type="text" class="form-control"
+														id="mobilenumber" name="alternate_mobile_number"
+														placeholder="Mobile Number"
+														path="MemberDetails.Address.altContactNo" />
 												</div>
 												<div class="form-group col-md-6">
 													<label for="dob">Date Of Birth<span
 														class="required">*</span>:
-													</label> 
+													</label>
 													<form:input type="date" class="form-control" id="dob"
-														name="dob" required="required" path="MemberDetails.dob"/>
+														name="dob" required="required" path="MemberDetails.dob" />
 												</div>
 											</div>
 											<div class="form-row">
 												<div class="form-group col-md-6">
 													<label for="gender">Gender<span class="required">*</span>:
-													</label><br> 
-													<label class="radio-inline"> 
-													<form:radiobutton path="MemberDetails.gender" value="M"/>Male
-													</label> 
-													<label class="radio-inline"> 
-													<form:radiobutton path="MemberDetails.gender" value="F"/>Female
+													</label><br> <label class="radio-inline"> <form:radiobutton
+															path="MemberDetails.gender" value="M" />Male
+													</label> <label class="radio-inline"> <form:radiobutton
+															path="MemberDetails.gender" value="F" />Female
 													</label>
 												</div>
 
 												<div class="form-group col-md-6">
 													<label for="email">Email<span class="required">*</span>:
-													</label> 
+													</label>
 													<form:input type="text" class="form-control" id="email"
 														name="email" placeholder="Email" required="required"
-														path="email"/>
+														path="email" />
 												</div>
 											</div>
 											<br>
 											<div class="form-row">
 												<div class="form-group col-md-6">
 													<label for="panno">Pan Number<span class="required">*</span>:
-													</label> 
+													</label>
 													<form:input type="text" class="form-control" id="panno"
 														name="pan_no" placeholder="Pan Number" required="required"
-														path="MemberDetails.pan_number"/>
+														path="MemberDetails.pan_number" />
 
 													<label for="pancardupload">Upload Pan Card:</label>
 													<div class="demo-section k-content">
 														<form:input name="pancard" id="pancardupload" type="file"
-															required="required" path="MemberDetails.path_to_pan_card_image"/>
+															required="required" path="MemberDetails.filePanCard" />
 														<div class="demo-hint">
 															You can only upload <strong>JPG</strong> files.
 														</div>
 													</div>
 												</div>
-
 											</div>
 											<div class="form-row">
-
 												<div class="form-group col-md-6">
 													<label for="aadharno">Aadhar Number<span
 														class="required">*</span>:
-													</label> 
+													</label>
 													<form:input type="text" class="form-control" id="aadharno"
 														name="aadhar_no" placeholder="Aadhar Number"
-														required="required" path="MemberDetails.aadhar_number"/>
+														required="required" path="MemberDetails.aadhar_number" />
 													<div class="form-row">
 														<label for="aadharnoupload">Upload front:</label>
 														<div class="demo-section k-content">
-															<form:input name="aadharcard" id="aadharnoupload" type="file"
-																accept=".png, .jpg," required="required" path="MemberDetails.path_to_aadhar_front_image"/>
+															<form:input name="aadharcard" id="aadharnoupload"
+																type="file" accept=".png, .jpg," required="required"
+																path="MemberDetails.fileAadharCardFront" />
 															<div class="demo-hint">
 																You can only upload <strong>JPG</strong> files.
 															</div>
 														</div>
 														<label for="aadharnoupload">Upload back:</label>
 														<div class="demo-section k-content">
-															<form:input name="aadharcard" id="aadharnoupload" type="file"
-																accept=".png, .jpg," required="required" path="MemberDetails.path_to_aadhar_back_image"/>
+															<form:input name="aadharcard" id="aadharnoupload"
+																type="file" accept=".png, .jpg," required="required"
+																path="MemberDetails.fileAadharCardBack" />
 															<div class="demo-hint">
 																You can only upload <strong>JPG</strong> files.
 															</div>
@@ -299,18 +299,20 @@
 													<div class="form-group col-md-6">
 														<label for="housenumber">House Number<span
 															class="required">*</span>:
-														</label> 
-														<form:input type="text" class="form-control" id="housenumber"
-															name="house_number" placeholder="House Number"
-															required="required" path="MemberDetails.Address.houseNo"/>
+														</label>
+														<form:input type="text" class="form-control"
+															id="housenumber" name="house_number"
+															placeholder="House Number" required="required"
+															path="MemberDetails.Address.houseNo" />
 													</div>
 													<div class="form-group col-md-6">
 														<label for="streetname">Street/Locality Name<span
 															class="required">*</span>:
-														</label> 
-														<form:input type="text" class="form-control" id="streetname"
-															name="street_locality" placeholder="Street Name"
-															required="required" path="MemberDetails.Address.streetName"/>
+														</label>
+														<form:input type="text" class="form-control"
+															id="streetname" name="street_locality"
+															placeholder="Street Name" required="required"
+															path="MemberDetails.Address.streetName" />
 													</div>
 												</div>
 												<div class="form-group">
@@ -318,10 +320,10 @@
 
 														<div class="form-group col-md-6">
 															<label for="city">City<span class="required">*</span>:
-															</label> 
+															</label>
 															<form:input type="text" class="form-control" id="city"
 																name="city" placeholder="City" required="required"
-																path="MemberDetails.Address.city"/>
+																path="MemberDetails.Address.city" />
 														</div>
 													</div>
 													<div class="form-row">
@@ -330,30 +332,72 @@
 															<label for="state">State<span class="required">*</span>:
 															</label>
 															<div class="ui-select">
-																<form:select id="state" name="state" class="form-control"
-																	required="required" path="MemberDetails.Address.state"/>
-																	<option value="Organization1">State</option>
+																<form:select id="state" name="state"
+																	class="form-control" required="required"
+																	path="MemberDetails.Address.state">
+																	<option value="">State</option>
+																	<option value="ANDAMAN & NICOBAR ISLANDS">ANDAMAN
+																		& NICOBAR ISLANDS</option>
+																	<option value="ANDHRA PRADESH">ANDHRA PRADESH</option>
+																	<option value="ARUNACHAL PRADESH">ARUNACHAL
+																		PRADESH</option>
+																	<option value="ASSAM">ASSAM</option>
+																	<option value="BIHAR">BIHAR</option>
+																	<option value="CHANDIGARH">CHANDIGARH</option>
+																	<option value="CHHATTISGARH">CHHATTISGARH</option>
+																	<option value="DADRA & NAGAR HAVELI">DADRA &
+																		NAGAR HAVELI</option>
+																	<option value="DAMAN & DIU">DAMAN & DIU</option>
+																	<option value="DELHI">DELHI</option>
+																	<option value="GOA">GOA</option>
+																	<option value="GUJARAT">GUJARAT</option>
+																	<option value="HARYANA">HARYANA</option>
+																	<option value="HIMACHAL PRADESH">HIMACHAL
+																		PRADESH</option>
+																	<option value="JAMMU & KASHMIR">JAMMU &
+																		KASHMIR</option>
+																	<option value="JHARKHAND">JHARKHAND</option>
+																	<option value="KARNATAKA">KARNATAKA</option>
+																	<option value="KERALA">KERALA</option>
+																	<option value="LAKSHADWEEP">LAKSHADWEEP</option>
+																	<option value="MADHYA PRADESH">MADHYA PRADESH</option>
+																	<option value="MAHARASHTRA">MAHARASHTRA</option>
+																	<option value="MANIPUR">MANIPUR</option>
+																	<option value="MEGHALAYA">MEGHALAYA</option>
+																	<option value="MIZORAM">MIZORAM</option>
+																	<option value="NAGALAND">NAGALAND</option>
+																	<option value="ORISSA">ORISSA</option>
+																	<option value="PONDICHERRY">PONDICHERRY</option>
+																	<option value="PUNJAB">PUNJAB</option>
+																	<option value="RAJASTHAN">RAJASTHAN</option>
+																	<option value="SIKKIM">SIKKIM</option>
+																	<option value="TAMIL NADU">TAMIL NADU</option>
+																	<option value="TELANGANA">TELANGANA</option>
+																	<option value="TRIPURA">TRIPURA</option>
+																	<option value="UTTAR PRADESH">UTTAR PRADESH</option>
+																	<option value="UTTARAKHAND">UTTARAKHAND</option>
+																	<option value="WEST BENGAL">WEST BENGAL</option>
 
-																</select>
+																</form:select>
 															</div>
 														</div>
 														<div class="form-group col-md-6">
 															<label for="country">Country<span
 																class="required">*</span>:
-															</label> 
+															</label>
 															<form:input type="text" class="form-control" id="country"
 																name="country" placeholder="Pincode" required="required"
-																path="MemberDetails.Address.country"/>
+																path="MemberDetails.Address.country" />
 														</div>
 													</div>
 													<div class="form-row">
 														<div class="form-group col-md-6">
 															<label for="pincode">Pincode<span
 																class="required">*</span>:
-															</label> 
+															</label>
 															<form:input type="text" class="form-control" id="pincode"
 																name="pincode" placeholder="Pincode" required="required"
-																path="MemberDetails.Address.pincode"/>
+																path="MemberDetails.Address.pincode" />
 														</div>
 
 													</div>

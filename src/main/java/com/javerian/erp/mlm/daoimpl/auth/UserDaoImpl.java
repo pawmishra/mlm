@@ -67,7 +67,7 @@ public class UserDaoImpl extends AbstractDao<Long, User> implements UserDao {
 
 	@Override
 	public void updateUser(User user) {
-		getSession().saveOrUpdate(user);
+		getSession().merge(user);
 	}
 
 	@SuppressWarnings({ "rawtypes", "unchecked" })

@@ -1,11 +1,14 @@
 package com.javerian.erp.mlm.controller;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.HashSet;
 import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.util.FileCopyUtils;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -14,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import com.javerian.erp.mlm.model.auth.User;
 import com.javerian.erp.mlm.model.auth.UserProfile;
 import com.javerian.erp.mlm.service.auth.UserService;
+import com.javerian.erp.mlm.util.Config;
 import com.javerian.erp.mlm.vo.ChangePasswordVO;
 
 @Controller
@@ -31,22 +35,21 @@ public class UserController {
 		return "add_newuser";
 	}
 
+	private User getLoggedInUser() {
+		String userName = authenticationTrustResolver.getPrincipal();
+		return userService.findBySSO(userName);
+	}
+
 	@ModelAttribute
 	public void addModelAttr(ModelMap model) {
 
-		String userName = authenticationTrustResolver.getPrincipal();
-		model.addAttribute("loggedinuser", userName);
-
-		User user = new User();
-		user.setSponser_id(1L);
-		user.setSponser_name(userName);
-		model.addAttribute(user);
+		User userObjOfLoggedInUser = getLoggedInUser();
+		model.addAttribute("loggedinuser", userObjOfLoggedInUser.getUsername());
+		model.addAttribute(userObjOfLoggedInUser);
 	}
 
 	@RequestMapping(value = "/save_user", method = RequestMethod.POST)
 	public String addOrganisation(@ModelAttribute User user, BindingResult result, ModelMap model) {
-
-		model.addAttribute("loggedinuser", authenticationTrustResolver.getPrincipal());
 
 		user.setUsername(user.getFirstName().toLowerCase() + "_" + user.getLastName().toLowerCase());
 		user.setPassword("12345");
@@ -82,12 +85,41 @@ public class UserController {
 
 	@RequestMapping(value = { "/edit_profile" }, method = RequestMethod.GET)
 	public String editprofile(ModelMap model) {
-		model.addAttribute("loggedinuser", authenticationTrustResolver.getPrincipal());
+
+		addModelAttr(model);
 		return "edit_profile";
 	}
 
 	@RequestMapping(value = "/update_user", method = RequestMethod.POST)
 	public String updateUser(@ModelAttribute User user, BindingResult result, ModelMap model) {
+
+		User userObjOfLoggedInUser = getLoggedInUser();
+
+		try {
+			String panFileNameWithPathAfterUpload = Config.UPLOAD_LOCATION + userObjOfLoggedInUser.getId() + "_"
+					+ user.getMemberDetails().getFilePanCard().getOriginalFilename();
+			FileCopyUtils.copy(user.getMemberDetails().getFilePanCard().getBytes(),
+					new File(panFileNameWithPathAfterUpload));
+			user.getMemberDetails().setPath_to_pan_card_image(panFileNameWithPathAfterUpload);
+
+			String aadharFileNameWithPathAfterUpload_Front = Config.UPLOAD_LOCATION + userObjOfLoggedInUser.getId()
+					+ "_" + user.getMemberDetails().getFileAadharCardFront().getOriginalFilename();
+			FileCopyUtils.copy(user.getMemberDetails().getFilePanCard().getBytes(),
+					new File(aadharFileNameWithPathAfterUpload_Front));
+			user.getMemberDetails().setPath_to_aadhar_front_image(aadharFileNameWithPathAfterUpload_Front);
+
+			String aadharFileNameWithPathAfterUpload_Back = Config.UPLOAD_LOCATION + userObjOfLoggedInUser.getId() + "_"
+					+ user.getMemberDetails().getFileAadharCardBack().getOriginalFilename();
+			FileCopyUtils.copy(user.getMemberDetails().getFilePanCard().getBytes(),
+					new File(aadharFileNameWithPathAfterUpload_Back));
+			user.getMemberDetails().setPath_to_aadhar_back_image(aadharFileNameWithPathAfterUpload_Back);
+
+			userService.updateUser(user);
+			addModelAttr(model);
+
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 
 		userService.updateUser(user);
 		addModelAttr(model);
@@ -97,11 +129,8 @@ public class UserController {
 
 	@RequestMapping(value = { "/change_password" }, method = RequestMethod.GET)
 	public String changepassword(ModelMap model) {
-		model.addAttribute("loggedinuser", authenticationTrustResolver.getPrincipal());
 
-		String userName = authenticationTrustResolver.getPrincipal();
-		model.addAttribute("loggedinuser", userName);
-
+		addModelAttr(model);
 		model.addAttribute(new ChangePasswordVO());
 		return "change_password";
 	}

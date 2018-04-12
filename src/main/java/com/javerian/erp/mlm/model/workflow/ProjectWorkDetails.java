@@ -1,5 +1,7 @@
 package com.javerian.erp.mlm.model.workflow;
 
+import java.sql.Timestamp;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -33,6 +35,10 @@ public class ProjectWorkDetails {
 	private String document_upload_path;
 	@Column
 	private String document_id;
+	@Column
+	private Timestamp upload_datetime_stamp;
+	@Column
+	private Long user_id;
 
 	@Transient
 	MultipartFile file;
@@ -117,4 +123,19 @@ public class ProjectWorkDetails {
 		this.document_id = document_id;
 	}
 
+	public Timestamp getUpload_datetime_stamp() {
+		return upload_datetime_stamp;
+	}
+
+	public void setUpload_datetime_stamp(Timestamp upload_datetime_stamp) {
+		this.upload_datetime_stamp = upload_datetime_stamp;
+	}
+
+	public Long getUser_id() {
+		return user_id;
+	}
+
+	public void setUser_id(Long user_id) {
+		this.user_id = user_id;
+	}
 }
