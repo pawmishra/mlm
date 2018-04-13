@@ -1,7 +1,10 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<!DOCTYPE html>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+	
+
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
@@ -18,21 +21,22 @@
 	src="https://cdn.datatables.net/1.10.16/js/dataTables.bootstrap.min.js"></script>
 <!-- <script src="http://code.jquery.com/ui/1.11.2/jquery-ui.min.js"
 	type="text/javascript"></script> -->
-	 
+
 <!-- /static/bootstrap/css/bootstrap.min.css' -->
 
 
 <link href="<c:url value='/static/plugins/morris/morris.css' />"
 	rel="stylesheet" type="text/css" />
-<link 
+<link
 	href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css"
 	rel="stylesheet" />
-<link href="<c:url value='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css' />"
+<link
+	href="<c:url value='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css' />"
 	rel="stylesheet" type="text/css" />
 <!-- <link
 	href="https://cdn.datatables.net/1.10.16/css/dataTables.bootstrap.min.css"
 	rel="stylesheet" type="text/css" />	 -->
-	
+
 <!-- FontAwesome 4.3.0 -->
 <link
 	href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css"
@@ -191,121 +195,86 @@
 										<!-- edit form column -->
 										<div class="col-md-9 personal-info">
 
-								       <form>
-								         
-								          <div class="form-row">
-											    <div class="form-group col-md-6">
-											      <label for="problemtype">Problem Type:</label>
-											     <!--  <textarea class="form-control" aria-label="With textarea" ></textarea> -->
-											      <input type="text" class="form-control" id="problemtype" placeholder="Problem Type">
-											    </div>
-												
-								          </div>
-								           <div class="form-group">
-											 <div class="buttons col-md-8"><br>
-									              <input type="submit" class="btn btn-primary" value="Add">
-									              <span></span>
-									              <input type="reset" class="btn btn-default" value="Cancel">
-									            <br><br></div>
-												</div>
-								          </div>
-								        </form>
-										</div>
-									</div>
+											<form:form action="save_problemtype" method="POST" modelAttribute="helpDeskProblemCategory">
 
+												<div class="form-row">
+													<div class="form-group col-md-6">
+														<label for="problemtype">Problem Type:</label>
+														<!--  <textarea class="form-control" aria-label="With textarea" ></textarea> -->
+														<form:input type="text" class="form-control"
+															id="problemtype" name="problem_category"
+															placeholder="Problem Type" required="required" path="problem_category"/>
+													</div>
+
+												</div>
+												<div class="form-group">
+													<div class="buttons col-md-8">
+														<br> <input type="submit" class="btn btn-primary"
+															value="Add"> <span></span> <input type="reset"
+															class="btn btn-default" value="Cancel"> <br>
+														<br>
+													</div>
+												</div>
+											</form:form>
+										</div>
+								
+									</div>
 								</div>
+
 							</div>
-							
-							<!-- /.box-header -->
-							<div class="box-body">
-								<!-- <table id="tbl_data" class="table table-striped table-bordered"
+						</div>
+
+						<!-- /.box-header -->
+						<div class="box-body">
+							<!-- <table id="tbl_data" class="table table-striped table-bordered"
 									style="width: 100%"> -->
 
-								<table class="display dataTable no-footer" border="1"
-									style="width: 100%;" id="tbl_data" role="grid"
-									aria-describedby="tbl_data_info">
-									<thead>
-										<tr
-											style="background-color: #0f2a76; text-align: center; color: white"
-											role="row">
-											<th class="sorting_desc" tabindex="0"
-												aria-controls="tbl_data" rowspan="1" colspan="1"
-												aria-label="Name: activate to sort column ascending"
-												style="width: 32px;" aria-sort="descending">S.no</th>
-											<th class="sorting_desc" tabindex="0"
-												aria-controls="tbl_data" rowspan="1" colspan="1"
-												aria-label="Position: activate to sort column ascending"
-												style="width: 32px;" aria-sort="descending">Problem Type</th>
-										    
-										</tr>
-									</thead>
+							<table class="display dataTable no-footer" border="1"
+								style="width: 100%;" id="tbl_data" role="grid"
+								aria-describedby="tbl_data_info">
+								<thead>
+									<tr
+										style="background-color: #0f2a76; text-align: center; color: white"
+										role="row">
+										<th class="sorting_desc" tabindex="0" aria-controls="tbl_data"
+											rowspan="1" colspan="1"
+											aria-label="Name: activate to sort column ascending"
+											style="width: 32px;" aria-sort="descending">S.no</th>
+										<th class="sorting_desc" tabindex="0" aria-controls="tbl_data"
+											rowspan="1" colspan="1"
+											aria-label="Position: activate to sort column ascending"
+											style="width: 32px;" aria-sort="descending">Problem Type</th>
+
+									</tr>
+								</thead>
 
 
 
 
-									<tbody>
+								<tbody>
+									<c:forEach items="${listOfHelpDeskProblemCategory}" var="item">
 										<tr>
-											<td>Tiger Nixon</td>
-											<td>System Architect</td>
-											
+											<td>${item.hd_category_id}</td>
+											<td>${item.problem_category}</td>
 										</tr>
-										<tr>
-											<td>Garrett Winters</td>
-											<td>Accountant</td>
-											
-										</tr>
-										<tr>
-											<td>Ashton Cox</td>
-											<td>Junior Technical Author</td>
-											
-										</tr>
-										<tr>
-											<td>Cedric Kelly</td>
-											<td>Senior Javascript Developer</td>
-											
-										</tr>
-										<tr>
-											<td>Airi Satou</td>
-											<td>Accountant</td>
-											
-										</tr>
-										<tr>
-											<td>Brielle Williamson</td>
-											<td>Integration Specialist</td>
-										    
-										</tr>
-										<tr>
-											<td>Herrod Chandler</td>
-											<td>Sales Assistant</td>
-											
-										</tr>
-										<tr>
-											<td>Rhona Davidson</td>
-											<td>Integration Specialist</td>
-											
-										</tr>
-										<tr>
-											<td>Colleen Hurst</td>
-											<td>Javascript Developer</td>
-											
-										</tr>
+									</c:forEach>
 
-									</tbody>
-								</table>
-							</div>
-							<!-- /.box-body -->
+								</tbody>
+							</table>
 						</div>
-						<!-- /.box -->
-
-						
+						<!-- /.box-body -->
 					</div>
-					<!-- /.col -->
+					<!-- /.box -->
+
+
 				</div>
-				<!-- /.row -->
-			</section>
-			<!-- /.content -->
+				<!-- /.col -->
 		</div>
-		<!-- /.content-wrapper -->
+		<!-- /.row -->
+		</section>
+		<!-- /.content -->
+	</div>
+	<!-- /.content-wrapper -->
 
 	</div>
 	<!-- ./wrapper -->

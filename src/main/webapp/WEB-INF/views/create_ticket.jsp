@@ -1,7 +1,9 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<!DOCTYPE html>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
@@ -80,82 +82,93 @@
 		<div class="content-wrapper">
 			<!-- Content Header (Page header) -->
 			<section class="content-header">
-				<h1>Create Ticket</h1>
-				<ol class="breadcrumb">
-					<li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-					<li><a href="#">Dashboard</a></li>
-					<li class="active">Create Ticket</li>
-				</ol>
+			<h1>Create Ticket</h1>
+			<ol class="breadcrumb">
+				<li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+				<li><a href="#">Dashboard</a></li>
+				<li class="active">Create Ticket</li>
+			</ol>
 			</section>
 
 			<!-- Main content -->
 			<section class="content">
-				<div class="row">
-					<!-- left column -->
-					<div class="col-md-12">
-						<!-- general form elements -->
-						<div class="box box-primary">
-							<div class="box-header">
-								<div class="container">
-									<h1>Create Ticket</h1>
-									<hr>
-									<div class="row">
-										<!-- left column -->
+			<div class="row">
+				<!-- left column -->
+				<div class="col-md-12">
+					<!-- general form elements -->
+					<div class="box box-primary">
+						<div class="box-header">
+							<div class="container">
+								<h1>Create Ticket</h1>
+								<hr>
+								<div class="row">
+									<!-- left column -->
 
-										<!-- edit form column -->
-										<div class="col-md-9 personal-info">
+									<!-- edit form column -->
+									<div class="col-md-9 personal-info">
 
 
-											<form>
-												<div class="form-row">
-													<div class="form-group col-md-6">
-														<label for="ticketid">Ticket Id</label> <input type="text"
-															class="form-control" id="ticketid"
-															placeholder="Ticket Id" readonly="readonly">
+										<form:form action="saveHDTicket" method="POST"
+											modelAttribute="helpDeskTicket">
+											<div class="form-row">
+												<div class="form-group col-md-6">
+													<label for="ticketid">Ticket Id</label>
+													<form:input type="text" class="form-control" id="ticketid"
+														placeholder="Ticket Id" readonly="true" name="ticket_id"
+														path="ticket_id" />
+												</div>
+												<div class="form-group col-md-6">
+													<label for="ticketid">Status:</label>
+													<form:input type="text" class="form-control" id="status"
+														placeholder="Status" readonly="true"
+														path="ticket_resolution_status"
+														name="ticket_resolution_status" />
+												</div>
+
+											</div>
+											<div class="form-row">
+												<div class="form-group col-md-6">
+													<label for="problemtype">Problem Type:</label>
+													<div class="ui-select">
+														
+														<form:select id="problem_type" class="form-control"
+															name="problem_type" required="required" path="problem_type">
+															<form:option value="NONE" label="--- Select ---" />
+															<c:forEach items="${listOfProblemCat}" var="item">
+																<option value="${item.hd_category_id}">${item.problem_category}</option>
+															</c:forEach>
+														</form:select>
+
 													</div>
-													<div class="form-group col-md-6">
-														<label for="ticketid">Status:</label> <input type="text"
-															class="form-control" id="status" placeholder="Status"
-															readonly="readonly">
-													</div>
+												</div>
+												<div class="form-group col-md-6">
+													<label for="ticketid">Problem Description:</label>
+													<form:textarea class="form-control"
+														aria-label="With textarea" rows="5" name="description"
+														path="description" />
 
 												</div>
-												<div class="form-row">
-													<div class="form-group col-md-6">
-														<label for="problemtype">Problem Type:</label>
-														<div class="ui-select">
-															<select id="problemtype" class="form-control">
-																<option value="Organization1">Problem Type1</option>
 
-															</select> 
-														</div>
-													</div>
-													<div class="form-group col-md-6">
-														<label for="ticketid">Problem Description:</label>
-														<textarea class="form-control" aria-label="With textarea"
-															rows="5"></textarea>
-
-													</div>
-
+											</div>
+											<div class="form-group">
+												<div class="buttons col-md-8">
+													<br> <input type="submit" class="btn btn-primary"
+														value="Create"> <span></span> <input type="reset"
+														class="btn btn-default" value="Cancel"> <br>
+													<br>
 												</div>
-												  <div class="form-group">
-									           <div class="buttons col-md-8"><br>
-									              <input type="submit" class="btn btn-primary" value="Create">
-									              <span></span>
-									              <input type="reset" class="btn btn-default" value="Cancel">
-									            <br><br></div>
-									          </div>
-											</form>
-										</div>
+											</div>
+										</form:form>
 									</div>
-
 								</div>
 
 							</div>
+
 						</div>
 					</div>
 				</div>
-				<!-- /.box-header -->
+			</div>
+			<!-- /.box-header -->
 		</div>
 		<!-- /.box -->
 		<br> <br> <br>

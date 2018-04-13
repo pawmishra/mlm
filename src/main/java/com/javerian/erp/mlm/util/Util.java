@@ -15,7 +15,7 @@ public class Util {
 		return ts;
 	}
 
-	public static String generateTicketId() {
+	public static String generateTicketId(String requestString) {
 
 		Date date = new Date();
 		Timestamp ts = new Timestamp(date.getTime());
@@ -25,7 +25,7 @@ public class Util {
 		dateTime = StringUtils.delete(dateTime, ":");
 		dateTime = StringUtils.delete(dateTime, ".");
 		dateTime = StringUtils.delete(dateTime, "-");
-		return "REQ" + dateTime;
+		return requestString + dateTime;
 	}
 
 	public static String getFileNameWithoutExt(String fileName) {

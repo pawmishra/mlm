@@ -92,7 +92,7 @@ public class ProjectController {
 		User user = userService.findBySSO(userName);
 		projectWorkDetails.setUser_id(user.getId());
 		try {
-			String ticketId = Util.generateTicketId();
+			String ticketId = Util.generateTicketId("REQ");
 			String documentId = ticketId + "_"
 					+ Util.getFileNameWithoutExt(projectWorkDetails.getFile().getOriginalFilename());
 			String extOfFile = StringUtils.getFilenameExtension(projectWorkDetails.getFile().getOriginalFilename());

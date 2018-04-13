@@ -44,6 +44,8 @@ public class HelpDeskProblemCategoryController {
 
 		System.out.println(helpDeskProblemCategory);
 
+		helpDeskProblemCategoryService.save(helpDeskProblemCategory);
+
 		addModelAttr(model);
 
 		return "add_problemtype";

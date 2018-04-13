@@ -252,12 +252,6 @@ public class AppController {
 		return "review_project";
 	}
 
-	@RequestMapping(value = { "/create_ticket" }, method = RequestMethod.GET)
-	public String createticket(ModelMap model) {
-		model.addAttribute("loggedinuser", authenticationTrustResolver.getPrincipal());
-		return "create_ticket";
-	}
-
 	@RequestMapping(value = { "/view_tickets" }, method = RequestMethod.GET)
 	public String viewtickets(ModelMap model) {
 		model.addAttribute("loggedinuser", authenticationTrustResolver.getPrincipal());
