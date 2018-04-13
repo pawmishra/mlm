@@ -45,6 +45,17 @@ public class UserController {
 
 		User userObjOfLoggedInUser = getLoggedInUser();
 		model.addAttribute("loggedinuser", userObjOfLoggedInUser.getUsername());
+
+		User user = new User();
+		user.setSponser_id(userObjOfLoggedInUser.getId());
+		user.setSponser_name(userObjOfLoggedInUser.getSponser_name());
+		model.addAttribute(user);
+	}
+
+	public void addModelAttrForEditProfile(ModelMap model) {
+
+		User userObjOfLoggedInUser = getLoggedInUser();
+		model.addAttribute("loggedinuser", userObjOfLoggedInUser.getUsername());
 		model.addAttribute(userObjOfLoggedInUser);
 	}
 
@@ -86,7 +97,7 @@ public class UserController {
 	@RequestMapping(value = { "/edit_profile" }, method = RequestMethod.GET)
 	public String editprofile(ModelMap model) {
 
-		addModelAttr(model);
+		addModelAttrForEditProfile(model);
 		return "edit_profile";
 	}
 
@@ -115,7 +126,7 @@ public class UserController {
 			user.getMemberDetails().setPath_to_aadhar_back_image(aadharFileNameWithPathAfterUpload_Back);
 
 			userService.updateUser(user);
-			addModelAttr(model);
+			addModelAttrForEditProfile(model);
 
 		} catch (IOException e) {
 			e.printStackTrace();

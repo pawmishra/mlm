@@ -74,7 +74,7 @@ public class UserDaoImpl extends AbstractDao<Long, User> implements UserDao {
 	@Override
 	public List<User> getChildOfSponserById(Long id) {
 
-		Query query = getSession().createQuery("from User where sponser_id = :user_id ");
+		Query query = getSession().createQuery("from User where sponser_id = :user_id");
 		query.setParameter("user_id", id);
 		List<User> list = query.list();
 		return list;

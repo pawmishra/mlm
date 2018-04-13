@@ -33,7 +33,7 @@ public class UserServiceImpl implements UserService {
 
 	public void saveUser(User user) {
 
-		User sponserObj = findById(user.getId());
+		User sponserObj = findById(user.getSponser_id());
 
 		int i = 1;
 		User obj = findBySSO(user.getUsername());
@@ -48,10 +48,10 @@ public class UserServiceImpl implements UserService {
 
 			for (User childObj : childOfSponser) {
 				if (user.getPosition_left_or_right().equalsIgnoreCase("Left")
-						&& childObj.getPosition_left_or_right().equalsIgnoreCase(user.getPosition_left_or_right())) {
+						&& user.getPosition_left_or_right().equalsIgnoreCase(childObj.getPosition_left_or_right())) {
 					user.setPosition_left_or_right("Right");
 				} else if (user.getPosition_left_or_right().equalsIgnoreCase("Right")
-						&& childObj.getPosition_left_or_right().equalsIgnoreCase(user.getPosition_left_or_right())) {
+						&& user.getPosition_left_or_right().equalsIgnoreCase(childObj.getPosition_left_or_right())) {
 					user.setPosition_left_or_right("Left");
 				}
 			}
