@@ -270,34 +270,10 @@ public class AppController {
 		return "Member_chain";
 	}
 
-	@RequestMapping(value = { "/add_pageamount" }, method = RequestMethod.GET)
-	public String addpageamount(ModelMap model) {
-		model.addAttribute("loggedinuser", authenticationTrustResolver.getPrincipal());
-		return "add_pageamount";
-	}
-
-	@RequestMapping(value = { "/add_problemtype" }, method = RequestMethod.GET)
-	public String addproblemtype(ModelMap model) {
-		model.addAttribute("loggedinuser", authenticationTrustResolver.getPrincipal());
-		return "add_problemtype";
-	}
-
 	@RequestMapping(value = { "/register" }, method = RequestMethod.GET)
 	public String registerNewUser(ModelMap model) {
 		model.addAttribute("loggedinuser", authenticationTrustResolver.getPrincipal());
 		return "register";
-	}
-
-	@RequestMapping(value = { "/add_questions" }, method = RequestMethod.GET)
-	public String addquestions(ModelMap model) {
-		model.addAttribute("loggedinuser", authenticationTrustResolver.getPrincipal());
-		return "add_questions";
-	}
-
-	@RequestMapping(value = { "/latest_news" }, method = RequestMethod.GET)
-	public String latestnews(ModelMap model) {
-		model.addAttribute("loggedinuser", authenticationTrustResolver.getPrincipal());
-		return "latest_news";
 	}
 
 	@RequestMapping(value = { "/withdraw_balance" }, method = RequestMethod.GET)

@@ -169,11 +169,11 @@
 		<div class="content-wrapper">
 			<!-- Content Header (Page header) -->
 			<section class="content-header">
-			<h1>Add Questions</h1>
+			<h1>View Members</h1>
 			<ol class="breadcrumb">
 				<li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
 				<li><a href="#">Dashboard</a></li>
-				<li class="active">Add Questions</li>
+				<li class="active">View Members</li>
 			</ol>
 			</section>
 
@@ -195,31 +195,29 @@
 									<div class="col-md-9 personal-info">
 
 										<form:form class="form-horizontal" action="save_org"
-											method="POST" modelAttribute="organisation" />
-										<div class="form-row">
-											<div class="form-group col-md-6">
-												<label for="problemid">Project Id:</label>
+											method="POST" modelAttribute="organisation">
 
-												<form:input type="text" class="form-control" id="problemid"
-													name="project_id" placeholder="Project Id" path="project_id"/>
-											</div>
-											<div class="form-group col-md-6">
-												<label for="question">Question:</label>
-												<form:textarea class="form-control" id="question"
-													aria-label="With textarea" name="survey_questions" path="survey_questions"/>
+											<div class="form-row">
+												<div class="form-group col-md-6">
+													<label for="organizationname">Organization Name:</label>
+													<form:input type="text" class="form-control"
+														id="organizationname" name="organization_name"
+														placeholder="Organization Name" path="organisation_name" />
+												</div>
 
 											</div>
-										</div>
-										<div class="form-group">
-											<div class="buttons col-md-8">
-												<br> <input type="submit" class="btn btn-primary"
-													value="Add"> <span></span> <input type="reset"
-													class="btn btn-default" value="Cancel"> <br>
-												<br>
+
+											<div class="form-group">
+
+												<div class="buttons col-md-8">
+													<br> <input type="submit" class="btn btn-primary"
+														value="Add"> <span></span> <input type="reset"
+														class="btn btn-default" value="Cancel"> <br>
+													<br>
+												</div>
 											</div>
-										</div>
+										</form:form>
 									</div>
-									<form:form />
 								</div>
 							</div>
 
@@ -245,23 +243,19 @@
 									<th class="sorting_desc" tabindex="0" aria-controls="tbl_data"
 										rowspan="1" colspan="1"
 										aria-label="Position: activate to sort column ascending"
-										style="width: 32px;" aria-sort="descending">Problem Id</th>
-									<th class="sorting_desc" tabindex="0" aria-controls="tbl_data"
-										rowspan="1" colspan="1"
-										aria-label="Position: activate to sort column ascending"
-										style="width: 32px;" aria-sort="descending">Question</th>
+										style="width: 32px;" aria-sort="descending">Organization
+										Name</th>
 								</tr>
 							</thead>
-
-
-
-
 							<tbody>
-								<c:forEach items="${listOfQuestion}" var="question">
+								<!-- <tr>
+									<td>Tiger Nixon</td>
+									<td>System Architect</td>
+								</tr> -->
+								<c:forEach items="${listOfOrg}" var="item">
     								<tr>
-										<td>${question.question_id}</td>
-										<td>${question.project_id}</td>
-										<td>${question.survey_questions}</td>
+										<td>${item.organisation_id}</td>
+										<td>${item.organisation_name}</td>
 									</tr>
 								</c:forEach>
 							</tbody>

@@ -14,9 +14,9 @@ public class Question {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long question_id;
-	@Column
+	@Column(name = "project_id")
 	private Long project_id;
-	@Column
+	@Column(name = "survey_questions")
 	private String survey_questions;
 
 	public Long getQuestion_id() {

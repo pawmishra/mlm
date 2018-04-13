@@ -11,21 +11,22 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.javerian.erp.mlm.model.workflow.PageIncomeTarrif;
-import com.javerian.erp.mlm.service.workflow.PageIncomeTarrifService;
+import com.javerian.erp.mlm.model.workflow.Question;
+import com.javerian.erp.mlm.service.workflow.QuestionService;
 
 @Controller
-public class PageIncomeTarrifController {
+public class QuestionController {
 
 	@Autowired
-	PageIncomeTarrifService pageIncomeTarrifService;
+	QuestionService questionService;
 
 	@Autowired
 	UserAuthentication authenticationTrustResolver;
 
-	@RequestMapping(value = { "/add_pageamount" }, method = RequestMethod.GET)
+	@RequestMapping(value = { "/add_question" }, method = RequestMethod.GET)
 	public String addbankdetails(ModelMap model) {
 		model.addAttribute("loggedinuser", authenticationTrustResolver.getPrincipal());
-		return "add_pageamount";
+		return "add_question";
 	}
 
 	@ModelAttribute
@@ -33,23 +34,22 @@ public class PageIncomeTarrifController {
 		model.addAttribute("loggedinuser", authenticationTrustResolver.getPrincipal());
 		model.addAttribute(new PageIncomeTarrif());
 
-		List<PageIncomeTarrif> listOfPageIncomeTarrif = pageIncomeTarrifService.findAllPageIncomeTarrif();
-		model.addAttribute("listOfPageIncomeTarrif", listOfPageIncomeTarrif);
+		List<Question> listOfQuestion = questionService.findAllQuestion();
+		model.addAttribute("listOfQuestion", listOfQuestion);
 	}
 
-	@RequestMapping(value = "/save_pageIncomeTarrif", method = RequestMethod.POST)
-	public String addBankDetails(@ModelAttribute PageIncomeTarrif pageIncomeTarrif, BindingResult result,
-			ModelMap model) {
+	@RequestMapping(value = "/save_question", method = RequestMethod.POST)
+	public String addBankDetails(@ModelAttribute Question question, BindingResult result, ModelMap model) {
 
-		System.out.println(pageIncomeTarrif);
+		System.out.println(question);
 
 		addModelAttr(model);
 
-		return "add_pageamount";
+		return "add_question";
 	}
 
-	@RequestMapping(value = "/save_pageIncomeTarrif", method = RequestMethod.GET)
+	@RequestMapping(value = "/save_question", method = RequestMethod.GET)
 	public String addBankDetails(ModelMap model) {
-		return "add_pageamount";
+		return "add_question";
 	}
 }

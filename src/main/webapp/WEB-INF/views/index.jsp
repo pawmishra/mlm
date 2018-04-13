@@ -188,82 +188,18 @@
                 <div class="box-body">
                 <marquee behavior="scroll" direction="up">
                   <ul class="todo-list">
-                   <li>
-                      <input type="checkbox" value="" name=""/>
-                      <span class="text">Let theme shine like a star</span>
-                    </li>
-                    <li>
-                      <input type="checkbox" value="" name=""/>
-                      <span class="text">Let theme shine like a star</span>
-                    </li>
-					<li>
-                      <input type="checkbox" value="" name=""/>
-                      <span class="text">Let theme shine like a star</span>
-                    </li>
-					<li>
-                      <input type="checkbox" value="" name=""/>
-                      <span class="text">Let theme shine like a star</span>
-                    </li>
-					<li>
-                      <input type="checkbox" value="" name=""/>
-                      <span class="text">Let theme shine like a star</span>
-                    </li>
-					<li>
-                      <input type="checkbox" value="" name=""/>
-                      <span class="text">Let theme shine like a star</span>
-                    </li>
-			
+                   	<c:forEach items="${listOfLatestNews}" var="news">
+    								<li>
+									<a><span class="text">${news.news}</span></a>
+									</li>
+					</c:forEach>
                   </ul>
               </marquee>
               </div><!-- /.box -->
 
              
             </section><!-- /.Left col -->
-            
-			<!-- Left col -->
-            <section class="col-lg-4 connectedSortable">
-             <!-- TO DO List -->
-              <div class="box box-primary">
-                <div class="box-header">
-                  <i class="ion ion-clipboard"></i>
-                  <h3 class="box-title">Total Withdraw</h3>
-                  <div class="box-tools pull-right">
-                    
-                  </div>
-                </div><!-- /.box-header -->
-                <div class="box-body">
-                  <ul class="todo-list">
-                   <li>
-                      <input type="checkbox" value="" name=""/>
-                      <span class="text">Let theme shine like a star</span>
-                    </li>
-                    <li>
-                      <input type="checkbox" value="" name=""/>
-                      <span class="text">Let theme shine like a star</span>
-                    </li>
-					<li>
-                      <input type="checkbox" value="" name=""/>
-                      <span class="text">Let theme shine like a star</span>
-                    </li>
-					<li>
-                      <input type="checkbox" value="" name=""/>
-                      <span class="text">Let theme shine like a star</span>
-                    </li>
-					<li>
-                      <input type="checkbox" value="" name=""/>
-                      <span class="text">Let theme shine like a star</span>
-                    </li>
-					<li>
-                      <input type="checkbox" value="" name=""/>
-                      <span class="text">Let theme shine like a star</span>
-                    </li>
-			
-                  </ul>
-              
-              </div><!-- /.box -->
-
-             
-            </section><!-- /.Left col -->
+           
           </div><!-- /.row (main row) -->
 
         </section><!-- /.content -->
