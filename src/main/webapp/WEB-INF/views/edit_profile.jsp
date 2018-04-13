@@ -105,7 +105,7 @@
 
 
 
-										<form class="" role="form">
+										<%-- <form class="" role="form">
 											<div class="row">
 												<div class="form-group">
 													<label class="col-lg-3 control-label">Search by
@@ -145,17 +145,17 @@
 
 											<input type="file" class="form-control">
 										</div>
-									</div>
+									</div> --%>
 
 									<!-- edit form column -->
 									<div class="col-md-9 personal-info">
-										<div class="alert alert-info alert-dismissable">
+										<!-- <div class="alert alert-info alert-dismissable">
 											<a class="panel-close close" data-dismiss="alert">×</a> <i
 												class="fa fa-coffee"></i> This is an <strong>.alert</strong>.
 											Use this to show important messages to the user.
-										</div>
+										</div> 
 										<h3>Personal information</h3>
-										<hr>
+										<hr>--> 
 										<form:form class="" enctype="multipart/form-data"
 											action="update_user" method="POST" modelAttribute="user">
 
@@ -254,7 +254,7 @@
 													<label for="pancardupload">Upload Pan Card:</label>
 													<div class="demo-section k-content">
 														<form:input name="pancard" id="pancardupload" type="file"
-															required="required" path="MemberDetails.filePanCard" />
+															required="" path="MemberDetails.filePanCard" />
 														<div class="demo-hint">
 															You can only upload <strong>JPG</strong> files.
 														</div>
@@ -273,7 +273,7 @@
 														<label for="aadharnoupload">Upload front:</label>
 														<div class="demo-section k-content">
 															<form:input name="aadharcard" id="aadharnoupload"
-																type="file" accept=".png, .jpg," required="required"
+																type="file" accept=".png, .jpg," required=""
 																path="MemberDetails.fileAadharCardFront" />
 															<div class="demo-hint">
 																You can only upload <strong>JPG</strong> files.
@@ -282,7 +282,7 @@
 														<label for="aadharnoupload">Upload back:</label>
 														<div class="demo-section k-content">
 															<form:input name="aadharcard" id="aadharnoupload"
-																type="file" accept=".png, .jpg," required="required"
+																type="file" accept=".png, .jpg," required=""
 																path="MemberDetails.fileAadharCardBack" />
 															<div class="demo-hint">
 																You can only upload <strong>JPG</strong> files.

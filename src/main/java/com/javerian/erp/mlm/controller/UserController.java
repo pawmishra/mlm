@@ -48,7 +48,7 @@ public class UserController {
 
 		User user = new User();
 		user.setSponser_id(userObjOfLoggedInUser.getId());
-		user.setSponser_name(userObjOfLoggedInUser.getSponser_name());
+		user.setSponser_name(userObjOfLoggedInUser.getFirstName());
 		model.addAttribute(user);
 	}
 
@@ -107,33 +107,35 @@ public class UserController {
 		User userObjOfLoggedInUser = getLoggedInUser();
 
 		try {
-			String panFileNameWithPathAfterUpload = Config.UPLOAD_LOCATION + userObjOfLoggedInUser.getId() + "_"
-					+ user.getMemberDetails().getFilePanCard().getOriginalFilename();
-			FileCopyUtils.copy(user.getMemberDetails().getFilePanCard().getBytes(),
-					new File(panFileNameWithPathAfterUpload));
-			user.getMemberDetails().setPath_to_pan_card_image(panFileNameWithPathAfterUpload);
 
-			String aadharFileNameWithPathAfterUpload_Front = Config.UPLOAD_LOCATION + userObjOfLoggedInUser.getId()
-					+ "_" + user.getMemberDetails().getFileAadharCardFront().getOriginalFilename();
-			FileCopyUtils.copy(user.getMemberDetails().getFilePanCard().getBytes(),
-					new File(aadharFileNameWithPathAfterUpload_Front));
-			user.getMemberDetails().setPath_to_aadhar_front_image(aadharFileNameWithPathAfterUpload_Front);
+			if (user.getMemberDetails().getFilePanCard() != null) {
+				String panFileNameWithPathAfterUpload = Config.UPLOAD_LOCATION + userObjOfLoggedInUser.getId() + "_"
+						+ user.getMemberDetails().getFilePanCard().getOriginalFilename();
+				FileCopyUtils.copy(user.getMemberDetails().getFilePanCard().getBytes(),
+						new File(panFileNameWithPathAfterUpload));
+				user.getMemberDetails().setPath_to_pan_card_image(panFileNameWithPathAfterUpload);
+			}
 
-			String aadharFileNameWithPathAfterUpload_Back = Config.UPLOAD_LOCATION + userObjOfLoggedInUser.getId() + "_"
-					+ user.getMemberDetails().getFileAadharCardBack().getOriginalFilename();
-			FileCopyUtils.copy(user.getMemberDetails().getFilePanCard().getBytes(),
-					new File(aadharFileNameWithPathAfterUpload_Back));
-			user.getMemberDetails().setPath_to_aadhar_back_image(aadharFileNameWithPathAfterUpload_Back);
-
+			if (user.getMemberDetails().getFileAadharCardFront() != null) {
+				String aadharFileNameWithPathAfterUpload_Front = Config.UPLOAD_LOCATION + userObjOfLoggedInUser.getId()
+						+ "_" + user.getMemberDetails().getFileAadharCardFront().getOriginalFilename();
+				FileCopyUtils.copy(user.getMemberDetails().getFilePanCard().getBytes(),
+						new File(aadharFileNameWithPathAfterUpload_Front));
+				user.getMemberDetails().setPath_to_aadhar_front_image(aadharFileNameWithPathAfterUpload_Front);
+			}
+			if (user.getMemberDetails().getFileAadharCardBack() != null) {
+				String aadharFileNameWithPathAfterUpload_Back = Config.UPLOAD_LOCATION + userObjOfLoggedInUser.getId()
+						+ "_" + user.getMemberDetails().getFileAadharCardBack().getOriginalFilename();
+				FileCopyUtils.copy(user.getMemberDetails().getFilePanCard().getBytes(),
+						new File(aadharFileNameWithPathAfterUpload_Back));
+				user.getMemberDetails().setPath_to_aadhar_back_image(aadharFileNameWithPathAfterUpload_Back);
+			}
 			userService.updateUser(user);
 			addModelAttrForEditProfile(model);
 
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-
-		userService.updateUser(user);
-		addModelAttr(model);
 
 		return "edit_profile";
 	}
@@ -151,8 +153,7 @@ public class UserController {
 
 		userService.changePassword(changePass);
 		model.addAttribute(new ChangePasswordVO());
-
-		return "Password Changed Successfully!";
+		model.addAttribute("message", "Password Changed Successfully!");
+		return "change_password";
 	}
-
 }

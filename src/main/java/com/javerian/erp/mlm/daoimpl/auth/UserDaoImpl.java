@@ -67,6 +67,10 @@ public class UserDaoImpl extends AbstractDao<Long, User> implements UserDao {
 
 	@Override
 	public void updateUser(User user) {
+		// Session newSession = getSessionFactory().openSession();
+		// newSession.saveOrUpdate(user);
+		// newSession.flush();
+		// newSession.close();
 		getSession().merge(user);
 	}
 

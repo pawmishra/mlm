@@ -5,8 +5,10 @@
 	pageEncoding="UTF-8"%>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<meta charset="UTF-8">
+<%-- <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="_csrf" content="${_csrf.token}" />
+<!-- default header name is X-CSRF-TOKEN -->
+<meta name="_csrf_header" content="${_csrf.headerName}" /> --%>
 <title>Admin</title>
 <meta
 	content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no'
@@ -53,23 +55,20 @@
 	href="<c:url value='/static/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css' />"
 	rel="stylesheet" type="text/css" />
 
-<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-<!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-        <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
-    <![endif]-->
-<!-- Morris chart -->
-
 <link href="<c:url value='/static/plugins/morris/morris.css' />"
 	rel="stylesheet" type="text/css" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"
+		type="text/javascript"></script>
+		
 
 
+<script>
+	$(document).ready(function() {
+	});
+</script>
 </head>
 <body class="skin-blue">
 	<div class="wrapper">
-
-
 		<%@include file="header.jsp"%>
 
 		<!-- Right side column. Contains the navbar and content of the page -->
@@ -102,48 +101,45 @@
 									<div class="col-md-9 personal-info">
 										<form:form class="" action="changePassword" method="POST"
 											modelAttribute="changePasswordVO">
-											<div class="form-row">
-												<div class="row">
-													<div class="form-group col-md-4">
-														<label for="username">User Name:</label>
-														<form:input type="text" class="form-control" id="username"
-															 readonly="true" name="username" placeholder="Username" path="userName" 
-															value="${loggedinuser}"/>
-													</div>
+											<div class="row">
+												<div class="form-group col-md-4">
+													<label for="username">User Name:</label>
+													<form:input type="text" class="form-control"
+														id="id_username" readonly="true" name="username"
+														placeholder="Username" path="userName"
+														value="${loggedinuser}" />
 												</div>
-<%-- 												<div class="row">
-													<div class="form-group col-md-4">
-														<label for="ticketid">Existing Password:</label>
-														<form:input type="password" class="form-control"
-															id="exist_password" placeholder="Existing Password"
-															name="exist_password" path="existingPass" />
-													</div>
-												</div> --%>
-												<div class="row">
-													<div class="form-group col-md-4">
-														<label for="ticketid">New Password:</label>
-														<form:input type="password" class="form-control"
-															id="new_password" placeholder="New Password"
-															name="new_password" path="newPassword" />
-													</div>
+											</div>
+											<div class="row">
+												<div class="form-group col-md-4">
+													<label for="ticketid">New Password:</label>
+													<form:input type="password" class="form-control"
+														id="id_new_password" placeholder="New Password"
+														name="new_password" path="newPassword" />
 												</div>
-												<div class="row">
-													<div class="form-group col-md-4">
-														<label for="ticketid">Confirm Password:</label>
-														<form:input type="password" class="form-control"
-															id="confirm_password" placeholder="Confirm Password"
-															name="confirm_password" path="" />
-													</div>
+											</div>
+											<div class="row">
+												<div class="form-group col-md-4">
+													<label for="ticketid">Confirm Password:</label>
+													<form:input type="password" class="form-control"
+														id="id_confirm_password" placeholder="Confirm Password"
+														name="confirm_password" path="" />
 												</div>
-												<div class="form-group">
-													<div class="buttons col-md-8">
-														<br> <br> <input type="submit"
-															class="btn btn-primary" value="Change"
-															onclick="return Validate()"> <span></span> <input
-															type="reset" class="btn btn-default" value="Cancel">
-														<br> <br>
-													</div>
+											</div>
+											<div class="row">
+												<div class="form-group col-md-4">
+													<label for="message" id="id_message">${message}</label>
 												</div>
+											</div>
+											<div class="form-group">
+												<div class="buttons col-md-8">
+													<br> <br> <input type="submit"
+														class="btn btn-primary" value="Change"
+														onclick="return Validate()"> <span></span> <input
+														type="reset" class="btn btn-default" value="Cancel">
+													<br> <br>
+												</div>
+											</div>
 										</form:form>
 									</div>
 								</div>
@@ -151,12 +147,8 @@
 
 						</div>
 					</div>
-					<!-- /.box-header -->
 				</div>
-				<!-- /.box -->
 				<br> <br> <br>
-
-
 
 			</div>
 			<!--/.col (left) -->
@@ -172,8 +164,9 @@
 
 	<script type="text/javascript">
 		function Validate() {
-			var password = document.getElementById("new_password").value;
-			var confirmPassword = document.getElementById("confirm_password").value;
+			var password = document.getElementById("id_new_password").value;
+			var confirmPassword = document
+					.getElementById("id_confirm_password").value;
 			if (password != confirmPassword) {
 				alert("Passwords do not match.");
 				return false;
@@ -186,7 +179,6 @@
 	<!-- jQuery UI 1.11.2 -->
 	<script src="http://code.jquery.com/ui/1.11.2/jquery-ui.min.js"
 		type="text/javascript"></script>
-	<!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
 	<script>
 		$.widget.bridge('uibutton', $.ui.button);
 	</script>

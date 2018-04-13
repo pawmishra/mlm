@@ -68,24 +68,81 @@ public class UserServiceImpl implements UserService {
 	 */
 	public void updateUser(User user) {
 
-		User entity = dao.findBySSO(user.getUsername());
-		// User entity = dao.findById(user.getId());
+		User userObjFromDb = dao.findById(user.getId());
 
-		if (entity != null) {
+		if (userObjFromDb != null) {
 
-			if (user.getId() == null) {
-				user.setId(entity.getId());
+			if (user.getFirstName() != null && !userObjFromDb.getFirstName().equalsIgnoreCase(user.getFirstName())) {
+				userObjFromDb.setFirstName(user.getFirstName());
 			}
-			// entity.setUsername(user.getUsername());
-			// if (!user.getPassword().equals(entity.getPassword())) {
-			// entity.setPassword(passwordEncoder.encode(user.getPassword()));
-			// }
-			// entity.setFirstName(user.getFirstName());
-			// entity.setLastName(user.getLastName());
-			// entity.setEmail(user.getEmail());
-			// entity.setUserProfiles(user.getUserProfiles());
-
-			dao.updateUser(user);
+			if (user.getLastName() != null && !userObjFromDb.getLastName().equalsIgnoreCase(user.getLastName())) {
+				userObjFromDb.setLastName(user.getLastName());
+			}
+			if (user.getEmail() != null && !userObjFromDb.getEmail().equalsIgnoreCase(user.getEmail())) {
+				userObjFromDb.setEmail(user.getEmail());
+			}
+			if (user.getMemberDetails().getDob() != null) {
+				userObjFromDb.getMemberDetails().setDob(user.getMemberDetails().getDob());
+			}
+			if (user.getMemberDetails().getGender() != null) {
+				userObjFromDb.getMemberDetails().setGender(user.getMemberDetails().getGender());
+			}
+			if (user.getMemberDetails().getAadhar_number() != null) {
+				userObjFromDb.getMemberDetails().setAadhar_number(user.getMemberDetails().getAadhar_number());
+			}
+			if (user.getMemberDetails().getPan_number() != null) {
+				userObjFromDb.getMemberDetails().setPan_number(user.getMemberDetails().getPan_number());
+			}
+			if (user.getMemberDetails().getPath_to_aadhar_front_image() != null) {
+				userObjFromDb.getMemberDetails()
+						.setPath_to_aadhar_front_image(user.getMemberDetails().getPath_to_aadhar_front_image());
+			}
+			if (user.getMemberDetails().getPath_to_aadhar_back_image() != null) {
+				userObjFromDb.getMemberDetails()
+						.setPath_to_aadhar_back_image(user.getMemberDetails().getPath_to_aadhar_back_image());
+			}
+			if (user.getMemberDetails().getPath_to_pan_card_image() != null) {
+				userObjFromDb.getMemberDetails()
+						.setPath_to_pan_card_image(user.getMemberDetails().getPath_to_pan_card_image());
+			}
+			if (user.getMemberDetails().getAddress().getHouseNo() != null) {
+				userObjFromDb.getMemberDetails().getAddress()
+						.setHouseNo(user.getMemberDetails().getAddress().getHouseNo());
+			}
+			if (user.getMemberDetails().getAddress().getStreetName() != null) {
+				userObjFromDb.getMemberDetails().getAddress()
+						.setStreetName(user.getMemberDetails().getAddress().getStreetName());
+			}
+			if (user.getMemberDetails().getAddress().getLocality() != null) {
+				userObjFromDb.getMemberDetails().getAddress()
+						.setLocality(user.getMemberDetails().getAddress().getLocality());
+			}
+			if (user.getMemberDetails().getAddress().getCity() != null) {
+				userObjFromDb.getMemberDetails().getAddress().setCity(user.getMemberDetails().getAddress().getCity());
+			}
+			if (user.getMemberDetails().getAddress().getState() != null) {
+				userObjFromDb.getMemberDetails().getAddress().setState(user.getMemberDetails().getAddress().getState());
+			}
+			if (user.getMemberDetails().getAddress().getCountry() != null) {
+				userObjFromDb.getMemberDetails().getAddress()
+						.setCountry(user.getMemberDetails().getAddress().getCountry());
+			}
+			if (user.getMemberDetails().getAddress().getPincode() != null) {
+				userObjFromDb.getMemberDetails().getAddress()
+						.setPincode(user.getMemberDetails().getAddress().getPincode());
+			}
+			if (user.getMemberDetails().getAddress().getMobile() != null) {
+				userObjFromDb.getMemberDetails().getAddress()
+						.setMobile(user.getMemberDetails().getAddress().getMobile());
+			}
+			if (user.getMemberDetails().getAddress().getAltContactNo() != null) {
+				userObjFromDb.getMemberDetails().getAddress()
+						.setAltContactNo(user.getMemberDetails().getAddress().getAltContactNo());
+			}
+			if (user.getMemberDetails().getAddress().getEmail() != null) {
+				userObjFromDb.getMemberDetails().getAddress().setEmail(user.getMemberDetails().getAddress().getEmail());
+			}
+			dao.updateUser(userObjFromDb);
 		}
 	}
 
