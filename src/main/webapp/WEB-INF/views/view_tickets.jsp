@@ -18,21 +18,22 @@
 	src="https://cdn.datatables.net/1.10.16/js/dataTables.bootstrap.min.js"></script>
 <!-- <script src="http://code.jquery.com/ui/1.11.2/jquery-ui.min.js"
 	type="text/javascript"></script> -->
-	 
+
 <!-- /static/bootstrap/css/bootstrap.min.css' -->
 
 
 <link href="<c:url value='/static/plugins/morris/morris.css' />"
 	rel="stylesheet" type="text/css" />
-<link 
+<link
 	href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css"
 	rel="stylesheet" />
-<link href="<c:url value='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css' />"
+<link
+	href="<c:url value='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css' />"
 	rel="stylesheet" type="text/css" />
 <!-- <link
 	href="https://cdn.datatables.net/1.10.16/css/dataTables.bootstrap.min.css"
 	rel="stylesheet" type="text/css" />	 -->
-	
+
 <!-- FontAwesome 4.3.0 -->
 <link
 	href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css"
@@ -193,30 +194,31 @@
 
 
 											<form>
-												
+
 												<div class="form-row">
 													<div class="form-group col-md-11">
 														<label for="ticketstatus">Select Ticket Status:</label>
 														<div class="ui-select">
 															<select id="ticketstatus" class="form-control">
-															    <option value="">Choose</option>
+																<option value="">Choose</option>
 																<option value="">Open</option>
 																<option value="">Closed</option>
-															</select> 
-														</div><br><br>
+															</select>
+														</div>
+														<br> <br>
 													</div>
-													
+
 
 												</div>
-												
-												
+
+
 											</form>
 										</div>
 									</div>
 
 								</div>
 							</div>
-							
+
 							<!-- /.box-header -->
 							<div class="box-body">
 								<!-- <table id="tbl_data" class="table table-striped table-bordered"
@@ -232,107 +234,50 @@
 											<th class="sorting_desc" tabindex="0"
 												aria-controls="tbl_data" rowspan="1" colspan="1"
 												aria-label="Name: activate to sort column ascending"
-												style="width: 32px;" aria-sort="descending">Name</th>
+												style="width: 32px;" aria-sort="descending">Id</th>
 											<th class="sorting_desc" tabindex="0"
 												aria-controls="tbl_data" rowspan="1" colspan="1"
 												aria-label="Position: activate to sort column ascending"
-												style="width: 32px;" aria-sort="descending">Position</th>
+												style="width: 32px;" aria-sort="descending">Resolution Status</th>
 											<th class="sorting_desc" tabindex="0"
 												aria-controls="tbl_data" rowspan="1" colspan="1"
 												aria-label="Office: activate to sort column ascending"
-												style="width: 32px;" aria-sort="descending">Office</th>
+												style="width: 32px;" aria-sort="descending">Problem Type</th>
 											<th class="sorting_desc" tabindex="0"
 												aria-controls="tbl_data" rowspan="1" colspan="1"
 												aria-label="Age: activate to sort column ascending"
-												style="width: 32px;" aria-sort="descending">Age</th>
+												style="width: 32px;" aria-sort="descending">Desc</th>
 											<th class="sorting_desc" tabindex="0"
 												aria-controls="tbl_data" rowspan="1" colspan="1"
 												aria-label="Start date: activate to sort column ascending"
-												style="width: 32px;" aria-sort="descending">Start date</th>
+												style="width: 32px;" aria-sort="descending">Comment</th>
 											<th class="sorting_desc" tabindex="0"
 												aria-controls="tbl_data" rowspan="1" colspan="1"
 												aria-label="Salary: activate to sort column ascending"
-												style="width: 32px;" aria-sort="descending">Salary</th>
+												style="width: 32px;" aria-sort="descending">Resolved By</th>
+											<th class="sorting_desc" tabindex="0"
+												aria-controls="tbl_data" rowspan="1" colspan="1"
+												aria-label="Salary: activate to sort column ascending"
+												style="width: 32px;" aria-sort="descending">Resolved Date</th>
+											<th class="sorting_desc" tabindex="0"
+												aria-controls="tbl_data" rowspan="1" colspan="1"
+												aria-label="Salary: activate to sort column ascending"
+												style="width: 32px;" aria-sort="descending">Ticket Creation Date</th>
 										</tr>
 									</thead>
-
-
-
-
 									<tbody>
-										<tr>
-											<td>Tiger Nixon</td>
-											<td>System Architect</td>
-											<td>Edinburgh</td>
-											<td>61</td>
-											<td>2011/04/25</td>
-											<td>$320,800</td>
-										</tr>
-										<tr>
-											<td>Garrett Winters</td>
-											<td>Accountant</td>
-											<td>Tokyo</td>
-											<td>63</td>
-											<td>2011/07/25</td>
-											<td>$170,750</td>
-										</tr>
-										<tr>
-											<td>Ashton Cox</td>
-											<td>Junior Technical Author</td>
-											<td>San Francisco</td>
-											<td>66</td>
-											<td>2009/01/12</td>
-											<td>$86,000</td>
-										</tr>
-										<tr>
-											<td>Cedric Kelly</td>
-											<td>Senior Javascript Developer</td>
-											<td>Edinburgh</td>
-											<td>22</td>
-											<td>2012/03/29</td>
-											<td>$433,060</td>
-										</tr>
-										<tr>
-											<td>Airi Satou</td>
-											<td>Accountant</td>
-											<td>Tokyo</td>
-											<td>33</td>
-											<td>2008/11/28</td>
-											<td>$162,700</td>
-										</tr>
-										<tr>
-											<td>Brielle Williamson</td>
-											<td>Integration Specialist</td>
-											<td>New York</td>
-											<td>61</td>
-											<td>2012/12/02</td>
-											<td>$372,000</td>
-										</tr>
-										<tr>
-											<td>Herrod Chandler</td>
-											<td>Sales Assistant</td>
-											<td>San Francisco</td>
-											<td>59</td>
-											<td>2012/08/06</td>
-											<td>$137,500</td>
-										</tr>
-										<tr>
-											<td>Rhona Davidson</td>
-											<td>Integration Specialist</td>
-											<td>Tokyo</td>
-											<td>55</td>
-											<td>2010/10/14</td>
-											<td>$327,900</td>
-										</tr>
-										<tr>
-											<td>Colleen Hurst</td>
-											<td>Javascript Developer</td>
-											<td>San Francisco</td>
-											<td>39</td>
-											<td>2009/09/15</td>
-											<td>$205,500</td>
-										</tr>
-
+										<c:forEach items="${listOfHelpDeskTicket}" var="item">
+											<tr>
+												<td>${item.ticket_id}</td>
+												<td>${item.ticket_resolution_status}</td>
+												<td>${item.problem_type}</td>
+												<td>${item.description}</td>
+												<td>${item.resolver_comment}</td>
+												<td>${item.resolved_by}</td>
+												<td>${item.resolved_datetime}</td>
+												<td>${item.ticket_creation_datetime}</td>
+											</tr>
+										</c:forEach>
 									</tbody>
 								</table>
 							</div>
@@ -340,7 +285,7 @@
 						</div>
 						<!-- /.box -->
 
-						
+
 					</div>
 					<!-- /.col -->
 				</div>

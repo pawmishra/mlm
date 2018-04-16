@@ -67,4 +67,17 @@ public class HelpDeskController {
 	public String addOrganisation(ModelMap model) {
 		return "create_ticket";
 	}
+
+	@RequestMapping(value = "/view_tickets", method = RequestMethod.GET)
+	public String viewTickets(ModelMap model) {
+
+		model.addAttribute("loggedinuser", authenticationTrustResolver.getPrincipal());
+		model.addAttribute(new HelpDeskTicket());
+
+		List<HelpDeskTicket> listOfHelpDeskTicket = helpDeskTicketService.findAllHelpDeskTicket();
+		model.addAttribute("listOfHelpDeskTicket", listOfHelpDeskTicket);
+
+		return "view_tickets";
+	}
+
 }

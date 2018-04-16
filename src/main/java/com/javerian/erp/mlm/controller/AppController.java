@@ -252,12 +252,6 @@ public class AppController {
 		return "review_project";
 	}
 
-	@RequestMapping(value = { "/view_tickets" }, method = RequestMethod.GET)
-	public String viewtickets(ModelMap model) {
-		model.addAttribute("loggedinuser", authenticationTrustResolver.getPrincipal());
-		return "view_tickets";
-	}
-
 	@RequestMapping(value = { "/Member_chain" }, method = RequestMethod.GET)
 	public String Memberchain(ModelMap model) {
 		model.addAttribute("loggedinuser", authenticationTrustResolver.getPrincipal());
