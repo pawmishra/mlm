@@ -276,11 +276,11 @@ public class AppController {
 		return "withdraw_history";
 	}
 
-	@RequestMapping(value = { "/treeview" }, method = RequestMethod.GET)
-	public String treeview(ModelMap model) {
-		model.addAttribute("loggedinuser", authenticationTrustResolver.getPrincipal());
-		return "treeview";
-	}
+	/*
+	 * @RequestMapping(value = { "/treeview" }, method = RequestMethod.GET) public
+	 * String treeview(ModelMap model) { model.addAttribute("loggedinuser",
+	 * authenticationTrustResolver.getPrincipal()); return "treeview"; }
+	 */
 
 	/*
 	 * @RequestMapping(value = { "/account_history" }, method = RequestMethod.GET)

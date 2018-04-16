@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.javerian.erp.mlm.model.auth.User;
 import com.javerian.erp.mlm.model.auth.UserProfile;
@@ -160,12 +159,31 @@ public class UserController {
 		return "change_password";
 	}
 
-	@RequestMapping(value = { "/tree" }, method = RequestMethod.GET)
-	@ResponseBody
-	public List<User> getChildOfSponserById(ModelMap model, @RequestParam("sponser_id") Long sponser_id) {
+	@RequestMapping(value = { "/treeview" }, method = RequestMethod.GET)
+	public String getChildOfSponserById(ModelMap model) {
+		model.addAttribute("loggedinuser", authenticationTrustResolver.getPrincipal());
 
-		List<User> childOfSponserById = userService.getChildOfSponserById(sponser_id);
+		User loggedInUser = getLoggedInUser();
+
+		List<User> listOfImmediateChilds = userService.getChildOfSponserById(loggedInUser.getId());
 		addModelAttrForEditProfile(model);
-		return childOfSponserById;
+		model.addAttribute("listOfImmediateChilds", listOfImmediateChilds);
+
+		return "treeview";
+	}
+
+	@RequestMapping(value = { "/treeview1" }, method = RequestMethod.GET)
+	public String getChildOfSponserById(ModelMap model, @RequestParam("member_id") Long member_id) {
+		model.addAttribute("loggedinuser", authenticationTrustResolver.getPrincipal());
+
+		User loggedInUser = getLoggedInUser();
+
+		Long user_id = (member_id != null) ? member_id : loggedInUser.getId();
+
+		List<User> listOfImmediateChilds = userService.getChildOfSponserById(user_id);
+		addModelAttrForEditProfile(model);
+		model.addAttribute("listOfImmediateChilds", listOfImmediateChilds);
+
+		return "treeview";
 	}
 }

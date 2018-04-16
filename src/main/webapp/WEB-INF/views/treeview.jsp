@@ -31,9 +31,8 @@
          folder instead of downloading all of them to reduce the load. -->
 <link href="<c:url value='/static/dist/css/skins/_all-skins.min.css' />"
 	rel="stylesheet" type="text/css" />
-<link
-	href="<c:url value='/static/dist/css/skins/style.css' />" rel="stylesheet"
-	type="text/css" />
+<link href="<c:url value='/static/dist/css/skins/style.css' />"
+	rel="stylesheet" type="text/css" />
 <!-- iCheck -->
 <link href="<c:url value='/static/plugins/iCheck/flat/blue.css' />"
 	rel="stylesheet" type="text/css" />
@@ -75,116 +74,99 @@
 <link rel="stylesheet" href="/mlm-erp/static/css/treant.css">
 <link rel="stylesheet" href="/mlm-erp/static/css/custom-colored.css">
 
- <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-    <script type="text/javascript">
-      google.charts.load('current', {packages:["orgchart"]});
-      google.charts.setOnLoadCallback(drawChart);
+<script type="text/javascript"
+	src="https://www.gstatic.com/charts/loader.js"></script>
+<script type="text/javascript">
+	google.charts.load('current', {
+		packages : [ "orgchart" ]
+	});
+	google.charts.setOnLoadCallback(drawChart);
+
+	function drawChart() {
+
+		/* var data = google.visualization.arrayToDataTable([
+				[ 'Member Id', 'Sponsor Id' ],
+				<c:forEach items="${allChartData}" var="entry">['${entry.id}',
+						'${entry.sponser_id}'], </c:forEach> ]);
+
+		// Set chart options
+		var options = {
+			'title' : 'Tree view', //title which will be shown right above the Google Pie Chart
+			is3D : true, //render Google Pie Chart as 3D
+			pieSliceText : 'label', //on mouse hover show label or name of the Country
+			tooltip : {
+				showColorCode : true
+			}, // whether to display color code for a Country on mouse hover
+			'width' : 900, //width of the Google Pie Chart
+			'height' : 430
+		//height of the Google Pie Chart
+		};
+ */
+ 
+	var data = new google.visualization.DataTable();
+	data.addColumn('string', 'member_id');
+	data.addColumn('string', 'sponsor_id');
+	
+
+
+	data.addRows([
 		
-		function drawChart() {
-			var data = new google.visualization.DataTable();
-			data.addColumn('string', 'member_id');
-			data.addColumn('string', 'sponsor_id');
-			
-
-			data.addRows([
-				<?php
-				include 'dbconnection.php';
-				$con = OpenCon();
-				$session_sponsor_id = $_GET['sess_sponsor_id'];
-					//$session_sponsor_id = '91506';
-				//declare the SQL statement that will query the database
-				$query = "select * from register where sponsor_id='$session_sponsor_id'";
-				
-				
-				$result = mysqli_query($con, $query);
-				
-				//execute the SQL query and return records
-				$output = array();
-				$quote='"';					
-				$style1='margin-top:50px;margin-left:0px;margin-bottom:15px;width:70px;height:70px';
-
-				while($row = mysqli_fetch_array($result)) {
-					// create a temp array to hold the data
-					$temp = array();
-						 
-					// add the data					
-					
-					$member_id = $row['member_id'];	
-					$member_name = $row['member_name'];
-					$profile_pic = $row['profile_pic'];
-					
-					$default = "logoMINI.png";
-                    if (empty($profile_pic)) 
-					{ 
-                     
-						$image = "{v:'$member_id', f:'</br>$member_id</br></br>$member_name<div><img style=$quote$style1$quote src=$quote$default$quote /></div>'}";  
-					}
-                    else
-					{  
-						$image = "{v:'$member_id', f:'</br>$member_id</br></br>$member_name<div><img style=$quote$style1$quote src=$quote$profile_pic$quote /></div>'}";
-					}
-					
+		  
 		
-					$temp[] = $image;
-					$temp[] = "'$row[sponsor_id]'";
-
-					// implode the temp array into a comma-separated list and add to the output array
-					$output[] = '[' . implode(', ', $temp) . ']';
-				}
-
-				// implode the output into a comma-newline separated list and echo
-				echo implode(",\n", $output);
-
-				//mysql_close($con);
-				?>
-			]);
-
-			var chart = new google.visualization.OrgChart(document.getElementById('chart_div'));			
-			//chart.draw(data, {allowHtml:true, nodeClass:'maman'});
-			chart.draw(data, {allowHtml:true});
+		
+		<c:forEach items="${listOfImmediateChilds}" var="entry">
+		
+		['${entry.firstName}',	'${entry.sponser_id}'], 
 			
-			
-			google.visualization.events.addListener(chart, 'select', selectHandler);
-			
-			function selectHandler() {
-				var selection = chart.getSelection();
-				var message = '';
-				for (var i = 0; i < selection.length; i++) {
+	    </c:forEach> 
+		]);
+ 
+ 
+		var chart = new google.visualization.OrgChart(document
+				.getElementById('chart_div'));
+		/* chart.draw(data, options); */
+		
+		chart.draw(data, {allowHtml:true});
+
+	/* 	google.visualization.events.addListener(chart, 'select', selectHandler);
+
+		function selectHandler() {
+			var selection = chart.getSelection();
+			var message = '';
+			for (var i = 0; i < selection.length; i++) {
 				var item = selection[i];
 				if (item.row != null && item.column != null) {
 					var str = data.getFormattedValue(item.row, item.column);
-					message += str ;
+					message += str;
 				} else if (item.row != null) {
-						var str = data.getFormattedValue(item.row, 0);
-						message += str ;
+					var str = data.getFormattedValue(item.row, 0);
+					message += str;
 				} else if (item.column != null) {
-						var str = data.getFormattedValue(0, item.column);
-						message += str ;
+					var str = data.getFormattedValue(0, item.column);
+					message += str;
 				}
 			}
 			if (message == '') {
-					message = 'nothing';
+				message = 'nothing';
 			}
 			//alert('You selected ' + message);
-			//call page with variable message
-			//var res = message.substr(5, 5);
-			var result=message.match(/<\/br>(.*)<\/br><\/br>/);
-			window.location.href = "tree.php?sess_sponsor_id=" + result[1]; 
-		}
+
+			var result = message.match(/<\/br>(.*)<\/br><\/br>/);
+			window.location.href = "treeview?member_id=" + result[1];
+		} */
 	}
-	</script>
-	<style>
-		.google-visualization-orgchart-node
-		{
-			    width: 150px;
-                height: 200px;
-		}
-		.google-visualization-orgchart-connrow-medium
-		{
-			    height: 30px !important;
-                font-size: 4px;
-		}
-	</style>
+</script>
+<style>
+.google-visualization-orgchart-node {
+	width: 150px;
+	height: 200px;
+}
+
+.google-visualization-orgchart-connrow-medium {
+	height: 30px !important;
+	font-size: 4px;
+}
+</style>
 
 
 </head>
