@@ -3,6 +3,7 @@ package com.javerian.erp.mlm.controller;
 import java.io.File;
 import java.io.IOException;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +14,8 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.javerian.erp.mlm.model.auth.User;
 import com.javerian.erp.mlm.model.auth.UserProfile;
@@ -155,5 +158,14 @@ public class UserController {
 		model.addAttribute(new ChangePasswordVO());
 		model.addAttribute("message", "Password Changed Successfully!");
 		return "change_password";
+	}
+
+	@RequestMapping(value = { "/tree" }, method = RequestMethod.GET)
+	@ResponseBody
+	public List<User> getChildOfSponserById(ModelMap model, @RequestParam("sponser_id") Long sponser_id) {
+
+		List<User> childOfSponserById = userService.getChildOfSponserById(sponser_id);
+		addModelAttrForEditProfile(model);
+		return childOfSponserById;
 	}
 }
