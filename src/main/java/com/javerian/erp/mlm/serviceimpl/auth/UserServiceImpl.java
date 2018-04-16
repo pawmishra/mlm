@@ -58,6 +58,28 @@ public class UserServiceImpl implements UserService {
 			user.setLevel_from_root(sponserObj.getLevel_from_root() + 1);
 			user.setPassword(passwordEncoder.encode(user.getPassword()));
 			dao.save(user);
+		} else {
+
+			List<User> lowestLevelUsers = getLowestLevelUsers();
+			for (User userObj : lowestLevelUsers) {
+
+				childOfSponser = getChildOfSponserById(userObj.getId());
+				for (User childObj : childOfSponser) {
+					if (user.getPosition_left_or_right().equalsIgnoreCase("Left") && user.getPosition_left_or_right()
+							.equalsIgnoreCase(childObj.getPosition_left_or_right())) {
+						user.setPosition_left_or_right("Right");
+					} else if (user.getPosition_left_or_right().equalsIgnoreCase("Right") && user
+							.getPosition_left_or_right().equalsIgnoreCase(childObj.getPosition_left_or_right())) {
+						user.setPosition_left_or_right("Left");
+					}
+				}
+				user.setLevel_from_root(userObj.getLevel_from_root() + 1);
+				user.setPassword(passwordEncoder.encode(user.getPassword()));
+				user.setSponser_id(userObj.getId());
+				dao.save(user);
+
+				break;
+			}
 		}
 	}
 
@@ -173,5 +195,10 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public List<User> getChildOfSponserById(Long id) {
 		return dao.getChildOfSponserById(id);
+	}
+
+	@Override
+	public List<User> getLowestLevelUsers() {
+		return dao.getLowestLevelUsers();
 	}
 }

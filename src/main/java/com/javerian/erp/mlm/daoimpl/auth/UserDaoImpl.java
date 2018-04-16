@@ -1,5 +1,6 @@
 package com.javerian.erp.mlm.daoimpl.auth;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.hibernate.Criteria;
@@ -82,5 +83,21 @@ public class UserDaoImpl extends AbstractDao<Long, User> implements UserDao {
 		query.setParameter("user_id", id);
 		List<User> list = query.list();
 		return list;
+	}
+
+	@SuppressWarnings({ "unchecked", "rawtypes" })
+	@Override
+	public List<User> getLowestLevelUsers() {
+
+		List<User> listuser = new ArrayList<>();
+		Query query = getSession().createQuery("select max(level_from_root) from User");
+		List list = query.list();
+
+		if (list != null && list.size() > 0) {
+			Query queryUser = getSession().createQuery("from User where level_from_root = :level").setParameter("level",
+					list.get(0));
+			listuser.addAll(queryUser.list());
+		}
+		return listuser;
 	}
 }

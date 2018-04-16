@@ -24,4 +24,6 @@ public interface UserService {
 	void changePassword(ChangePasswordVO changePass);
 
 	public List<User> getChildOfSponserById(Long id);
+
+	public List<User> getLowestLevelUsers();
 }

@@ -20,4 +20,6 @@ public interface UserDao {
 
 	List<User> getChildOfSponserById(Long id);
 
+	List<User> getLowestLevelUsers();
+
 }
