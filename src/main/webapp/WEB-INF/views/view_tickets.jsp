@@ -270,7 +270,7 @@
 											<tr>
 												<td>${item.ticket_id}</td>
 												<td>${item.ticket_resolution_status}</td>
-												<td>${item.problem_type}</td>
+												<td>${item.helpDeskProblemCategory.problem_category}</td>
 												<td>${item.description}</td>
 												<td>${item.resolver_comment}</td>
 												<td>${item.resolved_by}</td>

@@ -7,6 +7,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -36,6 +38,10 @@ public class HelpDeskTicket {
 
 	@Column(name = "ticket_created_by")
 	private String ticket_created_by;
+
+	@OneToOne
+	@JoinColumn(name = "problem_type", insertable = false, updatable = false)
+	private HelpDeskProblemCategory helpDeskProblemCategory;
 
 	public final Long getId() {
 		return id;
@@ -115,6 +121,14 @@ public class HelpDeskTicket {
 
 	public final void setTicket_created_by(String ticket_created_by) {
 		this.ticket_created_by = ticket_created_by;
+	}
+
+	public HelpDeskProblemCategory getHelpDeskProblemCategory() {
+		return helpDeskProblemCategory;
+	}
+
+	public void setHelpDeskProblemCategory(HelpDeskProblemCategory helpDeskProblemCategory) {
+		this.helpDeskProblemCategory = helpDeskProblemCategory;
 	}
 
 }
