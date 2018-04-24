@@ -240,12 +240,6 @@ public class AppController {
 		return "payout";
 	}
 
-	@RequestMapping(value = { "/view_members" }, method = RequestMethod.GET)
-	public String viewmembers(ModelMap model) {
-		model.addAttribute("loggedinuser", authenticationTrustResolver.getPrincipal());
-		return "view_members";
-	}
-
 	@RequestMapping(value = { "/review_project" }, method = RequestMethod.GET)
 	public String reviewproject(ModelMap model) {
 		model.addAttribute("loggedinuser", authenticationTrustResolver.getPrincipal());

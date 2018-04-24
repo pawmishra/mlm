@@ -191,10 +191,7 @@
 
 										<!-- edit form column -->
 										<div class="col-md-9 personal-info">
-
-
 											<form>
-
 												<div class="form-row">
 													<div class="form-group col-md-11">
 														<label for="ticketstatus">Select Ticket Status:</label>
@@ -207,11 +204,7 @@
 														</div>
 														<br> <br>
 													</div>
-
-
 												</div>
-
-
 											</form>
 										</div>
 									</div>

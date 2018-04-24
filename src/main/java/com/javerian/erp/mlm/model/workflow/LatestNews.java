@@ -8,7 +8,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "latest_news")
+@Table(name = "latestnews")
 public class LatestNews {
 
 	@Id
@@ -16,16 +16,19 @@ public class LatestNews {
 	private Long id;
 	@Column(name = "news_content")
 	private String news_content;
-	
+
 	public Long getId() {
 		return id;
 	}
+
 	public void setId(Long id) {
 		this.id = id;
 	}
+
 	public String getNews_content() {
 		return news_content;
 	}
+
 	public void setNews_content(String news_content) {
 		this.news_content = news_content;
 	}
