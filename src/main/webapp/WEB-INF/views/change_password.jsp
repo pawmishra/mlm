@@ -98,7 +98,7 @@
 									<!-- left column -->
 
 									<!-- edit form column -->
-									<div class="col-md-9 personal-info">
+									<div class="col-md-12 personal-info">
 										<form:form class="" action="changePassword" method="POST"
 											modelAttribute="changePasswordVO">
 											<div class="row">

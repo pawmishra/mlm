@@ -23,7 +23,7 @@ public class PageIncomeTarrifController {
 	UserAuthentication authenticationTrustResolver;
 
 	@RequestMapping(value = { "/add_pageamount" }, method = RequestMethod.GET)
-	public String addbankdetails(ModelMap model) {
+	public String addperpageamount(ModelMap model) {
 		model.addAttribute("loggedinuser", authenticationTrustResolver.getPrincipal());
 		return "add_pageamount";
 	}
@@ -38,7 +38,7 @@ public class PageIncomeTarrifController {
 	}
 
 	@RequestMapping(value = "/save_pageIncomeTarrif", method = RequestMethod.POST)
-	public String addBankDetails(@ModelAttribute PageIncomeTarrif pageIncomeTarrif, BindingResult result,
+	public String addPerPageAmount(@ModelAttribute PageIncomeTarrif pageIncomeTarrif, BindingResult result,
 			ModelMap model) {
 
 		System.out.println(pageIncomeTarrif);
@@ -49,7 +49,7 @@ public class PageIncomeTarrifController {
 	}
 
 	@RequestMapping(value = "/save_pageIncomeTarrif", method = RequestMethod.GET)
-	public String addBankDetails(ModelMap model) {
+	public String addPerPageAmount(ModelMap model) {
 		return "add_pageamount";
 	}
 }

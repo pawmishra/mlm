@@ -114,7 +114,7 @@
 								<hr>
 								<div class="row">
 									<div class="col-md-9 personal-info">
-										<form:form class="form-horizontal"
+										<form:form 
 											enctype="multipart/form-data" action="saveProjectWork"
 											method="POST" modelAttribute="projectWorkDetails">
 											<div class="form-row">

@@ -29,7 +29,7 @@ public class LatestNewsDaoImpl extends AbstractDao<Long, LatestNews> implements 
 
 	@Override
 	public List<LatestNews> findAllLatestNews() {
-		Criteria criteria = createEntityCriteria().addOrder(Order.asc("news_id"));
+		Criteria criteria = createEntityCriteria().addOrder(Order.asc("id"));
 		criteria.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);// To avoid duplicates.
 		List<LatestNews> listLatestNews = (List<LatestNews>) criteria.list();
 

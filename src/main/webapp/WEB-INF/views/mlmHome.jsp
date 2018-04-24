@@ -1,7 +1,8 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<!DOCTYPE html>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
@@ -212,30 +213,11 @@
                 <div class="box-body">
                   <marquee behavior="scroll" direction="up" onmouseover="this.stop();" onmouseout="this.start();">
                   <ul class="todo-list">
+                  <c:forEach items="${listOfLatestNews}" var="item">
                    <li>
-                      <a href="latest_news"><span class="text">Let theme shine like a starLet theme shine like a starLet theme shine like a star</span></a>
+                      <a href=""><span class="text">${item.news_content}</span></a>
                     </li>
-                    <li>
-                     
-                      <span class="text">Let theme shine like a star</span>
-                    </li>
-					 <li>
-                     
-                      <span class="text">Let theme shine like a star</span>
-                    </li>
-                     <li>
-                     
-                      <span class="text">Let theme shine like a star</span>
-                    </li>
-                     <li>
-                     
-                      <span class="text">Let theme shine like a star</span>
-                    </li>
-                     <li>
-                     
-                      <span class="text">Let theme shine like a star</span>
-                    </li>
-			
+                   </c:forEach>
                   </ul>
               </marquee>
               

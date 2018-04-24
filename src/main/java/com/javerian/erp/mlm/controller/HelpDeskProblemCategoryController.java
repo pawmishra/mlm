@@ -23,7 +23,7 @@ public class HelpDeskProblemCategoryController {
 	UserAuthentication authenticationTrustResolver;
 
 	@RequestMapping(value = { "/add_problemtype" }, method = RequestMethod.GET)
-	public String addbankdetails(ModelMap model) {
+	public String addproblemcategory(ModelMap model) {
 		model.addAttribute("loggedinuser", authenticationTrustResolver.getPrincipal());
 		return "add_problemtype";
 	}
@@ -39,7 +39,7 @@ public class HelpDeskProblemCategoryController {
 	}
 
 	@RequestMapping(value = "/save_problemtype", method = RequestMethod.POST)
-	public String addBankDetails(@ModelAttribute HelpDeskProblemCategory helpDeskProblemCategory, BindingResult result,
+	public String addProblemCategory(@ModelAttribute HelpDeskProblemCategory helpDeskProblemCategory, BindingResult result,
 			ModelMap model) {
 
 		System.out.println(helpDeskProblemCategory);
@@ -52,7 +52,7 @@ public class HelpDeskProblemCategoryController {
 	}
 
 	@RequestMapping(value = "/save_problemtype", method = RequestMethod.GET)
-	public String addBankDetails(ModelMap model) {
+	public String addProblemCategory(ModelMap model) {
 		return "add_problemtype";
 	}
 }

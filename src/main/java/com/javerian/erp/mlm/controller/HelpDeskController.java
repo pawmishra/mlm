@@ -50,7 +50,7 @@ public class HelpDeskController {
 	}
 
 	@RequestMapping(value = "/saveHDTicket", method = RequestMethod.POST)
-	public String addOrganisation(@ModelAttribute HelpDeskTicket helpDeskTicket, BindingResult result, ModelMap model) {
+	public String addTicket(@ModelAttribute HelpDeskTicket helpDeskTicket, BindingResult result, ModelMap model) {
 
 		String ticketId = Util.generateTicketId("HD");
 		helpDeskTicket.setTicket_id(ticketId);
@@ -64,7 +64,7 @@ public class HelpDeskController {
 	}
 
 	@RequestMapping(value = "/saveHDTicket", method = RequestMethod.GET)
-	public String addOrganisation(ModelMap model) {
+	public String addTicket(ModelMap model) {
 		return "create_ticket";
 	}
 

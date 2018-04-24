@@ -101,7 +101,7 @@
 									<!-- left column -->
 
 									<!-- edit form column -->
-									<div class="col-md-9 personal-info">
+									<div class="col-md-12 personal-info">
 
 
 

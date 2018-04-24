@@ -8,29 +8,26 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "questions")
+@Table(name = "latest_news")
 public class LatestNews {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long news_id;
-	@Column(name = "news")
-	private Long news;
-
-	public final Long getNews_id() {
-		return news_id;
+	private Long id;
+	@Column(name = "news_content")
+	private String news_content;
+	
+	public Long getId() {
+		return id;
 	}
-
-	public final void setNews_id(Long news_id) {
-		this.news_id = news_id;
+	public void setId(Long id) {
+		this.id = id;
 	}
-
-	public final Long getNews() {
-		return news;
+	public String getNews_content() {
+		return news_content;
 	}
-
-	public final void setNews(Long news) {
-		this.news = news;
+	public void setNews_content(String news_content) {
+		this.news_content = news_content;
 	}
 
 }

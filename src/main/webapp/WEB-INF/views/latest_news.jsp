@@ -1,7 +1,8 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<!DOCTYPE html>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
@@ -191,12 +192,13 @@
 										<!-- edit form column -->
 										<div class="col-md-9 personal-info">
 
-								       <form>
-								         
+								      <form:form class="form-horizontal" action="save_latestnews"
+											method="POST" modelAttribute="latestNews">
+
 								          <div class="form-row">
-											    <div class="form-group col-md-6">
+											    <div class="form-group col-md-8">
 											      <label for="problemtype">Latest News:</label>
-											     <textarea class="form-control" aria-label="With textarea" name="latest_news"></textarea>
+											    <form:textarea class="form-control" rows="4" cols="100" aria-label="With textarea" name="news_content" path="news_content"/>
 											    
 											    </div>
 												
@@ -208,8 +210,7 @@
 									              <input type="reset" class="btn btn-default" value="Cancel">
 									            <br><br></div>
 												</div>
-								          </div>
-								        </form>
+												</form:form>
 										</div>
 									</div>
 
@@ -244,52 +245,12 @@
 
 
 									<tbody>
-										<tr>
-											<td>Tiger Nixon</td>
-											<td>System Architect</td>
-											
-										</tr>
-										<tr>
-											<td>Garrett Winters</td>
-											<td>Accountant</td>
-											
-										</tr>
-										<tr>
-											<td>Ashton Cox</td>
-											<td>Junior Technical Author</td>
-											
-										</tr>
-										<tr>
-											<td>Cedric Kelly</td>
-											<td>Senior Javascript Developer</td>
-											
-										</tr>
-										<tr>
-											<td>Airi Satou</td>
-											<td>Accountant</td>
-											
-										</tr>
-										<tr>
-											<td>Brielle Williamson</td>
-											<td>Integration Specialist</td>
-										    
-										</tr>
-										<tr>
-											<td>Herrod Chandler</td>
-											<td>Sales Assistant</td>
-											
-										</tr>
-										<tr>
-											<td>Rhona Davidson</td>
-											<td>Integration Specialist</td>
-											
-										</tr>
-										<tr>
-											<td>Colleen Hurst</td>
-											<td>Javascript Developer</td>
-											
-										</tr>
-
+										<c:forEach items="${listOfLatestNews}" var="item">
+    								<tr>
+										<td>${item.id}</td>
+										<td>${item.news_content}</td>
+									</tr>
+								</c:forEach>
 									</tbody>
 								</table>
 							</div>

@@ -23,7 +23,7 @@ public class LatestNewsController {
 	UserAuthentication authenticationTrustResolver;
 
 	@RequestMapping(value = { "/latest_news" }, method = RequestMethod.GET)
-	public String addcategory(ModelMap model) {
+	public String addlatestnews(ModelMap model) {
 		model.addAttribute("loggedinuser", authenticationTrustResolver.getPrincipal());
 		return "latest_news";
 	}
@@ -38,21 +38,17 @@ public class LatestNewsController {
 		model.addAttribute("listOfLatestNews", listOfLatestNews);
 	}
 
-	@RequestMapping(value = "/save_news", method = RequestMethod.POST)
+	@RequestMapping(value = "/save_latestnews", method = RequestMethod.POST)
 	public String addOrganisation(@ModelAttribute LatestNews latestNews, BindingResult result, ModelMap model) {
 
 		System.out.println(latestNews);
 		latestNewsService.save(latestNews);
-
 		addModelAttr(model);
-
 		return "latest_news";
 	}
 
-	@RequestMapping(value = "/save_news", method = RequestMethod.GET)
-	public String addOrganisation(ModelMap model) {
-
-		addModelAttr(model);
+	@RequestMapping(value = "/save_latestnews", method = RequestMethod.GET)
+	public String addnews(ModelMap model) {
 		return "latest_news";
 	}
 }

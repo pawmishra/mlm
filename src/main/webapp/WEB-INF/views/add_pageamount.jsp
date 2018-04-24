@@ -192,10 +192,8 @@
 
 									<!-- edit form column -->
 									<div class="col-md-9 personal-info">
-
-
-										<form action="">
-
+									<form:form  action="save_pageIncomeTarrif"
+											method="POST" modelAttribute="pageIncomeTarrif">
 											<div class="form-row">
 												<div class="form-group col-md-6">
 													<label for="perpageamount">Document Type<span
@@ -203,7 +201,7 @@
 													</label>
 													<!--  <textarea class="form-control" aria-label="With textarea" ></textarea> -->
 													<form:input type="text" class="form-control"
-														id="perpageamount" placeholder="Per Page Amount" name="document_type"
+														id="document" placeholder="Per Page Amount" name="document_type"
 														path="document_type" />
 												 </div>
 												 <div class="form-group col-md-6">
@@ -211,27 +209,27 @@
 														class="required">*</span>:</label>
 													<!--  <textarea class="form-control" aria-label="With textarea" ></textarea> -->
 													<form:input type="text" class="form-control"
-														id="perpageamount" placeholder="Per Page Amount" name="number_of_pages"
+														id="numberofpages" placeholder="Per Page Amount" name="number_of_pages"
 														path="number_of_pages" />
 												</div>
 
 											</div>
 											<div class="form-row">
 												<div class="form-group col-md-6">
-													<label for="perpageamount">Amount<span
+													<label for="amount">Amount<span
 														class="required">*</span>:
 													</label>
 													<!--  <textarea class="form-control" aria-label="With textarea" ></textarea> -->
 													<form:input type="text" class="form-control"
-														id="perpageamount" placeholder="Per Page Amount" name="amount"
-														path="amount" />
+														id="amount" placeholder="Per Page Amount" name="amount"
+														path="amount" onchange="getpageamount()"/>
 												 </div>
 												 <div class="form-group col-md-6">
 													<label for="perpageamount">Per Page Tarrif:</label>
 													<!--  <textarea class="form-control" aria-label="With textarea" ></textarea> -->
 													<form:input type="text" class="form-control"
-														id="perpageamount" placeholder="Per Page Amount" name="per_page_tarrif"
-														path="per_page_tarrif" />
+														id="perpageamount" placeholder="Per Page Amount" readonly="true" name="per_page_tarrif"
+														path="per_page_tarrif" value="" />
 												</div>
 
 											</div>
@@ -244,8 +242,9 @@
 													<br>
 												</div>
 											</div>
+											</form:form>
 									</div>
-									</form>
+									
 								</div>
 							</div>
 
@@ -271,61 +270,34 @@
 									<th class="sorting_desc" tabindex="0" aria-controls="tbl_data"
 										rowspan="1" colspan="1"
 										aria-label="Position: activate to sort column ascending"
+										style="width: 32px;" aria-sort="descending">Document Type</th>
+									<th class="sorting_desc" tabindex="0" aria-controls="tbl_data"
+										rowspan="1" colspan="1"
+										aria-label="Position: activate to sort column ascending"
+										style="width: 32px;" aria-sort="descending">Number of Pages</th>
+									<th class="sorting_desc" tabindex="0" aria-controls="tbl_data"
+										rowspan="1" colspan="1"
+										aria-label="Position: activate to sort column ascending"
+										style="width: 32px;" aria-sort="descending">Amount</th>
+									<th class="sorting_desc" tabindex="0" aria-controls="tbl_data"
+										rowspan="1" colspan="1"
+										aria-label="Position: activate to sort column ascending"
 										style="width: 32px;" aria-sort="descending">Per Page
 										Amount</th>
 
 								</tr>
 							</thead>
-
-
-
-
 							<tbody>
-								<tr>
-									<td>Tiger Nixon</td>
-									<td>System Architect</td>
-
-								</tr>
-								<tr>
-									<td>Garrett Winters</td>
-									<td>Accountant</td>
-
-								</tr>
-								<tr>
-									<td>Ashton Cox</td>
-									<td>Junior Technical Author</td>
-
-								</tr>
-								<tr>
-									<td>Cedric Kelly</td>
-									<td>Senior Javascript Developer</td>
-
-								</tr>
-								<tr>
-									<td>Airi Satou</td>
-									<td>Accountant</td>
-
-								</tr>
-								<tr>
-									<td>Brielle Williamson</td>
-									<td>Integration Specialist</td>
-
-								</tr>
-								<tr>
-									<td>Herrod Chandler</td>
-									<td>Sales Assistant</td>
-
-								</tr>
-								<tr>
-									<td>Rhona Davidson</td>
-									<td>Integration Specialist</td>
-
-								</tr>
-								<tr>
-									<td>Colleen Hurst</td>
-									<td>Javascript Developer</td>
-
-								</tr>
+								
+								<c:forEach items="${listOfPageIncomeTarrif}" var="amount">
+    								<tr>
+										<td>${amount.page_income_id}</td>
+										<td>${amount.document_type}</td>
+										<td>${amount.number_of_pages}</td>
+										<td>${amount.amount}</td>
+										<td>${amount.per_page_tarrif}</td>
+									</tr>
+								</c:forEach>
 
 							</tbody>
 						</table>

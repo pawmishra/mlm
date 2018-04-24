@@ -193,33 +193,44 @@
 
 									<!-- edit form column -->
 									<div class="col-md-9 personal-info">
+									<form:form  action="save_question"
+											method="POST" modelAttribute="question">
+											<div class="form-row">
+												
+												<div class="form-group col-md-6">
+													<label for="problemtype">Project Id:</label>
+													<div class="ui-select">
 
-										<form:form class="form-horizontal" action="save_org"
-											method="POST" modelAttribute="organisation" />
-										<div class="form-row">
-											<div class="form-group col-md-6">
-												<label for="problemid">Project Id:</label>
+														<form:select id="project_id" class="form-control selectpicker"
+															data-live-search="true" name="project_id" required="required" path="project_id">
+															<form:option value="NONE" label="--- Select ---" />
+															<c:forEach items="${listOfProject}" var="item">
+																<option value="${item.prj_work_details_id}">${item.prj_work_details_id}</option>
+															</c:forEach>
+														</form:select>
 
-												<form:input type="text" class="form-control" id="problemid"
-													name="project_id" placeholder="Project Id" path="project_id"/>
-											</div>
-											<div class="form-group col-md-6">
-												<label for="question">Question:</label>
-												<form:textarea class="form-control" id="question"
-													aria-label="With textarea" name="survey_questions" path="survey_questions"/>
+													</div>
+												</div>
 
+												<div class="form-group col-md-6">
+													<label for="question">Question:</label>
+													<form:textarea class="form-control" id="question"
+														aria-label="With textarea" name="survey_questions"
+														path="survey_questions" />
+
+												</div>
 											</div>
-										</div>
-										<div class="form-group">
-											<div class="buttons col-md-8">
-												<br> <input type="submit" class="btn btn-primary"
-													value="Add"> <span></span> <input type="reset"
-													class="btn btn-default" value="Cancel"> <br>
-												<br>
+											<div class="form-group">
+												<div class="buttons col-md-8">
+													<br> <input type="submit" class="btn btn-primary"
+														value="Add"> <span></span> <input type="reset"
+														class="btn btn-default" value="Cancel"> <br>
+													<br>
+												</div>
 											</div>
-										</div>
+										</form:form>
 									</div>
-									<form:form />
+									
 								</div>
 							</div>
 
