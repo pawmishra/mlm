@@ -18,8 +18,12 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.javerian.erp.mlm.model.auth.User;
 import com.javerian.erp.mlm.model.auth.UserProfile;
+import com.javerian.erp.mlm.model.workflow.Ledger;
 import com.javerian.erp.mlm.service.auth.UserService;
+import com.javerian.erp.mlm.service.workflow.LedgerService;
 import com.javerian.erp.mlm.util.Config;
+import com.javerian.erp.mlm.util.LedgerOptions;
+import com.javerian.erp.mlm.util.Util;
 import com.javerian.erp.mlm.vo.ChangePasswordVO;
 
 @Controller
@@ -30,6 +34,9 @@ public class UserController {
 
 	@Autowired
 	UserService userService;
+
+	@Autowired
+	LedgerService ledgerService;
 
 	@RequestMapping(value = { "/add_newuser" }, method = RequestMethod.GET)
 	public String addnewuser(ModelMap model) {
@@ -64,7 +71,8 @@ public class UserController {
 
 		Set<UserProfile> set = new HashSet<>();
 		UserProfile userProfile = new UserProfile();
-		userProfile.setId(1);
+		// TODO: Should be handled from front end. User role hard coded here for user.
+		userProfile.setId(2);
 		set.add(userProfile);
 
 		user.setMemberDetails(user.getMemberDetails());
@@ -74,7 +82,18 @@ public class UserController {
 		user.getMemberDetails().getAddress().setMemberDetails(user.getMemberDetails());
 
 		user.setUserProfiles(set);
+
 		userService.saveUser(user);
+
+		Ledger ledger = new Ledger();
+		ledger.setMember_id(user.getId());
+		ledger.setCredit(0.00);
+		ledger.setDebit(11000.00);
+		ledger.setTransaction_date(Util.getCurrentTime());
+		ledger.setTransaction_remark(LedgerOptions.REGISTRAATION_AMOUNT.getLedgerOptions());
+
+		ledgerService.save(ledger);
+
 		addModelAttr(model);
 
 		return "add_newuser";
