@@ -64,7 +64,7 @@
 
 <script>
 	$(document).ready(function() {
-		
+		  $("#id_message").css("color", "red");
 	});
 </script>
 </head>
