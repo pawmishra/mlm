@@ -2,7 +2,9 @@ package com.javerian.erp.mlm.util;
 
 public enum LedgerOptions {
 
-	CREDIT("CREDIT"), DEBIT("DEBIT"), REGISTRAATION_AMOUNT("REGISTRATION_AMOUNT");
+	REGISTRAATION_AMOUNT("REGISTRATION_AMOUNT"), //
+	LEVEL_INCOME("LEVEL_INCOME"), //
+	PAGE_REVIEW_INCOME("PAGE_REVIEW_INCOME");
 
 	private final String value;
 
