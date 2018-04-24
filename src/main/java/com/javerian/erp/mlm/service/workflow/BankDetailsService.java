@@ -11,4 +11,6 @@ public interface BankDetailsService {
 	boolean save(BankDetails bankDetails);
 
 	List<BankDetails> findAllBankDetails();
+
+	BankDetails findByCustId(Long custId);
 }

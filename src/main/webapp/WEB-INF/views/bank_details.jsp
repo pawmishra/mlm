@@ -174,7 +174,7 @@
 															<div class="demo-section k-content">
 
 																<form:input name="cancelled_cheque_image" id="nomineepanupload"
-																	type="file" required="required" path="fileCanceledCheque" />
+																	type="file" required="" path="fileCanceledCheque" />
 																<div class="demo-hint">
 																	You can only upload <strong>JPG</strong> files.
 																</div>

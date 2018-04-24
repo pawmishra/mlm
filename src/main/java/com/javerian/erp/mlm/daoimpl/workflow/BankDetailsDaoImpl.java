@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.hibernate.Criteria;
 import org.hibernate.criterion.Order;
+import org.hibernate.query.Query;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -23,7 +24,8 @@ public class BankDetailsDaoImpl extends AbstractDao<Long, BankDetails> implement
 
 	@Override
 	public boolean save(BankDetails bankdetails) {
-		persist(bankdetails);
+		getSession().merge(bankdetails);
+		// persist(bankdetails);
 		return true;
 	}
 
@@ -34,6 +36,15 @@ public class BankDetailsDaoImpl extends AbstractDao<Long, BankDetails> implement
 		List<BankDetails> listBankDetails = (List<BankDetails>) criteria.list();
 
 		return listBankDetails;
+	}
+
+	@Override
+	public BankDetails findByCustId(Long custId) {
+
+		Query query = getSession().createQuery("from BankDetails where customer_id=:custId");
+		query.setParameter("custId", custId);
+		BankDetails bankDetails = (BankDetails) query.uniqueResult();
+		return bankDetails;
 	}
 
 }

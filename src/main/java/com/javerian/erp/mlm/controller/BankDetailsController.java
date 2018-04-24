@@ -2,7 +2,6 @@ package com.javerian.erp.mlm.controller;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -39,18 +38,22 @@ public class BankDetailsController {
 
 	@ModelAttribute
 	public void addModelAttr(ModelMap model) {
-		model.addAttribute("loggedinuser", authenticationTrustResolver.getPrincipal());
-		model.addAttribute(new BankDetails());
 
-		List<BankDetails> listOfBankDetail = bankDetailsService.findAllBankDetails();
-		model.addAttribute("listOfBankDetail", listOfBankDetail);
+		User userObjOfLoggedInUser = userService.getLoggedInUser();
+		BankDetails bankDetails = bankDetailsService.findByCustId(userObjOfLoggedInUser.getId());
+
+		model.addAttribute("loggedinuser", authenticationTrustResolver.getPrincipal());
+		model.addAttribute(bankDetails);
+
+		// List<BankDetails> listOfBankDetail = bankDetailsService.findAllBankDetails();
+		// model.addAttribute("listOfBankDetail", listOfBankDetail);
 	}
 
 	@RequestMapping(value = "/save_bankdetails", method = RequestMethod.POST)
 	public String addBankDetails(@ModelAttribute BankDetails bankDetails, BindingResult result, ModelMap model) {
 
 		User userObjOfLoggedInUser = userService.getLoggedInUser();
-
+		bankDetails.setCustomer_id(userObjOfLoggedInUser.getId());
 		try {
 			if (bankDetails.getFileCanceledCheque() != null) {
 				String fileName = Config.UPLOAD_LOCATION + Config.NOMINEE + userObjOfLoggedInUser.getId() + "_"

@@ -1,6 +1,7 @@
 package com.javerian.erp.mlm.model.workflow;
 
-import java.util.Date;
+import java.sql.Date;
+import java.sql.Timestamp;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -32,9 +33,9 @@ public class MemberDetails {
 	@Column(name = "gender")
 	private String gender;
 	@Column(name = "joining_date")
-	private Date joining_date;
+	private Timestamp joining_date;
 	@Column(name = "modified_date")
-	private Date modified_date;
+	private Timestamp modified_date;
 	@Column
 	private String pan_number;
 	@Column
@@ -77,19 +78,19 @@ public class MemberDetails {
 		this.gender = gender;
 	}
 
-	public Date getJoining_date() {
+	public Timestamp getJoining_date() {
 		return joining_date;
 	}
 
-	public void setJoining_date(Date joining_date) {
+	public void setJoining_date(Timestamp joining_date) {
 		this.joining_date = joining_date;
 	}
 
-	public Date getModified_date() {
+	public Timestamp getModified_date() {
 		return modified_date;
 	}
 
-	public void setModified_date(Date modified_date) {
+	public void setModified_date(Timestamp modified_date) {
 		this.modified_date = modified_date;
 	}
 

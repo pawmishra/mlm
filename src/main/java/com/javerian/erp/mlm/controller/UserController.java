@@ -167,9 +167,10 @@ public class UserController {
 	@RequestMapping(value = "/changePassword", method = RequestMethod.POST)
 	public String changePassword(@ModelAttribute ChangePasswordVO changePass, BindingResult result, ModelMap model) {
 
-		userService.changePassword(changePass);
+		String msg = userService.changePassword(changePass);
 		model.addAttribute(new ChangePasswordVO());
-		model.addAttribute("message", "Password Changed Successfully!");
+		model.addAttribute("message", msg);
+
 		return "change_password";
 	}
 

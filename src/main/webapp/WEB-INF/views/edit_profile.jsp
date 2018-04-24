@@ -101,11 +101,8 @@
 									<!-- left column -->
 
 									<!-- edit form column -->
-									<div class="col-md-12 personal-info">
-
-
-
-										<%-- <form class="" role="form">
+<%-- 									<div class="col-md-12 personal-info">
+										<form class="" role="form">
 											<div class="row">
 												<div class="form-group">
 													<label class="col-lg-3 control-label">Search by
@@ -133,9 +130,8 @@
 														value="Show Details">
 												</div>
 											</div>
-
 										</form>
-									</div>
+									</div> --%>
 
 									<div class="col-md-9">
 										<div class="text-center">
@@ -145,7 +141,7 @@
 
 											<input type="file" class="form-control">
 										</div>
-									</div> --%>
+									</div>
 
 									<!-- edit form column -->
 									<div class="col-md-9 personal-info">

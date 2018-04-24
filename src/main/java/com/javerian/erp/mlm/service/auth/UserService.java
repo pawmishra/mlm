@@ -21,7 +21,7 @@ public interface UserService {
 
 	boolean isUserSSOUnique(Long id, String sso);
 
-	void changePassword(ChangePasswordVO changePass);
+	String changePassword(ChangePasswordVO changePass);
 
 	public List<User> getChildOfSponserById(Long id);
 

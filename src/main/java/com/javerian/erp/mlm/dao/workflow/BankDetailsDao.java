@@ -11,4 +11,6 @@ public interface BankDetailsDao {
 	boolean save(BankDetails bankdetails);
 
 	List<BankDetails> findAllBankDetails();
+
+	BankDetails findByCustId(Long custId);
 }

@@ -30,4 +30,9 @@ public class BankDetailsServiceImpl implements BankDetailsService {
 		return bankdetailsDao.findAllBankDetails();
 	}
 
+	@Override
+	public BankDetails findByCustId(Long custId) {
+		return bankdetailsDao.findByCustId(custId);
+	}
+
 }

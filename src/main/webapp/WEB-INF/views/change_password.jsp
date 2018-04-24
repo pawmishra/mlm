@@ -64,6 +64,7 @@
 
 <script>
 	$(document).ready(function() {
+		
 	});
 </script>
 </head>
@@ -112,9 +113,17 @@
 											</div>
 											<div class="row">
 												<div class="form-group col-md-4">
+													<label for="ticketid">Existing Password:</label>
+													<form:input type="password" class="form-control"
+														id="id_existing_password" required="required" placeholder="Existing Password"
+														name="existing_password" path="existingPass" />
+												</div>
+											</div>
+											<div class="row">
+												<div class="form-group col-md-4">
 													<label for="ticketid">New Password:</label>
 													<form:input type="password" class="form-control"
-														id="id_new_password" placeholder="New Password"
+														id="id_new_password" required="required" placeholder="New Password"
 														name="new_password" path="newPassword" />
 												</div>
 											</div>
@@ -122,7 +131,7 @@
 												<div class="form-group col-md-4">
 													<label for="ticketid">Confirm Password:</label>
 													<form:input type="password" class="form-control"
-														id="id_confirm_password" placeholder="Confirm Password"
+														id="id_confirm_password" required="required" placeholder="Confirm Password"
 														name="confirm_password" path="" />
 												</div>
 											</div>

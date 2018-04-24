@@ -8,4 +8,6 @@ public class Config {
 	public static final String UPLOAD_LOCATION = "D://Upload//";
 	public static final String NOMINEE = "NOMINEE_";
 
+	public static final String MSG_SUCCESS = "Password Changed Successfully!";
+	public static final String MSG_PASS_UPDATE_FAILED = "Existing Password doesn't match!";
 }

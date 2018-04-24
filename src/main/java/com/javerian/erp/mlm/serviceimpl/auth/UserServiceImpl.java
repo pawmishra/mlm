@@ -11,6 +11,7 @@ import com.javerian.erp.mlm.controller.UserAuthentication;
 import com.javerian.erp.mlm.dao.auth.UserDao;
 import com.javerian.erp.mlm.model.auth.User;
 import com.javerian.erp.mlm.service.auth.UserService;
+import com.javerian.erp.mlm.util.Config;
 import com.javerian.erp.mlm.vo.ChangePasswordVO;
 
 @Service("userService")
@@ -186,14 +187,19 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public void changePassword(ChangePasswordVO changePass) {
+	public String changePassword(ChangePasswordVO changePass) {
 
 		User userObjFromDb = dao.findBySSO(changePass.getUserName());
 
-		if (userObjFromDb != null && !changePass.getNewPassword().equals(userObjFromDb.getPassword())) {
+		if (userObjFromDb != null
+				&& passwordEncoder.matches(changePass.getExistingPass(), userObjFromDb.getPassword())) {
+
 			userObjFromDb.setPassword(passwordEncoder.encode(changePass.getNewPassword()));
+			dao.updateUser(userObjFromDb);
+			return Config.MSG_SUCCESS;
 		}
-		dao.updateUser(userObjFromDb);
+
+		return Config.MSG_PASS_UPDATE_FAILED;
 	}
 
 	@Override
