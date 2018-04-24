@@ -37,15 +37,10 @@ public class UserController {
 		return "add_newuser";
 	}
 
-	private User getLoggedInUser() {
-		String userName = authenticationTrustResolver.getPrincipal();
-		return userService.findBySSO(userName);
-	}
-
 	@ModelAttribute
 	public void addModelAttr(ModelMap model) {
 
-		User userObjOfLoggedInUser = getLoggedInUser();
+		User userObjOfLoggedInUser = userService.getLoggedInUser();
 		model.addAttribute("loggedinuser", userObjOfLoggedInUser.getUsername());
 
 		User user = new User();
@@ -56,7 +51,7 @@ public class UserController {
 
 	public void addModelAttrForEditProfile(ModelMap model) {
 
-		User userObjOfLoggedInUser = getLoggedInUser();
+		User userObjOfLoggedInUser = userService.getLoggedInUser();
 		model.addAttribute("loggedinuser", userObjOfLoggedInUser.getUsername());
 		model.addAttribute(userObjOfLoggedInUser);
 	}
@@ -106,7 +101,7 @@ public class UserController {
 	@RequestMapping(value = "/update_user", method = RequestMethod.POST)
 	public String updateUser(@ModelAttribute User user, BindingResult result, ModelMap model) {
 
-		User userObjOfLoggedInUser = getLoggedInUser();
+		User userObjOfLoggedInUser = userService.getLoggedInUser();
 
 		try {
 
@@ -163,7 +158,7 @@ public class UserController {
 	public String getChildOfSponserById(ModelMap model) {
 		model.addAttribute("loggedinuser", authenticationTrustResolver.getPrincipal());
 
-		User loggedInUser = getLoggedInUser();
+		User loggedInUser = userService.getLoggedInUser();
 
 		List<User> listOfImmediateChilds = userService.getChildOfSponserById(loggedInUser.getId());
 		addModelAttrForEditProfile(model);
@@ -176,7 +171,7 @@ public class UserController {
 	public String getChildOfSponserById(ModelMap model, @RequestParam("member_id") Long member_id) {
 		model.addAttribute("loggedinuser", authenticationTrustResolver.getPrincipal());
 
-		User loggedInUser = getLoggedInUser();
+		User loggedInUser = userService.getLoggedInUser();
 
 		Long user_id = (member_id != null) ? member_id : loggedInUser.getId();
 
@@ -191,7 +186,7 @@ public class UserController {
 	public String viewmembers(ModelMap model) {
 
 		addModelAttr(model);
-		User loggedInUser = getLoggedInUser();
+		User loggedInUser = userService.getLoggedInUser();
 		List<User> listOfImmediateChilds = userService.getChildOfSponserById(loggedInUser.getId());
 		addModelAttrForEditProfile(model);
 		model.addAttribute("listOfImmediateChilds", listOfImmediateChilds);

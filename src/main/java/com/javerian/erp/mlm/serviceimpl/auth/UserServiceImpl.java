@@ -7,6 +7,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.javerian.erp.mlm.controller.UserAuthentication;
 import com.javerian.erp.mlm.dao.auth.UserDao;
 import com.javerian.erp.mlm.model.auth.User;
 import com.javerian.erp.mlm.service.auth.UserService;
@@ -21,6 +22,9 @@ public class UserServiceImpl implements UserService {
 
 	@Autowired
 	private PasswordEncoder passwordEncoder;
+
+	@Autowired
+	UserAuthentication authenticationTrustResolver;
 
 	public User findById(Long id) {
 		return dao.findById(id);
@@ -200,5 +204,10 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public List<User> getLowestLevelUsers() {
 		return dao.getLowestLevelUsers();
+	}
+
+	public User getLoggedInUser() {
+		String userName = authenticationTrustResolver.getPrincipal();
+		return findBySSO(userName);
 	}
 }

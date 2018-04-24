@@ -105,8 +105,7 @@
 										<!-- edit form column -->
 										<div class="col-md-9 personal-info">
 
-
-											<form:form action="save_bankdetails" method="POST"
+											<form:form enctype="multipart/form-data" action="save_bankdetails" method="POST"
 												modelAttribute="bankDetails">
 												<div class="form-row">
 													<div class="form-group col-md-6">
@@ -175,7 +174,7 @@
 															<div class="demo-section k-content">
 
 																<form:input name="cancelled_cheque_image" id="nomineepanupload"
-																	type="file" required="required" path="cancelled_cheque_image" />
+																	type="file" required="required" path="fileCanceledCheque" />
 																<div class="demo-hint">
 																	You can only upload <strong>JPG</strong> files.
 																</div>
@@ -228,7 +227,7 @@
 																<div class="demo-section k-content">
 
 																	<form:input name="nominee_pan_image_path" id="nomineepanupload"
-																		type="file" path="nominee_pan_image_path" />
+																		type="file" path="filePancard" />
 																	<div class="demo-hint">
 																		You can only upload <strong>JPG</strong> files.
 																	</div>
@@ -246,7 +245,7 @@
 																<div class="demo-section k-content">
 
 																	<form:input name="nominee_aadhar_image_path"
-																		id="nomineeaahareupload" type="file" path="nominee_aadhar_image_path"/>
+																		id="nomineeaahareupload" type="file" path="fileAadharCardFront"/>
 																	<div class="demo-hint">
 																		You can only upload <strong>JPG</strong> files.
 																	</div>

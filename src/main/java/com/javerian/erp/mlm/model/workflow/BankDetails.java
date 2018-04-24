@@ -8,6 +8,9 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Transient;
+
+import org.springframework.web.multipart.MultipartFile;
 
 @Entity
 @Table(name = "customer_bank_details")
@@ -50,6 +53,13 @@ public class BankDetails {
 	private String nominee_pan_image_path;
 	@Column(name = "nominee_aadhar_image_path")
 	private String nominee_aadhar_image_path;
+
+	@Transient
+	MultipartFile filePancard;
+	@Transient
+	MultipartFile fileAadharCardFront;
+	@Transient
+	MultipartFile fileCanceledCheque;
 
 	public final Long getBank_id() {
 		return bank_id;
@@ -193,6 +203,30 @@ public class BankDetails {
 
 	public final void setNominee_aadhar_image_path(String nominee_aadhar_image_path) {
 		this.nominee_aadhar_image_path = nominee_aadhar_image_path;
+	}
+
+	public MultipartFile getFilePancard() {
+		return filePancard;
+	}
+
+	public void setFilePancard(MultipartFile filePancard) {
+		this.filePancard = filePancard;
+	}
+
+	public MultipartFile getFileAadharCardFront() {
+		return fileAadharCardFront;
+	}
+
+	public void setFileAadharCardFront(MultipartFile fileAadharCardFront) {
+		this.fileAadharCardFront = fileAadharCardFront;
+	}
+
+	public MultipartFile getFileCanceledCheque() {
+		return fileCanceledCheque;
+	}
+
+	public void setFileCanceledCheque(MultipartFile fileCanceledCheque) {
+		this.fileCanceledCheque = fileCanceledCheque;
 	}
 
 }
