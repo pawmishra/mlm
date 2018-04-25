@@ -87,8 +87,8 @@ public class UserController {
 
 		Ledger ledger = new Ledger();
 		ledger.setMember_id(user.getId());
-		ledger.setCredit(0.00);
-		ledger.setDebit(11000.00);
+		ledger.setCredit(11000.00);
+		ledger.setDebit(0.00);
 		ledger.setTransaction_date(Util.getCurrentTime());
 		ledger.setTransaction_remark(LedgerOptions.REGISTRAATION_AMOUNT.getLedgerOptions());
 
@@ -212,7 +212,7 @@ public class UserController {
 		model.addAttribute("listOfImmediateChilds", listOfImmediateChilds);
 		return "view_members";
 	}
-	
+
 	@RequestMapping(value = { "/view_downline_members" }, method = RequestMethod.GET)
 	public String viewdownlinemembers(ModelMap model) {
 

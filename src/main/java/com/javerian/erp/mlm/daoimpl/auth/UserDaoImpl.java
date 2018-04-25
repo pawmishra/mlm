@@ -94,8 +94,8 @@ public class UserDaoImpl extends AbstractDao<Long, User> implements UserDao {
 		List list = query.list();
 
 		if (list != null && list.size() > 0) {
-			Query queryUser = getSession().createQuery("from User where level_from_root = :level").setParameter("level",
-					list.get(0));
+			Query queryUser = getSession().createQuery("from User where level_from_root >= :level order by id asc")
+					.setParameter("level", Long.parseLong(list.get(0).toString()) - 1);
 			listuser.addAll(queryUser.list());
 		}
 		return listuser;

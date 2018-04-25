@@ -143,12 +143,12 @@
 														id="papertitle" name="paper_title" required="required"
 														placeholder="Paper Title" path="paper_title" />
 												</div>
-												<div class="form-group col-md-6">
+												<%-- <div class="form-group col-md-6">
 													<label for="noofpages">Number of Pages:</label>
 													<form:input type="text" class="form-control" id="noofpages"
 														name="no_of_pages" required="required" placeholder="Number of Pages"
 														path="number_of_pages" />
-												</div>
+												</div> --%>
 											</div>
 											<br>
 											<div class="form-row">

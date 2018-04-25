@@ -69,21 +69,23 @@ public class UserServiceImpl implements UserService {
 			for (User userObj : lowestLevelUsers) {
 
 				childOfSponser = getChildOfSponserById(userObj.getId());
-				for (User childObj : childOfSponser) {
-					if (user.getPosition_left_or_right().equalsIgnoreCase("Left") && user.getPosition_left_or_right()
-							.equalsIgnoreCase(childObj.getPosition_left_or_right())) {
-						user.setPosition_left_or_right("Right");
-					} else if (user.getPosition_left_or_right().equalsIgnoreCase("Right") && user
-							.getPosition_left_or_right().equalsIgnoreCase(childObj.getPosition_left_or_right())) {
-						user.setPosition_left_or_right("Left");
+				if (childOfSponser != null && childOfSponser.size() < 2) {
+					for (User childObj : childOfSponser) {
+						if (user.getPosition_left_or_right().equalsIgnoreCase("Left") && user
+								.getPosition_left_or_right().equalsIgnoreCase(childObj.getPosition_left_or_right())) {
+							user.setPosition_left_or_right("Right");
+						} else if (user.getPosition_left_or_right().equalsIgnoreCase("Right") && user
+								.getPosition_left_or_right().equalsIgnoreCase(childObj.getPosition_left_or_right())) {
+							user.setPosition_left_or_right("Left");
+						}
 					}
-				}
-				user.setLevel_from_root(userObj.getLevel_from_root() + 1);
-				user.setPassword(passwordEncoder.encode(user.getPassword()));
-				user.setSponser_id(userObj.getId());
-				dao.save(user);
+					user.setLevel_from_root(userObj.getLevel_from_root() + 1);
+					user.setPassword(passwordEncoder.encode(user.getPassword()));
+					user.setSponser_id(userObj.getId());
+					dao.save(user);
 
-				break;
+					break;
+				}
 			}
 		}
 	}

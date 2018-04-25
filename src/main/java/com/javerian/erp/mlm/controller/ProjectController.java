@@ -7,6 +7,7 @@ import java.util.List;
 
 import javax.validation.Valid;
 
+import org.apache.pdfbox.pdmodel.PDDocument;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -99,6 +100,10 @@ public class ProjectController {
 			String fileNameWithPathAfterUpload = Config.UPLOAD_LOCATION + documentId + "." + extOfFile;
 			FileCopyUtils.copy(projectWorkDetails.getFile().getBytes(), new File(fileNameWithPathAfterUpload));
 
+			PDDocument pdf = PDDocument.load(new File(fileNameWithPathAfterUpload));
+			int pageCount = pdf.getNumberOfPages();
+
+			projectWorkDetails.setNumber_of_pages((long) pageCount);
 			projectWorkDetails.setDocument_upload_path(fileNameWithPathAfterUpload);
 			projectWorkDetails.setDocument_id(documentId);
 			projectWorkDetails.setUpload_datetime_stamp(Util.getCurrentTime());
