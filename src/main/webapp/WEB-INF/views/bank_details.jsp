@@ -27,6 +27,10 @@
 <!-- Theme style -->
 <link href="<c:url value='/static/dist/css/AdminLTE.min.css' />"
 	rel="stylesheet" type="text/css" />
+<link href="<c:url value='/static/dist/css/AdminLTE.css' />"
+	rel="stylesheet" type="text/css" />
+	
+	
 <link href="<c:url value='/static/dist/css/style.css' />"
 	rel="stylesheet" type="text/css" />
 <!-- AdminLTE Skins. Choose a skin from the css/skins 
@@ -68,7 +72,7 @@
 <link href="<c:url value='/static/plugins/morris/morris.css' />"
 	rel="stylesheet" type="text/css" />
 
-
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 </head>
 <body class="skin-blue">
 	<div class="wrapper">
@@ -104,7 +108,7 @@
 
 										<!-- edit form column -->
 										<div class="col-md-9 personal-info">
-
+`												<span id="alert"></span>
 											<form:form enctype="multipart/form-data" action="save_bankdetails" method="POST"
 												modelAttribute="bankDetails">
 												<div class="form-row">
@@ -119,7 +123,7 @@
 													<div class="form-group col-md-6">
 														<label for="mobileno">Mobile Number<span
 															class="required">*</span>:
-														</label> <form:input type="text" class="form-control" id="mobileno"
+														</label> <form:input type="text" class="form-control" id="mobilenumber"
 															name="mobile_number" placeholder="Mobile Number"
 															required="required" path="mobile_number"/>
 													</div>
@@ -135,7 +139,7 @@
 													</div>
 													<div class="form-group col-md-6">
 														<label for="bankname">IFSC<span class="required">*</span>:
-														</label> <form:input type="text" class="form-control" id="ifsc"
+														</label> <form:input type="text" class="form-control" id="ifsc" onblur="return AllowIFSC();"  MaxLength="11" Width="200" Style='text-transform: uppercase'
 															name="ifsc_code" placeholder="IFSC" required="required" path="ifsc_code"/>
 													</div>
 
@@ -144,7 +148,7 @@
 													<div class="form-group col-md-6">
 														<label for="accountno">Bank Name<span
 															class="required">*</span>:
-														</label><form:input type="text" class="form-control" id="accountno"
+														</label><form:input type="text" class="form-control" id="bankname"
 															name="bank_name" placeholder="Bank Name"
 															required="required" path="bank_name"/>
 													</div>
@@ -173,10 +177,10 @@
 
 															<div class="demo-section k-content">
 
-																<form:input name="cancelled_cheque_image" id="nomineepanupload"
-																	type="file" required="" path="fileCanceledCheque" />
+																<form:input name="cancelled_cheque_image" id="cancelledcheque"
+																	type="file" required="" path="fileCanceledCheque" accept="image/jpeg, image/png"/>
 																<div class="demo-hint">
-																	You can only upload <strong>JPG</strong> files.
+																	You can only upload <strong>JPG</strong> files of 200 Pixel.
 																</div>
 															</div>
 														</div>
@@ -221,15 +225,15 @@
 															<div class="form-group col-md-6">
 																<label for="nomineepan">Pan Number:</label><form:input
 																	type="text" class="form-control" id="nomineepan"
-																	name="nominee_pan" placeholder="Pan Number" path="nominee_pan"/> <label
+																	name="nominee_pan" placeholder="Pan Number" path="nominee_pan" MaxLength="10" onblur="ValidatePAN(this);"/> <label
 																	for="nomineepanupload">Upload Pan Card:</label>
 
 																<div class="demo-section k-content">
 
-																	<form:input name="nominee_pan_image_path" id="nomineepanupload"
+																	<form:input name="nominee_pan_image_path" id="uploadpan"
 																		type="file" path="filePancard" />
 																	<div class="demo-hint">
-																		You can only upload <strong>JPG</strong> files.
+																		You can only upload <strong>JPG & PNG</strong> files of 200 Pixel.
 																	</div>
 																</div>
 															</div>
@@ -238,16 +242,16 @@
 														<div class="form-row">
 															<div class="form-group col-md-6">
 																<label for="nomineeaahare">Aadhar Number:</label><form:input
-																	type="text" class="form-control" id="nomineeaahare"
+																	type="text" class="form-control" id="aadhar_no"
 																	placeholder="Aadhar Number" name="nominee_aadhar" path="nominee_aadhar"/> <label
 																	for="nomineeaahareupload">Upload Aadhar Card:</label>
 
 																<div class="demo-section k-content">
 
 																	<form:input name="nominee_aadhar_image_path"
-																		id="nomineeaahareupload" type="file" path="fileAadharCardFront"/>
+																		id="aadharfront" type="file" path="fileAadharCardFront"/>
 																	<div class="demo-hint">
-																		You can only upload <strong>JPG</strong> files.
+																		You can only upload <strong>JPG & PNG</strong> files of 200 Pixel.
 																	</div>
 																</div>
 															</div>
@@ -317,6 +321,7 @@
 							}
 						});
 	</script>
+	<script src="/mlm-erp/static/js/validation.js"></script>
 	<!-- jQuery 2.1.3 -->
 	<script src="/mlm-erp/static/plugins/jQuery/jQuery-2.1.3.min.js"></script>
 	<!-- jQuery UI 1.11.2 -->

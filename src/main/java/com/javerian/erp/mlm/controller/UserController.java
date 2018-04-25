@@ -212,4 +212,15 @@ public class UserController {
 		model.addAttribute("listOfImmediateChilds", listOfImmediateChilds);
 		return "view_members";
 	}
+	
+	@RequestMapping(value = { "/view_downline_members" }, method = RequestMethod.GET)
+	public String viewdownlinemembers(ModelMap model) {
+
+		addModelAttr(model);
+		User loggedInUser = userService.getLoggedInUser();
+		List<User> listOfImmediateChilds = userService.getChildOfSponserById(loggedInUser.getId());
+		addModelAttrForEditProfile(model);
+		model.addAttribute("listOfImmediateChilds", listOfImmediateChilds);
+		return "view_downline_members";
+	}
 }

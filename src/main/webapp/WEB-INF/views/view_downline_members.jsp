@@ -3,7 +3,6 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
@@ -155,7 +154,6 @@
 	 }); */
 </script>
 
-	<script src="/mlm-erp/static/js/validation.js"></script>
 
 
 </head>
@@ -170,11 +168,11 @@
 		<div class="content-wrapper">
 			<!-- Content Header (Page header) -->
 			<section class="content-header">
-			<h1>Add Organization</h1>
+			<h1>Downline Members</h1>
 			<ol class="breadcrumb">
 				<li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
 				<li><a href="#">Dashboard</a></li>
-				<li class="active">Add Organization</li>
+				<li class="active">Downline Members</li>
 			</ol>
 			</section>
 
@@ -192,89 +190,99 @@
 								<div class="row">
 									<!-- left column -->
 
-									<!-- edit form column -->
+									<%-- <!-- edit form column -->
 									<div class="col-md-9 personal-info">
-
-										<form:form class="form-horizontal" action="save_org"
-											method="POST" modelAttribute="organisation">
-
+										<form>
 											<div class="form-row">
-												<div class="form-group col-md-6">
-													<label for="organizationname">Organization Name:</label>
-													<form:input type="text" class="form-control"
-														id="organizationname" name="organization_name"
-														placeholder="Organization Name" path="organisation_name" />
-												</div>
-
-											</div>
-
-											<div class="form-group">
-
-												<div class="buttons col-md-8">
-													<br> <input type="submit" class="btn btn-primary"
-														value="Add"> <span></span> <input type="reset"
-														class="btn btn-default" value="Cancel"> <br>
-													<br>
+												<div class="form-group col-md-11">
+													<label for="membertype">Select Members Type:</label>
+													<div class="ui-select">
+														<select id="membertype" name=""
+															member_type"" class="form-control">
+															<option value="">Choose</option>
+															<option value="">Direct Members</option>
+															<option value="">Downline Members</option>
+														</select><br>
+														<br>
+													</div>
 												</div>
 											</div>
-										</form:form>
-									</div>
+										</form>
+									</div> --%>
 								</div>
 							</div>
-
 						</div>
-					</div>
 
-					<!-- /.box-header -->
-					<div class="box-body">
-						<!-- <table id="tbl_data" class="table table-striped table-bordered"
+						<!-- /.box-header -->
+						<div class="box-body">
+							<!-- <table id="tbl_data" class="table table-striped table-bordered"
 									style="width: 100%"> -->
 
-						<table class="display dataTable no-footer" border="1"
-							style="width: 100%;" id="tbl_data" role="grid"
-							aria-describedby="tbl_data_info">
-							<thead>
-								<tr
-									style="background-color: #0f2a76; text-align: center; color: white"
-									role="row">
-									<th class="sorting_desc" tabindex="0" aria-controls="tbl_data"
-										rowspan="1" colspan="1"
-										aria-label="Name: activate to sort column ascending"
-										style="width: 32px;" aria-sort="descending">S.no</th>
-									<th class="sorting_desc" tabindex="0" aria-controls="tbl_data"
-										rowspan="1" colspan="1"
-										aria-label="Position: activate to sort column ascending"
-										style="width: 32px;" aria-sort="descending">Organization
-										Name</th>
-								</tr>
-							</thead>
-							<tbody>
-								<!-- <tr>
-									<td>Tiger Nixon</td>
-									<td>System Architect</td>
-								</tr> -->
-								<c:forEach items="${listOfOrg}" var="item">
-    								<tr>
-										<td>${item.organisation_id}</td>
-										<td>${item.organisation_name}</td>
+							<table class="display dataTable no-footer" border="1"
+								style="width: 100%;" id="tbl_data" role="grid"
+								aria-describedby="tbl_data_info">
+								<thead>
+									<tr
+										style="background-color: #0f2a76; text-align: center; color: white"
+										role="row">
+										<th class="sorting_desc" tabindex="0" aria-controls="tbl_data"
+											rowspan="1" colspan="1"
+											aria-label="Name: activate to sort column ascending"
+											style="width: 32px;" aria-sort="descending">First Name</th>
+										<th class="sorting_desc" tabindex="0" aria-controls="tbl_data"
+											rowspan="1" colspan="1"
+											aria-label="Position: activate to sort column ascending"
+											style="width: 32px;" aria-sort="descending">Last Name</th>
+										<th class="sorting_desc" tabindex="0" aria-controls="tbl_data"
+											rowspan="1" colspan="1"
+											aria-label="Office: activate to sort column ascending"
+											style="width: 32px;" aria-sort="descending">Username</th>
+										<th class="sorting_desc" tabindex="0" aria-controls="tbl_data"
+											rowspan="1" colspan="1"
+											aria-label="Age: activate to sort column ascending"
+											style="width: 32px;" aria-sort="descending">Sponsor Id</th>
+										<th class="sorting_desc" tabindex="0" aria-controls="tbl_data"
+											rowspan="1" colspan="1"
+											aria-label="Start date: activate to sort column ascending"
+											style="width: 32px;" aria-sort="descending">Sponsor Name</th>
+										<th class="sorting_desc" tabindex="0" aria-controls="tbl_data"
+											rowspan="1" colspan="1"
+											aria-label="Salary: activate to sort column ascending"
+											style="width: 32px;" aria-sort="descending">Position</th>
+										<th class="sorting_desc" tabindex="0" aria-controls="tbl_data"
+											rowspan="1" colspan="1"
+											aria-label="Salary: activate to sort column ascending"
+											style="width: 32px;" aria-sort="descending">Level</th>
 									</tr>
-								</c:forEach>
-							</tbody>
-						</table>
+								</thead>
+								<tbody>
+									<c:forEach items="${listOfImmediateChilds}" var="item">
+										<tr>
+											<td>${item.firstName}</td>
+											<td>${item.lastName}</td>
+											<td>${item.username}</td>
+											<td>${item.sponser_id}</td>
+											<td>${item.sponser_name}</td>
+											<td>${item.position_left_or_right}</td>
+											<td>${item.level_from_root}</td>
+
+										</tr>
+									</c:forEach>
+								</tbody>
+							</table>
+						</div>
+						<!-- /.box-body -->
 					</div>
-					<!-- /.box-body -->
+					<!-- /.box -->
+
+
 				</div>
-				<!-- /.box -->
-
-
+				<!-- /.col -->
 			</div>
-			<!-- /.col -->
+			<!-- /.row --> </section>
+			<!-- /.content -->
 		</div>
-		<!-- /.row -->
-		</section>
-		<!-- /.content -->
-	</div>
-	<!-- /.content-wrapper -->
+		<!-- /.content-wrapper -->
 
 	</div>
 	<!-- ./wrapper -->

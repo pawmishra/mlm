@@ -25,6 +25,8 @@
 <!-- Theme style -->
 <link href="<c:url value='/static/dist/css/AdminLTE.min.css' />"
 	rel="stylesheet" type="text/css" />
+<link href="<c:url value='/static/dist/css/AdminLTE.css' />"
+	rel="stylesheet" type="text/css" />
 
 <!-- AdminLTE Skins. Choose a skin from the css/skins 
          folder instead of downloading all of them to reduce the load. -->
@@ -65,8 +67,10 @@
 
 <link href="<c:url value='/static/plugins/morris/morris.css' />"
 	rel="stylesheet" type="text/css" />
-
-
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script>
+		
+        </script>
 </head>
 <body class="skin-blue">
 	<div class="wrapper">
@@ -102,11 +106,11 @@
 
 									<!-- edit form column -->
 									<div class="col-md-9 personal-info">
-
+									   <span id="alert"></span>
 										<hr>
 										<form:form class="" action="save_user" method="POST"
 											modelAttribute="user">
-
+											
 											<div class="form-row">
 												<div class="form-group col-md-6">
 													<label for="sponsorid">Sponsor Id<span
@@ -128,17 +132,17 @@
 											</div>
 											<div class="form-row">
 												<div class="form-group col-md-6">
-													<label for="name">Fisrt Name<span class="required">*</span>:
+													<label for="name">First Name<span class="required">*</span>:
 													</label>
-													<form:input type="text" class="form-control" id="name"
-														name="first_name" placeholder="Name" required="required"
+													<form:input type="text" class="form-control" id="first_name"
+														name="first_name" placeholder="First Name" required="required"
 														path="firstName" />
 												</div>
 												<div class="form-group col-md-6">
 													<label for="name">Last Name<span class="required">*</span>:
 													</label>
-													<form:input type="text" class="form-control" id="name"
-														name="last_name" placeholder="Name" required="required"
+													<form:input type="text" class="form-control" id="last_name"
+														name="last_name" placeholder="Last Name" required="required"
 														path="lastName" />
 												</div>
 
@@ -154,7 +158,7 @@
 												<div class="form-group col-md-6">
 													<label for="email">Email<span class="required">*</span>:
 													</label>
-													<form:input type="text" class="form-control" id="email"
+													<form:input type="Email" class="form-control" id="email"
 														name="email" placeholder="Email" required="required"
 														path="email" />
 												</div>
@@ -190,7 +194,7 @@
 													<form:input type="text" class="form-control"
 														id="mobilenumber" name="mobile_number"
 														placeholder="Mobile Number" required="required"
-														path="MemberDetails.Address.mobile" />
+														path="MemberDetails.Address.mobile" maxlength="10"/>&nbsp;<span id="alert"></span>
 
 												</div>
 											</div>
@@ -204,7 +208,7 @@
 												</div>
 												<div class="form-group col-md-6">
 													<label for="address">Street/Locality Name:</label>
-													<form:input type="text" class="form-control" id="address"
+													<form:input type="text" class="form-control" id="Street"
 														required="required" name="street_locality"
 														placeholder="Address"
 														path="MemberDetails.Address.streetName" />
@@ -216,7 +220,7 @@
 												<div class="form-group col-md-6">
 													<label for="email">City<span class="required">*</span>:
 													</label>
-													<form:input type="text" class="form-control" id="email"
+													<form:input type="text" class="form-control" id="city"
 														name="city" placeholder="City" required="required"
 														path="MemberDetails.Address.city" />
 												</div>
@@ -289,7 +293,7 @@
 													</label>
 													<form:input type="text" class="form-control" id="pincode"
 														name="pincode" required="required" placeholder="Country"
-														path="MemberDetails.Address.pincode" />
+														path="MemberDetails.Address.pincode" maxlength="6" />
 												</div>
 
 											</div>
@@ -346,7 +350,7 @@
 	</div>
 	<!-- ./wrapper -->
 
-
+	<script src="/mlm-erp/static/js/validation.js"></script>
 	<!-- jQuery 2.1.3 -->
 	<script src="/mlm-erp/static/plugins/jQuery/jQuery-2.1.3.min.js"></script>
 	<!-- jQuery UI 1.11.2 -->

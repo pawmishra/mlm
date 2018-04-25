@@ -107,8 +107,10 @@
 				class="fa fa-angle-left pull-right"></i>
 		</a>
 			<ul class="treeview-menu">
-				<li><a href="payout"><i
-						class="fa fa-circle-o"></i>Payout</a></li>
+				<li><a href="level_income"><i
+						class="fa fa-circle-o"></i>Level Income</a></li>
+				<li><a href="survey_income"><i
+						class="fa fa-circle-o"></i>Survey Income</a></li>
 				
 			</ul></li>
 		
@@ -119,7 +121,9 @@
 		</a>
 			<ul class="treeview-menu">
 				<li><a href="view_members"><i class="fa fa-circle-o"></i>
-						View Members</a></li>
+						Direct Members</a></li>
+				<li><a href="view_downline_members"><i class="fa fa-circle-o"></i>
+						Downline Members</a></li>
 				<li><a href="treeview"><i class="fa fa-circle-o"></i>
 						Tree View</a></li>
 				

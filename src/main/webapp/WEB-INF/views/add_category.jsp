@@ -169,11 +169,11 @@
 		<div class="content-wrapper">
 			<!-- Content Header (Page header) -->
 			<section class="content-header">
-			<h1>View Members</h1>
+			<h1>Add Category</h1>
 			<ol class="breadcrumb">
 				<li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
 				<li><a href="#">Dashboard</a></li>
-				<li class="active">View Members</li>
+				<li class="active">Add Category</li>
 			</ol>
 			</section>
 
@@ -194,7 +194,7 @@
 									<!-- edit form column -->
 									<div class="col-md-9 personal-info">
 
-										<form:form class="form-horizontal" action="save_cat"
+										<form:form  action="save_cat"
 											method="POST" modelAttribute="category">
 
 											<div class="form-row">

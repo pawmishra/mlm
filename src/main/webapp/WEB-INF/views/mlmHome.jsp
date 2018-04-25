@@ -217,7 +217,7 @@
                    <li>
                       <a href=""><span class="text">${item.news_content}</span></a>
                     </li>
-                   </c:forEach>
+                 </c:forEach>
                   </ul>
               </marquee>
               

@@ -166,11 +166,11 @@
 		<div class="content-wrapper">
 			<!-- Content Header (Page header) -->
 			<section class="content-header">
-				<h1>Payout</h1>
+				<h1>Level Income</h1>
 				<ol class="breadcrumb">
 					<li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
 					<li><a href="#">Dashboard</a></li>
-					<li class="active">Payout</li>
+					<li class="active">Level Income</li>
 				</ol>
 			</section>
 
@@ -192,24 +192,6 @@
 										<div class="col-md-9 personal-info">
 
 
-											<form>
-												
-												<div class="form-row">
-													<div class="form-group col-md-11">
-														<label for="payouttype">Select Payout Type:</label>
-														<div class="ui-select">
-															<select id="payouttype" class="form-control" name="payout_type">
-																<option value="Organization1">Level Income</option>
-																<option value="Organization1">Survey Income</option>
-															</select><br><br> 
-														</div>
-													</div>
-													
-
-												</div>
-												
-												
-											</form>
 										</div>
 									</div>
 

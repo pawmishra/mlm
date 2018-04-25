@@ -25,6 +25,8 @@
 <!-- Theme style -->
 <link href="<c:url value='/static/dist/css/AdminLTE.min.css' />"
 	rel="stylesheet" type="text/css" />
+<link href="<c:url value='/static/dist/css/AdminLTE.css' />"
+	rel="stylesheet" type="text/css" />
 
 <!-- AdminLTE Skins. Choose a skin from the css/skins 
          folder instead of downloading all of them to reduce the load. -->
@@ -137,12 +139,12 @@
 										<div class="text-center">
 											<img src="//placehold.it/100" class="avatar img-circle"
 												alt="avatar">
-											<h6>Upload a different photo...</h6>
+											<h6>You can only upload <strong>JPG & PNG</strong> files of 100 Pixel.</h6>
 
-											<input type="file" class="form-control">
+											<input type="file" class="form-control" id="profile" accept="image/jpeg, image/png">
 										</div>
 									</div>
-
+									<span id="alert"></span>
 									<!-- edit form column -->
 									<div class="col-md-9 personal-info">
 										<!-- <div class="alert alert-info alert-dismissable">
@@ -179,7 +181,7 @@
 												<div class="form-group col-md-6">
 													<label for="name">First Name<span class="required">*</span>:
 													</label>
-													<form:input type="text" class="form-control" id="name"
+													<form:input type="text" class="form-control" id="first_name"
 														name="first_name" placeholder="Name" required="required"
 														path="firstName" />
 												</div>
@@ -189,7 +191,7 @@
 												<div class="form-group col-md-6">
 													<label for="name">Last Name<span class="required">*</span>:
 													</label>
-													<form:input type="text" class="form-control" id="name"
+													<form:input type="text" class="form-control" id="last_name"
 														name="last_name" placeholder="Name" required="required"
 														path="lastName" />
 												</div>
@@ -208,7 +210,7 @@
 												<div class="form-group col-md-6">
 													<label for="mobilenumber">Alternate Mobile Number:</label>
 													<form:input type="text" class="form-control"
-														id="mobilenumber" name="alternate_mobile_number"
+														id="alternatemobilenumber" name="alternate_mobile_number"
 														placeholder="Mobile Number"
 														path="MemberDetails.Address.altContactNo" />
 												</div>
@@ -233,7 +235,7 @@
 												<div class="form-group col-md-6">
 													<label for="email">Email<span class="required">*</span>:
 													</label>
-													<form:input type="text" class="form-control" id="email"
+													<form:input type="Email" class="form-control" id="email"
 														name="email" placeholder="Email" required="required"
 														path="email" />
 												</div>
@@ -245,14 +247,14 @@
 													</label>
 													<form:input type="text" class="form-control" id="panno"
 														name="pan_no" placeholder="Pan Number" required="required"
-														path="MemberDetails.pan_number" />
+														path="MemberDetails.pan_number" MaxLength="10" onblur="ValidatePAN(this);" />
 
 													<label for="pancardupload">Upload Pan Card:</label>
 													<div class="demo-section k-content">
-														<form:input name="pancard" id="pancardupload" type="file"
+														<form:input name="pancard" id="cancelledcheque" type="file"
 															required="" path="MemberDetails.filePanCard" />
 														<div class="demo-hint">
-															You can only upload <strong>JPG</strong> files.
+															You can only upload <strong>JPG</strong> files of 200 Pixel.
 														</div>
 													</div>
 												</div>
@@ -262,26 +264,26 @@
 													<label for="aadharno">Aadhar Number<span
 														class="required">*</span>:
 													</label>
-													<form:input type="text" class="form-control" id="aadharno"
+													<form:input type="text" class="form-control" id="aadhar_no"
 														name="aadhar_no" placeholder="Aadhar Number"
-														required="required" path="MemberDetails.aadhar_number" />
+														required="required" path="MemberDetails.aadhar_number" maxlength="12" />
 													<div class="form-row">
 														<label for="aadharnoupload">Upload front:</label>
 														<div class="demo-section k-content">
-															<form:input name="aadharcard" id="aadharnoupload"
+															<form:input name="aadharcard" id="aadharfront"
 																type="file" accept=".png, .jpg," required=""
 																path="MemberDetails.fileAadharCardFront" />
 															<div class="demo-hint">
-																You can only upload <strong>JPG</strong> files.
+																You can only upload <strong>JPG</strong> files of 200 Pixel.
 															</div>
 														</div>
 														<label for="aadharnoupload">Upload back:</label>
 														<div class="demo-section k-content">
-															<form:input name="aadharcard" id="aadharnoupload"
+															<form:input name="aadharcard" id="aadharback"
 																type="file" accept=".png, .jpg," required=""
 																path="MemberDetails.fileAadharCardBack" />
 															<div class="demo-hint">
-																You can only upload <strong>JPG</strong> files.
+																You can only upload <strong>JPG</strong> files of 200 Pixel.
 															</div>
 														</div>
 													</div>
@@ -306,7 +308,7 @@
 															class="required">*</span>:
 														</label>
 														<form:input type="text" class="form-control"
-															id="streetname" name="street_locality"
+															id="Street" name="street_locality"
 															placeholder="Street Name" required="required"
 															path="MemberDetails.Address.streetName" />
 													</div>
@@ -424,7 +426,8 @@
 
 	</div>
 	<!-- ./wrapper -->
-
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script src="/mlm-erp/static/js/validation.js"></script>
 	<!-- jQuery 2.1.3 -->
 	<script src="/mlm-erp/static/plugins/jQuery/jQuery-2.1.3.min.js"></script>
 	<!-- jQuery UI 1.11.2 -->

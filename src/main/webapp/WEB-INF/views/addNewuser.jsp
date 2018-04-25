@@ -132,7 +132,7 @@
 													</label>
 													<form:input type="text" class="form-control" id="name"
 														name="first_name" placeholder="Name" required="required"
-														path="firstName" />
+														path="firstName" pattern="[789][0-9]{9}" />
 												</div>
 												<div class="form-group col-md-6">
 													<label for="name">Last Name<span class="required">*</span>:
@@ -390,6 +390,10 @@
 	<!-- iCheck -->
 	<script src="/mlm-erp/static/plugins/iCheck/icheck.min.js"
 		type="text/javascript"></script>
+		
+  		
+		
+		
 	<!-- Slimscroll -->
 	<script
 		src="/mlm-erp/static/plugins/slimScroll/jquery.slimscroll.min.js"

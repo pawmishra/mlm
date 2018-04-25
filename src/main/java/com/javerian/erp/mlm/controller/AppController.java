@@ -234,12 +234,18 @@ public class AppController {
 		return "redirect:/login?logout";
 	}
 
-	@RequestMapping(value = { "/payout" }, method = RequestMethod.GET)
-	public String payout(ModelMap model) {
+	@RequestMapping(value = { "/survey_income" }, method = RequestMethod.GET)
+	public String surveyincome(ModelMap model) {
 		model.addAttribute("loggedinuser", authenticationTrustResolver.getPrincipal());
-		return "payout";
+		return "survey_income";
 	}
 
+	@RequestMapping(value = { "/level_income" }, method = RequestMethod.GET)
+	public String levelincome(ModelMap model) {
+		model.addAttribute("loggedinuser", authenticationTrustResolver.getPrincipal());
+		return "level_income";
+	}
+	
 	@RequestMapping(value = { "/review_project" }, method = RequestMethod.GET)
 	public String reviewproject(ModelMap model) {
 		model.addAttribute("loggedinuser", authenticationTrustResolver.getPrincipal());
