@@ -90,7 +90,7 @@ public class UserController {
 		ledger.setCredit(11000.00);
 		ledger.setDebit(0.00);
 		ledger.setTransaction_date(Util.getCurrentTime());
-		ledger.setTransaction_remark(LedgerOptions.REGISTRAATION_AMOUNT.getLedgerOptions());
+		ledger.setTransaction_remark(LedgerOptions.REGISTRATION_AMOUNT.getLedgerOptions());
 
 		ledgerService.save(ledger);
 
