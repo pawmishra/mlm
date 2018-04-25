@@ -202,13 +202,13 @@
 													<label for="category">Category:</label>
 													<!--  <textarea class="form-control" aria-label="With textarea" ></textarea> -->
 													<form:input type="text" class="form-control" id="category"
-														placeholder="Category" path="categoryType"/>
+														placeholder="Category" path="categoryType" required="required"/>
 												</div>
 												<div class="form-group col-md-6">
 													<label for="subcategory">Sub Category:</label>
 													<!--  <textarea class="form-control" aria-label="With textarea" ></textarea> -->
 													<form:input type="text" class="form-control" id="subcategory"
-														placeholder="Sub Category" path="categoryName"/>
+														placeholder="Sub Category"  required="required" path="categoryName"/>
 												</div>
 											</div>
 											<div class="form-group">
@@ -255,11 +255,7 @@
 								</tr>
 							</thead>
 							<tbody>
-								<tr>
-									<td>Colleen Hurst</td>
-									<td>Javascript Developer</td>
-									<td>System Architect</td>
-								</tr>
+								
 								<c:forEach items="${listOfCategory}" var="item">
     								<tr>
 										<td>${item.category_id}</td>

@@ -203,7 +203,7 @@
 
 														<form:select id="project_id" class="form-control selectpicker"
 															data-live-search="true" name="project_id" required="required" path="project_id">
-															<form:option value="NONE" label="--- Select ---" />
+															<form:option value="" label="--- Select ---" />
 															<c:forEach items="${listOfProject}" var="item">
 																<option value="${item.prj_work_details_id}">${item.prj_work_details_id}</option>
 															</c:forEach>
@@ -216,7 +216,7 @@
 													<label for="question">Question:</label>
 													<form:textarea class="form-control" id="question"
 														aria-label="With textarea" name="survey_questions"
-														path="survey_questions" />
+														path="survey_questions" required="required" />
 
 												</div>
 											</div>

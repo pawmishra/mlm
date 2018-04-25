@@ -127,8 +127,8 @@
 													<label for="organisation">Organization Name</label>
 													<div class="ui-select">
 														<form:select required="required" id="organisation" class="form-control" 
-															name="organisation" path="organisation_id">
-															<form:option value="NONE" label="--- Select ---" />
+															name="organisation" path="organisation_id" >
+															<form:option value="" label="--- Select ---" />
 															<c:forEach items="${listOfOrg}" var="item">
 																<option value="${item.organisation_id}">${item.organisation_name}</option>
 															</c:forEach>
@@ -157,7 +157,7 @@
 													<div class="ui-select">
 														<form:select id="subjectcategory" class="form-control"
 															name="subject_category" required="required" path="subject_category_id">
-															<form:option value="NONE" label="--- Select ---" />
+															<form:option value="" label="--- Select ---" />
 															<c:forEach items="${listOfCat}" var="item">
 																<option value="${item.category_id}">${item.categoryName}</option>
 															</c:forEach>
@@ -170,7 +170,7 @@
 													<div class="ui-select">
 														<form:select id="subsubjectcategory" class="form-control"
 															name="sub_subject_category" required="required" path="sub_subject_category_id">
-															<form:option value="NONE" label="--- Select ---" />
+															<form:option value="" label="--- Select ---" />
 															<c:forEach items="${listOfSubCat}" var="item">
 																<option value="${item.category_id}">${item.categoryName}</option>
 															</c:forEach>
@@ -230,6 +230,8 @@
 			});
 		}
 	</script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script src="/mlm-erp/static/js/validation.js"></script>
 	<!-- jQuery 2.1.3 -->
 	<script src="/mlm-erp/static/plugins/jQuery/jQuery-2.1.3.min.js"></script>
 	<!-- jQuery UI 1.11.2 -->

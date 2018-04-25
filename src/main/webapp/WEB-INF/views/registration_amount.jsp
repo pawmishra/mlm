@@ -3,6 +3,7 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
@@ -153,7 +154,8 @@
 	 });
 	 }); */
 </script>
-<script src="/mlm-erp/static/js/validation.js"></script>
+
+	<script src="/mlm-erp/static/js/validation.js"></script>
 
 
 </head>
@@ -168,11 +170,11 @@
 		<div class="content-wrapper">
 			<!-- Content Header (Page header) -->
 			<section class="content-header">
-			<h1>Add Per Page Amount</h1>
+			<h1>Add Questions</h1>
 			<ol class="breadcrumb">
 				<li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
 				<li><a href="#">Dashboard</a></li>
-				<li class="active">Add Per Page Amount</li>
+				<li class="active">Add Questions</li>
 			</ol>
 			</section>
 
@@ -192,48 +194,27 @@
 
 									<!-- edit form column -->
 									<div class="col-md-9 personal-info">
-									<form:form  action="save_pageIncomeTarrif"
-											method="POST" modelAttribute="pageIncomeTarrif">
+									<form:form  action="save_registration_amount"
+											method="POST" modelAttribute="registration">
 											<div class="form-row">
-												<div class="form-group col-md-6">
-													<label for="perpageamount">Document Type<span
-														class="required">*</span>:
-													</label>
-													<!--  <textarea class="form-control" aria-label="With textarea" ></textarea> -->
-													<form:input type="text" class="form-control" required="required"
-														id="document" placeholder="Per Page Amount" name="document_type"
-														path="document_type" />
-												 </div>
-												 <div class="form-group col-md-6">
-													<label for="perpageamount">Number of Pages<span
-														class="required">*</span>:</label>
-													<!--  <textarea class="form-control" aria-label="With textarea" ></textarea> -->
-													<form:input type="text" class="form-control" required="required"
-														id="noofpages" placeholder="Per Page Amount" name="number_of_pages"
-														path="number_of_pages" />
+												
+														<div class="form-group col-md-6">
+														<label for="problemtype">Registration Amount:</label>
+														<form:input type="text" class="form-control"
+															id="registration_amount" name="registration_amout"
+															placeholder="Registration Amount" required="required" path="registration_amout"/>
+													</div>
+													
 												</div>
 
-											</div>
-											<div class="form-row">
 												<div class="form-group col-md-6">
-													<label for="amount">Amount<span
-														class="required">*</span>:
-													</label>
-													<!--  <textarea class="form-control" aria-label="With textarea" ></textarea> -->
-													<form:input type="text" class="form-control"
-														id="amount" placeholder="Per Page Amount" name="amount" required="required"
-														path="amount" onchange="getpageamount()"/>
-												 </div>
-												 <div class="form-group col-md-6">
-													<label for="perpageamount">Per Page Tarrif:</label>
-													<!--  <textarea class="form-control" aria-label="With textarea" ></textarea> -->
-													<form:input type="text" class="form-control"
-														id="perpageamount" placeholder="Per Page Amount" readonly="true" name="per_page_tarrif"
-														path="per_page_tarrif" value="" />
+													<label for="question">Remark:</label>
+													<form:textarea class="form-control" id="question"
+														aria-label="With textarea" name="remark"
+														path="remark" />
+
 												</div>
-
-											</div>
-
+											
 											<div class="form-group">
 												<div class="buttons col-md-8">
 													<br> <input type="submit" class="btn btn-primary"
@@ -242,7 +223,7 @@
 													<br>
 												</div>
 											</div>
-											</form:form>
+										</form:form>
 									</div>
 									
 								</div>
@@ -270,35 +251,25 @@
 									<th class="sorting_desc" tabindex="0" aria-controls="tbl_data"
 										rowspan="1" colspan="1"
 										aria-label="Position: activate to sort column ascending"
-										style="width: 32px;" aria-sort="descending">Document Type</th>
+										style="width: 32px;" aria-sort="descending">Registration Amount</th>
 									<th class="sorting_desc" tabindex="0" aria-controls="tbl_data"
 										rowspan="1" colspan="1"
 										aria-label="Position: activate to sort column ascending"
-										style="width: 32px;" aria-sort="descending">Number of Pages</th>
-									<th class="sorting_desc" tabindex="0" aria-controls="tbl_data"
-										rowspan="1" colspan="1"
-										aria-label="Position: activate to sort column ascending"
-										style="width: 32px;" aria-sort="descending">Amount</th>
-									<th class="sorting_desc" tabindex="0" aria-controls="tbl_data"
-										rowspan="1" colspan="1"
-										aria-label="Position: activate to sort column ascending"
-										style="width: 32px;" aria-sort="descending">Per Page
-										Amount</th>
-
+										style="width: 32px;" aria-sort="descending">Remark</th>
 								</tr>
 							</thead>
+
+
+
+
 							<tbody>
-								
-								<c:forEach items="${listOfPageIncomeTarrif}" var="amount">
+								<c:forEach items="${listOfRegistration}" var="question">
     								<tr>
-										<td>${amount.page_income_id}</td>
-										<td>${amount.document_type}</td>
-										<td>${amount.number_of_pages}</td>
-										<td>${amount.amount}</td>
-										<td>${amount.per_page_tarrif}</td>
+										<td>${question.id}</td>
+										<td>${question.registration_amout}</td>
+										<td>${question.remark}</td>
 									</tr>
 								</c:forEach>
-
 							</tbody>
 						</table>
 					</div>
@@ -318,19 +289,7 @@
 
 	</div>
 	<!-- ./wrapper -->
-<script type="text/javascript">
-$(document).ready(function() { 
-	
-	    $("#amount").bind("keyup change", function(e) {
-        var noofpages = parseFloat($("#noofpages").val()) || 0;
-        var amount = parseFloat($("#amount").val()) || 0;
-        var value = amount / noofpages;
-        if (!isNaN(value) && value !== Infinity) {
-            $("#perpageamount").val(value);
-        }
-    });
-});
-</script>
+
 
 </body>
 </html>

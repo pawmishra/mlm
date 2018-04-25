@@ -178,6 +178,13 @@
 						class="fa fa-circle-o"></i>Add Problem Type</a></li>
 
 			</ul></li>
+		<li class="treeview"><a href="#"> <i class="fa fa-folder"></i>
+				<span>ADMIN</span> <i class="fa fa-angle-left pull-right"></i>
+		</a>
+			<ul class="treeview-menu">
+				<li><a href="registration_amount"><i
+						class="fa fa-circle-o"></i>Registration Amount</a></li>
+			</ul></li>
 		<li class="treeview"><a href="/mlm-erp/logout"> <i class="fa fa-hand-o-up"></i>
 				<span>Logout</span>
 		</a></li>

@@ -41,8 +41,8 @@ public class PageIncomeTarrifController {
 	public String addPerPageAmount(@ModelAttribute PageIncomeTarrif pageIncomeTarrif, BindingResult result,
 			ModelMap model) {
 
-		System.out.println(pageIncomeTarrif);
-
+		pageIncomeTarrifService.save(pageIncomeTarrif);
+		
 		addModelAttr(model);
 
 		return "add_pageamount";

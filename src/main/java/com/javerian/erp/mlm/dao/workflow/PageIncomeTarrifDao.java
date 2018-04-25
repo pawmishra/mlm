@@ -8,7 +8,7 @@ public interface PageIncomeTarrifDao {
 
 	PageIncomeTarrif findById(Long id);
 
-	boolean save(PageIncomeTarrif pageincomeTarrif);
+	boolean save(PageIncomeTarrif pageIncomeTarrif);
 
 	List<PageIncomeTarrif> findAllPageIncomeTarrif();
 }

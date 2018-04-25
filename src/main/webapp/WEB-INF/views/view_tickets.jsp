@@ -49,6 +49,8 @@
 <!-- Theme style -->
 <link href="<c:url value='/static/dist/css/AdminLTE.min.css' />"
 	rel="stylesheet" type="text/css" />
+<link href="<c:url value='/static/dist/css/style.css' />"
+	rel="stylesheet" type="text/css" />
 <!-- AdminLTE Skins. Choose a skin from the css/skins 
          folder instead of downloading all of them to reduce the load. -->
 <link href="<c:url value='/static/dist/css/skins/_all-skins.min.css' />"
@@ -261,7 +263,7 @@
 									<tbody>
 										<c:forEach items="${listOfHelpDeskTicket}" var="item">
 											<tr>
-												<td>${item.ticket_id}</td>
+												<td>${item.ticket_id}<a href="" id="edit">Edit</a></td>
 												<td>${item.ticket_resolution_status}</td>
 												<td>${item.helpDeskProblemCategory.problem_category}</td>
 												<td>${item.description}</td>

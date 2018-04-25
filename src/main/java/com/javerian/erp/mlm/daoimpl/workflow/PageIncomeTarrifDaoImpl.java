@@ -22,8 +22,8 @@ public class PageIncomeTarrifDaoImpl extends AbstractDao<Long, PageIncomeTarrif>
 	}
 
 	@Override
-	public boolean save(PageIncomeTarrif pageincomeTarrif) {
-		persist(pageincomeTarrif);
+	public boolean save(PageIncomeTarrif pageIncomeTarrif) {
+		persist(pageIncomeTarrif);
 		return true;
 	}
 

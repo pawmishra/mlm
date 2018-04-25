@@ -22,9 +22,9 @@ public class PageIncomeTarrifServiceImpl implements PageIncomeTarrifService {
 	}
 
 	@Override
-	public boolean save(PageIncomeTarrif pageincomeTarrif) {
+	public boolean save(PageIncomeTarrif pageIncomeTarrif) {
 
-		return pageincometarrifDao.save(pageincomeTarrif);
+		return pageincometarrifDao.save(pageIncomeTarrif);
 	}
 
 	@Override

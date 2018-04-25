@@ -133,7 +133,7 @@
 														
 														<form:select id="problem_type" class="form-control"
 															name="problem_type" required="required" path="problem_type">
-															<form:option value="NONE" label="--- Select ---" />
+															<form:option value="" label="--- Select ---" />
 															<c:forEach items="${listOfProblemCat}" var="item">
 																<option value="${item.hd_category_id}">${item.problem_category}</option>
 															</c:forEach>
@@ -145,7 +145,7 @@
 													<label for="ticketid">Problem Description:</label>
 													<form:textarea class="form-control"
 														aria-label="With textarea" rows="5" name="description"
-														path="description" />
+														path="description" required="required"/>
 
 												</div>
 
