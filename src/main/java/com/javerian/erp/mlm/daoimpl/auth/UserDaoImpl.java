@@ -123,7 +123,8 @@ public class UserDaoImpl extends AbstractDao<Long, User> implements UserDao {
 			user.setSponser_id(Long.parseLong(row[6].toString()));
 			user.setSponser_name(row[7].toString());
 			user.setPosition_left_or_right(row[8].toString());
-			user.setLevel_from_root(Long.parseLong(row[10].toString()));
+			user.setEligibility_status(Boolean.parseBoolean(row[10].toString()));
+			user.setLevel_from_root(Long.parseLong(row[11].toString()));
 
 			listuser.add(user);
 		}
@@ -152,7 +153,8 @@ public class UserDaoImpl extends AbstractDao<Long, User> implements UserDao {
 			user.setSponser_id(Long.parseLong(row[6].toString()));
 			user.setSponser_name(row[7].toString());
 			user.setPosition_left_or_right(row[8].toString());
-			user.setLevel_from_root(Long.parseLong(row[10].toString()));
+			user.setEligibility_status(Boolean.parseBoolean(row[10].toString()));
+			user.setLevel_from_root(Long.parseLong(row[11].toString()));
 
 			listuser.add(user);
 		}

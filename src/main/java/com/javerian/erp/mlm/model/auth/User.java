@@ -58,6 +58,9 @@ public class User implements Serializable {
 	@Column
 	private Long level_from_root;
 
+	@Column
+	private Boolean eligibility_status;
+
 	@NotEmpty
 	@ManyToMany(fetch = FetchType.LAZY)
 	@JoinTable(name = "app_user_user_profile", joinColumns = { @JoinColumn(name = "user_id") }, inverseJoinColumns = {
@@ -161,6 +164,14 @@ public class User implements Serializable {
 
 	public void setMemberDetails(MemberDetails memberDetails) {
 		this.memberDetails = memberDetails;
+	}
+
+	public Boolean getEligibility_status() {
+		return eligibility_status;
+	}
+
+	public void setEligibility_status(Boolean eligibility_status) {
+		this.eligibility_status = eligibility_status;
 	}
 
 	@Override
