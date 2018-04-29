@@ -19,8 +19,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.javerian.erp.mlm.model.auth.User;
 import com.javerian.erp.mlm.model.auth.UserProfile;
 import com.javerian.erp.mlm.model.workflow.Ledger;
+import com.javerian.erp.mlm.model.workflow.Registration;
 import com.javerian.erp.mlm.service.auth.UserService;
 import com.javerian.erp.mlm.service.workflow.LedgerService;
+import com.javerian.erp.mlm.service.workflow.RegistrationService;
 import com.javerian.erp.mlm.util.Config;
 import com.javerian.erp.mlm.util.LedgerOptions;
 import com.javerian.erp.mlm.util.SendMail;
@@ -38,6 +40,9 @@ public class UserController {
 
 	@Autowired
 	LedgerService ledgerService;
+
+	@Autowired
+	RegistrationService registrationService;
 
 	@Autowired
 	SendMail sendMail;
@@ -98,7 +103,10 @@ public class UserController {
 
 		Ledger ledger = new Ledger();
 		ledger.setMember_id(user.getId());
-		ledger.setCredit(11000.00);
+
+		Registration registration = registrationService.findById(1L);
+
+		ledger.setCredit(registration.getRegistration_amout());
 		ledger.setDebit(0.00);
 		ledger.setTransaction_date(Util.getCurrentTime());
 		ledger.setTransaction_remark(LedgerOptions.REGISTRATION_AMOUNT.getLedgerOptions());
