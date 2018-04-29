@@ -87,6 +87,7 @@
 			}
 		}
 	}
+	
 	if (document.layers) {
 		document.captureEvents(Event.MOUSEDOWN);
 		document.onmousedown = firefoxClicked;

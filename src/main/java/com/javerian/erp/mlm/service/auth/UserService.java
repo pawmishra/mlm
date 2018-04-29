@@ -28,4 +28,6 @@ public interface UserService {
 	public List<User> getLowestLevelUsers();
 
 	public User getLoggedInUser();
+
+	public List<User> getChildsOfSponserById(Long id, int depth);
 }

@@ -103,7 +103,7 @@
 									<!-- left column -->
 
 									<!-- edit form column -->
-<%-- 									<div class="col-md-12 personal-info">
+									<%-- 									<div class="col-md-12 personal-info">
 										<form class="" role="form">
 											<div class="row">
 												<div class="form-group">
@@ -137,11 +137,17 @@
 
 									<div class="col-md-9">
 										<div class="text-center">
-											<img src="//placehold.it/100" class="avatar img-circle"
-												alt="avatar">
-											<h6>You can only upload <strong>JPG & PNG</strong> files of 100 Pixel.</h6>
+											<!-- <img src="//placehold.it/100" class="avatar img-circle"
+												alt="avatar"> -->
+											<img src="/mlm-erp/static/dist/img/test.jpg"
+						class="img-circle" alt="User Image" />
+											<h6>
+												You can only upload <strong>JPG & PNG</strong> files of 100
+												Pixel.
+											</h6>
 
-											<input type="file" class="form-control" id="profile" accept="image/jpeg, image/png">
+											<input type="file" class="form-control" id="profile"
+												accept="image/jpeg, image/png">
 										</div>
 									</div>
 									<span id="alert"></span>
@@ -153,7 +159,7 @@
 											Use this to show important messages to the user.
 										</div> 
 										<h3>Personal information</h3>
-										<hr>--> 
+										<hr>-->
 										<form:form class="" enctype="multipart/form-data"
 											action="update_user" method="POST" modelAttribute="user">
 
@@ -181,9 +187,9 @@
 												<div class="form-group col-md-6">
 													<label for="name">First Name<span class="required">*</span>:
 													</label>
-													<form:input type="text" class="form-control" id="first_name"
-														name="first_name" placeholder="Name" required="required"
-														path="firstName" />
+													<form:input type="text" class="form-control"
+														id="first_name" name="first_name" placeholder="Name"
+														required="required" path="firstName" />
 												</div>
 											</div>
 
@@ -247,14 +253,16 @@
 													</label>
 													<form:input type="text" class="form-control" id="panno"
 														name="pan_no" placeholder="Pan Number" required="required"
-														path="MemberDetails.pan_number" MaxLength="10" onblur="ValidatePAN(this);" />
+														path="MemberDetails.pan_number" MaxLength="10"
+														onblur="ValidatePAN(this);" />
 
 													<label for="pancardupload">Upload Pan Card:</label>
 													<div class="demo-section k-content">
-														<form:input name="pancard" id="cancelledcheque" type="file"
-															required="" path="MemberDetails.filePanCard" />
+														<form:input name="pancard" id="cancelledcheque"
+															type="file" required="" path="MemberDetails.filePanCard" />
 														<div class="demo-hint">
-															You can only upload <strong>JPG</strong> files of 200 Pixel.
+															You can only upload <strong>JPG</strong> files of 200
+															Pixel.
 														</div>
 													</div>
 												</div>
@@ -266,7 +274,8 @@
 													</label>
 													<form:input type="text" class="form-control" id="aadhar_no"
 														name="aadhar_no" placeholder="Aadhar Number"
-														required="required" path="MemberDetails.aadhar_number" maxlength="12" />
+														required="required" path="MemberDetails.aadhar_number"
+														maxlength="12" />
 													<div class="form-row">
 														<label for="aadharnoupload">Upload front:</label>
 														<div class="demo-section k-content">
@@ -274,16 +283,18 @@
 																type="file" accept=".png, .jpg," required=""
 																path="MemberDetails.fileAadharCardFront" />
 															<div class="demo-hint">
-																You can only upload <strong>JPG</strong> files of 200 Pixel.
+																You can only upload <strong>JPG</strong> files of 200
+																Pixel.
 															</div>
 														</div>
 														<label for="aadharnoupload">Upload back:</label>
 														<div class="demo-section k-content">
-															<form:input name="aadharcard" id="aadharback"
-																type="file" accept=".png, .jpg," required=""
+															<form:input name="aadharcard" id="aadharback" type="file"
+																accept=".png, .jpg," required=""
 																path="MemberDetails.fileAadharCardBack" />
 															<div class="demo-hint">
-																You can only upload <strong>JPG</strong> files of 200 Pixel.
+																You can only upload <strong>JPG</strong> files of 200
+																Pixel.
 															</div>
 														</div>
 													</div>
@@ -307,9 +318,9 @@
 														<label for="streetname">Street/Locality Name<span
 															class="required">*</span>:
 														</label>
-														<form:input type="text" class="form-control"
-															id="Street" name="street_locality"
-															placeholder="Street Name" required="required"
+														<form:input type="text" class="form-control" id="Street"
+															name="street_locality" placeholder="Street Name"
+															required="required"
 															path="MemberDetails.Address.streetName" />
 													</div>
 												</div>
@@ -426,7 +437,8 @@
 
 	</div>
 	<!-- ./wrapper -->
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script
+		src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 	<script src="/mlm-erp/static/js/validation.js"></script>
 	<!-- jQuery 2.1.3 -->
 	<script src="/mlm-erp/static/plugins/jQuery/jQuery-2.1.3.min.js"></script>

@@ -82,6 +82,7 @@ public class UserServiceImpl implements UserService {
 					user.setLevel_from_root(userObj.getLevel_from_root() + 1);
 					user.setPassword(passwordEncoder.encode(user.getPassword()));
 					user.setSponser_id(userObj.getId());
+					user.setSponser_name(userObj.getFirstName());
 					dao.save(user);
 
 					break;
@@ -217,5 +218,10 @@ public class UserServiceImpl implements UserService {
 	public User getLoggedInUser() {
 		String userName = authenticationTrustResolver.getPrincipal();
 		return findBySSO(userName);
+	}
+
+	@Override
+	public List<User> getChildsOfSponserById(Long id, int depth) {
+		return null;
 	}
 }
