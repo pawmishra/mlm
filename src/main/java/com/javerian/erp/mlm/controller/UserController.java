@@ -23,6 +23,7 @@ import com.javerian.erp.mlm.service.auth.UserService;
 import com.javerian.erp.mlm.service.workflow.LedgerService;
 import com.javerian.erp.mlm.util.Config;
 import com.javerian.erp.mlm.util.LedgerOptions;
+import com.javerian.erp.mlm.util.SendMail;
 import com.javerian.erp.mlm.util.Util;
 import com.javerian.erp.mlm.vo.ChangePasswordVO;
 
@@ -38,6 +39,9 @@ public class UserController {
 	@Autowired
 	LedgerService ledgerService;
 
+	@Autowired
+	SendMail sendMail;
+
 	@RequestMapping(value = { "/add_newuser" }, method = RequestMethod.GET)
 	public String addnewuser(ModelMap model) {
 
@@ -48,12 +52,14 @@ public class UserController {
 	public void addModelAttr(ModelMap model) {
 
 		User userObjOfLoggedInUser = userService.getLoggedInUser();
-		model.addAttribute("loggedinuser", userObjOfLoggedInUser.getUsername());
+		if (userObjOfLoggedInUser != null) {
+			model.addAttribute("loggedinuser", userObjOfLoggedInUser.getUsername());
 
-		User user = new User();
-		user.setSponser_id(userObjOfLoggedInUser.getId());
-		user.setSponser_name(userObjOfLoggedInUser.getFirstName());
-		model.addAttribute(user);
+			User user = new User();
+			user.setSponser_id(userObjOfLoggedInUser.getId());
+			user.setSponser_name(userObjOfLoggedInUser.getFirstName());
+			model.addAttribute(user);
+		}
 	}
 
 	public void addModelAttrForEditProfile(ModelMap model) {
@@ -84,6 +90,11 @@ public class UserController {
 		user.setUserProfiles(set);
 
 		userService.saveUser(user);
+
+		// TODO
+		// sendMail.sendMail("Testing Subject", "Dear Mail Crawler," + "\n\n No spam to
+		// my email, please!",
+		// user.getEmail(), "from-email@gmail.com");
 
 		Ledger ledger = new Ledger();
 		ledger.setMember_id(user.getId());
