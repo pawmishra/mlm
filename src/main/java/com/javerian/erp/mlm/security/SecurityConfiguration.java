@@ -39,9 +39,15 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 		http.authorizeRequests().antMatchers("/", "/mlmHome")
 				.access("hasRole('USER') or hasRole('ADMIN') or hasRole('COMPANY-ADMIN')")
 				//
-				.antMatchers("/joining_product", "/epin_generator").access("hasRole('ADMIN')")
+				.antMatchers("/registration_amount", "/upload_project", "/add_category", "/add_organization",
+						"/add_pageamount", "/add_problemtype", "/add_questions", "/latest_news")
+				.access("hasRole('ADMIN')")
 				//
-				.antMatchers("/edit-user-*").access("hasRole('ADMIN') or hasRole('COMPANY-ADMIN')")
+				.antMatchers("/add_newuser", "/bank_details", "/change_password", "/create_ticket", "/edit_profile",
+						"/header", "/level_income", "/register", "/review_project", "/survey_income", "/treeview",
+						"/view_downline_members", "/view_members", "/view_tickets", "/withdraw_balance",
+						"/withdraw_history")
+				.access("hasRole('ADMIN') or hasRole('USER')")
 				//
 				.and().formLogin().loginPage("/login").loginProcessingUrl("/login").usernameParameter("username")
 				.passwordParameter("password").and().rememberMe().rememberMeParameter("remember-me")
