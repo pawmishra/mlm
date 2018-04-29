@@ -101,12 +101,12 @@ public class UserDaoImpl extends AbstractDao<Long, User> implements UserDao {
 		return listuser;
 	}
 
-	@SuppressWarnings({ "unchecked", "rawtypes", "deprecation" })
+	@SuppressWarnings({ "unchecked", "rawtypes" })
 	@Override
 	public List<User> getChildsOfSponserById(Long id, int depth) {
 
 		List<User> listuser = new ArrayList<>();
-		Query query = getSession().createSQLQuery("select u1.*,u2.depth from mlmschema.user u1 join ("
+		Query query = getSession().createNativeQuery("select u1.*,u2.depth from mlmschema.user u1 join ("
 				+ "WITH RECURSIVE children AS (SELECT id, 1 AS depth FROM mlmschema.user WHERE id = " + id
 				+ " UNION ALL SELECT a.id, depth+1 FROM mlmschema.user a JOIN children b ON(a.sponser_id = b.id)) "
 				+ "SELECT id, depth FROM children where depth <= " + depth + ") u2 on u1.id= u2.id order by u1.id");
@@ -131,11 +131,11 @@ public class UserDaoImpl extends AbstractDao<Long, User> implements UserDao {
 		return listuser;
 	}
 
-	@SuppressWarnings({ "deprecation", "unchecked", "rawtypes" })
+	@SuppressWarnings({ "unchecked", "rawtypes" })
 	@Override
 	public List<User> getSponsersOfChildById(Long id, int depth) {
 		List<User> listuser = new ArrayList<>();
-		Query query = getSession().createSQLQuery("select u1.*,u2.depth from mlmschema.user u1 join ("
+		Query query = getSession().createNativeQuery("select u1.*,u2.depth from mlmschema.user u1 join ("
 				+ "WITH RECURSIVE children AS (SELECT id, 1 AS depth FROM mlmschema.user WHERE id = " + id
 				+ " UNION ALL SELECT a.id, depth+1 FROM mlmschema.user a JOIN children b ON(a.id = b.id)) "
 				+ "SELECT id, depth FROM children where depth <= " + depth + ") u2 on u1.id= u2.id order by u1.id");
