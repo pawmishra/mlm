@@ -275,6 +275,12 @@ public class AppController {
 		model.addAttribute("loggedinuser", authenticationTrustResolver.getPrincipal());
 		return "withdraw_history";
 	}
+	
+	@RequestMapping(value = { "/project_allocation" }, method = RequestMethod.GET)
+	public String projectassigning(ModelMap model) {
+		model.addAttribute("loggedinuser", authenticationTrustResolver.getPrincipal());
+		return "project_allocation";
+	}
 
 	/*
 	 * @RequestMapping(value = { "/treeview" }, method = RequestMethod.GET) public
