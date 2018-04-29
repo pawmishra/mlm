@@ -100,4 +100,63 @@ public class UserDaoImpl extends AbstractDao<Long, User> implements UserDao {
 		}
 		return listuser;
 	}
+
+	@SuppressWarnings({ "unchecked", "rawtypes", "deprecation" })
+	@Override
+	public List<User> getChildsOfSponserById(Long id, int depth) {
+
+		List<User> listuser = new ArrayList<>();
+		Query query = getSession().createSQLQuery("select u1.*,u2.depth from mlmschema.user u1 join ("
+				+ "WITH RECURSIVE children AS (SELECT id, 1 AS depth FROM mlmschema.user WHERE id = " + id
+				+ " UNION ALL SELECT a.id, depth+1 FROM mlmschema.user a JOIN children b ON(a.sponser_id = b.id)) "
+				+ "SELECT id, depth FROM children where depth <= " + depth + ") u2 on u1.id= u2.id order by u1.id");
+
+		List<Object[]> rows = query.list();
+		for (Object[] row : rows) {
+			User user = new User();
+			user.setId(Long.parseLong(row[0].toString()));
+			user.setFirstName(row[1].toString());
+			user.setLastName(row[2].toString());
+			user.setEmail(row[3].toString());
+			user.setUsername(row[4].toString());
+			user.setPassword(row[5].toString());
+			user.setSponser_id(Long.parseLong(row[6].toString()));
+			user.setSponser_name(row[7].toString());
+			user.setPosition_left_or_right(row[8].toString());
+			user.setLevel_from_root(Long.parseLong(row[10].toString()));
+
+			listuser.add(user);
+		}
+
+		return listuser;
+	}
+
+	@SuppressWarnings({ "deprecation", "unchecked", "rawtypes" })
+	@Override
+	public List<User> getSponsersOfChildById(Long id, int depth) {
+		List<User> listuser = new ArrayList<>();
+		Query query = getSession().createSQLQuery("select u1.*,u2.depth from mlmschema.user u1 join ("
+				+ "WITH RECURSIVE children AS (SELECT id, 1 AS depth FROM mlmschema.user WHERE id = " + id
+				+ " UNION ALL SELECT a.id, depth+1 FROM mlmschema.user a JOIN children b ON(a.id = b.id)) "
+				+ "SELECT id, depth FROM children where depth <= " + depth + ") u2 on u1.id= u2.id order by u1.id");
+
+		List<Object[]> rows = query.list();
+		for (Object[] row : rows) {
+			User user = new User();
+			user.setId(Long.parseLong(row[0].toString()));
+			user.setFirstName(row[1].toString());
+			user.setLastName(row[2].toString());
+			user.setEmail(row[3].toString());
+			user.setUsername(row[4].toString());
+			user.setPassword(row[5].toString());
+			user.setSponser_id(Long.parseLong(row[6].toString()));
+			user.setSponser_name(row[7].toString());
+			user.setPosition_left_or_right(row[8].toString());
+			user.setLevel_from_root(Long.parseLong(row[10].toString()));
+
+			listuser.add(user);
+		}
+
+		return listuser;
+	}
 }

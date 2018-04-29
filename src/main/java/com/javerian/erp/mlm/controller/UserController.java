@@ -229,7 +229,8 @@ public class UserController {
 
 		addModelAttr(model);
 		User loggedInUser = userService.getLoggedInUser();
-		List<User> listOfImmediateChilds = userService.getChildOfSponserById(loggedInUser.getId());
+		List<User> listOfImmediateChilds = userService.getChildsOfSponserById(loggedInUser.getId(),
+				Config.LEVEL_TO_BE_PROCESS);
 		addModelAttrForEditProfile(model);
 		model.addAttribute("listOfImmediateChilds", listOfImmediateChilds);
 		return "view_downline_members";

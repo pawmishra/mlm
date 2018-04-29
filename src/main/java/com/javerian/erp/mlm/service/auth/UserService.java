@@ -29,5 +29,21 @@ public interface UserService {
 
 	public User getLoggedInUser();
 
+	/**
+	 * Get Child of given user till given level.
+	 * 
+	 * @param id
+	 * @param depth
+	 * @return
+	 */
 	public List<User> getChildsOfSponserById(Long id, int depth);
+
+	/**
+	 * Get Parent of given user till given level.
+	 * 
+	 * @param id
+	 * @param depth
+	 * @return
+	 */
+	public List<User> getSponsersOfChildById(Long id, int depth);
 }

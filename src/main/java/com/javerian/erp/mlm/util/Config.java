@@ -10,4 +10,6 @@ public class Config {
 
 	public static final String MSG_SUCCESS = "Password Changed Successfully!";
 	public static final String MSG_PASS_UPDATE_FAILED = "Existing Password doesn't match!";
+
+	public static final Integer LEVEL_TO_BE_PROCESS = 12;
 }

@@ -228,6 +228,10 @@
 										<th class="sorting_desc" tabindex="0" aria-controls="tbl_data"
 											rowspan="1" colspan="1"
 											aria-label="Name: activate to sort column ascending"
+											style="width: 32px;" aria-sort="descending">Id</th>
+										<th class="sorting_desc" tabindex="0" aria-controls="tbl_data"
+											rowspan="1" colspan="1"
+											aria-label="Name: activate to sort column ascending"
 											style="width: 32px;" aria-sort="descending">First Name</th>
 										<th class="sorting_desc" tabindex="0" aria-controls="tbl_data"
 											rowspan="1" colspan="1"
@@ -258,6 +262,7 @@
 								<tbody>
 									<c:forEach items="${listOfImmediateChilds}" var="item">
 										<tr>
+											<td>${item.id}</td>
 											<td>${item.firstName}</td>
 											<td>${item.lastName}</td>
 											<td>${item.username}</td>

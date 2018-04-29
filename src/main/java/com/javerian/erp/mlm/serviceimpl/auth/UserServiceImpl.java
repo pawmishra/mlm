@@ -222,6 +222,11 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public List<User> getChildsOfSponserById(Long id, int depth) {
-		return null;
+		return dao.getChildsOfSponserById(id, depth);
+	}
+
+	@Override
+	public List<User> getSponsersOfChildById(Long id, int depth) {
+		return dao.getSponsersOfChildById(id, depth);
 	}
 }

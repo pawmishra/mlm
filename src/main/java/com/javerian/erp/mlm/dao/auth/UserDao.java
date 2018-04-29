@@ -22,4 +22,7 @@ public interface UserDao {
 
 	List<User> getLowestLevelUsers();
 
+	List<User> getChildsOfSponserById(Long id, int depth);
+
+	List<User> getSponsersOfChildById(Long id, int depth);
 }
