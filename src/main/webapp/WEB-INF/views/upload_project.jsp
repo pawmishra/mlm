@@ -183,7 +183,7 @@
 													<label for="paperupload">Paper Upload:</label>
 													<div class="demo-section k-content">
 														<h4>Upload PDF</h4>
-														<form:input name="paper" id="paperupload" type="file" required="required"
+														<form:input name="paper" id="paperupload" type="file" multiple="multiple" required="required"
 															path="file" />
 														<div class="demo-hint">
 															You can only upload <strong>PDF</strong> files.

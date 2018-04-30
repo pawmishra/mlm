@@ -1,6 +1,7 @@
 package com.javerian.erp.mlm.model.workflow;
 
 import java.sql.Timestamp;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -14,7 +15,12 @@ import org.springframework.web.multipart.MultipartFile;
 
 @Entity
 @Table(name = "project_work_detail")
-public class ProjectWorkDetails {
+public class ProjectWorkDetails implements Cloneable {
+
+	@Override
+	public Object clone() throws CloneNotSupportedException {
+		return super.clone();
+	}
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -41,13 +47,13 @@ public class ProjectWorkDetails {
 	private Long user_id;
 
 	@Transient
-	MultipartFile file;
+	List<MultipartFile> file;
 
-	public MultipartFile getFile() {
+	public List<MultipartFile> getFile() {
 		return file;
 	}
 
-	public void setFile(MultipartFile file) {
+	public void setFile(List<MultipartFile> file) {
 		this.file = file;
 	}
 

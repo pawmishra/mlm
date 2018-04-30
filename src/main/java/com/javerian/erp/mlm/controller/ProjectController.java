@@ -1,7 +1,6 @@
 package com.javerian.erp.mlm.controller;
 
 import java.io.File;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -19,6 +18,7 @@ import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.javerian.erp.mlm.model.auth.User;
 import com.javerian.erp.mlm.model.workflow.Category;
@@ -29,14 +29,14 @@ import com.javerian.erp.mlm.service.workflow.CategoryService;
 import com.javerian.erp.mlm.service.workflow.OrganisationService;
 import com.javerian.erp.mlm.service.workflow.ProjectWorkDetailsService;
 import com.javerian.erp.mlm.util.Config;
-import com.javerian.erp.mlm.util.FileValidator;
+import com.javerian.erp.mlm.util.MultiFileValidator;
 import com.javerian.erp.mlm.util.Util;
 
 @Controller
 public class ProjectController {
 
 	@Autowired
-	FileValidator fileValidator;
+	MultiFileValidator multiFileValidator;
 
 	@Autowired
 	OrganisationService OrganisationService;
@@ -55,7 +55,7 @@ public class ProjectController {
 
 	@InitBinder("projectWorkDetails")
 	protected void initBinderFileBucket(WebDataBinder binder) {
-		binder.setValidator(fileValidator);
+		binder.setValidator(multiFileValidator);
 	}
 
 	@RequestMapping(value = { "/upload_project" }, method = RequestMethod.GET)
@@ -93,24 +93,48 @@ public class ProjectController {
 		User user = userService.findBySSO(userName);
 		projectWorkDetails.setUser_id(user.getId());
 		try {
-			String ticketId = Util.generateTicketId("REQ");
-			String documentId = ticketId + "_"
-					+ Util.getFileNameWithoutExt(projectWorkDetails.getFile().getOriginalFilename());
-			String extOfFile = StringUtils.getFilenameExtension(projectWorkDetails.getFile().getOriginalFilename());
-			String fileNameWithPathAfterUpload = Config.UPLOAD_LOCATION + documentId + "." + extOfFile;
-			FileCopyUtils.copy(projectWorkDetails.getFile().getBytes(), new File(fileNameWithPathAfterUpload));
+			for (MultipartFile file : projectWorkDetails.getFile()) {
 
-			PDDocument pdf = PDDocument.load(new File(fileNameWithPathAfterUpload));
-			int pageCount = pdf.getNumberOfPages();
+				ProjectWorkDetails newObj = (ProjectWorkDetails) projectWorkDetails.clone();
 
-			projectWorkDetails.setNumber_of_pages((long) pageCount);
-			projectWorkDetails.setDocument_upload_path(fileNameWithPathAfterUpload);
-			projectWorkDetails.setDocument_id(documentId);
-			projectWorkDetails.setUpload_datetime_stamp(Util.getCurrentTime());
-			projectWorkDetailsService.save(projectWorkDetails);
+				String ticketId = Util.generateTicketId("REQ");
+				String documentId = ticketId + "_" + Util.getFileNameWithoutExt(file.getOriginalFilename());
+				String extOfFile = StringUtils.getFilenameExtension(file.getOriginalFilename());
+				String fileNameWithPathAfterUpload = Config.UPLOAD_LOCATION + documentId + "." + extOfFile;
+				FileCopyUtils.copy(file.getBytes(), new File(fileNameWithPathAfterUpload));
+
+				PDDocument pdf = PDDocument.load(new File(fileNameWithPathAfterUpload));
+				int pageCount = pdf.getNumberOfPages();
+
+				newObj.setTicket_id(ticketId);
+				newObj.setNumber_of_pages((long) pageCount);
+				newObj.setDocument_upload_path(fileNameWithPathAfterUpload);
+				newObj.setDocument_id(documentId);
+				newObj.setUpload_datetime_stamp(Util.getCurrentTime());
+				projectWorkDetailsService.save(newObj);
+			}
+			// String ticketId = Util.generateTicketId("REQ");
+			// String documentId = ticketId + "_"
+			// +
+			// Util.getFileNameWithoutExt(projectWorkDetails.getFile().getOriginalFilename());
+			// String extOfFile =
+			// StringUtils.getFilenameExtension(projectWorkDetails.getFile().getOriginalFilename());
+			// String fileNameWithPathAfterUpload = Config.UPLOAD_LOCATION + documentId +
+			// "." + extOfFile;
+			// FileCopyUtils.copy(projectWorkDetails.getFile().getBytes(), new
+			// File(fileNameWithPathAfterUpload));
+
+			// PDDocument pdf = PDDocument.load(new File(fileNameWithPathAfterUpload));
+			// int pageCount = pdf.getNumberOfPages();
+			//
+			// projectWorkDetails.setNumber_of_pages((long) pageCount);
+			// projectWorkDetails.setDocument_upload_path(fileNameWithPathAfterUpload);
+			// projectWorkDetails.setDocument_id(documentId);
+			// projectWorkDetails.setUpload_datetime_stamp(Util.getCurrentTime());
+			// projectWorkDetailsService.save(projectWorkDetails);
 			addModelAttr(model);
 
-		} catch (IOException e) {
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 
