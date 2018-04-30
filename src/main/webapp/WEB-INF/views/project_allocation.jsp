@@ -193,14 +193,14 @@
 
 									<!-- edit form column -->
 									<div class="col-md-9 personal-info">
-									<form:form  action="save_question"
-											method="POST" modelAttribute="question">
+									<form:form  action="save_project_allocation"
+											method="POST" modelAttribute="projectAllocation">
 											<div class="form-row">
 												
 												<div class="form-group col-md-6">
 													<label for="problemtype">Project Id:</label>
 													<div class="ui-select">
-														<form:select id="project_id" class="form-control selectpicker"
+														<form:select id="project_id" class="form-control selectpicker" 
 															data-live-search="true" name="project_id" required="required" path="project_id">
 															<form:option value="" label="--- Select ---" />
 															<c:forEach items="${listOfProject}" var="item">
@@ -214,10 +214,10 @@
 													<label for="question">Allocate To:</label>
 													<div class="ui-select">
 													    <form:select id="project_id" class="form-control selectpicker"
-															data-live-search="true" name="project_id" required="required" path="project_id">
+															data-live-search="true" name="user_id" required="required" path="user_id">
 															<form:option value="" label="--- Select ---" />
-															<c:forEach items="${listOfProject}" var="item">
-																<option value="${item.prj_work_details_id}">${item.prj_work_details_id}</option>
+															<c:forEach items="${listOfUser}" var="item">
+																<option value="${item.id}">(${item.id}) ${item.username}</option>
 															</c:forEach>
 														</form:select>
 													</div>
@@ -277,7 +277,7 @@
 									<th class="sorting_desc" tabindex="0" aria-controls="tbl_data"
 										rowspan="1" colspan="1"
 										aria-label="Position: activate to sort column ascending"
-										style="width: 32px;" aria-sort="descending">Question</th>
+										style="width: 32px;" aria-sort="descending">User id</th>
 								</tr>
 							</thead>
 
@@ -285,11 +285,11 @@
 
 
 							<tbody>
-								<c:forEach items="${listOfQuestion}" var="question">
+								<c:forEach items="${listOfProjectAllocation}" var="question">
     								<tr>
-										<td>${question.question_id}</td>
+										<td>${question.id}</td>
 										<td>${question.project_id}</td>
-										<td>${question.survey_questions}</td>
+										<td>${question.user_id}</td>
 									</tr>
 								</c:forEach>
 							</tbody>
