@@ -19,8 +19,10 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.javerian.erp.mlm.model.auth.User;
 import com.javerian.erp.mlm.model.auth.UserProfile;
+import com.javerian.erp.mlm.model.workflow.LatestNews;
 import com.javerian.erp.mlm.service.auth.UserProfileService;
 import com.javerian.erp.mlm.service.auth.UserService;
+import com.javerian.erp.mlm.service.workflow.LatestNewsService;
 import com.javerian.erp.mlm.service.workflow.MemberDetailsService;
 
 @Controller
@@ -28,6 +30,9 @@ import com.javerian.erp.mlm.service.workflow.MemberDetailsService;
 @SessionAttributes("roles")
 public class AppController {
 
+	@Autowired
+	LatestNewsService latestNewsService;
+	
 	@Autowired
 	MemberDetailsService memberDetailsService;
 
@@ -75,11 +80,14 @@ public class AppController {
 		// memberDetails.setUser(user);
 		//
 		// userService.saveUser(user);
-
+		
 		List<User> users = userService.findAllUsers();
 		model.addAttribute("users", users);
 		model.addAttribute("loggedinuser", authenticationTrustResolver.getPrincipal());
-
+		
+		List<LatestNews> listOfLatestNews = latestNewsService.findAllLatestNews();
+		model.addAttribute("listOfLatestNews", listOfLatestNews);
+		
 		return "mlmHome";
 	}
 
