@@ -30,6 +30,7 @@ import com.javerian.erp.mlm.service.workflow.OrganisationService;
 import com.javerian.erp.mlm.service.workflow.ProjectWorkDetailsService;
 import com.javerian.erp.mlm.util.Config;
 import com.javerian.erp.mlm.util.MultiFileValidator;
+import com.javerian.erp.mlm.util.StatusEnum;
 import com.javerian.erp.mlm.util.Util;
 
 @Controller
@@ -93,11 +94,12 @@ public class ProjectController {
 		User user = userService.findBySSO(userName);
 		projectWorkDetails.setUser_id(user.getId());
 		try {
+			String ticketId = Util.generateTicketId("REQ");
+
 			for (MultipartFile file : projectWorkDetails.getFile()) {
 
 				ProjectWorkDetails newObj = (ProjectWorkDetails) projectWorkDetails.clone();
 
-				String ticketId = Util.generateTicketId("REQ");
 				String documentId = ticketId + "_" + Util.getFileNameWithoutExt(file.getOriginalFilename());
 				String extOfFile = StringUtils.getFilenameExtension(file.getOriginalFilename());
 				String fileNameWithPathAfterUpload = Config.UPLOAD_LOCATION + documentId + "." + extOfFile;
@@ -111,6 +113,7 @@ public class ProjectController {
 				newObj.setDocument_upload_path(fileNameWithPathAfterUpload);
 				newObj.setDocument_id(documentId);
 				newObj.setUpload_datetime_stamp(Util.getCurrentTime());
+				newObj.setStatus(StatusEnum.OPEN.getStatus());
 				projectWorkDetailsService.save(newObj);
 			}
 			// String ticketId = Util.generateTicketId("REQ");

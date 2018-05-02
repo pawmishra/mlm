@@ -205,7 +205,7 @@
 															data-live-search="true" name="project_id" required="required" path="project_id">
 															<form:option value="" label="--- Select ---" />
 															<c:forEach items="${listOfProject}" var="item">
-																<option value="${item.prj_work_details_id}">${item.prj_work_details_id}</option>
+																<option value="${item.prj_work_details_id}">${item.ticket_id}</option>
 															</c:forEach>
 														</form:select>
 

@@ -45,6 +45,8 @@ public class ProjectWorkDetails implements Cloneable {
 	private Timestamp upload_datetime_stamp;
 	@Column
 	private Long user_id;
+	@Column
+	private int status;
 
 	@Transient
 	List<MultipartFile> file;
@@ -144,4 +146,13 @@ public class ProjectWorkDetails implements Cloneable {
 	public void setUser_id(Long user_id) {
 		this.user_id = user_id;
 	}
+
+	public int getStatus() {
+		return status;
+	}
+
+	public void setStatus(int status) {
+		this.status = status;
+	}
+
 }

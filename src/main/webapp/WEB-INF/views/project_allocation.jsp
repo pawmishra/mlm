@@ -129,42 +129,54 @@
 <!-- AdminLTE App -->
 <script src="/mlm-erp/static/dist/js/app.min.js" type="text/javascript"></script>
 
-<!-- AdminLTE dashboard demo (This is only for demo purposes) -->
-<!-- <script src="/mlm-erp/static/dist/js/pages/dashboard.js"
-	type="text/javascript"></script> -->
-<!-- <script src="/mlm-erp/static/dist/js/index.js"></script> -->
-<!-- AdminLTE for demo purposes -->
-<!-- <script src="/mlm-erp/static/dist/js/demo.js" type="text/javascript"></script> -->
-<!-- Morris chart -->
-
-<!-- <script src="/mlm-erp/static/plugins/morris/morris.min.js"
-	type="text/javascript"></script>
- -->
-
 <script type="text/javascript">
 	$(document).ready(function() {
 		$('#tbl_data').DataTable({
 			"pagingType" : "full_numbers"
 		});
 	});
-	/* 
-	 $(document).ready(function() {
-	 $('#tbl_data1').DataTable({
-	 "pagingType" : "full_numbers"
-	 });
-	 }); */
+
+	function changeProject(){
+		
+		var reviewerRemark = $("#project_id").val();
+		$.ajax({
+			type : "GET",
+			contentType : "application/json",
+			url : "getDocumentId",
+			dataType : 'json',
+			data: { project_id: reviewerRemark},
+			success : function(data) {
+				
+				alert("Data Saved Successfully : " + data);
+				/* <c:forEach items="${data}" var="doc">
+					<option value="${doc.document_id}">${doc.document_id}</option>
+				</c:forEach> */
+				
+				//$("#document_id").val(data);
+				
+				$("#document_id").get(0).options.length = 0;
+                $("#document_id").get(0).options[0] = new Option("Select", "-1"); 
+ 
+                $.each(data.d, function(index, item) {
+                    $("#document_id").get(0).options[$("#document_id").get(0).options.length] = new Option(item.Display, item.Value);
+                });
+			},
+			error : function(e) {
+				alert("Error :" + e.toString());
+			},
+			done : function(e) {
+			}
+		});
+	}
+	
 </script>
 
 
 
 </head>
 <body class="skin-blue">
-
 	<div class="wrapper">
-
-
 		<%@include file="header.jsp"%>
-
 		<!-- Right side column. Contains the navbar and content of the page -->
 		<div class="content-wrapper">
 			<!-- Content Header (Page header) -->
@@ -198,13 +210,13 @@
 											<div class="form-row">
 												
 												<div class="form-group col-md-6">
-													<label for="problemtype">Project Id:</label>
+													<label for="problemtype">Ticket Id:</label>
 													<div class="ui-select">
 														<form:select id="project_id" class="form-control selectpicker" 
-															data-live-search="true" name="project_id" required="required" path="project_id">
+															data-live-search="true" name="project_id" required="required" path="project_id" onchange="changeProject()">
 															<form:option value="" label="--- Select ---" />
 															<c:forEach items="${listOfProject}" var="project">
-																<option value="${project.prj_work_details_id}">${project.prj_work_details_id}</option>
+																<option value="${project.prj_work_details_id}">${project.ticket_id}</option>
 															</c:forEach>
 														</form:select>
 													</div>
@@ -213,7 +225,7 @@
 												<div class="form-group col-md-6">
 													<label for="question">Document Id:</label>
 													<div class="ui-select">
-													    <form:select id="project_id" class="form-control selectpicker"
+													    <form:select id="document_id" class="form-control selectpicker"
 															data-live-search="true" name="document_id" required="required" path="document_id">
 															<form:option value="" label="--- Select ---" />
 															<c:forEach items="${listOfProject}" var="doc">
@@ -233,7 +245,7 @@
 															data-live-search="true" name="reviewed_by" required="required" path="reviewed_by">
 															<form:option value="" label="--- Select ---" />
 															<c:forEach items="${listOfUser}" var="item">
-																<option value="${item.id}">(${item.id}) ${item.username}</option>
+																<option value="${item.id}">${item.username}</option>
 															</c:forEach>
 														</form:select>
 													</div>
@@ -290,7 +302,7 @@
 									<th class="sorting_desc" tabindex="0" aria-controls="tbl_data"
 										rowspan="1" colspan="1"
 										aria-label="Position: activate to sort column ascending"
-										style="width: 32px;" aria-sort="descending">Problem Id</th>
+										style="width: 32px;" aria-sort="descending">Ticket Id</th>
 									<th class="sorting_desc" tabindex="0" aria-controls="tbl_data"
 										rowspan="1" colspan="1"
 										aria-label="Position: activate to sort column ascending"
@@ -313,9 +325,6 @@
 										style="width: 32px;" aria-sort="descending">Review DateTime</th>
 								</tr>
 							</thead>
-
-
-
 
 							<tbody>
 							<c:forEach items="${listOfReviewerRemark}" var="question">
