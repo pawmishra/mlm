@@ -45,5 +45,5 @@ public interface UserService {
 	 * @param depth
 	 * @return
 	 */
-	public List<User> getSponsersOfChildById(Long id, int depth);
+	public List<User> getSponsersOfChildById(Long id, int depthInReverseDirection);
 }

@@ -111,6 +111,11 @@ public class UserServiceImpl implements UserService {
 			if (user.getEmail() != null && !userObjFromDb.getEmail().equalsIgnoreCase(user.getEmail())) {
 				userObjFromDb.setEmail(user.getEmail());
 			}
+
+			if (user.getEligibility_status() != null) {
+				userObjFromDb.setEligibility_status(user.getEligibility_status());
+			}
+
 			if (user.getMemberDetails().getDob() != null) {
 				userObjFromDb.getMemberDetails().setDob(user.getMemberDetails().getDob());
 			}
@@ -172,6 +177,7 @@ public class UserServiceImpl implements UserService {
 			if (user.getMemberDetails().getAddress().getEmail() != null) {
 				userObjFromDb.getMemberDetails().getAddress().setEmail(user.getMemberDetails().getAddress().getEmail());
 			}
+
 			dao.updateUser(userObjFromDb);
 		}
 	}

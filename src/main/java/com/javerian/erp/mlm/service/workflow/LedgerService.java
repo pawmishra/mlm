@@ -8,7 +8,7 @@ public interface LedgerService {
 
 	Ledger findById(Long id);
 
-	boolean save(Ledger helpdeskTicket);
+	boolean save(Ledger ledger);
 
 	List<Ledger> findAllTransactions();
 }

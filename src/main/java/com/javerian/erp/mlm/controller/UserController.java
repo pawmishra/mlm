@@ -18,9 +18,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.javerian.erp.mlm.model.auth.User;
 import com.javerian.erp.mlm.model.auth.UserProfile;
+import com.javerian.erp.mlm.model.workflow.CappingPerLevel;
 import com.javerian.erp.mlm.model.workflow.Ledger;
 import com.javerian.erp.mlm.model.workflow.Registration;
 import com.javerian.erp.mlm.service.auth.UserService;
+import com.javerian.erp.mlm.service.workflow.CappingPerLevelService;
 import com.javerian.erp.mlm.service.workflow.LedgerService;
 import com.javerian.erp.mlm.service.workflow.RegistrationService;
 import com.javerian.erp.mlm.util.Config;
@@ -37,6 +39,9 @@ public class UserController {
 
 	@Autowired
 	UserService userService;
+
+	@Autowired
+	CappingPerLevelService cappingPerLevelService;
 
 	@Autowired
 	LedgerService ledgerService;
@@ -82,11 +87,11 @@ public class UserController {
 
 		Set<UserProfile> set = new HashSet<>();
 		UserProfile userProfile = new UserProfile();
-		// TODO: Should be handled from front end. User role hard coded here for user.
-		userProfile.setId(2);
+		userProfile.setId(Config.USER_PROFILE);
 		set.add(userProfile);
 
 		user.setMemberDetails(user.getMemberDetails());
+		user.setEligibility_status(Boolean.FALSE);
 		user.getMemberDetails().setUser(user);
 
 		user.getMemberDetails().setAddress(user.getMemberDetails().getAddress());
@@ -105,13 +110,51 @@ public class UserController {
 		ledger.setMember_id(user.getId());
 
 		Registration registration = registrationService.findById(1L);
+		Registration nil = registrationService.findById(2L);
 
 		ledger.setCredit(registration.getRegistration_amout());
-		ledger.setDebit(0.00);
+		ledger.setDebit(nil.getRegistration_amout());
 		ledger.setTransaction_date(Util.getCurrentTime());
 		ledger.setTransaction_remark(LedgerOptions.REGISTRATION_AMOUNT.getLedgerOptions());
 
 		ledgerService.save(ledger);
+		// TODO: MONEY CALCULATION, BINARY PLAN
+		// 1. calculate all parents and count of child
+		List<User> sponsersOfChildById = userService.getSponsersOfChildById(user.getId(), Config.LEVEL_TO_BE_PROCESS);
+		List<CappingPerLevel> findAllCappingPerLevel = cappingPerLevelService.findAllCappingPerLevel();
+		Ledger ledgerForLevelIncome = new Ledger();
+		for (User sponser : sponsersOfChildById) {
+
+			List<User> childsOfSponserById = userService.getChildsOfSponserById(sponser.getId(),
+					Config.LEVEL_TO_BE_PROCESS);
+
+			User sponserDetail = userService.findById(sponser.getId());
+			// excluding root one, only childs
+			int numberofChild = childsOfSponserById.size() - 1;
+
+			// atleast 2 childs required to be eligible for business
+			if (numberofChild >= 3) {
+				if (!sponserDetail.getEligibility_status()) {
+					sponserDetail.setEligibility_status(Boolean.TRUE);
+					userService.updateUser(sponserDetail);
+				}
+
+				// 2. check capping for all eligible candidates
+				for (CappingPerLevel cappingPerLevel : findAllCappingPerLevel) {
+					int member_per_level = cappingPerLevel.getMember_per_level();
+
+					// 3. payment made 10% of registration amount
+					final double levelPayment = registration.getRegistration_amout() * 0.01;
+					ledgerForLevelIncome.setCredit(levelPayment);
+					ledgerForLevelIncome.setDebit(nil.getRegistration_amout());
+					ledgerForLevelIncome.setTransaction_date(Util.getCurrentTime());
+					ledgerForLevelIncome.setTransaction_remark(LedgerOptions.LEVEL_INCOME.getLedgerOptions());
+
+					ledgerService.save(ledgerForLevelIncome);
+				}
+			}
+
+		}
 
 		addModelAttr(model);
 
