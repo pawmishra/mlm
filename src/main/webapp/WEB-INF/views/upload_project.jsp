@@ -115,7 +115,7 @@
 								<div class="row">
 									<div class="col-md-9 personal-info">
 										<form:form 
-											enctype="multipart/form-data" action="saveProjectWork"
+											enctype="multipart/form-data" action="saveProjectWork" id="myform"
 											method="POST" modelAttribute="projectWorkDetails">
 											<div class="form-row">
 												<div class="form-group col-md-6">
@@ -184,7 +184,7 @@
 													<div class="demo-section k-content">
 														<h4>Upload PDF</h4>
 														<form:input name="paper" id="paperupload" type="file" multiple="multiple" required="required"
-															path="file" />
+															path="file" accept=".pdf"/>
 														<div class="demo-hint">
 															You can only upload <strong>PDF</strong> files.
 														</div>

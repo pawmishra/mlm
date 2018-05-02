@@ -16,12 +16,13 @@ import com.javerian.erp.mlm.model.workflow.ReviewerRemark;
 import com.javerian.erp.mlm.service.auth.UserService;
 import com.javerian.erp.mlm.service.workflow.ProjectWorkDetailsService;
 import com.javerian.erp.mlm.service.workflow.ReviewerRemarkService;
+import com.javerian.erp.mlm.util.Util;
 
 
 @Controller
 public class ReviewerRemarkController {
 
-	
+
 	
 	@Autowired
 	ReviewerRemarkService reviewerRemarkService;
@@ -59,6 +60,7 @@ public class ReviewerRemarkController {
 
 	@RequestMapping(value = "/save_project_allocation", method = RequestMethod.POST)
 	public String addOrganisation(@ModelAttribute ReviewerRemark reviewerRemark, BindingResult result, ModelMap model) {
+		reviewerRemark.setReview_datetime(Util.getCurrentTime());
 		reviewerRemarkService.save(reviewerRemark);
 		addModelAttr(model);
 		return "project_allocation";

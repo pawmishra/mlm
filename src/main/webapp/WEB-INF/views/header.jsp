@@ -186,6 +186,8 @@
 						class="fa fa-circle-o"></i>Registration Amount</a></li>
 				<li><a href="project_allocation"><i
 						class="fa fa-circle-o"></i>Project Assigning</a></li>
+				<li><a href="document_questions"><i
+						class="fa fa-circle-o"></i>Add Document Questions</a></li>
 			</ul></li>
 		<li class="treeview"><a href="/mlm-erp/logout"> <i class="fa fa-hand-o-up"></i>
 				<span>Logout</span>

@@ -204,7 +204,7 @@
                   </div>
                 </div><!-- /.box-header -->
                 <div class="box-body">
-                  <marquee behavior="scroll" direction="up" onmouseover="this.stop();" onmouseout="this.start();">
+                  <marquee behavior="scroll" direction="up" onmouseover="this.stop();" onmouseout="this.start();" style="height: 300px;">
                   <ul class="todo-list">
                   <c:forEach items="${listOfLatestNews}" var="item">
                    <li>

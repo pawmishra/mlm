@@ -1,5 +1,6 @@
 package com.javerian.erp.mlm.controller;
 
+import java.sql.Timestamp;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +13,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.javerian.erp.mlm.model.workflow.LatestNews;
 import com.javerian.erp.mlm.service.workflow.LatestNewsService;
+import com.javerian.erp.mlm.util.Util;
+
 
 @Controller
 public class LatestNewsController {
@@ -40,8 +43,9 @@ public class LatestNewsController {
 
 	@RequestMapping(value = "/save_latestnews", method = RequestMethod.POST)
 	public String addOrganisation(@ModelAttribute LatestNews latestNews, BindingResult result, ModelMap model) {
-
-		System.out.println(latestNews);
+		
+		latestNews.setNews_creation_datetime(Util.getCurrentTime());
+		latestNews.setValid_upto_datetime(latestNews.getValid_upto_datetime());
 		latestNewsService.save(latestNews);
 		addModelAttr(model);
 		return "latest_news";

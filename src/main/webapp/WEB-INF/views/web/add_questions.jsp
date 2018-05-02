@@ -3,6 +3,7 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
@@ -19,21 +20,22 @@
 	src="https://cdn.datatables.net/1.10.16/js/dataTables.bootstrap.min.js"></script>
 <!-- <script src="http://code.jquery.com/ui/1.11.2/jquery-ui.min.js"
 	type="text/javascript"></script> -->
-	 
+
 <!-- /static/bootstrap/css/bootstrap.min.css' -->
 
 
 <link href="<c:url value='/static/plugins/morris/morris.css' />"
 	rel="stylesheet" type="text/css" />
-<link 
+<link
 	href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css"
 	rel="stylesheet" />
-<link href="<c:url value='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css' />"
+<link
+	href="<c:url value='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css' />"
 	rel="stylesheet" type="text/css" />
 <!-- <link
 	href="https://cdn.datatables.net/1.10.16/css/dataTables.bootstrap.min.css"
 	rel="stylesheet" type="text/css" />	 -->
-	
+
 <!-- FontAwesome 4.3.0 -->
 <link
 	href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css"
@@ -167,123 +169,128 @@
 		<div class="content-wrapper">
 			<!-- Content Header (Page header) -->
 			<section class="content-header">
-				<h1>Latest News</h1>
-				<ol class="breadcrumb">
-					<li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-					<li><a href="#">Dashboard</a></li>
-					<li class="active">Latest News</li>
-				</ol>
+			<h1>Add Questions</h1>
+			<ol class="breadcrumb">
+				<li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+				<li><a href="#">Dashboard</a></li>
+				<li class="active">Add Questions</li>
+			</ol>
 			</section>
 
 			<!-- Main content -->
 			<section class="content">
-				<div class="row">
-					<div class="col-xs-12">
+			<div class="row">
+				<div class="col-xs-12">
 
 
-						<div class="box">
-							<div class="box-header">
-								<div class="container">
-									<h1></h1>
-									<hr>
-									<div class="row">
-										<!-- left column -->
+					<div class="box">
+						<div class="box-header">
+							<div class="container">
+								<h1></h1>
+								<hr>
+								<div class="row">
+									<!-- left column -->
 
-										<!-- edit form column -->
-										<div class="col-md-9 personal-info">
-
-								      <form:form class="form-horizontal" action="save_latestnews"
-											method="POST" modelAttribute="latestNews">
-
-								          <div class="form-row">
-											    <div class="form-group col-md-8">
-											      <label for="problemtype">Latest News:</label>
-											    <form:textarea class="form-control" rows="4" cols="100" aria-label="With textarea" name="news_content" path="news_content"/>
-											    
-											    </div>
-											    <div class="form-group col-md-6">
-													<label for="dob">Valid Upto<span
-														class="required">*</span>:
-													</label>
-													<form:input type="date" class="form-control" id="dob"
-														name="valid_upto_datetime" required="required" path="valid_upto_datetime" />
-												</div>
+									<!-- edit form column -->
+									<div class="col-md-9 personal-info">
+									<form:form  action="save_question"
+											method="POST" modelAttribute="question">
+											<div class="form-row">
 												
-								          </div>
-								           <div class="form-group">
-											 <div class="buttons col-md-8"><br>
-									              <input type="submit" class="btn btn-primary" value="Add">
-									              <span></span>
-									              <input type="reset" class="btn btn-default" value="Cancel">
-									            <br><br></div>
-												</div>
-												</form:form>
-										</div>
-									</div>
+												<div class="form-group col-md-6">
+													<label for="problemtype">Project Id:</label>
+													<div class="ui-select">
 
+														<form:select id="project_id" class="form-control selectpicker"
+															data-live-search="true" name="project_id" required="required" path="project_id">
+															<form:option value="" label="--- Select ---" />
+															<c:forEach items="${listOfProject}" var="item">
+																<option value="${item.prj_work_details_id}">${item.prj_work_details_id}</option>
+															</c:forEach>
+														</form:select>
+
+													</div>
+												</div>
+
+												<div class="form-group col-md-6">
+													<label for="question">Question:</label>
+													<form:textarea class="form-control" id="question"
+														aria-label="With textarea" name="survey_questions"
+														path="survey_questions" required="required" />
+
+												</div>
+											</div>
+											<div class="form-group">
+												<div class="buttons col-md-8">
+													<br> <input type="submit" class="btn btn-primary"
+														value="Add"> <span></span> <input type="reset"
+														class="btn btn-default" value="Cancel"> <br>
+													<br>
+												</div>
+											</div>
+										</form:form>
+									</div>
+									
 								</div>
 							</div>
-							
-							<!-- /.box-header -->
-							<div class="box-body">
-								<!-- <table id="tbl_data" class="table table-striped table-bordered"
+
+						</div>
+					</div>
+
+					<!-- /.box-header -->
+					<div class="box-body">
+						<!-- <table id="tbl_data" class="table table-striped table-bordered"
 									style="width: 100%"> -->
 
-								<table class="display dataTable no-footer" border="1"
-									style="width: 100%;" id="tbl_data" role="grid"
-									aria-describedby="tbl_data_info">
-									<thead>
-										<tr
-											style="background-color: #0f2a76; text-align: center; color: white"
-											role="row">
-											<th class="sorting_desc" tabindex="0"
-												aria-controls="tbl_data" rowspan="1" colspan="1"
-												aria-label="Name: activate to sort column ascending"
-												style="width: 32px;" aria-sort="descending">S.no</th>
-											<th class="sorting_desc" tabindex="0"
-												aria-controls="tbl_data" rowspan="1" colspan="1"
-												aria-label="Position: activate to sort column ascending"
-												style="width: 32px;" aria-sort="descending">Latest News</th>
-											<th class="sorting_desc" tabindex="0"
-												aria-controls="tbl_data" rowspan="1" colspan="1"
-												aria-label="Position: activate to sort column ascending"
-												style="width: 32px;" aria-sort="descending">Creation Date</th>
-											<th class="sorting_desc" tabindex="0"
-												aria-controls="tbl_data" rowspan="1" colspan="1"
-												aria-label="Position: activate to sort column ascending"
-												style="width: 32px;" aria-sort="descending">Valid Upto</th>
-										    
-										</tr>
-									</thead>
+						<table class="display dataTable no-footer" border="1"
+							style="width: 100%;" id="tbl_data" role="grid"
+							aria-describedby="tbl_data_info">
+							<thead>
+								<tr
+									style="background-color: #0f2a76; text-align: center; color: white"
+									role="row">
+									<th class="sorting_desc" tabindex="0" aria-controls="tbl_data"
+										rowspan="1" colspan="1"
+										aria-label="Name: activate to sort column ascending"
+										style="width: 32px;" aria-sort="descending">S.no</th>
+									<th class="sorting_desc" tabindex="0" aria-controls="tbl_data"
+										rowspan="1" colspan="1"
+										aria-label="Position: activate to sort column ascending"
+										style="width: 32px;" aria-sort="descending">Problem Id</th>
+									<th class="sorting_desc" tabindex="0" aria-controls="tbl_data"
+										rowspan="1" colspan="1"
+										aria-label="Position: activate to sort column ascending"
+										style="width: 32px;" aria-sort="descending">Question</th>
+								</tr>
+							</thead>
 
 
 
 
-									<tbody>
-										<c:forEach items="${listOfLatestNews}" var="item">
+							<tbody>
+								<c:forEach items="${listOfQuestion}" var="question">
     								<tr>
-										<td>${item.id}</td>
-										<td>${item.news_content}</td>
-										<td>${item.news_creation_datetime}</td>
-										<td>${item.valid_upto_datetime}</td>
+										<td>${question.question_id}</td>
+										<td>${question.project_id}</td>
+										<td>${question.survey_questions}</td>
 									</tr>
 								</c:forEach>
-									</tbody>
-								</table>
-							</div>
-							<!-- /.box-body -->
-						</div>
-						<!-- /.box -->
-
-						
+							</tbody>
+						</table>
 					</div>
-					<!-- /.col -->
+					<!-- /.box-body -->
 				</div>
-				<!-- /.row -->
-			</section>
-			<!-- /.content -->
+				<!-- /.box -->
+
+
+			</div>
+			<!-- /.col -->
 		</div>
-		<!-- /.content-wrapper -->
+		<!-- /.row -->
+		</section>
+		<!-- /.content -->
+	</div>
+	<!-- /.content-wrapper -->
 
 	</div>
 	<!-- ./wrapper -->

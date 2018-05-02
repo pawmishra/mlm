@@ -387,3 +387,22 @@ $(document).ready(function(){
 		    }
     });
 });
+
+$(document).ready(function () {
+    
+    $('#myform').validate({
+        rules: {
+        	paper: {
+                required: true,
+                extension: "pdf"
+            }
+        },
+        messages: {
+        	paper: {
+                required: "Please upload resume",
+                extension: "Please upload valid file formats"
+            }
+        }
+    });
+    
+});
