@@ -33,4 +33,9 @@ public class ProjectWorkDetailsServiceImpl implements ProjectWorkDetailsService 
 		return projectworkDetailsDao.findAllProjectWorkDetails();
 	}
 
+	@Override
+	public List<ProjectWorkDetails> findListOfProjectWorkDetailsByTicketId(String ticketId) {
+		return projectworkDetailsDao.findListOfProjectWorkDetailsByTicketId(ticketId);
+	}
+
 }

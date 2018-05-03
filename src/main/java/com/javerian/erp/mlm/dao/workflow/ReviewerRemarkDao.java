@@ -11,4 +11,6 @@ public interface ReviewerRemarkDao {
 	boolean save(ReviewerRemark reviewerRemark);
 
 	List<ReviewerRemark> findAllReviewerRemark();
+
+	public List<ReviewerRemark> findByReviewerId(Long id);
 }

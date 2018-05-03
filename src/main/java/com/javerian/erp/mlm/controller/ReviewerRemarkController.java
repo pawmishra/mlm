@@ -1,7 +1,10 @@
 package com.javerian.erp.mlm.controller;
 
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -19,6 +22,7 @@ import com.javerian.erp.mlm.model.workflow.ReviewerRemark;
 import com.javerian.erp.mlm.service.auth.UserService;
 import com.javerian.erp.mlm.service.workflow.ProjectWorkDetailsService;
 import com.javerian.erp.mlm.service.workflow.ReviewerRemarkService;
+import com.javerian.erp.mlm.util.StatusEnum;
 import com.javerian.erp.mlm.util.Util;
 
 @Controller
@@ -51,18 +55,36 @@ public class ReviewerRemarkController {
 		List<ReviewerRemark> listOfReviewerRemark = reviewerRemarkService.findAllReviewerRemark();
 		model.addAttribute("listOfReviewerRemark", listOfReviewerRemark);
 
-		List<ProjectWorkDetails> listOfProject = projectWorkDetailsService.findAllProjectWorkDetails();
+		List<ProjectWorkDetails> listOfAllProject = projectWorkDetailsService.findAllProjectWorkDetails();
+		Map<String, ProjectWorkDetails> map = new HashMap<>();
+		for (ProjectWorkDetails projectWorkDetails : listOfAllProject) {
+			map.put(projectWorkDetails.getTicket_id(), projectWorkDetails);
+		}
+		Collection<ProjectWorkDetails> listOfProject = map.values();
 		model.addAttribute("listOfProject", listOfProject);
 
-		List<User> listOfUser = userService.findAllUsers();
-		model.addAttribute("listOfUser", listOfUser);
+		List<User> listOfAllUser = userService.findAllUsers();
+		model.addAttribute("listOfUser", listOfAllUser);
+		// model.addAttribute("message", "*******************************************");
 	}
 
 	@RequestMapping(value = "/save_project_allocation", method = RequestMethod.POST)
 	public String addOrganisation(@ModelAttribute ReviewerRemark reviewerRemark, BindingResult result, ModelMap model) {
-		reviewerRemark.setReview_datetime(Util.getCurrentTime());
-		reviewerRemarkService.save(reviewerRemark);
-		addModelAttr(model);
+
+		List<ReviewerRemark> listOfReviewRemarkOfUserId = reviewerRemarkService
+				.findByReviewerId(reviewerRemark.getReviewed_by());
+
+		if (listOfReviewRemarkOfUserId.size() < 2) {
+			reviewerRemark.setReview_datetime(Util.getCurrentTime());
+			reviewerRemark.setStatus(StatusEnum.OPEN.getStatus());
+			reviewerRemarkService.save(reviewerRemark);
+			addModelAttr(model);
+		} else {
+
+			addModelAttr(model);
+			model.addAttribute("message", "The User is Already has two Open Projects!");
+		}
+
 		return "project_allocation";
 	}
 
@@ -74,17 +96,14 @@ public class ReviewerRemarkController {
 	}
 
 	@RequestMapping(value = "/getDocumentId", method = RequestMethod.GET)
-	public @ResponseBody List<String> getDocumentId(@RequestParam Long project_id) {
+	public @ResponseBody List<ProjectWorkDetails> getDocumentId(@RequestParam Long project_id) {
 
-		List<String> listOfProjectNew = new ArrayList<String>();
-		// List<ProjectWorkDetails> listOfProjectNew = new
-		// ArrayList<ProjectWorkDetails>();
+		List<ProjectWorkDetails> listOfProjectNew = new ArrayList<ProjectWorkDetails>();
 		if (project_id != null) {
-			List<ProjectWorkDetails> listOfProject = projectWorkDetailsService.findAllProjectWorkDetails();
-			for (ProjectWorkDetails projectWorkDetails : listOfProject) {
-				if (projectWorkDetails.getPrj_work_details_id() == project_id) {
-					listOfProjectNew.add(projectWorkDetails.getDocument_id());
-				}
+			ProjectWorkDetails prjWorkObj = projectWorkDetailsService.findById(project_id);
+			if (prjWorkObj != null) {
+				listOfProjectNew.addAll(
+						projectWorkDetailsService.findListOfProjectWorkDetailsByTicketId(prjWorkObj.getTicket_id()));
 			}
 		}
 		return listOfProjectNew;

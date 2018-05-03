@@ -28,49 +28,71 @@ public class ReviewerRemark {
 	private Timestamp review_datetime;
 	@Column(name = "document_id")
 	private String document_id;
-	
+	@Column(name = "status")
+	private Integer status;
+
 	public Long getId() {
 		return id;
 	}
+
 	public void setId(Long id) {
 		this.id = id;
 	}
+
 	public Long getProject_id() {
 		return project_id;
 	}
+
 	public void setProject_id(Long project_id) {
 		this.project_id = project_id;
 	}
+
 	public String getDocument_id() {
 		return document_id;
 	}
+
 	public void setDocument_id(String document_id) {
 		this.document_id = document_id;
 	}
+
 	public Long getQuestion_id() {
 		return question_id;
 	}
+
 	public void setQuestion_id(Long question_id) {
 		this.question_id = question_id;
 	}
+
 	public Long getReview_rating() {
 		return review_rating;
 	}
+
 	public void setReview_rating(Long review_rating) {
 		this.review_rating = review_rating;
 	}
+
 	public Long getReviewed_by() {
 		return reviewed_by;
 	}
+
 	public void setReviewed_by(Long reviewed_by) {
 		this.reviewed_by = reviewed_by;
 	}
+
 	public Timestamp getReview_datetime() {
 		return review_datetime;
 	}
+
 	public void setReview_datetime(Timestamp timestamp) {
 		this.review_datetime = timestamp;
 	}
 
-	
+	public Integer getStatus() {
+		return status;
+	}
+
+	public void setStatus(Integer status) {
+		this.status = status;
+	}
+
 }

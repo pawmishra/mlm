@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.hibernate.Criteria;
 import org.hibernate.criterion.Order;
+import org.hibernate.query.Query;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -34,6 +35,15 @@ public class ProjectWorkDetailsDaoImpl extends AbstractDao<Long, ProjectWorkDeta
 		List<ProjectWorkDetails> listProjectWorkDetails = (List<ProjectWorkDetails>) criteria.list();
 
 		return listProjectWorkDetails;
+	}
+
+	@Override
+	public List<ProjectWorkDetails> findListOfProjectWorkDetailsByTicketId(String ticketId) {
+
+		Query query = getSession().createQuery("from ProjectWorkDetails where status = 1 and ticket_id=:ticketId");
+		query.setParameter("ticketId", ticketId);
+		List<ProjectWorkDetails> list = query.list();
+		return list;
 	}
 
 }

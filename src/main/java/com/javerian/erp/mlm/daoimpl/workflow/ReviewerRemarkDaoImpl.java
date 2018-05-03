@@ -1,9 +1,11 @@
 package com.javerian.erp.mlm.daoimpl.workflow;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.hibernate.Criteria;
 import org.hibernate.criterion.Order;
+import org.hibernate.query.Query;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -34,6 +36,16 @@ public class ReviewerRemarkDaoImpl extends AbstractDao<Long, ReviewerRemark> imp
 		List<ReviewerRemark> listReviewerRemark = (List<ReviewerRemark>) criteria.list();
 
 		return listReviewerRemark;
+	}
+
+	@Override
+	public List<ReviewerRemark> findByReviewerId(Long id) {
+
+		List<ReviewerRemark> list = new ArrayList<ReviewerRemark>();
+		Query query = getSession().createQuery("from ReviewerRemark where status <> 2 and reviewed_by=:id");
+		query.setParameter("id", id);
+		list.addAll(query.list());
+		return list;
 	}
 
 }

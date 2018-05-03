@@ -11,4 +11,6 @@ public interface ProjectWorkDetailsService {
 	boolean save(ProjectWorkDetails projectworkDetails);
 
 	List<ProjectWorkDetails> findAllProjectWorkDetails();
+
+	List<ProjectWorkDetails> findListOfProjectWorkDetailsByTicketId(String ticketId);
 }

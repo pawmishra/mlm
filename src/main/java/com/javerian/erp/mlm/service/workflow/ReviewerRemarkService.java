@@ -11,4 +11,6 @@ public interface ReviewerRemarkService {
 	boolean save(ReviewerRemark reviewerRemark);
 
 	List<ReviewerRemark> findAllReviewerRemark();
+
+	List<ReviewerRemark> findByReviewerId(Long id);
 }

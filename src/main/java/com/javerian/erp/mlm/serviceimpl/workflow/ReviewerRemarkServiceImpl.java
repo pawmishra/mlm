@@ -33,4 +33,9 @@ public class ReviewerRemarkServiceImpl implements ReviewerRemarkService {
 		return reviewerremarkDao.findAllReviewerRemark();
 	}
 
+	@Override
+	public List<ReviewerRemark> findByReviewerId(Long id) {
+		return reviewerremarkDao.findByReviewerId(id);
+	}
+
 }

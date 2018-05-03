@@ -136,39 +136,37 @@
 		});
 	});
 
-	function changeProject(){
-		
+	function changeProject() {
+
 		var reviewerRemark = $("#project_id").val();
-		$.ajax({
-			type : "GET",
-			contentType : "application/json",
-			url : "getDocumentId",
-			dataType : 'json',
-			data: { project_id: reviewerRemark},
-			success : function(data) {
-				
-				alert("Data Saved Successfully : " + data);
-				/* <c:forEach items="${data}" var="doc">
-					<option value="${doc.document_id}">${doc.document_id}</option>
-				</c:forEach> */
-				
-				//$("#document_id").val(data);
-				
-				$("#document_id").get(0).options.length = 0;
-                $("#document_id").get(0).options[0] = new Option("Select", "-1"); 
- 
-                $.each(data.d, function(index, item) {
-                    $("#document_id").get(0).options[$("#document_id").get(0).options.length] = new Option(item.Display, item.Value);
-                });
-			},
-			error : function(e) {
-				alert("Error :" + e.toString());
-			},
-			done : function(e) {
-			}
-		});
+		$
+				.ajax({
+					type : "GET",
+					contentType : "application/json",
+					url : "getDocumentId",
+					dataType : 'json',
+					data : {
+						project_id : reviewerRemark
+					},
+					success : function(data) {
+
+						var slctSubcat = $('#document_id'), option = "";
+						slctSubcat.empty();
+
+						for (var i = 0; i < data.length; i++) {
+							option = option
+									+ "<option value='"+data[i].prj_work_details_id + "'>"
+									+ data[i].document_id + "</option>";
+						}
+						slctSubcat.append(option);
+					},
+					error : function(e) {
+						alert("Error :" + e.toString());
+					},
+					done : function(e) {
+					}
+				});
 	}
-	
 </script>
 
 
@@ -205,15 +203,22 @@
 
 									<!-- edit form column -->
 									<div class="col-md-9 personal-info">
-									<form:form  action="save_project_allocation"
-											method="POST" modelAttribute="reviewerRemark">
+										<form:form action="save_project_allocation" method="POST"
+											modelAttribute="reviewerRemark">
+
+											<div class="row">
+												<div class="form-group col-md-6">
+													<label id="id_message">${message}</label>
+												</div>
+											</div>
 											<div class="form-row">
-												
 												<div class="form-group col-md-6">
 													<label for="problemtype">Ticket Id:</label>
 													<div class="ui-select">
-														<form:select id="project_id" class="form-control selectpicker" 
-															data-live-search="true" name="project_id" required="required" path="project_id" onchange="changeProject()">
+														<form:select id="project_id"
+															class="form-control selectpicker" data-live-search="true"
+															name="project_id" required="required" path="project_id"
+															onchange="changeProject()">
 															<form:option value="" label="--- Select ---" />
 															<c:forEach items="${listOfProject}" var="project">
 																<option value="${project.prj_work_details_id}">${project.ticket_id}</option>
@@ -225,24 +230,25 @@
 												<div class="form-group col-md-6">
 													<label for="question">Document Id:</label>
 													<div class="ui-select">
-													    <form:select id="document_id" class="form-control selectpicker"
-															data-live-search="true" name="document_id" required="required" path="document_id">
+														<form:select id="document_id"
+															class="form-control selectpicker" data-live-search="true"
+															name="document_id" required="required" path="document_id">
 															<form:option value="" label="--- Select ---" />
-															<c:forEach items="${listOfProject}" var="doc">
+															<%-- <c:forEach items="${listOfProject}" var="doc">
 																<option value="${doc.document_id}">${doc.document_id}</option>
-															</c:forEach>
+															</c:forEach> --%>
 														</form:select>
 													</div>
 
 												</div>
 											</div>
 											<div class="form-row">
-												
 												<div class="form-group col-md-6">
 													<label for="question">Allocate To:</label>
 													<div class="ui-select">
-													   <form:select id="project_id" class="form-control selectpicker"
-															data-live-search="true" name="reviewed_by" required="required" path="reviewed_by">
+														<form:select id="user_id"
+															class="form-control selectpicker" data-live-search="true"
+															name="reviewed_by" required="required" path="reviewed_by">
 															<form:option value="" label="--- Select ---" />
 															<c:forEach items="${listOfUser}" var="item">
 																<option value="${item.id}">${item.username}</option>
@@ -264,15 +270,15 @@
 										</form:form>
 									</div>
 									<div class="col-md-9 personal-info">
-									<form:form  action="save_question"
-											method="POST" modelAttribute="question">
-											
+										<form:form action="save_question" method="POST"
+											modelAttribute="question">
+
 											<div class="form-group">
 												<div class="buttons col-md-8">
 													<br> <input type="submit" class="btn btn-primary"
-														value="Auto Assign"> <span></span> <input type="reset"
-														class="btn btn-default" value="Cancel"> <br>
-													<br>
+														value="Auto Assign"> <span></span> <input
+														type="reset" class="btn btn-default" value="Cancel">
+													<br> <br>
 												</div>
 											</div>
 										</form:form>
@@ -322,13 +328,14 @@
 									<th class="sorting_desc" tabindex="0" aria-controls="tbl_data"
 										rowspan="1" colspan="1"
 										aria-label="Position: activate to sort column ascending"
-										style="width: 32px;" aria-sort="descending">Review DateTime</th>
+										style="width: 32px;" aria-sort="descending">Review
+										DateTime</th>
 								</tr>
 							</thead>
 
 							<tbody>
-							<c:forEach items="${listOfReviewerRemark}" var="question">
-    								<tr>
+								<c:forEach items="${listOfReviewerRemark}" var="question">
+									<tr>
 										<td>${question.id}</td>
 										<td>${question.project_id}</td>
 										<td>${question.document_id}</td>

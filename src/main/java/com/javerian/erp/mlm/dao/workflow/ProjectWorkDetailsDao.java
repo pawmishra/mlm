@@ -11,4 +11,6 @@ public interface ProjectWorkDetailsDao {
 	boolean save(ProjectWorkDetails projectworkDetails);
 
 	List<ProjectWorkDetails> findAllProjectWorkDetails();
+
+	public List<ProjectWorkDetails> findListOfProjectWorkDetailsByTicketId(String ticketId);
 }

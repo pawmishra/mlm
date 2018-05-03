@@ -116,25 +116,6 @@ public class ProjectController {
 				newObj.setStatus(StatusEnum.OPEN.getStatus());
 				projectWorkDetailsService.save(newObj);
 			}
-			// String ticketId = Util.generateTicketId("REQ");
-			// String documentId = ticketId + "_"
-			// +
-			// Util.getFileNameWithoutExt(projectWorkDetails.getFile().getOriginalFilename());
-			// String extOfFile =
-			// StringUtils.getFilenameExtension(projectWorkDetails.getFile().getOriginalFilename());
-			// String fileNameWithPathAfterUpload = Config.UPLOAD_LOCATION + documentId +
-			// "." + extOfFile;
-			// FileCopyUtils.copy(projectWorkDetails.getFile().getBytes(), new
-			// File(fileNameWithPathAfterUpload));
-
-			// PDDocument pdf = PDDocument.load(new File(fileNameWithPathAfterUpload));
-			// int pageCount = pdf.getNumberOfPages();
-			//
-			// projectWorkDetails.setNumber_of_pages((long) pageCount);
-			// projectWorkDetails.setDocument_upload_path(fileNameWithPathAfterUpload);
-			// projectWorkDetails.setDocument_id(documentId);
-			// projectWorkDetails.setUpload_datetime_stamp(Util.getCurrentTime());
-			// projectWorkDetailsService.save(projectWorkDetails);
 			addModelAttr(model);
 
 		} catch (Exception e) {
