@@ -154,7 +154,9 @@
 	 }); */
 </script>
 <script src="/mlm-erp/static/js/validation.js"></script>
+<script type="text/javascript">
 
+</script>
 
 </head>
 <body class="skin-blue">
@@ -201,7 +203,7 @@
 													</label>
 													<!--  <textarea class="form-control" aria-label="With textarea" ></textarea> -->
 													<form:input type="text" class="form-control" required="required"
-														id="document" placeholder="Per Page Amount" name="document_type"
+														id="document" placeholder="Document Type" name="document_type"
 														path="document_type" />
 												 </div>
 												 <div class="form-group col-md-6">
@@ -209,7 +211,7 @@
 														class="required">*</span>:</label>
 													<!--  <textarea class="form-control" aria-label="With textarea" ></textarea> -->
 													<form:input type="text" class="form-control" required="required"
-														id="noofpages" placeholder="Per Page Amount" name="number_of_pages"
+														id="noofpages" placeholder="Number of Pages" name="number_of_pages"
 														path="number_of_pages" />
 												</div>
 
@@ -221,7 +223,7 @@
 													</label>
 													<!--  <textarea class="form-control" aria-label="With textarea" ></textarea> -->
 													<form:input type="text" class="form-control"
-														id="amount" placeholder="Per Page Amount" name="amount" required="required"
+														id="amount" placeholder="Amount" name="amount" required="required"
 														path="amount" onchange="getpageamount()"/>
 												 </div>
 												 <div class="form-group col-md-6">
@@ -318,19 +320,7 @@
 
 	</div>
 	<!-- ./wrapper -->
-<script type="text/javascript">
-$(document).ready(function() { 
-	
-	    $("#amount").bind("keyup change", function(e) {
-        var noofpages = parseFloat($("#noofpages").val()) || 0;
-        var amount = parseFloat($("#amount").val()) || 0;
-        var value = amount / noofpages;
-        if (!isNaN(value) && value !== Infinity) {
-            $("#perpageamount").val(value);
-        }
-    });
-});
-</script>
+
 
 </body>
 </html>

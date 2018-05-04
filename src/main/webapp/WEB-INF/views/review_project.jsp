@@ -125,12 +125,12 @@
 						<!-- general form elements -->
 						<div class="box box-primary">
 							<div class="container">
-								<h2>Review Completness</h2>
+								<!-- <h2>Review Completness</h2>
 								<div class="progress" style="width: 80%;">
 									<div class="progress-bar" role="progressbar" aria-valuenow="70"
 										aria-valuemin="0" aria-valuemax="100" style="width: 70%">
 										70%</div>
-								</div>
+								</div> -->
 							</div>
 
 							<div class="box-header">
@@ -141,7 +141,7 @@
 										oncontextmenu="return abc()"
 										data="static/images/sample.pdf#toolbar=0&amp;navpanes=0&amp;scrollbar=0&amp;page=1&amp;view=FitH"
 										type="application/pdf" internalinstanceid="9" title=""
-										style="height: 450px;"> </object>
+										style="height: 600px;"> </object>
 								</div>
 								<div class="container">
 									<h1>Questions</h1>
@@ -426,8 +426,16 @@
 											</div>
 										</div>
 									</div>
-
-								
+									<br><br>
+									<div class="form-group">
+														<br> <br>
+														<div class="buttons col-md-8">
+															<input type="submit" class="btn btn-primary"
+																value="Submit"> <span></span> <input
+																type="reset" class="btn btn-default" value="Cancel">
+														</div>
+									</div>
+								    <br><br><br><br>
 									
 									
 								</div>

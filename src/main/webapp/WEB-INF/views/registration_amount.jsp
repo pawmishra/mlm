@@ -170,11 +170,11 @@
 		<div class="content-wrapper">
 			<!-- Content Header (Page header) -->
 			<section class="content-header">
-			<h1>Add Questions</h1>
+			<h1>Registration Amount</h1>
 			<ol class="breadcrumb">
 				<li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
 				<li><a href="#">Dashboard</a></li>
-				<li class="active">Add Questions</li>
+				<li class="active">Registration Amount</li>
 			</ol>
 			</section>
 

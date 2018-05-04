@@ -6,10 +6,6 @@
 
 <html>
 <head>
-<!-- meta http-equiv="Content-Type" content="text/html; charset=UTF-8" -->
-<%-- <meta name="_csrf" content="${_csrf.token}" />
-<!-- default header name is X-CSRF-TOKEN -->
-<meta name="_csrf_header" content="${_csrf.headerName}" /> --%>
 
 <title>Admin</title>
 <meta
@@ -67,26 +63,11 @@
 
 <link href="<c:url value='/static/plugins/morris/morris.css' />"
 	rel="stylesheet" type="text/css" />
-<link rel="stylesheet" href="styles/kendo.common.min.css" />
-<link rel="stylesheet" href="styles/kendo.default.min.css" />
-<link rel="stylesheet" href="styles/kendo.default.mobile.min.css" />
 
-<script src="js/jquery.min.js"></script>
-<script src="js/kendo.all.min.js"></script>
 
-<!-- <script type="text/javascript">
-	$(document).ready(function() {
-
-		var token = $("meta[name='_csrf']").attr("content");
-		var header = $("meta[name='_csrf_header']").attr("content");
-
-		$(document).ajaxSend(function(e, xhr, options) {
-			xhr.setRequestHeader(header, token);
-		});
-	});
-</script> -->
 </head>
 <body class="skin-blue">
+
 	<div class="wrapper">
 		<%@include file="header.jsp"%>
 		<!-- Right side column. Contains the navbar and content of the page -->
@@ -183,7 +164,7 @@
 													<label for="paperupload">Paper Upload:</label>
 													<div class="demo-section k-content">
 														<h4>Upload PDF</h4>
-														<form:input name="paper" id="paperupload" type="file" multiple="multiple" required="required"
+														<form:input name="paper" id="paper" type="file" multiple="multiple" required="required"
 															path="file" accept=".pdf"/>
 														<div class="demo-hint">
 															You can only upload <strong>PDF</strong> files.
@@ -217,20 +198,14 @@
 		<!-- /.content-wrapper -->
 	</div>
 	<!-- ./wrapper -->
+	
+	
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 
-	<script type="text/javascript">
-		if ($('#paperupload').val() != '') {
-			$.each($('#paperupload').prop("files"), function(k, v) {
-				var filename = v['name'];
-				var ext = filename.split('.').pop().toLowerCase();
-				if ($.inArray(ext, [ 'pdf' ]) == -1) {
-					alert('Please upload only pdf format files.');
-					return false;
-				}
-			});
-		}
-	</script>
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.js"></script>
+    <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/additional-methods.js"></script>
+    
+
 	<script src="/mlm-erp/static/js/validation.js"></script>
 	<!-- jQuery 2.1.3 -->
 	<script src="/mlm-erp/static/plugins/jQuery/jQuery-2.1.3.min.js"></script>

@@ -208,7 +208,7 @@
 													<form:input type="text" class="form-control"
 														id="mobilenumber" name="mobile_number"
 														placeholder="Mobile Number" required="required"
-														path="MemberDetails.Address.mobile" />
+														path="MemberDetails.Address.mobile" maxlength="10"/>
 												</div>
 
 											</div>
@@ -218,7 +218,7 @@
 													<form:input type="text" class="form-control"
 														id="alternatemobilenumber" name="alternate_mobile_number"
 														placeholder="Mobile Number"
-														path="MemberDetails.Address.altContactNo" />
+														path="MemberDetails.Address.altContactNo" maxlength="10"/>
 												</div>
 												<div class="form-group col-md-6">
 													<label for="dob">Date Of Birth<span

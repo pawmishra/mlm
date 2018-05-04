@@ -388,21 +388,31 @@ $(document).ready(function(){
     });
 });
 
+
 $(document).ready(function () {
     
-    $('#myform').validate({
-        rules: {
-        	paper: {
-                required: true,
-                extension: "pdf"
-            }
-        },
-        messages: {
-        	paper: {
-                required: "Please upload resume",
-                extension: "Please upload valid file formats"
-            }
-        }
-    });
-    
+	var myfile="";
+
+	$('#paper').on( 'change', function() {
+	   myfile= $( this ).val();
+	   var ext = myfile.split('.').pop();
+	   if(ext=="pdf"){
+	       
+	   } else{
+		   
+	       alert("Please Upload PDF File Only");
+	   }
+	});        
+});
+
+$(document).ready(function () {
+	
+    $("#amount").on("change", function(e) {
+    var noofpages = parseFloat($("#noofpages").val()) || 0;
+    var amount = parseFloat($("#amount").val()) || 0;
+    var value = amount / noofpages;
+    if (!isNaN(value) && value !== Infinity) {
+        $("#perpageamount").val(value);
+    }
+});
 });
