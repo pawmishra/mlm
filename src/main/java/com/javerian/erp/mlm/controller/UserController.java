@@ -27,6 +27,7 @@ import com.javerian.erp.mlm.service.workflow.LedgerService;
 import com.javerian.erp.mlm.service.workflow.RegistrationService;
 import com.javerian.erp.mlm.util.Config;
 import com.javerian.erp.mlm.util.LedgerOptions;
+import com.javerian.erp.mlm.util.LevelInfo;
 import com.javerian.erp.mlm.util.SendMail;
 import com.javerian.erp.mlm.util.Util;
 import com.javerian.erp.mlm.vo.ChangePasswordVO;
@@ -133,24 +134,42 @@ public class UserController {
 			int numberofChild = childsOfSponserById.size() - 1;
 
 			// atleast 2 childs required to be eligible for business
+			if (numberofChild == 2) {
+				if (!sponserDetail.getEligibility_status()) {
+					sponserDetail.setEligibility_status(Boolean.TRUE);
+					userService.updateUser(sponserDetail);
+				}
+			}
+
+			// Income should be calculated for members having child in ratio 2:1 and 1:2
 			if (numberofChild >= 3) {
 				if (!sponserDetail.getEligibility_status()) {
 					sponserDetail.setEligibility_status(Boolean.TRUE);
 					userService.updateUser(sponserDetail);
 				}
 
-				// 2. check capping for all eligible candidates
+				// 2. calculate child level
+				int levelResult = numberofChild / 3;
+				String levelRemarkOfMember = getLevelRemarkOfMember(levelResult);
+				int levelOfMember = getLevelOfMember(levelResult);
+
+				// 3. Count of maximum payment corresponding to level for user id made in Ledger
+				// table
+				// 4. (payment capping perlevel - total no of count from step3) -
+				// carryforwardvalueforlevel>=0
+
 				for (CappingPerLevel cappingPerLevel : findAllCappingPerLevel) {
 					int member_per_level = cappingPerLevel.getMember_per_level();
 
 					// 3. payment made 10% of registration amount
-					final double levelPayment = registration.getRegistration_amout() * 0.01;
-					ledgerForLevelIncome.setCredit(levelPayment);
-					ledgerForLevelIncome.setDebit(nil.getRegistration_amout());
-					ledgerForLevelIncome.setTransaction_date(Util.getCurrentTime());
-					ledgerForLevelIncome.setTransaction_remark(LedgerOptions.LEVEL_INCOME.getLedgerOptions());
 
-					ledgerService.save(ledgerForLevelIncome);
+					// final double levelPayment = registration.getRegistration_amout() * 0.01;
+					// ledgerForLevelIncome.setCredit(levelPayment);
+					// ledgerForLevelIncome.setDebit(nil.getRegistration_amout());
+					// ledgerForLevelIncome.setTransaction_date(Util.getCurrentTime());
+					// ledgerForLevelIncome.setTransaction_remark(LedgerOptions.LEVEL_INCOME.getLedgerOptions());
+					//
+					// ledgerService.save(ledgerForLevelIncome);
 				}
 			}
 
@@ -159,6 +178,68 @@ public class UserController {
 		addModelAttr(model);
 
 		return "add_newuser";
+	}
+
+	private String getLevelRemarkOfMember(int eligibilityLevel) {
+
+		if (eligibilityLevel == 0) {
+			return LevelInfo.LEVEL1_INCOME.getLevelInfo();
+		} else if (eligibilityLevel >= 1 || eligibilityLevel <= 2) {
+			return LevelInfo.LEVEL2_INCOME.getLevelInfo();
+		} else if (eligibilityLevel >= 3 || eligibilityLevel <= 4) {
+			return LevelInfo.LEVEL3_INCOME.getLevelInfo();
+		} else if (eligibilityLevel >= 5 || eligibilityLevel <= 10) {
+			return LevelInfo.LEVEL4_INCOME.getLevelInfo();
+		} else if (eligibilityLevel >= 11 || eligibilityLevel <= 20) {
+			return LevelInfo.LEVEL5_INCOME.getLevelInfo();
+		} else if (eligibilityLevel >= 21 || eligibilityLevel <= 42) {
+			return LevelInfo.LEVEL6_INCOME.getLevelInfo();
+		} else if (eligibilityLevel >= 43 || eligibilityLevel <= 84) {
+			return LevelInfo.LEVEL7_INCOME.getLevelInfo();
+		} else if (eligibilityLevel >= 85 || eligibilityLevel <= 170) {
+			return LevelInfo.LEVEL8_INCOME.getLevelInfo();
+		} else if (eligibilityLevel >= 171 || eligibilityLevel <= 340) {
+			return LevelInfo.LEVEL9_INCOME.getLevelInfo();
+		} else if (eligibilityLevel >= 341 || eligibilityLevel <= 682) {
+			return LevelInfo.LEVEL10_INCOME.getLevelInfo();
+		} else if (eligibilityLevel >= 683 || eligibilityLevel <= 1364) {
+			return LevelInfo.LEVEL11_INCOME.getLevelInfo();
+		} else if (eligibilityLevel >= 1365 || eligibilityLevel <= 2730) {
+			return LevelInfo.LEVEL12_INCOME.getLevelInfo();
+		} else {
+			return LevelInfo.LEVEL_INVALID.getLevelInfo();
+		}
+	}
+
+	private int getLevelOfMember(int eligibilityLevel) {
+
+		if (eligibilityLevel == 0) {
+			return LevelInfo.LEVEL1_INCOME.getLevel();
+		} else if (eligibilityLevel >= 1 || eligibilityLevel <= 2) {
+			return LevelInfo.LEVEL2_INCOME.getLevel();
+		} else if (eligibilityLevel >= 3 || eligibilityLevel <= 4) {
+			return LevelInfo.LEVEL3_INCOME.getLevel();
+		} else if (eligibilityLevel >= 5 || eligibilityLevel <= 10) {
+			return LevelInfo.LEVEL4_INCOME.getLevel();
+		} else if (eligibilityLevel >= 11 || eligibilityLevel <= 20) {
+			return LevelInfo.LEVEL5_INCOME.getLevel();
+		} else if (eligibilityLevel >= 21 || eligibilityLevel <= 42) {
+			return LevelInfo.LEVEL6_INCOME.getLevel();
+		} else if (eligibilityLevel >= 43 || eligibilityLevel <= 84) {
+			return LevelInfo.LEVEL7_INCOME.getLevel();
+		} else if (eligibilityLevel >= 85 || eligibilityLevel <= 170) {
+			return LevelInfo.LEVEL8_INCOME.getLevel();
+		} else if (eligibilityLevel >= 171 || eligibilityLevel <= 340) {
+			return LevelInfo.LEVEL9_INCOME.getLevel();
+		} else if (eligibilityLevel >= 341 || eligibilityLevel <= 682) {
+			return LevelInfo.LEVEL10_INCOME.getLevel();
+		} else if (eligibilityLevel >= 683 || eligibilityLevel <= 1364) {
+			return LevelInfo.LEVEL11_INCOME.getLevel();
+		} else if (eligibilityLevel >= 1365 || eligibilityLevel <= 2730) {
+			return LevelInfo.LEVEL12_INCOME.getLevel();
+		} else {
+			return LevelInfo.LEVEL_INVALID.getLevel();
+		}
 	}
 
 	@RequestMapping(value = "/save_user", method = RequestMethod.GET)
