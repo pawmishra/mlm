@@ -58,13 +58,21 @@ public class ReviewerRemarkController {
 		List<ProjectWorkDetails> listOfAllProject = projectWorkDetailsService.findAllProjectWorkDetails();
 		Map<String, ProjectWorkDetails> map = new HashMap<>();
 		for (ProjectWorkDetails projectWorkDetails : listOfAllProject) {
-			map.put(projectWorkDetails.getTicket_id(), projectWorkDetails);
+			if (!projectWorkDetails.getAllocated()) {
+				map.put(projectWorkDetails.getTicket_id(), projectWorkDetails);
+			}
 		}
 		Collection<ProjectWorkDetails> listOfProject = map.values();
 		model.addAttribute("listOfProject", listOfProject);
 
 		List<User> listOfAllUser = userService.findAllUsers();
-		model.addAttribute("listOfUser", listOfAllUser);
+		List<User> listOfUser = new ArrayList<>();
+		for (User user : listOfAllUser) {
+			if (user.getEligibility_status() == true) {
+				listOfUser.add(user);
+			}
+		}
+		model.addAttribute("listOfUser", listOfUser);
 		// model.addAttribute("message", "*******************************************");
 	}
 
@@ -75,9 +83,14 @@ public class ReviewerRemarkController {
 				.findByReviewerId(reviewerRemark.getReviewed_by());
 
 		if (listOfReviewRemarkOfUserId.size() < 2) {
-			reviewerRemark.setReview_datetime(Util.getCurrentTime());
+			reviewerRemark.setAssign_datetime(Util.getCurrentTime());
 			reviewerRemark.setStatus(StatusEnum.OPEN.getStatus());
 			reviewerRemarkService.save(reviewerRemark);
+
+			ProjectWorkDetails project = projectWorkDetailsService.findById(reviewerRemark.getProject_id());
+			project.setAllocated(true);
+			projectWorkDetailsService.updateProject(project);
+
 			addModelAttr(model);
 		} else {
 
@@ -102,8 +115,13 @@ public class ReviewerRemarkController {
 		if (project_id != null) {
 			ProjectWorkDetails prjWorkObj = projectWorkDetailsService.findById(project_id);
 			if (prjWorkObj != null) {
-				listOfProjectNew.addAll(
-						projectWorkDetailsService.findListOfProjectWorkDetailsByTicketId(prjWorkObj.getTicket_id()));
+
+				for (ProjectWorkDetails projectWorkDetails : projectWorkDetailsService
+						.findListOfProjectWorkDetailsByTicketId(prjWorkObj.getTicket_id())) {
+					if (!projectWorkDetails.getAllocated()) {
+						listOfProjectNew.add(projectWorkDetails);
+					}
+				}
 			}
 		}
 		return listOfProjectNew;

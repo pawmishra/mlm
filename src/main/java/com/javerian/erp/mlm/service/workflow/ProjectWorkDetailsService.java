@@ -13,4 +13,6 @@ public interface ProjectWorkDetailsService {
 	List<ProjectWorkDetails> findAllProjectWorkDetails();
 
 	List<ProjectWorkDetails> findListOfProjectWorkDetailsByTicketId(String ticketId);
+
+	boolean updateProject(ProjectWorkDetails projectworkDetails);
 }

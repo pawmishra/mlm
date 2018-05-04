@@ -38,4 +38,9 @@ public class ProjectWorkDetailsServiceImpl implements ProjectWorkDetailsService 
 		return projectworkDetailsDao.findListOfProjectWorkDetailsByTicketId(ticketId);
 	}
 
+	@Override
+	public boolean updateProject(ProjectWorkDetails projectworkDetails) {
+		return projectworkDetailsDao.updateProject(projectworkDetails);
+	}
+
 }

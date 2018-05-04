@@ -46,4 +46,10 @@ public class ProjectWorkDetailsDaoImpl extends AbstractDao<Long, ProjectWorkDeta
 		return list;
 	}
 
+	@Override
+	public boolean updateProject(ProjectWorkDetails projectworkDetails) {
+		getSession().merge(projectworkDetails);
+		return true;
+	}
+
 }

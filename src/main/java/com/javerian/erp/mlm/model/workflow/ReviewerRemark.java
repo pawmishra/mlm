@@ -30,6 +30,8 @@ public class ReviewerRemark {
 	private String document_id;
 	@Column(name = "status")
 	private Integer status;
+	@Column(name = "assign_datetime")
+	private Timestamp assign_datetime;
 
 	public Long getId() {
 		return id;
@@ -93,6 +95,14 @@ public class ReviewerRemark {
 
 	public void setStatus(Integer status) {
 		this.status = status;
+	}
+
+	public Timestamp getAssign_datetime() {
+		return assign_datetime;
+	}
+
+	public void setAssign_datetime(Timestamp assign_datetime) {
+		this.assign_datetime = assign_datetime;
 	}
 
 }

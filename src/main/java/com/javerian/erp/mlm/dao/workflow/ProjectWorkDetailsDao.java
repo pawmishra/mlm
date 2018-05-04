@@ -13,4 +13,6 @@ public interface ProjectWorkDetailsDao {
 	List<ProjectWorkDetails> findAllProjectWorkDetails();
 
 	public List<ProjectWorkDetails> findListOfProjectWorkDetailsByTicketId(String ticketId);
+
+	public boolean updateProject(ProjectWorkDetails projectworkDetails);
 }

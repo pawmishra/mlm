@@ -47,6 +47,8 @@ public class ProjectWorkDetails implements Cloneable {
 	private Long user_id;
 	@Column
 	private int status;
+	@Column
+	private Boolean allocated;
 
 	@Transient
 	List<MultipartFile> file;
@@ -153,6 +155,14 @@ public class ProjectWorkDetails implements Cloneable {
 
 	public void setStatus(int status) {
 		this.status = status;
+	}
+
+	public Boolean getAllocated() {
+		return allocated;
+	}
+
+	public void setAllocated(Boolean allocated) {
+		this.allocated = allocated;
 	}
 
 }
