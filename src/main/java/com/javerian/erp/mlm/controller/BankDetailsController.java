@@ -43,7 +43,11 @@ public class BankDetailsController {
 		BankDetails bankDetails = bankDetailsService.findByCustId(userObjOfLoggedInUser.getId());
 
 		model.addAttribute("loggedinuser", authenticationTrustResolver.getPrincipal());
-		model.addAttribute(bankDetails);
+		if (bankDetails == null) {
+			model.addAttribute(new BankDetails());
+		} else {
+			model.addAttribute(bankDetails);
+		}
 
 		// List<BankDetails> listOfBankDetail = bankDetailsService.findAllBankDetails();
 		// model.addAttribute("listOfBankDetail", listOfBankDetail);
