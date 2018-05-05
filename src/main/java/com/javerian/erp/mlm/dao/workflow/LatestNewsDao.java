@@ -11,5 +11,7 @@ public interface LatestNewsDao {
 	boolean save(LatestNews latestNews);
 
 	List<LatestNews> findAllLatestNews();
+	
+	List<LatestNews> ValidUptoLatestNews();
 
 }

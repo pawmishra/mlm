@@ -1,5 +1,5 @@
 package com.javerian.erp.mlm.model.workflow;
-
+import java.sql.Date;
 import java.sql.Timestamp;
 
 import javax.persistence.Column;
@@ -21,7 +21,7 @@ public class LatestNews {
 	@Column(name = "news_creation_datetime")
 	private Timestamp news_creation_datetime;
 	@Column(name = "valid_upto_datetime")
-	private Timestamp valid_upto_datetime;
+	private Date valid_upto_datetime;
 
 	public Long getId() {
 		return id;
@@ -47,12 +47,14 @@ public class LatestNews {
 		this.news_creation_datetime = news_creation_datetime;
 	}
 
-	public Timestamp getValid_upto_datetime() {
+	public Date getValid_upto_datetime() {
 		return valid_upto_datetime;
 	}
 
-	public void setValid_upto_datetime(Timestamp valid_upto_datetime) {
+	public void setValid_upto_datetime(Date valid_upto_datetime) {
 		this.valid_upto_datetime = valid_upto_datetime;
 	}
+
+	
 
 }

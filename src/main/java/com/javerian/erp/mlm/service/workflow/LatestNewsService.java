@@ -12,4 +12,5 @@ public interface LatestNewsService {
 
 	List<LatestNews> findAllLatestNews();
 
+	List<LatestNews> ValidUptoLatestNews();
 }

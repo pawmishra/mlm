@@ -85,8 +85,8 @@ public class AppController {
 		model.addAttribute("users", users);
 		model.addAttribute("loggedinuser", authenticationTrustResolver.getPrincipal());
 		
-		List<LatestNews> listOfLatestNews = latestNewsService.findAllLatestNews();
-		model.addAttribute("listOfLatestNews", listOfLatestNews);
+		List<LatestNews> listOfValidNews = latestNewsService.ValidUptoLatestNews();
+		model.addAttribute("listOfValidNews", listOfValidNews);
 		
 		return "mlmHome";
 	}

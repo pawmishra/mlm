@@ -32,4 +32,9 @@ public class LatestNewsServiceImpl implements LatestNewsService {
 		return latestNewsDao.findAllLatestNews();
 	}
 
+	@Override
+	public List<LatestNews> ValidUptoLatestNews() {
+		return latestNewsDao.ValidUptoLatestNews();
+	}
+
 }
