@@ -10,5 +10,9 @@ public interface LedgerService {
 
 	boolean save(Ledger ledger);
 
+	void update(Ledger ledger);
+
 	List<Ledger> findAllTransactions();
+
+	public List<Ledger> findLedgerByMemberIdAndLevel(Long memberId, String level);
 }

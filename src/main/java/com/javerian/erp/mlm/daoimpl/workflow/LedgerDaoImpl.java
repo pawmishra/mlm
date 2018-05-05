@@ -6,6 +6,7 @@ import javax.transaction.Transactional;
 
 import org.hibernate.Criteria;
 import org.hibernate.criterion.Order;
+import org.hibernate.query.Query;
 import org.springframework.stereotype.Repository;
 
 import com.javerian.erp.mlm.dao.auth.AbstractDao;
@@ -29,6 +30,11 @@ public class LedgerDaoImpl extends AbstractDao<Long, Ledger> implements LedgerDa
 	}
 
 	@Override
+	public void update(Ledger ledger) {
+		getSession().merge(ledger);
+	}
+
+	@Override
 	public List<Ledger> findAllTransactions() {
 		Criteria criteria = createEntityCriteria().addOrder(Order.asc("member_id"));
 		criteria.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);// To avoid duplicates.
@@ -36,4 +42,14 @@ public class LedgerDaoImpl extends AbstractDao<Long, Ledger> implements LedgerDa
 
 		return listMemberChain;
 	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<Ledger> findLedgerByMemberIdAndLevel(Long memberId, String level) {
+		Query query = getSession()
+				.createQuery("from Ledger where member_id=" + memberId + " and transaction_remark='" + level + "'");
+		List<Ledger> list = query.list();
+		return list;
+	}
+
 }

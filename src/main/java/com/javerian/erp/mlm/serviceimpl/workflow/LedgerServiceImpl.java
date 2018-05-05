@@ -30,4 +30,14 @@ public class LedgerServiceImpl implements LedgerService {
 		return ledgerDao.findAllTransactions();
 	}
 
+	@Override
+	public List<Ledger> findLedgerByMemberIdAndLevel(Long memberId, String level) {
+		return ledgerDao.findLedgerByMemberIdAndLevel(memberId, level);
+	}
+
+	@Override
+	public void update(Ledger ledger) {
+		ledgerDao.update(ledger);
+	}
+
 }

@@ -119,10 +119,10 @@ public class UserController {
 		ledger.setTransaction_remark(LedgerOptions.REGISTRATION_AMOUNT.getLedgerOptions());
 
 		ledgerService.save(ledger);
-		// TODO: MONEY CALCULATION, BINARY PLAN
+		// MONEY CALCULATION, BINARY PLAN
 		// 1. calculate all parents and count of child
 		List<User> sponsersOfChildById = userService.getSponsersOfChildById(user.getId(), Config.LEVEL_TO_BE_PROCESS);
-		List<CappingPerLevel> findAllCappingPerLevel = cappingPerLevelService.findAllCappingPerLevel();
+
 		Ledger ledgerForLevelIncome = new Ledger();
 		for (User sponser : sponsersOfChildById) {
 
@@ -153,26 +153,30 @@ public class UserController {
 				String levelRemarkOfMember = getLevelRemarkOfMember(levelResult);
 				int levelOfMember = getLevelOfMember(levelResult);
 
-				// 3. Count of maximum payment corresponding to level for user id made in Ledger
-				// table
-				// 4. (payment capping perlevel - total no of count from step3) -
-				// carryforwardvalueforlevel>=0
+				// 3. Count of payment made in ledger for that level for given member id.
+				Long id = Long.parseLong(String.valueOf(levelOfMember + 1));
+				List<Ledger> findLedgerByMemberIdAndLevel = ledgerService.findLedgerByMemberIdAndLevel(id,
+						levelRemarkOfMember);
 
-				for (CappingPerLevel cappingPerLevel : findAllCappingPerLevel) {
-					int member_per_level = cappingPerLevel.getMember_per_level();
+				int countOfTransactionMadePerLevel = findLedgerByMemberIdAndLevel.size();
 
-					// 3. payment made 10% of registration amount
+				// 4. Payment capping for given level
 
-					// final double levelPayment = registration.getRegistration_amout() * 0.01;
-					// ledgerForLevelIncome.setCredit(levelPayment);
-					// ledgerForLevelIncome.setDebit(nil.getRegistration_amout());
-					// ledgerForLevelIncome.setTransaction_date(Util.getCurrentTime());
-					// ledgerForLevelIncome.setTransaction_remark(LedgerOptions.LEVEL_INCOME.getLedgerOptions());
-					//
-					// ledgerService.save(ledgerForLevelIncome);
+				CappingPerLevel findAllCappingPerLevel = cappingPerLevelService.findById(id);
+				int payment_capping_per_level = findAllCappingPerLevel.getPayment_capping_per_level();
+
+				if (countOfTransactionMadePerLevel <= payment_capping_per_level) {
+					// 4. FINAL Payment calculation:
+					final double levelPayment = registration.getRegistration_amout() * 0.1;
+					ledgerForLevelIncome.setMember_id(sponser.getId());
+					ledgerForLevelIncome.setCredit(levelPayment);
+					ledgerForLevelIncome.setDebit(nil.getRegistration_amout());
+					ledgerForLevelIncome.setTransaction_date(Util.getCurrentTime());
+					ledgerForLevelIncome.setTransaction_remark(levelRemarkOfMember);
+
+					ledgerService.update(ledgerForLevelIncome);
 				}
 			}
-
 		}
 
 		addModelAttr(model);
@@ -184,27 +188,27 @@ public class UserController {
 
 		if (eligibilityLevel == 0) {
 			return LevelInfo.LEVEL1_INCOME.getLevelInfo();
-		} else if (eligibilityLevel >= 1 || eligibilityLevel <= 2) {
+		} else if (eligibilityLevel >= 1 && eligibilityLevel <= 2) {
 			return LevelInfo.LEVEL2_INCOME.getLevelInfo();
-		} else if (eligibilityLevel >= 3 || eligibilityLevel <= 4) {
+		} else if (eligibilityLevel >= 3 && eligibilityLevel <= 4) {
 			return LevelInfo.LEVEL3_INCOME.getLevelInfo();
-		} else if (eligibilityLevel >= 5 || eligibilityLevel <= 10) {
+		} else if (eligibilityLevel >= 5 && eligibilityLevel <= 10) {
 			return LevelInfo.LEVEL4_INCOME.getLevelInfo();
-		} else if (eligibilityLevel >= 11 || eligibilityLevel <= 20) {
+		} else if (eligibilityLevel >= 11 && eligibilityLevel <= 20) {
 			return LevelInfo.LEVEL5_INCOME.getLevelInfo();
-		} else if (eligibilityLevel >= 21 || eligibilityLevel <= 42) {
+		} else if (eligibilityLevel >= 21 && eligibilityLevel <= 42) {
 			return LevelInfo.LEVEL6_INCOME.getLevelInfo();
-		} else if (eligibilityLevel >= 43 || eligibilityLevel <= 84) {
+		} else if (eligibilityLevel >= 43 && eligibilityLevel <= 84) {
 			return LevelInfo.LEVEL7_INCOME.getLevelInfo();
-		} else if (eligibilityLevel >= 85 || eligibilityLevel <= 170) {
+		} else if (eligibilityLevel >= 85 && eligibilityLevel <= 170) {
 			return LevelInfo.LEVEL8_INCOME.getLevelInfo();
-		} else if (eligibilityLevel >= 171 || eligibilityLevel <= 340) {
+		} else if (eligibilityLevel >= 171 && eligibilityLevel <= 340) {
 			return LevelInfo.LEVEL9_INCOME.getLevelInfo();
-		} else if (eligibilityLevel >= 341 || eligibilityLevel <= 682) {
+		} else if (eligibilityLevel >= 341 && eligibilityLevel <= 682) {
 			return LevelInfo.LEVEL10_INCOME.getLevelInfo();
-		} else if (eligibilityLevel >= 683 || eligibilityLevel <= 1364) {
+		} else if (eligibilityLevel >= 683 && eligibilityLevel <= 1364) {
 			return LevelInfo.LEVEL11_INCOME.getLevelInfo();
-		} else if (eligibilityLevel >= 1365 || eligibilityLevel <= 2730) {
+		} else if (eligibilityLevel >= 1365 && eligibilityLevel <= 2730) {
 			return LevelInfo.LEVEL12_INCOME.getLevelInfo();
 		} else {
 			return LevelInfo.LEVEL_INVALID.getLevelInfo();
@@ -215,27 +219,27 @@ public class UserController {
 
 		if (eligibilityLevel == 0) {
 			return LevelInfo.LEVEL1_INCOME.getLevel();
-		} else if (eligibilityLevel >= 1 || eligibilityLevel <= 2) {
+		} else if (eligibilityLevel >= 1 && eligibilityLevel <= 2) {
 			return LevelInfo.LEVEL2_INCOME.getLevel();
-		} else if (eligibilityLevel >= 3 || eligibilityLevel <= 4) {
+		} else if (eligibilityLevel >= 3 && eligibilityLevel <= 4) {
 			return LevelInfo.LEVEL3_INCOME.getLevel();
-		} else if (eligibilityLevel >= 5 || eligibilityLevel <= 10) {
+		} else if (eligibilityLevel >= 5 && eligibilityLevel <= 10) {
 			return LevelInfo.LEVEL4_INCOME.getLevel();
-		} else if (eligibilityLevel >= 11 || eligibilityLevel <= 20) {
+		} else if (eligibilityLevel >= 11 && eligibilityLevel <= 20) {
 			return LevelInfo.LEVEL5_INCOME.getLevel();
-		} else if (eligibilityLevel >= 21 || eligibilityLevel <= 42) {
+		} else if (eligibilityLevel >= 21 && eligibilityLevel <= 42) {
 			return LevelInfo.LEVEL6_INCOME.getLevel();
-		} else if (eligibilityLevel >= 43 || eligibilityLevel <= 84) {
+		} else if (eligibilityLevel >= 43 && eligibilityLevel <= 84) {
 			return LevelInfo.LEVEL7_INCOME.getLevel();
-		} else if (eligibilityLevel >= 85 || eligibilityLevel <= 170) {
+		} else if (eligibilityLevel >= 85 && eligibilityLevel <= 170) {
 			return LevelInfo.LEVEL8_INCOME.getLevel();
-		} else if (eligibilityLevel >= 171 || eligibilityLevel <= 340) {
+		} else if (eligibilityLevel >= 171 && eligibilityLevel <= 340) {
 			return LevelInfo.LEVEL9_INCOME.getLevel();
-		} else if (eligibilityLevel >= 341 || eligibilityLevel <= 682) {
+		} else if (eligibilityLevel >= 341 && eligibilityLevel <= 682) {
 			return LevelInfo.LEVEL10_INCOME.getLevel();
-		} else if (eligibilityLevel >= 683 || eligibilityLevel <= 1364) {
+		} else if (eligibilityLevel >= 683 && eligibilityLevel <= 1364) {
 			return LevelInfo.LEVEL11_INCOME.getLevel();
-		} else if (eligibilityLevel >= 1365 || eligibilityLevel <= 2730) {
+		} else if (eligibilityLevel >= 1365 && eligibilityLevel <= 2730) {
 			return LevelInfo.LEVEL12_INCOME.getLevel();
 		} else {
 			return LevelInfo.LEVEL_INVALID.getLevel();
