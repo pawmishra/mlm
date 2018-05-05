@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -105,54 +106,67 @@
 										<!-- edit form column -->
 										<div class="col-md-9 personal-info">
 
-									       <form>
-									         
-									          <div class="form-row">
-												    <div class="form-group col-md-6">
-												      <label for="organizationname">Wallet Balance:</label>
-												      <input type="text" class="form-control" id="walletbalance" readonly="readonly" name="walletbalance" placeholder="Wallet Balance">
-												    </div>
-													 <div class="form-group col-md-6">
-												      <label for="organizationname">Withdraw Amount:</label>
-												      <input type="text" class="form-control" id="withdrawamount" name="withdraw_amount" placeholder="Withdraw Amount">
-												    </div>
-									          </div>
-									          
-									          <div class="form-group">
-									           
-									            <div class="buttons col-md-8"><br>
-									              <input type="submit" class="btn btn-primary" value="Withdraw">
-									              <span></span>
-									              <input type="reset" class="btn btn-default" value="Cancel">
-									            <br><br></div>
-									          </div>
-													
-									          </div>
-									        </form>
+											<form:form>
+
+												<div class="form-row">
+
+													<div class="form-group col-md-6">
+														<label for="organizationname">Wallet Balance:</label> <input
+															type="text" class="form-control" id="walletbalance"
+															readonly="readonly" name="walletbalance"
+															placeholder="Wallet Balance">
+													</div>
+
+												</div>
+
+												<div class="form-row">
+
+													<div class="form-group col-md-6">
+														<label for="organizationname">Want to withdraw
+															amount? <br> Enter amount you want to withdraw:
+														</label> <input type="text" class="form-control"
+															id="withdrawamount" name="withdraw_amount"
+															placeholder="Withdraw Amount">
+													</div>
+												</div>
+
+												<div class="form-group">
+
+													<div class="buttons col-md-8">
+														<br> <input type="submit" class="btn btn-primary"
+															value="Withdraw"> <span></span> <input
+															type="reset" class="btn btn-default" value="Cancel">
+														<br>
+														<br>
+													</div>
+												</div>
 										</div>
+										</form:form>
 									</div>
-
 								</div>
-							</div>
-							
-							
-						</div>
-						<!-- /.box -->
 
-						
+							</div>
+						</div>
+
+
 					</div>
-					<!-- /.col -->
+					<!-- /.box -->
+
+
 				</div>
-				<!-- /.row -->
-			</section>
-			<!-- /.content -->
+				<!-- /.col -->
 		</div>
-		<!-- /.content-wrapper -->
+		<!-- /.row -->
+		</section>
+		<!-- /.content -->
+	</div>
+	<!-- /.content-wrapper -->
 
 	</div>
 	<!-- ./wrapper -->
-<!-- ./wrapper -->
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<!-- ./wrapper -->
+	<script
+		src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 	<script src="/mlm-erp/static/js/validation.js"></script>
 	<!-- jQuery 2.1.3 -->
 	<script src="/mlm-erp/static/plugins/jQuery/jQuery-2.1.3.min.js"></script>
@@ -216,6 +230,6 @@
 		type="text/javascript"></script>
 </body>
 </html>
-	
+
 </body>
 </html>
