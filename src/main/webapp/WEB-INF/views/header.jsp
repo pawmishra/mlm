@@ -167,17 +167,18 @@
 								Add Questions</a></li>
 					</sec:authorize>
 				</ul></li>
+			<sec:authorize access="hasRole('ADMIN')">
+				<li class="treeview"><a href="#"> <i class="fa fa-rupee"></i>
+						<span>EVENTS</span> <i class="fa fa-angle-left pull-right"></i>
+				</a>
+					<ul class="treeview-menu">
 
-			<li class="treeview"><a href="#"> <i class="fa fa-rupee"></i>
-					<span>EVENTS</span> <i class="fa fa-angle-left pull-right"></i>
-			</a>
-				<ul class="treeview-menu">
-					<sec:authorize access="hasRole('ADMIN')">
 						<li><a href="latest_news"><i class="fa fa-circle-o"></i>Latest
 								News</a></li>
-					</sec:authorize>
 
-				</ul></li>
+
+					</ul></li>
+			</sec:authorize>
 			<li class="treeview"><a href="#"> <i class="fa fa-rupee"></i>
 					<span>WALLET</span> <i class="fa fa-angle-left pull-right"></i>
 
@@ -208,9 +209,10 @@
 					</sec:authorize>
 
 				</ul></li>
-			<li class="treeview"><a href="#"> <i class="fa fa-folder"></i>
-					<span>ADMIN</span> <i class="fa fa-angle-left pull-right"></i>
-			</a> <sec:authorize access="hasRole('ADMIN')">
+			<sec:authorize access="hasRole('ADMIN')">
+				<li class="treeview"><a href="#"> <i class="fa fa-folder"></i>
+						<span>ADMIN</span> <i class="fa fa-angle-left pull-right"></i>
+				</a>
 					<ul class="treeview-menu">
 						<li><a href="registration_amount"><i
 								class="fa fa-circle-o"></i>Registration Amount</a></li>
@@ -218,8 +220,8 @@
 								class="fa fa-circle-o"></i>Project Assigning</a></li>
 						<li><a href="document_questions"><i
 								class="fa fa-circle-o"></i>Add Document Questions</a></li>
-					</ul>
-				</sec:authorize></li>
+					</ul></li>
+			</sec:authorize>
 			<li class="treeview"><a href="/mlm-erp/logout"> <i
 					class="fa fa-hand-o-up"></i> <span>Logout</span>
 			</a></li>
