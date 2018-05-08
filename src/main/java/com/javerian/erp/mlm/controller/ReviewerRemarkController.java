@@ -17,13 +17,16 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.javerian.erp.mlm.model.auth.User;
+import com.javerian.erp.mlm.model.workflow.DocumentQuestions;
 import com.javerian.erp.mlm.model.workflow.ProjectWorkDetails;
 import com.javerian.erp.mlm.model.workflow.ReviewerRemark;
 import com.javerian.erp.mlm.service.auth.UserService;
+import com.javerian.erp.mlm.service.workflow.DocumentQuestionsService;
 import com.javerian.erp.mlm.service.workflow.ProjectWorkDetailsService;
 import com.javerian.erp.mlm.service.workflow.ReviewerRemarkService;
 import com.javerian.erp.mlm.util.StatusEnum;
 import com.javerian.erp.mlm.util.Util;
+import com.javerian.erp.mlm.vo.ReviewerVO;
 
 @Controller
 public class ReviewerRemarkController {
@@ -40,6 +43,9 @@ public class ReviewerRemarkController {
 	@Autowired
 	UserService userService;
 
+	@Autowired
+	DocumentQuestionsService documentQuestionsService;
+
 	@RequestMapping(value = { "/project_allocation" }, method = RequestMethod.GET)
 	public String addcategory(ModelMap model) {
 		model.addAttribute("loggedinuser", authenticationTrustResolver.getPrincipal());
@@ -53,12 +59,37 @@ public class ReviewerRemarkController {
 		model.addAttribute(new ReviewerRemark());
 
 		List<ReviewerRemark> listOfReviewerRemark = reviewerRemarkService.findAllReviewerRemark();
-		model.addAttribute("listOfReviewerRemark", listOfReviewerRemark);
+		// model.addAttribute("listOfReviewerRemark", listOfReviewerRemark);
+
+		List<ReviewerVO> listOfReviewerVO = new ArrayList<>();
+
+		int count = 0;
+		for (ReviewerRemark reviewerRemark : listOfReviewerRemark) {
+
+			User user = userService.findById(reviewerRemark.getReviewed_by());
+
+			ReviewerVO reviewVo = new ReviewerVO();
+			reviewVo.setsNo(++count);
+			reviewVo.setDocumentId(reviewerRemark.getDocument_id());
+			reviewVo.setProjectId(reviewerRemark.getProject_id());
+			reviewVo.setQuestion(reviewerRemark.getQuestion_id());
+			reviewVo.setRating(reviewerRemark.getReview_rating());
+			reviewVo.setAssignDate(reviewerRemark.getAssign_datetime().toString());
+			if (reviewerRemark.getReview_datetime() != null) {
+				reviewVo.setReviewDate(reviewerRemark.getReview_datetime().toString());
+			}
+			reviewVo.setUserName(user.getUsername());
+			reviewVo.setStatus(StatusEnum.values()[reviewerRemark.getStatus() - 1].toString());
+
+			listOfReviewerVO.add(reviewVo);
+		}
+
+		model.addAttribute("listOfReviewerVO", listOfReviewerVO);
 
 		List<ProjectWorkDetails> listOfAllProject = projectWorkDetailsService.findAllProjectWorkDetails();
 		Map<String, ProjectWorkDetails> map = new HashMap<>();
 		for (ProjectWorkDetails projectWorkDetails : listOfAllProject) {
-			if (!projectWorkDetails.getAllocated()) {
+			if (projectWorkDetails != null && !projectWorkDetails.getAllocated()) {
 				map.put(projectWorkDetails.getTicket_id(), projectWorkDetails);
 			}
 		}
@@ -79,25 +110,36 @@ public class ReviewerRemarkController {
 	@RequestMapping(value = "/save_project_allocation", method = RequestMethod.POST)
 	public String addOrganisation(@ModelAttribute ReviewerRemark reviewerRemark, BindingResult result, ModelMap model) {
 
-		List<ReviewerRemark> listOfReviewRemarkOfUserId = reviewerRemarkService
-				.findByReviewerId(reviewerRemark.getReviewed_by());
+		try {
+			List<ReviewerRemark> listOfReviewRemarkOfUserId = reviewerRemarkService
+					.findByReviewerId(reviewerRemark.getReviewed_by());
 
-		if (listOfReviewRemarkOfUserId.size() < 2) {
-			reviewerRemark.setAssign_datetime(Util.getCurrentTime());
-			reviewerRemark.setStatus(StatusEnum.OPEN.getStatus());
-			reviewerRemarkService.save(reviewerRemark);
+			if (listOfReviewRemarkOfUserId.size() < 2) {
 
-			ProjectWorkDetails project = projectWorkDetailsService.findById(reviewerRemark.getProject_id());
-			project.setAllocated(true);
-			projectWorkDetailsService.updateProject(project);
+				List<DocumentQuestions> listOfAllQuestions = documentQuestionsService.findAllDocumentQuestions();
 
-			addModelAttr(model);
-		} else {
+				for (DocumentQuestions question : listOfAllQuestions) {
 
-			addModelAttr(model);
-			model.addAttribute("message", "The User is Already has two Open Projects!");
+					ReviewerRemark newObj = (ReviewerRemark) reviewerRemark.clone();
+					newObj.setQuestion_id(question.getId());
+					newObj.setAssign_datetime(Util.getCurrentTime());
+					newObj.setStatus(StatusEnum.OPEN.getStatus());
+					reviewerRemarkService.save(newObj);
+				}
+
+				ProjectWorkDetails project = projectWorkDetailsService.findById(reviewerRemark.getProject_id());
+				project.setAllocated(true);
+				projectWorkDetailsService.updateProject(project);
+
+				addModelAttr(model);
+			} else {
+
+				addModelAttr(model);
+				model.addAttribute("message", "The User is Already has two Open Projects!");
+			}
+		} catch (Exception ex) {
+
 		}
-
 		return "project_allocation";
 	}
 

@@ -155,7 +155,7 @@
 
 						for (var i = 0; i < data.length; i++) {
 							option = option
-									+ "<option value='"+data[i].prj_work_details_id + "'>"
+									+ "<option value='"+data[i].document_id + "'>"
 									+ data[i].document_id + "</option>";
 						}
 						slctSubcat.append(option);
@@ -328,21 +328,30 @@
 									<th class="sorting_desc" tabindex="0" aria-controls="tbl_data"
 										rowspan="1" colspan="1"
 										aria-label="Position: activate to sort column ascending"
-										style="width: 32px;" aria-sort="descending">Review
-										DateTime</th>
+										style="width: 32px;" aria-sort="descending">Assign Date</th>
+									<th class="sorting_desc" tabindex="0" aria-controls="tbl_data"
+										rowspan="1" colspan="1"
+										aria-label="Position: activate to sort column ascending"
+										style="width: 32px;" aria-sort="descending">Review Date</th>
+									<th class="sorting_desc" tabindex="0" aria-controls="tbl_data"
+										rowspan="1" colspan="1"
+										aria-label="Position: activate to sort column ascending"
+										style="width: 32px;" aria-sort="descending">Status</th>		
 								</tr>
 							</thead>
 
 							<tbody>
-								<c:forEach items="${listOfReviewerRemark}" var="question">
+								<c:forEach items="${listOfReviewerVO}" var="reviewerVO">
 									<tr>
-										<td>${question.id}</td>
-										<td>${question.project_id}</td>
-										<td>${question.document_id}</td>
-										<td>${question.question_id}</td>
-										<td>${question.review_rating}</td>
-										<td>${question.reviewed_by}</td>
-										<td>${question.review_datetime}</td>
+										<td>${reviewerVO.sNo}</td>
+										<td>${reviewerVO.projectId}</td>
+										<td>${reviewerVO.documentId}</td>
+										<td>${reviewerVO.question}</td>
+										<td>${reviewerVO.rating}</td>
+										<td>${reviewerVO.userName}</td>
+										<td>${reviewerVO.assignDate}</td>
+										<td>${reviewerVO.reviewDate}</td>
+										<td>${reviewerVO.status}</td>
 									</tr>
 								</c:forEach>
 							</tbody>

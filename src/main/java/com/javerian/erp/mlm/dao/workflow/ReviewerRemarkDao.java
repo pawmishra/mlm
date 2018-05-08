@@ -13,4 +13,7 @@ public interface ReviewerRemarkDao {
 	List<ReviewerRemark> findAllReviewerRemark();
 
 	public List<ReviewerRemark> findByReviewerId(Long id);
+
+	public Integer getAssignedProject(Long user_id);
+
 }

@@ -11,7 +11,12 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "reviewer_remark")
-public class ReviewerRemark {
+public class ReviewerRemark implements Cloneable {
+
+	@Override
+	public Object clone() throws CloneNotSupportedException {
+		return super.clone();
+	}
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
