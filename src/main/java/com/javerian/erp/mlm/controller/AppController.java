@@ -20,10 +20,13 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import com.javerian.erp.mlm.model.auth.User;
 import com.javerian.erp.mlm.model.auth.UserProfile;
 import com.javerian.erp.mlm.model.workflow.LatestNews;
+import com.javerian.erp.mlm.model.workflow.Ledger;
 import com.javerian.erp.mlm.service.auth.UserProfileService;
 import com.javerian.erp.mlm.service.auth.UserService;
 import com.javerian.erp.mlm.service.workflow.LatestNewsService;
+import com.javerian.erp.mlm.service.workflow.LedgerService;
 import com.javerian.erp.mlm.service.workflow.MemberDetailsService;
+import com.javerian.erp.mlm.util.LedgerOptions;
 
 @Controller
 @RequestMapping("/")
@@ -32,7 +35,7 @@ public class AppController {
 
 	@Autowired
 	LatestNewsService latestNewsService;
-	
+
 	@Autowired
 	MemberDetailsService memberDetailsService;
 
@@ -46,6 +49,9 @@ public class AppController {
 	MessageSource messageSource;
 
 	@Autowired
+	LedgerService ledgerService;
+
+	@Autowired
 	PersistentTokenBasedRememberMeServices persistentTokenBasedRememberMeServices;
 
 	@Autowired
@@ -57,143 +63,15 @@ public class AppController {
 	@RequestMapping(value = { "/", "/mlmHome" }, method = RequestMethod.GET)
 	public String landingPage(ModelMap model) {
 
-		// UserProfile userProfile = new UserProfile();
-		// userProfile.setId(1);
-		// Set<UserProfile> set = new HashSet<>();
-		// set.add(userProfile);
-		//
-		// User user = new User();
-		// user.setFirstName("ABC");
-		// user.setUsername("abc");
-		// user.setPassword("aaa");
-		// user.setUserProfiles(set);
-		//
-		// MemberDetails memberDetails = new MemberDetails();
-		// memberDetails.setGender("MALE");
-		// Address address = new Address();
-		// address.setPincode(201301L);
-		//
-		// memberDetails.setAddress(address);
-		// address.setMemberDetails(memberDetails);
-		//
-		// user.setMemberDetails(memberDetails);
-		// memberDetails.setUser(user);
-		//
-		// userService.saveUser(user);
-		
 		List<User> users = userService.findAllUsers();
 		model.addAttribute("users", users);
 		model.addAttribute("loggedinuser", authenticationTrustResolver.getPrincipal());
-		
+
 		List<LatestNews> listOfValidNews = latestNewsService.ValidUptoLatestNews();
 		model.addAttribute("listOfValidNews", listOfValidNews);
-		
+
 		return "mlmHome";
 	}
-
-	/**
-	 * This method will provide the medium to add a new user.
-	 */
-	/*
-	 * @RequestMapping(value = { "/list" }, method = RequestMethod.GET) public
-	 * String listUsers(ModelMap model) { List<User> users =
-	 * userService.findAllUsers(); model.addAttribute("users", users);
-	 * model.addAttribute("loggedinuser",
-	 * authenticationTrustResolver.getPrincipal()); return "userslist"; }
-	 */
-
-	/**
-	 * This method will provide the medium to add a new user.
-	 */
-	/*
-	 * @RequestMapping(value = { "/newuser" }, method = RequestMethod.GET) public
-	 * String newUser(ModelMap model) { User user = new User();
-	 * model.addAttribute("user", user); model.addAttribute("edit", false);
-	 * model.addAttribute("loggedinuser",
-	 * authenticationTrustResolver.getPrincipal()); return "registration"; }
-	 */
-	/**
-	 * This method will be called on form submission, handling POST request for
-	 * saving user in database. It also validates the user input
-	 */
-	/*
-	 * @RequestMapping(value = { "/newuser" }, method = RequestMethod.POST) public
-	 * String saveUser(@Valid User user, BindingResult result, ModelMap model) {
-	 * 
-	 * if (result.hasErrors()) { return "registration"; }
-	 * 
-	 * 
-	 * Preferred way to achieve uniqueness of field [sso] should be implementing
-	 * custom @Unique annotation and applying it on field [sso] of Model class
-	 * [User].
-	 * 
-	 * Below mentioned peace of code [if block] is to demonstrate that you can fill
-	 * custom errors outside the validation framework as well while still using
-	 * internationalized messages.
-	 * 
-	 * 
-	 * if (!userService.isUserSSOUnique(user.getId(), user.getUsername())) {
-	 * FieldError ssoError = new FieldError("user", "username",
-	 * messageSource.getMessage("non.unique.username", new String[] {
-	 * user.getUsername() }, Locale.getDefault())); result.addError(ssoError);
-	 * return "registration"; }
-	 * 
-	 * userService.saveUser(user);
-	 * 
-	 * model.addAttribute("success", "User " + user.getFirstName() + " " +
-	 * user.getLastName() + " registered successfully");
-	 * model.addAttribute("loggedinuser",
-	 * authenticationTrustResolver.getPrincipal()); // return "success"; return
-	 * "registrationsuccess"; }
-	 */
-
-	/**
-	 * This method will provide the medium to update an existing user.
-	 */
-	/*
-	 * @RequestMapping(value = { "/edit-user-{username}" }, method =
-	 * RequestMethod.GET) public String editUser(@PathVariable String username,
-	 * ModelMap model) { User user = userService.findBySSO(username);
-	 * model.addAttribute("user", user); model.addAttribute("edit", true);
-	 * model.addAttribute("loggedinuser",
-	 * authenticationTrustResolver.getPrincipal()); return "registration"; }
-	 */
-
-	/**
-	 * This method will be called on form submission, handling POST request for
-	 * updating user in database. It also validates the user input
-	 */
-	/*
-	 * @RequestMapping(value = { "/edit-user-{username}" }, method =
-	 * RequestMethod.POST) public String updateUser(@Valid User user, BindingResult
-	 * result, ModelMap model, @PathVariable String username) {
-	 * 
-	 * if (result.hasErrors()) { return "registration"; }
-	 * 
-	 * 
-	 * //Uncomment below 'if block' if you WANT TO ALLOW UPDATING SSO_ID in UI which
-	 * is a unique key to a User. if(!userService.isUserSSOUnique(user.getId(),
-	 * user.getusername())){ FieldError ssoError =new
-	 * FieldError("user","username",messageSource.getMessage("non.unique.username",
-	 * new String[]{user.getusername()}, Locale.getDefault()));
-	 * result.addError(ssoError); return "registration"; }
-	 * 
-	 * 
-	 * userService.updateUser(user);
-	 * 
-	 * model.addAttribute("success", "User " + user.getFirstName() + " " +
-	 * user.getLastName() + " updated successfully");
-	 * model.addAttribute("loggedinuser",
-	 * authenticationTrustResolver.getPrincipal()); return "registrationsuccess"; }
-	 */
-	/**
-	 * This method will delete an user by it's username value.
-	 */
-	/*
-	 * @RequestMapping(value = { "/delete-user-{username}" }, method =
-	 * RequestMethod.GET) public String deleteUser(@PathVariable String username) {
-	 * userService.deleteUserBySSO(username); return "redirect:/erphomepage"; }
-	 */
 
 	/**
 	 * This method will provide UserProfile list to views
@@ -244,16 +122,48 @@ public class AppController {
 
 	@RequestMapping(value = { "/survey_income" }, method = RequestMethod.GET)
 	public String surveyincome(ModelMap model) {
-		model.addAttribute("loggedinuser", authenticationTrustResolver.getPrincipal());
-		return "survey_income";
+		return getListOfIncome(model, LedgerOptions.PAGE_REVIEW_INCOME.getLedgerOptions(), "listOfSurveyIncome",
+				"survey_income");
+	}
+
+	private String getListOfIncome(ModelMap model, String typeOfIncome, String modelAttributName, String jspFileName) {
+		addModelAttr(model);
+		User loggedInUser = userService.getLoggedInUser();
+		List<Ledger> listOfSurveyIncome = ledgerService.findLedgerByMemberIdAndLevel(loggedInUser.getId(),
+				typeOfIncome);
+		addModelAttrForEditProfile(model);
+		model.addAttribute(modelAttributName, listOfSurveyIncome);
+
+		return jspFileName;
 	}
 
 	@RequestMapping(value = { "/level_income" }, method = RequestMethod.GET)
 	public String levelincome(ModelMap model) {
-		model.addAttribute("loggedinuser", authenticationTrustResolver.getPrincipal());
-		return "level_income";
+		return getListOfIncome(model, LedgerOptions.ALL_LEVEL_INCOME.getLedgerOptions(), "listOfLevelBasedIncome",
+				"level_income");
 	}
-	
+
+	@ModelAttribute
+	public void addModelAttr(ModelMap model) {
+
+		User userObjOfLoggedInUser = userService.getLoggedInUser();
+		if (userObjOfLoggedInUser != null) {
+			model.addAttribute("loggedinuser", userObjOfLoggedInUser.getUsername());
+
+			User user = new User();
+			user.setSponser_id(userObjOfLoggedInUser.getId());
+			user.setSponser_name(userObjOfLoggedInUser.getFirstName());
+			model.addAttribute(user);
+		}
+	}
+
+	public void addModelAttrForEditProfile(ModelMap model) {
+
+		User userObjOfLoggedInUser = userService.getLoggedInUser();
+		model.addAttribute("loggedinuser", userObjOfLoggedInUser.getUsername());
+		model.addAttribute(userObjOfLoggedInUser);
+	}
+
 	@RequestMapping(value = { "/review_project" }, method = RequestMethod.GET)
 	public String reviewproject(ModelMap model) {
 		model.addAttribute("loggedinuser", authenticationTrustResolver.getPrincipal());
@@ -283,75 +193,4 @@ public class AppController {
 		model.addAttribute("loggedinuser", authenticationTrustResolver.getPrincipal());
 		return "withdraw_history";
 	}
-	
-	
-
-	/*
-	 * @RequestMapping(value = { "/treeview" }, method = RequestMethod.GET) public
-	 * String treeview(ModelMap model) { model.addAttribute("loggedinuser",
-	 * authenticationTrustResolver.getPrincipal()); return "treeview"; }
-	 */
-
-	/*
-	 * @RequestMapping(value = { "/account_history" }, method = RequestMethod.GET)
-	 * public String accountHistory(ModelMap model) {
-	 * model.addAttribute("loggedinuser",
-	 * authenticationTrustResolver.getPrincipal()); return "account_history"; }
-	 * 
-	 * @RequestMapping(value = { "/bank_details" }, method = RequestMethod.GET)
-	 * public String bankDetails(ModelMap model) {
-	 * model.addAttribute("loggedinuser",
-	 * authenticationTrustResolver.getPrincipal()); return "bank_details"; }
-	 */
-
-	// bank_details.jsp
-	// block_payout_achivers.jsp
-	// block_reward_achivers.jsp
-	// deleted_joining_kits.jsp
-	// direct_ids.jsp
-	// edit_pass.jsp
-	// edit_profile.jsp
-	// epin.jsp
-	// epin_generator.jsp
-	// epin_generator_2.jsp
-	// epin_received_history.jsp
-	// epin_sale.jsp
-	// epin_status.jsp
-	// epin_transaction.jsp
-	// epin_transfer.jsp
-	// epin_transfer_history.jsp
-	// e_pin_listdelete.jsp
-	// fund_transfer_report.jsp
-	// header.jsp
-	// index.jsp
-	// joining_product.jsp
-	// kyc_update.jsp
-	// level_income.jsp
-	// level_income1.jsp
-	// login.jsp
-	// member_pannel.jsp
-	// member_password.jsp
-	// member_view.jsp
-	// mlmHome.jsp
-	// my_direct.jsp
-	// my_level.jsp
-	// my_team.jsp
-	// new_joining.jsp
-	// payout_report.jsp
-	// payout_summary.jsp
-	// process_payout.jsp
-	// register.jsp
-	// registrationsuccess.jsp
-	// reports.jsp
-	// top_up_id.jsp
-	// transaction_password.jsp
-	// treeview.jsp
-	// upgrade.jsp
-	// view_distributer.jsp
-	// view_downline.jsp
-	// view_receipt_report.jsp
-	// welcome_report.jsp
-	// withdraw_balance.jsp
-	// withdraw_report.jsp
-
 }

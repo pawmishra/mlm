@@ -46,10 +46,9 @@ public class LedgerDaoImpl extends AbstractDao<Long, Ledger> implements LedgerDa
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<Ledger> findLedgerByMemberIdAndLevel(Long memberId, String level) {
-		Query query = getSession()
-				.createQuery("from Ledger where member_id=" + memberId + " and transaction_remark='" + level + "'");
+		Query query = getSession().createQuery(
+				"from Ledger where member_id=" + memberId + " and transaction_remark like '" + level + "'");
 		List<Ledger> list = query.list();
 		return list;
 	}
-
 }

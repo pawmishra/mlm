@@ -15,5 +15,4 @@ public interface LedgerDao {
 	List<Ledger> findAllTransactions();
 
 	public List<Ledger> findLedgerByMemberIdAndLevel(Long memberId, String level);
-
 }

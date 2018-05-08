@@ -48,4 +48,10 @@ public class ReviewerRemarkDaoImpl extends AbstractDao<Long, ReviewerRemark> imp
 		return list;
 	}
 
+	@Override
+	public Integer getAssignedProject(Long user_id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }
