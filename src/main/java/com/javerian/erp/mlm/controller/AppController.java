@@ -178,13 +178,27 @@ public class AppController {
 
 	@RequestMapping(value = { "/withdraw_balance" }, method = RequestMethod.GET)
 	public String withdrawbalance(ModelMap model) {
-		model.addAttribute("loggedinuser", authenticationTrustResolver.getPrincipal());
+		Double totalCredit = 0.0;
+		Double totalDebit = 0.0;
+
+		addModelAttr(model);
+		User loggedInUser = userService.getLoggedInUser();
+		List<Ledger> listOfWithdrawlBalance = ledgerService.findAllTransactionsByMemberId(loggedInUser.getId());
+
+		for (Ledger ledger : listOfWithdrawlBalance) {
+			totalCredit += ledger.getCredit();
+			totalDebit += ledger.getDebit();
+		}
+		addModelAttrForEditProfile(model);
+		model.addAttribute("listOfWithdrawlBalance", listOfWithdrawlBalance);
+		Double balanceToWithdrawl = totalCredit - totalDebit;
+		model.addAttribute("balanceToWithdrawl", balanceToWithdrawl);
 		return "withdraw_balance";
 	}
 
 	@RequestMapping(value = { "/withdraw_history" }, method = RequestMethod.GET)
 	public String withdrawhistory(ModelMap model) {
-		model.addAttribute("loggedinuser", authenticationTrustResolver.getPrincipal());
-		return "withdraw_history";
+		return getListOfIncome(model, LedgerOptions.WITHDRAWL.getLedgerOptions(), "listOfWithdrawlAmount",
+				"withdraw_history");
 	}
 }
