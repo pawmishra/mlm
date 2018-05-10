@@ -1,8 +1,9 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
-<!DOCTYPE html>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
@@ -11,13 +12,38 @@
 <meta
 	content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no'
 	name='viewport'>
-<!-- Bootstrap 3.3.2 -->
-<link href="<c:url value='/static/bootstrap/css/bootstrap.min.css' />"
+
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script
+	src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+<script
+	src="https://cdn.datatables.net/1.10.16/js/dataTables.bootstrap.min.js"></script>
+<!-- <script src="http://code.jquery.com/ui/1.11.2/jquery-ui.min.js"
+	type="text/javascript"></script> -->
+
+<!-- /static/bootstrap/css/bootstrap.min.css' -->
+
+
+<link href="<c:url value='/static/plugins/morris/morris.css' />"
 	rel="stylesheet" type="text/css" />
+<link
+	href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css"
+	rel="stylesheet" />
+<link
+	href="<c:url value='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css' />"
+	rel="stylesheet" type="text/css" />
+<!-- <link
+	href="https://cdn.datatables.net/1.10.16/css/dataTables.bootstrap.min.css"
+	rel="stylesheet" type="text/css" />	 -->
+
 <!-- FontAwesome 4.3.0 -->
 <link
 	href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css"
 	rel="stylesheet" type="text/css" />
+<link
+	href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css"
+	rel="stylesheet" type="text/css" />
+
 <!-- Ionicons 2.0.0 -->
 <link
 	href="http://code.ionicframework.com/ionicons/2.0.0/css/ionicons.min.css"
@@ -25,9 +51,6 @@
 <!-- Theme style -->
 <link href="<c:url value='/static/dist/css/AdminLTE.min.css' />"
 	rel="stylesheet" type="text/css" />
-<link href="<c:url value='/static/dist/css/AdminLTE.css' />"
-	rel="stylesheet" type="text/css" />
-
 <!-- AdminLTE Skins. Choose a skin from the css/skins 
          folder instead of downloading all of them to reduce the load. -->
 <link href="<c:url value='/static/dist/css/skins/_all-skins.min.css' />"
@@ -38,8 +61,7 @@
 <!-- iCheck -->
 <link href="<c:url value='/static/plugins/iCheck/flat/blue.css' />"
 	rel="stylesheet" type="text/css" />
-<link href="<c:url value='/static/dist/css/style.css' />"
-	rel="stylesheet" type="text/css" />
+
 <!-- jvectormap -->
 <link
 	href="<c:url value='/static/plugins/jvectormap/jquery-jvectormap-1.2.2.css' />"
@@ -57,16 +79,84 @@
 	href="<c:url value='/static/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css' />"
 	rel="stylesheet" type="text/css" />
 
-<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-<!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-        <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
-    <![endif]-->
+<!-- jQuery 2.1.3 -->
+<!-- <script src="/mlm-erp/static/plugins/jQuery/jQuery-2.1.3.min.js"></script> -->
+<!-- jQuery UI 1.11.2 -->
+
+<!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
+<script>
+	$.widget.bridge('uibutton', $.ui.button);
+</script>
+<!-- Bootstrap 3.3.2 JS -->
+<script src="/mlm-erp/static/bootstrap/js/bootstrap.min.js"
+	type="text/javascript"></script>
+<!-- Morris.js charts -->
+<script
+	src="http://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
+
+<!-- Sparkline -->
+<script src="/mlm-erp/static/plugins/sparkline/jquery.sparkline.min.js"
+	type="text/javascript"></script>
+<!-- jvectormap -->
+<script
+	src="/mlm-erp/static/plugins/jvectormap/jquery-jvectormap-1.2.2.min.js"
+	type="text/javascript"></script>
+<script
+	src="/mlm-erp/static/plugins/jvectormap/jquery-jvectormap-world-mill-en.js"
+	type="text/javascript"></script>
+<!-- jQuery Knob Chart -->
+<script src="/mlm-erp/static/plugins/knob/jquery.knob.js"
+	type="text/javascript"></script>
+<!-- daterangepicker -->
+<script src="/mlm-erp/static/plugins/daterangepicker/daterangepicker.js"
+	type="text/javascript"></script>
+<!-- datepicker -->
+<script src="/mlm-erp/static/plugins/datepicker/bootstrap-datepicker.js"
+	type="text/javascript"></script>
+<!-- Bootstrap WYSIHTML5 -->
+<script
+	src="/mlm-erp/static/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js"
+	type="text/javascript"></script>
+<!-- iCheck -->
+<script src="/mlm-erp/static/plugins/iCheck/icheck.min.js"
+	type="text/javascript"></script>
+<!-- Slimscroll -->
+<script
+	src="/mlm-erp/static/plugins/slimScroll/jquery.slimscroll.min.js"
+	type="text/javascript"></script>
+<!-- FastClick -->
+<script src='/mlm-erp/static/plugins/fastclick/fastclick.min.js'></script>
+<!-- AdminLTE App -->
+<script src="/mlm-erp/static/dist/js/app.min.js" type="text/javascript"></script>
+
+<!-- AdminLTE dashboard demo (This is only for demo purposes) -->
+<!-- <script src="/mlm-erp/static/dist/js/pages/dashboard.js"
+	type="text/javascript"></script> -->
+<!-- <script src="/mlm-erp/static/dist/js/index.js"></script> -->
+<!-- AdminLTE for demo purposes -->
+<!-- <script src="/mlm-erp/static/dist/js/demo.js" type="text/javascript"></script> -->
 <!-- Morris chart -->
 
-<link href="<c:url value='/static/plugins/morris/morris.css' />"
-	rel="stylesheet" type="text/css" />
+<!-- <script src="/mlm-erp/static/plugins/morris/morris.min.js"
+	type="text/javascript"></script>
+ -->
+
+<script type="text/javascript">
+	$(document).ready(function() {
+		$('#tbl_data').DataTable({
+			"pagingType" : "full_numbers"
+		});
+	});
+	/* 
+	 $(document).ready(function() {
+	 $('#tbl_data1').DataTable({
+	 "pagingType" : "full_numbers"
+	 });
+	 }); */
+</script>
+
+<script src="/mlm-erp/static/js/validation.js"></script>
+
 
 
 </head>
@@ -81,81 +171,126 @@
 		<div class="content-wrapper">
 			<!-- Content Header (Page header) -->
 			<section class="content-header">
-				<h1>Withdraw Balance</h1>
-				<ol class="breadcrumb">
-					<li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-					<li><a href="#">Dashboard</a></li>
-					<li class="active">Withdraw Balance</li>
-				</ol>
+			<h1>Withdraw Balance</h1>
+			<ol class="breadcrumb">
+				<li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+				<li><a href="#">Dashboard</a></li>
+				<li class="active">Withdraw Balance</li>
+			</ol>
 			</section>
 
 			<!-- Main content -->
 			<section class="content">
-				<div class="row">
-					<div class="col-xs-12">
+			<div class="row">
+				<div class="col-xs-12">
 
 
-						<div class="box">
-							<div class="box-header">
-								<div class="container">
-									<h1></h1>
-									<hr>
-									<div class="row">
-										<!-- left column -->
+					<div class="box">
+						<div class="box-header">
+							<div class="container">
+								<h1></h1>
+								<hr>
+								<div class="row">
+									<!-- left column -->
 
-										<!-- edit form column -->
-										<div class="col-md-9 personal-info">
+									<!-- edit form column -->
+									<div class="col-md-9 personal-info">
 
-											<form:form>
+										<form:form>
 
-												<div class="form-row">
+											<div class="form-row">
 
-													<div class="form-group col-md-6">
-														<label for="organizationname">Wallet Balance:</label> <input
-															type="text" class="form-control" id="walletbalance"
-															readonly="readonly" name="walletbalance"
-															placeholder="Wallet Balance">
-													</div>
-
+												<div class="form-group col-md-6">
+													<label for="organizationname">Wallet Balance:</label> <input
+														type="text" class="form-control" id="walletbalance"
+														readonly="readonly" name="walletbalance"
+														placeholder="Wallet Balance" value="${balanceToWithdrawl}">
 												</div>
 
-												<div class="form-row">
+											</div>
 
-													<div class="form-group col-md-6">
-														<label for="organizationname">Want to withdraw
-															amount? <br> Enter amount you want to withdraw:
-														</label> <input type="text" class="form-control"
-															id="withdrawamount" name="withdraw_amount"
-															placeholder="Withdraw Amount">
-													</div>
+											<div class="form-row">
+
+												<div class="form-group col-md-6">
+													<label for="organizationname">Want to withdraw
+														amount? <br> Enter amount you want to withdraw:
+													</label> <input type="text" class="form-control"
+														id="withdrawamount" name="withdraw_amount"
+														placeholder="Withdraw Amount">
 												</div>
+											</div>
 
-												<div class="form-group">
+											<div class="form-group">
 
-													<div class="buttons col-md-8">
-														<br> <input type="submit" class="btn btn-primary"
-															value="Withdraw"> <span></span> <input
-															type="reset" class="btn btn-default" value="Cancel">
-														<br>
-														<br>
-													</div>
+												<div class="buttons col-md-8">
+													<br> <input type="submit" class="btn btn-primary"
+														value="Withdraw"> <span></span> <input
+														type="reset" class="btn btn-default" value="Cancel">
+													<br> <br>
 												</div>
-										</div>
-										</form:form>
+											</div>
 									</div>
+									</form:form>
 								</div>
-
 							</div>
 						</div>
-
-
 					</div>
-					<!-- /.box -->
 
+					<!-- /.box-header -->
+					<div class="box-body">
+						<!-- <table id="tbl_data" class="table table-striped table-bordered"
+									style="width: 100%"> -->
+
+						<table class="display dataTable no-footer" border="1"
+							style="width: 100%;" id="tbl_data" role="grid"
+							aria-describedby="tbl_data_info">
+							<thead>
+								<tr
+									style="background-color: #0f2a76; text-align: center; color: white"
+									role="row">
+									<th class="sorting_desc" tabindex="0" aria-controls="tbl_data"
+										rowspan="1" colspan="1"
+										aria-label="Name: activate to sort column ascending"
+										style="width: 32px;" aria-sort="descending">Transaction
+										Remark</th>
+									<th class="sorting_desc" tabindex="0" aria-controls="tbl_data"
+										rowspan="1" colspan="1"
+										aria-label="Position: activate to sort column ascending"
+										style="width: 32px;" aria-sort="descending">Transaction
+										Date</th>
+									<th class="sorting_desc" tabindex="0" aria-controls="tbl_data"
+										rowspan="1" colspan="1"
+										aria-label="Position: activate to sort column ascending"
+										style="width: 32px;" aria-sort="descending">Credit</th>
+									<th class="sorting_desc" tabindex="0" aria-controls="tbl_data"
+										rowspan="1" colspan="1"
+										aria-label="Position: activate to sort column ascending"
+										style="width: 32px;" aria-sort="descending">Debit</th>
+								</tr>
+							</thead>
+							<tbody>
+								<c:forEach items="${listOfWithdrawlBalance}" var="item">
+									<tr>
+										<td>${item.transaction_remark}</td>
+										<td>${item.transaction_date}</td>
+										<td>${item.credit}</td>
+										<td>${item.debit}</td>
+									</tr>
+								</c:forEach>
+							</tbody>
+						</table>
+					</div>
+					<!-- /.box-body -->
 
 				</div>
-				<!-- /.col -->
+
+				<!-- /.box -->
+
+
+			</div>
+			<!-- /.col -->
 		</div>
+
 		<!-- /.row -->
 		</section>
 		<!-- /.content -->
@@ -163,71 +298,7 @@
 	<!-- /.content-wrapper -->
 
 	</div>
-	<!-- ./wrapper -->
-	<!-- ./wrapper -->
-	<script
-		src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-	<script src="/mlm-erp/static/js/validation.js"></script>
-	<!-- jQuery 2.1.3 -->
-	<script src="/mlm-erp/static/plugins/jQuery/jQuery-2.1.3.min.js"></script>
-	<!-- jQuery UI 1.11.2 -->
-	<script src="http://code.jquery.com/ui/1.11.2/jquery-ui.min.js"
-		type="text/javascript"></script>
-	<!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
-	<script>
-		$.widget.bridge('uibutton', $.ui.button);
-	</script>
-	<!-- Bootstrap 3.3.2 JS -->
-	<script src="/mlm-erp/static/bootstrap/js/bootstrap.min.js"
-		type="text/javascript"></script>
-	<!-- Morris.js charts -->
-	<script
-		src="http://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
-	<!-- Sparkline -->
-	<script src="/mlm-erp/static/plugins/sparkline/jquery.sparkline.min.js"
-		type="text/javascript"></script>
-	<!-- jvectormap -->
-	<script
-		src="/mlm-erp/static/plugins/jvectormap/jquery-jvectormap-1.2.2.min.js"
-		type="text/javascript"></script>
-	<script
-		src="/mlm-erp/static/plugins/jvectormap/jquery-jvectormap-world-mill-en.js"
-		type="text/javascript"></script>
-	<!-- jQuery Knob Chart -->
-	<script src="/mlm-erp/static/plugins/knob/jquery.knob.js"
-		type="text/javascript"></script>
-	<!-- daterangepicker -->
-	<script
-		src="/mlm-erp/static/plugins/daterangepicker/daterangepicker.js"
-		type="text/javascript"></script>
-	<!-- datepicker -->
-	<script
-		src="/mlm-erp/static/plugins/datepicker/bootstrap-datepicker.js"
-		type="text/javascript"></script>
-	<!-- Bootstrap WYSIHTML5 -->
-	<script
-		src="/mlm-erp/static/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js"
-		type="text/javascript"></script>
-	<!-- iCheck -->
-	<script src="/mlm-erp/static/plugins/iCheck/icheck.min.js"
-		type="text/javascript"></script>
-	<!-- Slimscroll -->
-	<script
-		src="/mlm-erp/static/plugins/slimScroll/jquery.slimscroll.min.js"
-		type="text/javascript"></script>
-	<!-- FastClick -->
-	<script src='/mlm-erp/static/plugins/fastclick/fastclick.min.js'></script>
-	<!-- AdminLTE App -->
-	<script src="/mlm-erp/static/dist/js/app.min.js" type="text/javascript"></script>
 
-	<!-- AdminLTE dashboard demo (This is only for demo purposes) -->
-	<script src="/mlm-erp/static/dist/js/pages/dashboard.js"
-		type="text/javascript"></script>
-	<script src="/mlm-erp/static/dist/js/index.js"></script>
-	<!-- AdminLTE for demo purposes -->
-	<script src="/mlm-erp/static/dist/js/demo.js" type="text/javascript"></script>
-	<script src="/mlm-erp/static/plugins/morris/morris.min.js"
-		type="text/javascript"></script>
 </body>
 </html>
 

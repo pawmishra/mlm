@@ -51,4 +51,11 @@ public class LedgerDaoImpl extends AbstractDao<Long, Ledger> implements LedgerDa
 		List<Ledger> list = query.list();
 		return list;
 	}
+
+	@Override
+	public List<Ledger> findAllTransactionsByMemberId(Long memberId) {
+		Query query = getSession().createQuery("from Ledger where member_id=" + memberId);
+		List<Ledger> list = query.list();
+		return list;
+	}
 }

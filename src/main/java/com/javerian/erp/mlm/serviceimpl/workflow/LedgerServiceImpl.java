@@ -40,4 +40,9 @@ public class LedgerServiceImpl implements LedgerService {
 		ledgerDao.update(ledger);
 	}
 
+	@Override
+	public List<Ledger> findAllTransactionsByMemberId(Long memberId) {
+		return ledgerDao.findAllTransactionsByMemberId(memberId);
+	}
+
 }

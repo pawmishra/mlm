@@ -14,6 +14,8 @@ public interface LedgerService {
 
 	List<Ledger> findAllTransactions();
 
+	List<Ledger> findAllTransactionsByMemberId(Long memberId);
+
 	public List<Ledger> findLedgerByMemberIdAndLevel(Long memberId, String level);
 
 }
