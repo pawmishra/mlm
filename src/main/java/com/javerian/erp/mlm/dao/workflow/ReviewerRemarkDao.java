@@ -14,6 +14,6 @@ public interface ReviewerRemarkDao {
 
 	public List<ReviewerRemark> findByReviewerId(Long id);
 
-	public Integer getAssignedProject(Long user_id);
+	public Integer getCountOfAssignedProjectToUser(Long user_id);
 
 }

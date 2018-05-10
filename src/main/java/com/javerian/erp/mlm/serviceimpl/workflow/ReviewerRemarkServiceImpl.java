@@ -38,4 +38,9 @@ public class ReviewerRemarkServiceImpl implements ReviewerRemarkService {
 		return reviewerremarkDao.findByReviewerId(id);
 	}
 
+	@Override
+	public Integer getCountOfAssignedProjectToUser(Long user_id) {
+		return reviewerremarkDao.getCountOfAssignedProjectToUser(user_id);
+	}
+
 }

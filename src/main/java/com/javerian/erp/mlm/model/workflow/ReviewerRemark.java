@@ -8,6 +8,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 @Entity
 @Table(name = "reviewer_remark")
@@ -37,6 +38,8 @@ public class ReviewerRemark implements Cloneable {
 	private Integer status;
 	@Column(name = "assign_datetime")
 	private Timestamp assign_datetime;
+	@Transient
+	private String ticket_id;
 
 	public Long getId() {
 		return id;
@@ -108,6 +111,14 @@ public class ReviewerRemark implements Cloneable {
 
 	public void setAssign_datetime(Timestamp assign_datetime) {
 		this.assign_datetime = assign_datetime;
+	}
+
+	public String getTicket_id() {
+		return ticket_id;
+	}
+
+	public void setTicket_id(String ticket_id) {
+		this.ticket_id = ticket_id;
 	}
 
 }

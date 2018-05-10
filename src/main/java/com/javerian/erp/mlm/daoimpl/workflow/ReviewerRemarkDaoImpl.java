@@ -49,9 +49,17 @@ public class ReviewerRemarkDaoImpl extends AbstractDao<Long, ReviewerRemark> imp
 	}
 
 	@Override
-	public Integer getAssignedProject(Long user_id) {
-		// TODO Auto-generated method stub
-		return null;
+	public Integer getCountOfAssignedProjectToUser(Long user_id) {
+
+		Query query = getSession().createNativeQuery(
+				"SELECT count(reviewed_by) FROM mlmschema.reviewer_remark group by project_id, reviewed_by having reviewed_by = "
+						+ user_id);
+		List list = query.list();
+
+		if (list != null)
+			return list.size();
+		else
+			return 0;
 	}
 
 }

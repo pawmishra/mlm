@@ -138,7 +138,7 @@
 
 	function changeProject() {
 
-		var reviewerRemark = $("#project_id").val();
+		var reviewerRemark = $("#ticket_id").val();
 		$
 				.ajax({
 					type : "GET",
@@ -146,7 +146,7 @@
 					url : "getDocumentId",
 					dataType : 'json',
 					data : {
-						project_id : reviewerRemark
+						ticket_id : reviewerRemark
 					},
 					success : function(data) {
 
@@ -215,13 +215,13 @@
 												<div class="form-group col-md-6">
 													<label for="problemtype">Ticket Id:</label>
 													<div class="ui-select">
-														<form:select id="project_id"
+														<form:select id="ticket_id"
 															class="form-control selectpicker" data-live-search="true"
-															name="project_id" required="required" path="project_id"
+															name="ticket_id" required="required" path="ticket_id"
 															onchange="changeProject()">
 															<form:option value="" label="--- Select ---" />
 															<c:forEach items="${listOfProject}" var="project">
-																<option value="${project.prj_work_details_id}">${project.ticket_id}</option>
+																<option value="${project.ticket_id}">${project.ticket_id}</option>
 															</c:forEach>
 														</form:select>
 													</div>
@@ -308,7 +308,7 @@
 									<th class="sorting_desc" tabindex="0" aria-controls="tbl_data"
 										rowspan="1" colspan="1"
 										aria-label="Position: activate to sort column ascending"
-										style="width: 32px;" aria-sort="descending">Ticket Id</th>
+										style="width: 32px;" aria-sort="descending">Project Id</th>
 									<th class="sorting_desc" tabindex="0" aria-controls="tbl_data"
 										rowspan="1" colspan="1"
 										aria-label="Position: activate to sort column ascending"

@@ -52,4 +52,12 @@ public class ProjectWorkDetailsDaoImpl extends AbstractDao<Long, ProjectWorkDeta
 		return true;
 	}
 
+	@Override
+	public ProjectWorkDetails findByDocumentId(String document_id) {
+		Query query = getSession().createQuery("from ProjectWorkDetails where document_id=:document_id");
+		query.setParameter("document_id", document_id);
+		ProjectWorkDetails projWorkDetail = (ProjectWorkDetails) query.uniqueResult();
+		return projWorkDetail;
+	}
+
 }

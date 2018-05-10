@@ -9,6 +9,7 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.util.StringUtils;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -47,20 +48,17 @@ public class ReviewerRemarkController {
 	DocumentQuestionsService documentQuestionsService;
 
 	@RequestMapping(value = { "/project_allocation" }, method = RequestMethod.GET)
-	public String addcategory(ModelMap model) {
-		model.addAttribute("loggedinuser", authenticationTrustResolver.getPrincipal());
+	public String projectAllocation(ModelMap model) {
+		addModelAttr(model);
 		return "project_allocation";
 	}
 
-	@ModelAttribute
 	public void addModelAttr(ModelMap model) {
 
 		model.addAttribute("loggedinuser", authenticationTrustResolver.getPrincipal());
 		model.addAttribute(new ReviewerRemark());
 
 		List<ReviewerRemark> listOfReviewerRemark = reviewerRemarkService.findAllReviewerRemark();
-		// model.addAttribute("listOfReviewerRemark", listOfReviewerRemark);
-
 		List<ReviewerVO> listOfReviewerVO = new ArrayList<>();
 
 		int count = 0;
@@ -104,30 +102,30 @@ public class ReviewerRemarkController {
 			}
 		}
 		model.addAttribute("listOfUser", listOfUser);
-		// model.addAttribute("message", "*******************************************");
 	}
 
 	@RequestMapping(value = "/save_project_allocation", method = RequestMethod.POST)
 	public String addOrganisation(@ModelAttribute ReviewerRemark reviewerRemark, BindingResult result, ModelMap model) {
 
 		try {
-			List<ReviewerRemark> listOfReviewRemarkOfUserId = reviewerRemarkService
-					.findByReviewerId(reviewerRemark.getReviewed_by());
+			Integer countOfAssignedProjectToUser = reviewerRemarkService
+					.getCountOfAssignedProjectToUser(reviewerRemark.getReviewed_by());
 
-			if (listOfReviewRemarkOfUserId.size() < 2) {
+			if (countOfAssignedProjectToUser < 2) {
 
 				List<DocumentQuestions> listOfAllQuestions = documentQuestionsService.findAllDocumentQuestions();
+				ProjectWorkDetails project = projectWorkDetailsService
+						.findByDocumentId(reviewerRemark.getDocument_id());
 
 				for (DocumentQuestions question : listOfAllQuestions) {
 
 					ReviewerRemark newObj = (ReviewerRemark) reviewerRemark.clone();
+					newObj.setProject_id(project.getPrj_work_details_id());
 					newObj.setQuestion_id(question.getId());
 					newObj.setAssign_datetime(Util.getCurrentTime());
 					newObj.setStatus(StatusEnum.OPEN.getStatus());
 					reviewerRemarkService.save(newObj);
 				}
-
-				ProjectWorkDetails project = projectWorkDetailsService.findById(reviewerRemark.getProject_id());
 				project.setAllocated(true);
 				projectWorkDetailsService.updateProject(project);
 
@@ -151,21 +149,42 @@ public class ReviewerRemarkController {
 	}
 
 	@RequestMapping(value = "/getDocumentId", method = RequestMethod.GET)
-	public @ResponseBody List<ProjectWorkDetails> getDocumentId(@RequestParam Long project_id) {
+	public @ResponseBody List<ProjectWorkDetails> getDocumentId(@RequestParam String ticket_id) {
 
 		List<ProjectWorkDetails> listOfProjectNew = new ArrayList<ProjectWorkDetails>();
-		if (project_id != null) {
-			ProjectWorkDetails prjWorkObj = projectWorkDetailsService.findById(project_id);
-			if (prjWorkObj != null) {
-
-				for (ProjectWorkDetails projectWorkDetails : projectWorkDetailsService
-						.findListOfProjectWorkDetailsByTicketId(prjWorkObj.getTicket_id())) {
-					if (!projectWorkDetails.getAllocated()) {
-						listOfProjectNew.add(projectWorkDetails);
-					}
+		if (!StringUtils.isEmpty(ticket_id)) {
+			for (ProjectWorkDetails projectWorkDetails : projectWorkDetailsService
+					.findListOfProjectWorkDetailsByTicketId(ticket_id)) {
+				if (!projectWorkDetails.getAllocated()) {
+					listOfProjectNew.add(projectWorkDetails);
 				}
 			}
 		}
 		return listOfProjectNew;
+	}
+
+	@RequestMapping(value = { "/review_project" }, method = RequestMethod.GET)
+	public String reviewproject(ModelMap model) {
+		addModelAttributeForProjectReview(model);
+		return "review_project";
+		// return "temp_review";
+	}
+
+	public void addModelAttributeForProjectReview(ModelMap model) {
+
+		model.addAttribute("loggedinuser", authenticationTrustResolver.getPrincipal());
+		User userObjOfLoggedInUser = userService.getLoggedInUser();
+
+		List<ReviewerRemark> listOfReviewerRemark = reviewerRemarkService
+				.findByReviewerId(userObjOfLoggedInUser.getId());
+
+		Map<String, ReviewerRemark> map = new HashMap<>();
+		for (ReviewerRemark reviewerRemark : listOfReviewerRemark) {
+			map.put(reviewerRemark.getDocument_id(), reviewerRemark);
+		}
+		Collection<ReviewerRemark> listOfDocumentId = map.values();
+
+		model.addAttribute("listOfDocumentId", listOfDocumentId);
+		model.addAttribute("listOfReviewerRemark", listOfReviewerRemark);
 	}
 }

@@ -164,12 +164,6 @@ public class AppController {
 		model.addAttribute(userObjOfLoggedInUser);
 	}
 
-	@RequestMapping(value = { "/review_project" }, method = RequestMethod.GET)
-	public String reviewproject(ModelMap model) {
-		model.addAttribute("loggedinuser", authenticationTrustResolver.getPrincipal());
-		return "review_project";
-	}
-
 	@RequestMapping(value = { "/Member_chain" }, method = RequestMethod.GET)
 	public String Memberchain(ModelMap model) {
 		model.addAttribute("loggedinuser", authenticationTrustResolver.getPrincipal());

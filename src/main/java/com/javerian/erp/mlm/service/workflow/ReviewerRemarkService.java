@@ -13,4 +13,6 @@ public interface ReviewerRemarkService {
 	List<ReviewerRemark> findAllReviewerRemark();
 
 	List<ReviewerRemark> findByReviewerId(Long id);
+
+	public Integer getCountOfAssignedProjectToUser(Long user_id);
 }

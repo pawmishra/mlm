@@ -43,4 +43,9 @@ public class ProjectWorkDetailsServiceImpl implements ProjectWorkDetailsService 
 		return projectworkDetailsDao.updateProject(projectworkDetails);
 	}
 
+	@Override
+	public ProjectWorkDetails findByDocumentId(String document_id) {
+		return projectworkDetailsDao.findByDocumentId(document_id);
+	}
+
 }

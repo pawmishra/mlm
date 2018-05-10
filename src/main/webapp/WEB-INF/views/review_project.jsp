@@ -73,8 +73,6 @@
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
 <script type="text/javascript">
-
- 
 	function ieClicked() {
 		if (document.all) {
 			return false;
@@ -87,7 +85,7 @@
 			}
 		}
 	}
-	
+
 	if (document.layers) {
 		document.captureEvents(Event.MOUSEDOWN);
 		document.onmousedown = firefoxClicked;
@@ -96,6 +94,12 @@
 		document.oncontextmenu = ieClicked;
 	}
 	document.oncontextmenu = new Function("return false")
+</script>
+
+<script type="text/javascript">
+	function changeProject() {
+		alert("hi");
+	}
 </script>
 
 </head>
@@ -116,6 +120,22 @@
 					<li class="active">Review Project</li>
 				</ol>
 			</section>
+
+			<div class="form-row">
+				<div class="form-group col-md-6">
+					<label for="problemtype">Ticket Id:</label>
+					<div class="ui-select">
+						<select id="ticket_id" class="form-control selectpicker"
+							data-live-search="true" name="ticket_id" required="required"
+							onchange="changeProject()">
+							<option value="" label="--- Select ---" />
+							<c:forEach items="${listOfDocumentId}" var="project">
+								<option value="${project.project_id}">${project.document_id}</option>
+							</c:forEach>
+						</select>
+					</div>
+				</div>
+			</div>
 
 			<!-- Main content -->
 			<section class="content">
@@ -150,294 +170,254 @@
 									<div class="form-inline col-md-12">
 										<div class="col-md-6">
 											<label class="radio-inline"> <input type="radio"
-												id="a1" name="optradio" >Option
-												1
+												id="a1" name="optradio">Option 1
 											</label> <label class="radio-inline"> <input type="radio"
-												id="a2" name="optradio" >Option
-												2
+												id="a2" name="optradio">Option 2
 											</label> <label class="radio-inline"> <input type="radio"
-												id="a3" name="optradio" >Option
-												3
+												id="a3" name="optradio">Option 3
 											</label> <label class="radio-inline"> <input type="radio"
-												id="a4" name="optradio" >Option
-												4
+												id="a4" name="optradio">Option 4
 											</label>
 										</div>
 										<div class="col-md-6">
-										
+
 											<div class="range-slider">
-												<input class="range-slider__range" type="range" value="0" id="slider_range_id"
-													min="0" max="100" onchange="slide1()"> <span
-													class="range-slider__value" id="option1">0</span><span>%</span>
+												<input class="range-slider__range" type="range" value="0"
+													id="slider_range_id" min="0" max="100" onchange="slide1()">
+												<span class="range-slider__value" id="option1">0</span><span>%</span>
 											</div>
 										</div>
 									</div>
-									
-									
-									
+
+
+
 									<p>2. The blockquote element is used to present content
 										from another source:</p>
 									<div class="form-inline col-md-12">
 										<div class="col-md-6">
 											<label class="radio-inline"> <input type="radio"
-												id="b1" name="optradio" >Option
-												1
+												id="b1" name="optradio">Option 1
 											</label> <label class="radio-inline"> <input type="radio"
-												id="b2" name="optradio" >Option
-												2
+												id="b2" name="optradio">Option 2
 											</label> <label class="radio-inline"> <input type="radio"
-												id="b3" name="optradio" >Option
-												3
+												id="b3" name="optradio">Option 3
 											</label> <label class="radio-inline"> <input type="radio"
-												id="b4" name="optradio" >Option
-												4
+												id="b4" name="optradio">Option 4
 											</label>
 										</div>
 										<div class="col-md-6">
-										
+
 											<div class="range-slider">
-												<input class="range-slider__range" type="range" value="0" id="slider_range_id"
-													min="0" max="100" onchange="slide2()"> <span
-													class="range-slider__value" id="option2">0</span><span>%</span>
+												<input class="range-slider__range" type="range" value="0"
+													id="slider_range_id" min="0" max="100" onchange="slide2()">
+												<span class="range-slider__value" id="option2">0</span><span>%</span>
 											</div>
 										</div>
 									</div>
-									 
+
 									<p>3. The blockquote element is used to present content
 										from another source:</p>
 									<div class="form-inline col-md-12">
 										<div class="col-md-6">
 											<label class="radio-inline"> <input type="radio"
-												id="c1" name="optradio" >Option
-												1
+												id="c1" name="optradio">Option 1
 											</label> <label class="radio-inline"> <input type="radio"
-												id="c2" name="optradio" >Option
-												2
+												id="c2" name="optradio">Option 2
 											</label> <label class="radio-inline"> <input type="radio"
-												id="c3" name="optradio" >Option
-												3
+												id="c3" name="optradio">Option 3
 											</label> <label class="radio-inline"> <input type="radio"
-												id="c4" name="optradio" >Option
-												4
+												id="c4" name="optradio">Option 4
 											</label>
 										</div>
 										<div class="col-md-6">
-										
+
 											<div class="range-slider">
-												<input class="range-slider__range" type="range" value="0" id="slider_range_id"
-													min="0" max="100" onchange="slide3()"> <span
-													class="range-slider__value" id="option3">0</span><span>%</span>
+												<input class="range-slider__range" type="range" value="0"
+													id="slider_range_id" min="0" max="100" onchange="slide3()">
+												<span class="range-slider__value" id="option3">0</span><span>%</span>
 											</div>
 										</div>
-									</div> 
-									 
+									</div>
+
 									<p>4. The blockquote element is used to present content
 										from another source:</p>
 									<div class="form-inline col-md-12">
 										<div class="col-md-6">
 											<label class="radio-inline"> <input type="radio"
-												id="d1" name="optradio" >Option
-												1
+												id="d1" name="optradio">Option 1
 											</label> <label class="radio-inline"> <input type="radio"
-												id="d2" name="optradio" >Option
-												2
+												id="d2" name="optradio">Option 2
 											</label> <label class="radio-inline"> <input type="radio"
-												id="d3" name="optradio" >Option
-												3
+												id="d3" name="optradio">Option 3
 											</label> <label class="radio-inline"> <input type="radio"
-												id="d4" name="optradio" >Option
-												4
+												id="d4" name="optradio">Option 4
 											</label>
 										</div>
 										<div class="col-md-6">
-										
+
 											<div class="range-slider">
-												<input class="range-slider__range" type="range" value="0" id="slider_range_id"
-													min="0" max="100" onchange="slide4()"> <span
-													class="range-slider__value" id="option4">0</span><span>%</span>
+												<input class="range-slider__range" type="range" value="0"
+													id="slider_range_id" min="0" max="100" onchange="slide4()">
+												<span class="range-slider__value" id="option4">0</span><span>%</span>
 											</div>
 										</div>
 									</div>
-									
+
 									<p>5. The blockquote element is used to present content
 										from another source:</p>
 									<div class="form-inline col-md-12">
 										<div class="col-md-6">
 											<label class="radio-inline"> <input type="radio"
-												id="e1" name="optradio" >Option
-												1
+												id="e1" name="optradio">Option 1
 											</label> <label class="radio-inline"> <input type="radio"
-												id="e2" name="optradio" >Option
-												2
+												id="e2" name="optradio">Option 2
 											</label> <label class="radio-inline"> <input type="radio"
-												id="e3" name="optradio" >Option
-												3
+												id="e3" name="optradio">Option 3
 											</label> <label class="radio-inline"> <input type="radio"
-												id="e4" name="optradio" >Option
-												4
+												id="e4" name="optradio">Option 4
 											</label>
 										</div>
 										<div class="col-md-6">
-										
+
 											<div class="range-slider">
-												<input class="range-slider__range" type="range" value="0" id="slider_range_id"
-													min="0" max="100" onchange="slide5()"> <span
-													class="range-slider__value" id="option5">0</span><span>%</span>
+												<input class="range-slider__range" type="range" value="0"
+													id="slider_range_id" min="0" max="100" onchange="slide5()">
+												<span class="range-slider__value" id="option5">0</span><span>%</span>
 											</div>
 										</div>
 									</div>
-									
+
 									<p>6. The blockquote element is used to present content
 										from another source:</p>
 									<div class="form-inline col-md-12">
 										<div class="col-md-6">
 											<label class="radio-inline"> <input type="radio"
-												id="f1" name="optradio" >Option
-												1
+												id="f1" name="optradio">Option 1
 											</label> <label class="radio-inline"> <input type="radio"
-												id="f2" name="optradio" >Option
-												2
+												id="f2" name="optradio">Option 2
 											</label> <label class="radio-inline"> <input type="radio"
-												id="f3" name="optradio" >Option
-												3
+												id="f3" name="optradio">Option 3
 											</label> <label class="radio-inline"> <input type="radio"
-												id="f4" name="optradio" >Option
-												4
+												id="f4" name="optradio">Option 4
 											</label>
 										</div>
 										<div class="col-md-6">
-										
+
 											<div class="range-slider">
-												<input class="range-slider__range" type="range" value="0" id="slider_range_id"
-													min="0" max="100" onchange="slide6()"> <span
-													class="range-slider__value" id="option6">0</span><span>%</span>
+												<input class="range-slider__range" type="range" value="0"
+													id="slider_range_id" min="0" max="100" onchange="slide6()">
+												<span class="range-slider__value" id="option6">0</span><span>%</span>
 											</div>
 										</div>
 									</div>
-									
+
 									<p>7. The blockquote element is used to present content
 										from another source:</p>
 									<div class="form-inline col-md-12">
 										<div class="col-md-6">
 											<label class="radio-inline"> <input type="radio"
-												id="g1" name="optradio" >Option
-												1
+												id="g1" name="optradio">Option 1
 											</label> <label class="radio-inline"> <input type="radio"
-												id="g2" name="optradio" >Option
-												2
+												id="g2" name="optradio">Option 2
 											</label> <label class="radio-inline"> <input type="radio"
-												id="g3" name="optradio" >Option
-												3
+												id="g3" name="optradio">Option 3
 											</label> <label class="radio-inline"> <input type="radio"
-												id="g4" name="optradio" >Option
-												4
+												id="g4" name="optradio">Option 4
 											</label>
 										</div>
 										<div class="col-md-6">
-										
+
 											<div class="range-slider">
-												<input class="range-slider__range" type="range" value="0" id="slider_range_id"
-													min="0" max="100" onchange="slide7()"> <span
-													class="range-slider__value" id="option7">0</span><span>%</span>
+												<input class="range-slider__range" type="range" value="0"
+													id="slider_range_id" min="0" max="100" onchange="slide7()">
+												<span class="range-slider__value" id="option7">0</span><span>%</span>
 											</div>
 										</div>
 									</div>
-									
+
 									<p>8. The blockquote element is used to present content
 										from another source:</p>
 									<div class="form-inline col-md-12">
 										<div class="col-md-6">
 											<label class="radio-inline"> <input type="radio"
-												id="a1" name="optradio" >Option
-												1
+												id="a1" name="optradio">Option 1
 											</label> <label class="radio-inline"> <input type="radio"
-												id="a2" name="optradio" >Option
-												2
+												id="a2" name="optradio">Option 2
 											</label> <label class="radio-inline"> <input type="radio"
-												id="a3" name="optradio" >Option
-												3
+												id="a3" name="optradio">Option 3
 											</label> <label class="radio-inline"> <input type="radio"
-												id="a4" name="optradio" >Option
-												4
+												id="a4" name="optradio">Option 4
 											</label>
 										</div>
 										<div class="col-md-6">
-										
+
 											<div class="range-slider">
-												<input class="range-slider__range" type="range" value="0" id="slider_range_id"
-													min="0" max="100" onchange="slide1()"> <span
-													class="range-slider__value" id="option1">0</span><span>%</span>
+												<input class="range-slider__range" type="range" value="0"
+													id="slider_range_id" min="0" max="100" onchange="slide1()">
+												<span class="range-slider__value" id="option1">0</span><span>%</span>
 											</div>
 										</div>
 									</div>
-									
+
 									<p>9. The blockquote element is used to present content
 										from another source:</p>
 									<div class="form-inline col-md-12">
 										<div class="col-md-6">
 											<label class="radio-inline"> <input type="radio"
-												id="a1" name="optradio" >Option
-												1
+												id="a1" name="optradio">Option 1
 											</label> <label class="radio-inline"> <input type="radio"
-												id="a2" name="optradio" >Option
-												2
+												id="a2" name="optradio">Option 2
 											</label> <label class="radio-inline"> <input type="radio"
-												id="a3" name="optradio" >Option
-												3
+												id="a3" name="optradio">Option 3
 											</label> <label class="radio-inline"> <input type="radio"
-												id="a4" name="optradio" >Option
-												4
+												id="a4" name="optradio">Option 4
 											</label>
 										</div>
 										<div class="col-md-6">
-										
+
 											<div class="range-slider">
-												<input class="range-slider__range" type="range" value="0" id="slider_range_id"
-													min="0" max="100" onchange="slide1()"> <span
-													class="range-slider__value" id="option1">0</span><span>%</span>
+												<input class="range-slider__range" type="range" value="0"
+													id="slider_range_id" min="0" max="100" onchange="slide1()">
+												<span class="range-slider__value" id="option1">0</span><span>%</span>
 											</div>
 										</div>
 									</div>
-									
+
 									<p>10. The blockquote element is used to present content
 										from another source:</p>
 									<div class="form-inline col-md-12">
 										<div class="col-md-6">
 											<label class="radio-inline"> <input type="radio"
-												id="a1" name="optradio" >Option
-												1
+												id="a1" name="optradio">Option 1
 											</label> <label class="radio-inline"> <input type="radio"
-												id="a2" name="optradio" >Option
-												2
+												id="a2" name="optradio">Option 2
 											</label> <label class="radio-inline"> <input type="radio"
-												id="a3" name="optradio" >Option
-												3
+												id="a3" name="optradio">Option 3
 											</label> <label class="radio-inline"> <input type="radio"
-												id="a4" name="optradio" >Option
-												4
+												id="a4" name="optradio">Option 4
 											</label>
 										</div>
 										<div class="col-md-6">
-										
+
 											<div class="range-slider">
-												<input class="range-slider__range" type="range" value="0" id="slider_range_id"
-													min="0" max="100" onchange="slide1()"> <span
-													class="range-slider__value" id="option1">0</span><span>%</span>
+												<input class="range-slider__range" type="range" value="0"
+													id="slider_range_id" min="0" max="100" onchange="slide1()">
+												<span class="range-slider__value" id="option1">0</span><span>%</span>
 											</div>
 										</div>
 									</div>
-									<br><br>
+									<br> <br>
 									<div class="form-group">
-														<br> <br>
-														<div class="buttons col-md-8">
-															<input type="submit" class="btn btn-primary"
-																value="Submit"> <span></span> <input
-																type="reset" class="btn btn-default" value="Cancel">
-														</div>
+										<br> <br>
+										<div class="buttons col-md-8">
+											<input type="submit" class="btn btn-primary" value="Submit">
+											<span></span> <input type="reset" class="btn btn-default"
+												value="Cancel">
+										</div>
 									</div>
-								    <br><br><br><br>
-									
-									
+									<br> <br> <br> <br>
+
+
 								</div>
 
 							</div>
@@ -480,8 +460,6 @@
 		};
 
 		rangeSlider();
-
-		
 	</script>
 	<!-- jQuery 2.1.3 -->
 	<script src="/mlm-erp/static/plugins/jQuery/jQuery-2.1.3.min.js"></script>
@@ -501,8 +479,7 @@
 	<!-- Sparkline -->
 	<script src="/mlm-erp/static/plugins/sparkline/jquery.sparkline.min.js"
 		type="text/javascript"></script>
-		<script src="/mlm-erp/static/js/question.js"
-		type="text/javascript"></script>
+	<script src="/mlm-erp/static/js/question.js" type="text/javascript"></script>
 	<!-- jvectormap -->
 	<script
 		src="/mlm-erp/static/plugins/jvectormap/jquery-jvectormap-1.2.2.min.js"
