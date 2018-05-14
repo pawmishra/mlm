@@ -35,6 +35,12 @@ public class Ledger {
 	@Column(name = "document_id")
 	private String document_id;
 
+	@Column(name = "admin_payment_approval")
+	private Boolean admin_payment_approval;
+
+	@Column(name = "admin_payment_date")
+	private Timestamp admin_payment_date;
+
 	public Long getId() {
 		return id;
 	}
@@ -91,10 +97,28 @@ public class Ledger {
 		this.document_id = document_id;
 	}
 
+	public Boolean getAdmin_payment_approval() {
+		return admin_payment_approval;
+	}
+
+	public void setAdmin_payment_approval(Boolean admin_payment_approval) {
+		this.admin_payment_approval = admin_payment_approval;
+	}
+
+	public Timestamp getAdmin_payment_date() {
+		return admin_payment_date;
+	}
+
+	public void setAdmin_payment_date(Timestamp admin_payment_date) {
+		this.admin_payment_date = admin_payment_date;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
+		result = prime * result + ((admin_payment_approval == null) ? 0 : admin_payment_approval.hashCode());
+		result = prime * result + ((admin_payment_date == null) ? 0 : admin_payment_date.hashCode());
 		result = prime * result + ((credit == null) ? 0 : credit.hashCode());
 		result = prime * result + ((debit == null) ? 0 : debit.hashCode());
 		result = prime * result + ((document_id == null) ? 0 : document_id.hashCode());
@@ -114,6 +138,16 @@ public class Ledger {
 		if (getClass() != obj.getClass())
 			return false;
 		Ledger other = (Ledger) obj;
+		if (admin_payment_approval == null) {
+			if (other.admin_payment_approval != null)
+				return false;
+		} else if (!admin_payment_approval.equals(other.admin_payment_approval))
+			return false;
+		if (admin_payment_date == null) {
+			if (other.admin_payment_date != null)
+				return false;
+		} else if (!admin_payment_date.equals(other.admin_payment_date))
+			return false;
 		if (credit == null) {
 			if (other.credit != null)
 				return false;
@@ -156,7 +190,8 @@ public class Ledger {
 	public String toString() {
 		return "Ledger [id=" + id + ", member_id=" + member_id + ", credit=" + credit + ", debit=" + debit
 				+ ", transaction_date=" + transaction_date + ", transaction_remark=" + transaction_remark
-				+ ", document_id=" + document_id + "]";
+				+ ", document_id=" + document_id + ", admin_payment_approval=" + admin_payment_approval
+				+ ", admin_payment_date=" + admin_payment_date + "]";
 	}
 
 }

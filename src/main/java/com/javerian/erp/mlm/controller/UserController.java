@@ -173,6 +173,8 @@ public class UserController {
 					ledgerForLevelIncome.setDebit(nil.getRegistration_amout());
 					ledgerForLevelIncome.setTransaction_date(Util.getCurrentTime());
 					ledgerForLevelIncome.setTransaction_remark(levelRemarkOfMember);
+					// User seeks permission to withdrawal money from Admin.
+					ledgerForLevelIncome.setAdmin_payment_approval(false);
 
 					ledgerService.update(ledgerForLevelIncome);
 				}

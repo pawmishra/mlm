@@ -196,7 +196,8 @@
 									<!-- edit form column -->
 									<div class="col-md-9 personal-info">
 
-										<form:form>
+										<form:form action="withdrawl_update" method="POST"
+											modelAttribute="helpDeskTicket">
 
 											<div class="form-row">
 
@@ -229,8 +230,9 @@
 													<br> <br>
 												</div>
 											</div>
+										</form:form>
 									</div>
-									</form:form>
+
 								</div>
 							</div>
 						</div>
@@ -266,6 +268,15 @@
 										rowspan="1" colspan="1"
 										aria-label="Position: activate to sort column ascending"
 										style="width: 32px;" aria-sort="descending">Debit</th>
+									<th class="sorting_desc" tabindex="0" aria-controls="tbl_data"
+										rowspan="1" colspan="1"
+										aria-label="Position: activate to sort column ascending"
+										style="width: 32px;" aria-sort="descending">Is Payment
+										Approved?</th>
+									<th class="sorting_desc" tabindex="0" aria-controls="tbl_data"
+										rowspan="1" colspan="1"
+										aria-label="Position: activate to sort column ascending"
+										style="width: 32px;" aria-sort="descending">Approval Date</th>
 								</tr>
 							</thead>
 							<tbody>
@@ -275,6 +286,8 @@
 										<td>${item.transaction_date}</td>
 										<td>${item.credit}</td>
 										<td>${item.debit}</td>
+										<td>${item.admin_payment_approval}</td>
+										<td>${item.admin_payment_date}</td>
 									</tr>
 								</c:forEach>
 							</tbody>
