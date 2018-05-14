@@ -12,6 +12,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.web.authentication.rememberme.PersistentTokenBasedRememberMeServices;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -27,6 +28,7 @@ import com.javerian.erp.mlm.service.workflow.LatestNewsService;
 import com.javerian.erp.mlm.service.workflow.LedgerService;
 import com.javerian.erp.mlm.service.workflow.MemberDetailsService;
 import com.javerian.erp.mlm.util.LedgerOptions;
+import com.javerian.erp.mlm.util.Util;
 
 @Controller
 @RequestMapping("/")
@@ -189,10 +191,73 @@ public class AppController {
 			totalCredit += ledger.getCredit();
 			totalDebit += ledger.getDebit();
 		}
+
+		Ledger ledger = new Ledger();
+		model.addAttribute(ledger);
+
 		addModelAttrForEditProfile(model);
 		model.addAttribute("listOfWithdrawlBalance", listOfWithdrawlBalance);
 		Double balanceToWithdrawl = totalCredit - totalDebit;
 		model.addAttribute("balanceToWithdrawl", balanceToWithdrawl);
+		return "withdraw_balance";
+	}
+
+	@RequestMapping(value = "/withdrawl_update", method = RequestMethod.POST)
+	public String withdrawlUpdate(@ModelAttribute Ledger ledger, BindingResult result, ModelMap model) {
+
+		User loggedInUser = userService.getLoggedInUser();
+
+		Double totalCredit = 0.0;
+		Double totalDebit = 0.0;
+
+		List<Ledger> listOfWithdrawlBalance = ledgerService.findAllTransactionsByMemberId(loggedInUser.getId());
+
+		for (Ledger ledgerWithdrawal : listOfWithdrawlBalance) {
+			totalCredit += ledgerWithdrawal.getCredit();
+			totalDebit += ledgerWithdrawal.getDebit();
+		}
+
+		Double balanceToWithdrawl = totalCredit - totalDebit;
+		model.addAttribute("balanceToWithdrawl", balanceToWithdrawl);
+		if (ledger.getDebit() <= balanceToWithdrawl) {
+			ledger.setMember_id(loggedInUser.getId());
+			ledger.setTransaction_date(Util.getCurrentTime());
+			ledger.setCredit(0.0);
+			ledger.setAdmin_payment_approval(false);
+			ledger.setTransaction_remark(LedgerOptions.WITHDRAWL.getLedgerOptions());
+
+			ledgerService.save(ledger);
+		}
+
+		List<Ledger> refreshedListOfWithdrawlBalance = ledgerService
+				.findAllTransactionsByMemberId(loggedInUser.getId());
+		model.addAttribute("listOfWithdrawlBalance", refreshedListOfWithdrawlBalance);
+		addModelAttr(model);
+
+		return "withdraw_balance";
+	}
+
+	@RequestMapping(value = "/withdrawl_update", method = RequestMethod.GET)
+	public String withdrawlUpdateRefreshed(@ModelAttribute Ledger ledger, BindingResult result, ModelMap model) {
+
+		User loggedInUser = userService.getLoggedInUser();
+
+		Double totalCredit = 0.0;
+		Double totalDebit = 0.0;
+
+		List<Ledger> listOfWithdrawlBalance = ledgerService.findAllTransactionsByMemberId(loggedInUser.getId());
+
+		for (Ledger ledgerWithdrawal : listOfWithdrawlBalance) {
+			totalCredit += ledgerWithdrawal.getCredit();
+			totalDebit += ledgerWithdrawal.getDebit();
+		}
+
+		Double balanceToWithdrawl = totalCredit - totalDebit;
+		model.addAttribute("balanceToWithdrawl", balanceToWithdrawl);
+
+		model.addAttribute("listOfWithdrawlBalance", listOfWithdrawlBalance);
+		addModelAttr(model);
+
 		return "withdraw_balance";
 	}
 

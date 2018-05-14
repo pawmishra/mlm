@@ -196,8 +196,7 @@
 									<!-- edit form column -->
 									<div class="col-md-9 personal-info">
 
-										<form:form action="withdrawl_update" method="POST"
-											modelAttribute="helpDeskTicket">
+										
 
 											<div class="form-row">
 
@@ -209,15 +208,18 @@
 												</div>
 
 											</div>
+											
+											<form:form action="withdrawl_update" method="POST"
+											modelAttribute="ledger">
 
 											<div class="form-row">
 
 												<div class="form-group col-md-6">
 													<label for="organizationname">Want to withdraw
 														amount? <br> Enter amount you want to withdraw:
-													</label> <input type="text" class="form-control"
-														id="withdrawamount" name="withdraw_amount"
-														placeholder="Withdraw Amount">
+													</label> <form:input type="text" class="form-control"
+														id="debit" name="debit" path="debit"
+														placeholder="Withdraw Amount"/>
 												</div>
 											</div>
 
