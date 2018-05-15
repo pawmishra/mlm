@@ -287,7 +287,7 @@ public class AppController {
 		List<Ledger> listOfAllTransactions = ledgerService.findAllTransactions();
 		List<Ledger> listOfAllTransactionss=new ArrayList<Ledger>();
 		for (Ledger ledger : listOfAllTransactions) {
-			if(ledger.getAdmin_payment_approval().equals("false"))
+			if(!ledger.getAdmin_payment_approval())
 			{
 				listOfAllTransactionss.add(ledger);
 			}
