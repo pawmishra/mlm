@@ -143,8 +143,25 @@
 	 
 	
 </script>
-
-
+<link
+	href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css"
+	rel="stylesheet" type="text/css" />
+	<link
+	href="https://cdn.datatables.net/buttons/1.5.1/css/buttons.dataTables.min.css"
+	rel="stylesheet" type="text/css" />
+	<link
+	href="https://cdn.datatables.net/select/1.2.5/css/select.dataTables.min.css"
+	rel="stylesheet" type="text/css" />
+	<link
+	href="https://cdn.datatables.net/rowreorder/1.2.3/css/rowReorder.dataTables.min.css"
+	rel="stylesheet" type="text/css" />
+	<link
+	href="../../extensions/Editor/css/editor.dataTables.min.css"
+	rel="stylesheet" type="text/css" />
+ <!-- 	<script
+	src="https://code.jquery.com/jquery-1.12.4.js"></script> -->
+	
+	
 
 </head>
 <body class="skin-blue">
@@ -208,8 +225,8 @@
 								<!-- <table id="tbl_data" class="table table-striped table-bordered"
 									style="width: 100%"> -->
 
-								<table class="display dataTable no-footer" border="1"
-									style="width: 100%;" id="tbl_data" role="grid"
+								<table class="display dataTable no-footer display" border="1"
+									style="width: 100%;" id="tbl_data" role="grid" id="example"
 									aria-describedby="tbl_data_info">
 									<thead>
 										<tr
@@ -230,7 +247,7 @@
 											<th class="sorting_desc" tabindex="0"
 												aria-controls="tbl_data" rowspan="1" colspan="1"
 												aria-label="Age: activate to sort column ascending"
-												style="width: 32px;" aria-sort="descending">Desc</th>
+												style="width: 32px;" aria-sort="descending">Description</th>
 											<th class="sorting_desc" tabindex="0"
 												aria-controls="tbl_data" rowspan="1" colspan="1"
 												aria-label="Start date: activate to sort column ascending"
@@ -364,6 +381,87 @@ window.onclick = function(event) {
     }
 }
 </script>
+<script type="text/javascript">
+var editor; // use a global for the submit and return data rendering in the examples
 
+$(document).ready(function() {
+    editor = new $.fn.dataTable.Editor( {
+        ajax:  '../php/sequence.php',
+        table: '#example',
+        fields: [ {
+                label: 'Id:',
+                name: 'readingOrder',
+                fieldInfo: 'This field can only be edited via click and drag row reordering.'
+            }, {
+                label: 'Resolution Status:',
+                name:  'resolution_status'
+            }, {
+                label: 'Problem Type:',
+                name:  'problem_type'
+            }, {
+                label: 'Description:',
+                name:  'description'
+            }, {
+                label: 'Comment:',
+                name:  'comment'
+            }, {
+                label: 'Resolved By:',
+                name:  'resolved_by'
+            }, {
+                label: 'Resolved Date:',
+                name:  'resolved_date'
+            }, {
+                label: 'Ticket Creation Date:',
+                name:  'ticket_creation_date'
+            }
+        ]
+    } );
+ 
+    var table = $('#example').DataTable( {
+        dom: 'Bfrtip',
+        ajax: '../php/sequence.php',
+        columns: [
+            { data: 'readingOrder', className: 'reorder' },
+            { data: 'title' },
+            { data: 'resolution_status' },
+            { data: 'problem_type' },
+            { data: 'description' },
+            { data: 'comment' },
+            { data: 'resolved_by' },
+            { data: 'resolved_date' },
+            { data: 'ticket_creation_date' }
+            
+        ],
+        columnDefs: [
+            { orderable: false, targets: [ 1,2,3 ] }
+        ],
+        rowReorder: {
+            dataSrc: 'readingOrder',
+            editor:  editor
+        },
+        select: true,
+        buttons: [
+            { extend: 'create', editor: editor },
+            { extend: 'edit',   editor: editor },
+            { extend: 'remove', editor: editor }
+        ]
+    } );
+ 
+    editor
+        .on( 'postCreate postRemove', function () {
+            // After create or edit, a number of other rows might have been effected -
+            // so we need to reload the table, keeping the paging in the current position
+            table.ajax.reload( null, false );
+        } )
+        .on( 'initCreate', function () {
+            // Enable order for create
+            editor.field( 'readingOrder' ).enable();
+        } )
+        .on( 'initEdit', function () {
+            // Disable for edit (re-ordering is performed by click and drag)
+            editor.field( 'readingOrder' ).disable();
+        } );
+} );
+</script>
 </body>
 </html>

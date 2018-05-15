@@ -1,9 +1,7 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+	pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-
+<!DOCTYPE html>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
@@ -12,7 +10,22 @@
 <meta
 	content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no'
 	name='viewport'>
-
+	<link
+	href="<c:url value='https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css' />"
+	rel="stylesheet" type="text/css" />
+	<link
+	href="<c:url value='https://cdn.datatables.net/buttons/1.5.1/css/buttons.dataTables.min.css' />"
+	rel="stylesheet" type="text/css" />
+	<link
+	href="<c:url value='https://cdn.datatables.net/select/1.2.5/css/select.dataTables.min.css' />"
+	rel="stylesheet" type="text/css" />
+	<link
+	href="<c:url value='https://cdn.datatables.net/rowreorder/1.2.3/css/rowReorder.dataTables.min.css' />"
+	rel="stylesheet" type="text/css" />
+	
+	
+	
+	
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <script
 	src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
@@ -155,8 +168,6 @@
 	 }); */
 </script>
 
-<script src="/mlm-erp/static/js/validation.js"></script>
-
 
 
 </head>
@@ -171,88 +182,35 @@
 		<div class="content-wrapper">
 			<!-- Content Header (Page header) -->
 			<section class="content-header">
-			<h1>Withdraw Balance</h1>
-			<ol class="breadcrumb">
-				<li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-				<li><a href="#">Dashboard</a></li>
-				<li class="active">Withdraw Balance</li>
-			</ol>
+				<h1>Withdraw Balance Approval</h1>
+				<ol class="breadcrumb">
+					<li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+					<li><a href="#">Dashboard</a></li>
+					<li class="active">Withdraw Balance Approval</li>
+				</ol>
 			</section>
 
 			<!-- Main content -->
 			<section class="content">
-			<div class="row">
-				<div class="col-xs-12">
+				<div class="row">
+					<div class="col-xs-12">
 
 
-					<div class="box">
-						<div class="box-header">
-							<div class="container">
-								<h1></h1>
-								<hr>
-								<div class="row">
-									<!-- left column -->
 
-									<!-- edit form column -->
-									<div class="col-md-9 personal-info">
 
-										
-
-											<div class="form-row">
-
-												<div class="form-group col-md-6">
-													<label for="organizationname">Wallet Balance:</label> <input
-														type="text" class="form-control" id="walletbalance"
-														readonly="readonly" name="walletbalance"
-														placeholder="Wallet Balance" value="${balanceToWithdrawl}">
-												</div>
-
-											</div>
-											
-											<form:form action="withdrawl_update" method="POST"
-											modelAttribute="ledger">
-
-											<div class="form-row">
-
-												<div class="form-group col-md-6">
-													<label for="organizationname">Want to withdraw
-														amount? <br> Enter amount you want to withdraw:
-													</label> <form:input type="text" class="form-control"
-														id="debit" name="debit" path="debit"
-														placeholder="Withdraw Amount"/>
-												</div>
-											</div>
-
-											<div class="form-group">
-
-												<div class="buttons col-md-8">
-													<br> <input type="submit" class="btn btn-primary"
-														value="Withdraw"> <span></span> <input
-														type="reset" class="btn btn-default" value="Cancel">
-													<br> <br>
-												</div>
-											</div>
-										</form:form>
-									</div>
-
-								</div>
-							</div>
-						</div>
-					</div>
-
-					<!-- /.box-header -->
-					<div class="box-body">
-						<!-- <table id="tbl_data" class="table table-striped table-bordered"
+						<!-- /.box-header -->
+						<div class="box-body">
+							<!-- <table id="tbl_data" class="table table-striped table-bordered"
 									style="width: 100%"> -->
 
-						<table class="display dataTable no-footer" border="1"
-							style="width: 100%;" id="tbl_data" role="grid"
-							aria-describedby="tbl_data_info">
-							<thead>
+							<table class="display dataTable no-footer" border="1"
+								style="width: 100%;" id="tbl_data" role="grid"
+								aria-describedby="tbl_data_info">
+								<thead>
 								<tr
 									style="background-color: #0f2a76; text-align: center; color: white"
 									role="row">
-									<th class="sorting_desc" tabindex="0" aria-controls="tbl_data"
+										<th class="sorting_desc" tabindex="0" aria-controls="tbl_data"
 										rowspan="1" colspan="1"
 										aria-label="Name: activate to sort column ascending"
 										style="width: 32px;" aria-sort="descending">User ID
@@ -284,34 +242,37 @@
 										rowspan="1" colspan="1"
 										aria-label="Position: activate to sort column ascending"
 										style="width: 32px;" aria-sort="descending">Approval Date</th>
+									<th class="sorting_desc" tabindex="0" aria-controls="tbl_data"
+										rowspan="1" colspan="1"
+										aria-label="Position: activate to sort column ascending"
+										style="width: 32px;" aria-sort="descending">Pay</th>
 								</tr>
 							</thead>
 							<tbody>
-								<c:forEach items="${listOfWithdrawlBalance}" var="item">
+								<c:forEach items="${listOfAllTransactionss}" var="item">
 									<tr>
-									`	<td>${item.member_id}</td>
+										<td>${item.member_id}</td>
 										<td>${item.transaction_remark}</td>
 										<td>${item.transaction_date}</td>
 										<td>${item.credit}</td>
 										<td>${item.debit}</td>
 										<td>${item.admin_payment_approval}</td>
 										<td>${item.admin_payment_date}</td>
+										<td><button id="myBtn" class="btn btn-success">Pay</button>
+										</td>
 									</tr>
 								</c:forEach>
 							</tbody>
-						</table>
+							</table>
+						</div>
+						<!-- /.box-body -->
 					</div>
-					<!-- /.box-body -->
+					<!-- /.box -->
+
 
 				</div>
-
-				<!-- /.box -->
-
-
-			</div>
-			<!-- /.col -->
+				<!-- /.col -->
 		</div>
-
 		<!-- /.row -->
 		</section>
 		<!-- /.content -->
@@ -319,9 +280,17 @@
 	<!-- /.content-wrapper -->
 
 	</div>
+	<!-- ./wrapper -->
 
-</body>
-</html>
+<script>
+// If user clicks anywhere outside of the modal, Modal will close
 
+var modal = document.getElementById('modal-wrapper');
+window.onclick = function(event) {
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
+}
+</script>
 </body>
 </html>

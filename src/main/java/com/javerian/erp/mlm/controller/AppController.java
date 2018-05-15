@@ -1,5 +1,6 @@
 package com.javerian.erp.mlm.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -20,10 +21,12 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.javerian.erp.mlm.model.auth.User;
 import com.javerian.erp.mlm.model.auth.UserProfile;
+import com.javerian.erp.mlm.model.workflow.BankDetails;
 import com.javerian.erp.mlm.model.workflow.LatestNews;
 import com.javerian.erp.mlm.model.workflow.Ledger;
 import com.javerian.erp.mlm.service.auth.UserProfileService;
 import com.javerian.erp.mlm.service.auth.UserService;
+import com.javerian.erp.mlm.service.workflow.BankDetailsService;
 import com.javerian.erp.mlm.service.workflow.LatestNewsService;
 import com.javerian.erp.mlm.service.workflow.LedgerService;
 import com.javerian.erp.mlm.service.workflow.MemberDetailsService;
@@ -59,6 +62,8 @@ public class AppController {
 	@Autowired
 	UserAuthentication authenticationTrustResolver;
 
+	@Autowired
+	BankDetailsService bankDetailsService;
 	/**
 	 * This method will list all existing users.
 	 */
@@ -266,4 +271,45 @@ public class AppController {
 		return getListOfIncome(model, LedgerOptions.WITHDRAWL.getLedgerOptions(), "listOfWithdrawlAmount",
 				"withdraw_history");
 	}
+	
+	@RequestMapping(value = { "/withdraw_approval" }, method = RequestMethod.GET)
+	public String withdrawapproval(ModelMap model) {
+		model.addAttribute("loggedinuser", authenticationTrustResolver.getPrincipal());
+		return "withdraw_approval";
+	}
+	
+	@ModelAttribute
+	public void addWithdrawApproval(ModelMap model) {
+
+		model.addAttribute("loggedinuser", authenticationTrustResolver.getPrincipal());
+		model.addAttribute(new Ledger());
+
+		List<Ledger> listOfAllTransactions = ledgerService.findAllTransactions();
+		List<Ledger> listOfAllTransactionss=new ArrayList<Ledger>();
+		for (Ledger ledger : listOfAllTransactions) {
+			if(ledger.getAdmin_payment_approval().equals("false"))
+			{
+				listOfAllTransactionss.add(ledger);
+			}
+		}
+		model.addAttribute("listOfAllTransactionss", listOfAllTransactionss);
+	}
+	
+	@RequestMapping(value = { "/admin_bankdetails" }, method = RequestMethod.GET)
+	public String admineditprofile(ModelMap model) {
+		model.addAttribute("loggedinuser", authenticationTrustResolver.getPrincipal());
+		return "admin_bankdetails";
+	}
+	
+	@ModelAttribute
+	public void addModelAttribute(ModelMap model) {
+
+		model.addAttribute("loggedinuser", authenticationTrustResolver.getPrincipal());
+		model.addAttribute(new BankDetails());
+
+		List<BankDetails> listOfBankDetails = bankDetailsService.findAllBankDetails();
+		model.addAttribute("listOfBankDetails", listOfBankDetails);
+	}
+
+	
 }

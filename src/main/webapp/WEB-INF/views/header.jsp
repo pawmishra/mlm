@@ -23,20 +23,20 @@
 						<li>
 							<!-- inner menu: contains the actual data -->
 							<ul class="menu">
-								<li><a href="#"> <i class="fa fa-users text-aqua"></i>
+								<li><a href="view_members"> <i class="fa fa-users text-aqua"></i>
 										My Direct
 								</a></li>
-								<li><a href="#"> <i class="fa fa-warning text-yellow"></i>
+								<li><a href="view_downline_members"> <i class="fa fa-warning text-yellow"></i>
 										My Downline
 								</a></li>
-								<li><a href="#"> <i class="fa fa-users text-red"></i>
-										Direct Buisness
+								<li><a href="level_income"> <i class="fa fa-users text-red"></i>
+										Level Buisness
 								</a></li>
 
-								<li><a href="#"> <i
-										class="fa fa-shopping-cart text-green"></i> Downline Buisness
+								<li><a href="survey_income"> <i
+										class="fa fa-shopping-cart text-green"></i> Survey Buisness
 								</a></li>
-								<li><a href="#"> <i class="fa fa-user text-red"></i> My
+								<li><a href="withdraw_balance"> <i class="fa fa-user text-red"></i> My
 										Wallet
 								</a></li>
 
@@ -108,8 +108,16 @@
 					<ul class="treeview-menu">
 						<li><a href="edit_profile"><i class="fa fa-circle-o"></i>
 								Edit Profile</a></li>
+						<sec:authorize access="hasRole('ADMIN')">
+						<li><a href="admin_editprofile"><i class="fa fa-circle-o"></i>
+								Edit Profile (Admin)</a></li>
+						</sec:authorize>
 						<li><a href="bank_details"><i class="fa fa-circle-o"></i>
 								Bank Details</a></li>
+						<sec:authorize access="hasRole('ADMIN')">
+						<li><a href="admin_bankdetails"><i class="fa fa-circle-o"></i>
+								Bank Details (Admin)</a></li>
+						</sec:authorize>
 						<li><a href="change_password"><i class="fa fa-circle-o"></i>
 								Change Password</a></li>
 						<li><a href="add_newuser"><i class="fa fa-circle-o"></i>
@@ -191,6 +199,10 @@
 						<li><a href="withdraw_history"><i class="fa fa-circle-o"></i>Withdraw
 								Report</a></li>
 					</sec:authorize>
+						<sec:authorize access="hasRole('ADMIN')">
+						<li><a href="withdraw_approval"><i class="fa fa-circle-o"></i>Withdraw
+								Approval</a></li>
+					   </sec:authorize>
 
 				</ul></li>
 			<li class="treeview"><a href="#"> <i class="fa fa-folder"></i>

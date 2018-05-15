@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.javerian.erp.mlm.model.auth.User;
 import com.javerian.erp.mlm.model.auth.UserProfile;
 import com.javerian.erp.mlm.model.workflow.CappingPerLevel;
+import com.javerian.erp.mlm.model.workflow.Category;
 import com.javerian.erp.mlm.model.workflow.Ledger;
 import com.javerian.erp.mlm.model.workflow.Registration;
 import com.javerian.erp.mlm.service.auth.UserService;
@@ -372,5 +373,21 @@ public class UserController {
 		addModelAttrForEditProfile(model);
 		model.addAttribute("listOfImmediateChilds", listOfImmediateChilds);
 		return "view_downline_members";
+	}
+	
+	@RequestMapping(value = { "/admin_editprofile" }, method = RequestMethod.GET)
+	public String admineditprofile(ModelMap model) {
+		model.addAttribute("loggedinuser", authenticationTrustResolver.getPrincipal());
+		return "admin_editprofile";
+	}
+	
+	@ModelAttribute
+	public void addModelAttribute(ModelMap model) {
+
+		model.addAttribute("loggedinuser", authenticationTrustResolver.getPrincipal());
+		model.addAttribute(new User());
+
+		List<User> listOfUsers = userService.findAllUsers();
+		model.addAttribute("listOfUsers", listOfUsers);
 	}
 }
